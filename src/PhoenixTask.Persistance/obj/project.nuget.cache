@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "PQ/JAuWdApsqvrbtY2KsjKVKPgPnE8JgMShL31kIx2lsEICjFXpFaH7T8Jm6gEi9vnZdzt7m2J1yd36UaezCVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Persistance\\PhoenixTask.Persistance.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\e.memarpoor\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\e.memarpoor\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.2\\fluentvalidation.dependencyinjectionextensions.11.9.2.nupkg.sha512",
+    "C:\\Users\\e.memarpoor\\.nuget\\packages\\mediatr\\12.3.0\\mediatr.12.3.0.nupkg.sha512",
+    "C:\\Users\\e.memarpoor\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\e.memarpoor\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

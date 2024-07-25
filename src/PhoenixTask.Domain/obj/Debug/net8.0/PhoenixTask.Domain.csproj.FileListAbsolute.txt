@@ -1,0 +1,13 @@
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\bin\Debug\net8.0\PhoenixTask.Domain.deps.json
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\bin\Debug\net8.0\PhoenixTask.Domain.dll
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\bin\Debug\net8.0\PhoenixTask.Domain.pdb
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.csproj.AssemblyReference.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.AssemblyInfoInputs.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.AssemblyInfo.cs
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.csproj.CoreCompileInputs.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.sourcelink.json
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.dll
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\refint\PhoenixTask.Domain.dll
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\PhoenixTask.Domain.pdb
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Domain\obj\Debug\net8.0\ref\PhoenixTask.Domain.dll

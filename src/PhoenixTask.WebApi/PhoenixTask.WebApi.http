@@ -1,0 +1,6 @@
+@PhoenixTask.WebApi_HostAddress = http://localhost:5287
+
+GET {{PhoenixTask.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

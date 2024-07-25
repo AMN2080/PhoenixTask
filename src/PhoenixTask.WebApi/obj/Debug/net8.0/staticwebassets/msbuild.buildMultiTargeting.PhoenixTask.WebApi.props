@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PhoenixTask.WebApi.props" />
+</Project>

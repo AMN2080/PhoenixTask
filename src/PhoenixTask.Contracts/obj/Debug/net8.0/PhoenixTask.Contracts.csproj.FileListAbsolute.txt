@@ -1,0 +1,12 @@
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\bin\Debug\net8.0\PhoenixTask.Contracts.deps.json
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\bin\Debug\net8.0\PhoenixTask.Contracts.dll
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\bin\Debug\net8.0\PhoenixTask.Contracts.pdb
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\PhoenixTask.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\PhoenixTask.Contracts.AssemblyInfoInputs.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\PhoenixTask.Contracts.AssemblyInfo.cs
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\PhoenixTask.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\PhoenixTask.Contracts.sourcelink.json
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\PhoenixTask.Contracts.dll
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\refint\PhoenixTask.Contracts.dll
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\PhoenixTask.Contracts.pdb
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Contracts\obj\Debug\net8.0\ref\PhoenixTask.Contracts.dll
