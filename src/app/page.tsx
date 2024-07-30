@@ -1,7 +1,7 @@
 export default function MainPage() {
   return (
-    <div className="w-full h-screen bg-red-500">
-      <button className="btn">Button</button>
+    <div className="w-full h-screen">
+      <button className="btn font-yekan-heading">Button</button>
     </div>
   );
 }

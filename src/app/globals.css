@@ -2,15 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "IR-Yekan-body";
-  src: url("../../public/font/Qs_Iranyekan.ttf");
+body {
+  font-family: "IR-Yekan-body", sans-serif;
+  src: url("/font/Qs_Iranyekan.ttf");
 }
+
 @font-face {
   font-family: "IR-Yekan-bold";
-  src: url("../../public/font/Qs_IranyekanBold.ttf");
+  src: url("/font/Qs_IranyekanBold.ttf");
 }
 @font-face {
   font-family: "IR-Yekan-heading";
-  src: url("../../public/font/Qs_IranyekanExtrabold.ttf");
+  src: url("/font/Qs_IranyekanExtrabold.ttf");
 }
