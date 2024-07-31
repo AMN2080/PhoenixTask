@@ -10,9 +10,9 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
   const currentPath = usePathname();
 
   return (
-    <main className="m-0 p-0 h-screen w-screen overflow-hidden flex flex-col font-iranyekan relative">
+    <main className="m-0 p-0 h-screen w-screen overflow-hidden flex flex-col font-IranYekan relative">
       <header className="flex justify-between items-center m-20 h-[45px]">
-        <h1 className="logo font-iranyekan h-fit">کوئرا تسک منیجر</h1>
+        <h1 className="logo font-IranYekan h-fit">Phoenix Task</h1>
         <div className="flex items-center">
           <h6 className="text-base font-medium ml-[7px]">
             {currentPath === "/login"

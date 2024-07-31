@@ -30,13 +30,7 @@ const Link = ({
   return (
     <RouterLink
       href={to}
-      className={`font-iranyekan font-black text-2xl 
-      ${colors[color][colorVariant]} 
-      ${underline && "underline underline-offset-8"}
-      ${fontWeight[weight]}
-      ${BodySize[size]}
-      ${className}
-      `}
+      className={`font-IranYekan ${colors[color][colorVariant]} ${underline && "underline underline-offset-8"} ${fontWeight[weight]} ${BodySize[size]} ${className}`}
       {...rest}
     >
       {children}

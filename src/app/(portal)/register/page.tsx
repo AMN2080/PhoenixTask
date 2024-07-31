@@ -59,7 +59,7 @@ export default function RegisterPage() {
   return (
     <Card>
       <Heading align="center" className="mb-8" as="h2" size="L">
-        ثبت‌نام در کوئرا تسک منیجر
+        به جمع فینیکس تسکی‌ها بپیوند😎
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex gap={`${errors ? "XS" : "M"}`} direction="col">

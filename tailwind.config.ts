@@ -8,9 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        lh: ["32px", "46px"], // => Heading L
+        mh: ["28px", "34px"], // => Heading M
+        /*
+         * 2xl => Heading S || Body XL
+         * xl => Heading XS || Body L
+         * base => Body M
+         * sm => Body S
+         * xs => Body xs
+         */
+      },
       fontFamily: {
-        "yekan-bold": "IR-Yekan-bold",
-        "yekan-heading": "IR-Yekan-heading",
+        IranYekan: ["IRANYekan", "sans-serif"],
       },
     },
   },
@@ -22,7 +32,8 @@ const config: Config = {
           primary: "#ff9800",
           "primary-content": "#fff",
           secondary: "#fbbf24",
-          background: "#333333",
+          // background: "#333333",
+          background: "#f5f5f5",
           accent: "#ff5722",
           neutral: "#757575",
           "base-100": "#f5f5f5",

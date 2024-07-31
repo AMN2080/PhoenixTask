@@ -28,7 +28,7 @@ const Input = React.forwardRef<HTMLInputElement, Props>(
     return (
       <Flex direction="col" gap="XS">
         <label
-          className={`font-iranyekan block ${BodySize[labelFontSize]} ${colors[labelColor][labelColorVariant]}`}
+          className={`font-IranYekan block ${BodySize[labelFontSize]} ${colors[labelColor][labelColorVariant]}`}
           htmlFor={id}
         >
           {label}

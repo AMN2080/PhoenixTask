@@ -23,7 +23,7 @@ const CheckBox = React.forwardRef<HTMLInputElement, Props>(
             <Tick size={20} color="#228B22" />
           </span>
         </div>
-        <label className="font-iranyekan" htmlFor={id}>
+        <label className="font-IranYekan" htmlFor={id}>
           {label}
         </label>
       </Flex>

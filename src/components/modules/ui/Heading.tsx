@@ -3,7 +3,7 @@ import {
   fontWeight,
   colors,
   Size,
-} from "../../../logic/SharedComponentStyles/sharedStyles";
+} from "@/logic/SharedComponentStyles/sharedStyles";
 
 enum TextAlign {
   center = "text-center",
@@ -35,7 +35,7 @@ const Heading: React.FC<Props> = ({
   return React.createElement(
     as,
     {
-      className: `font-iranyekan ${Size[size]} ${colors[color][colorVariant]} ${fontWeight[weight]} ${className} ${TextAlign[align]}`,
+      className: `font-IranYekan ${Size[size]} ${colors[color][colorVariant]} ${fontWeight[weight]} ${className} ${TextAlign[align]}`,
     },
     children,
   );

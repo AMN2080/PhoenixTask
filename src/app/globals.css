@@ -2,16 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "IR-Yekan-body", sans-serif;
-  src: url("/font/Qs_Iranyekan.ttf");
-}
-
 @font-face {
-  font-family: "IR-Yekan-bold";
-  src: url("/font/Qs_IranyekanBold.ttf");
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-Thin.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-Thin.ttf") format("truetype");
+  font-weight: 100;
 }
 @font-face {
-  font-family: "IR-Yekan-heading";
-  src: url("/font/Qs_IranyekanExtrabold.ttf");
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-UltraLight.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-UltraLight.ttf") format("truetype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-Light.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-Light.ttf") format("truetype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-Regular.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-Medium.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-DemiBold.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-DemiBold.ttf") format("truetype");
+  font-weight: 550;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-Bold.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-Bold.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-ExtraBold.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-ExtraBold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-Black.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-Black.ttf") format("truetype");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-ExtraBlack.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-ExtraBlack.ttf") format("truetype");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src:
+    url("../../public/font/IRANYekanX-Heavy.woff2") format("woff2"),
+    url("../../public/font/IRANYekanX-Heavy.ttf") format("truetype");
+  font-weight: 950;
 }

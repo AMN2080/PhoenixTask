@@ -53,7 +53,7 @@ const LoginForm = () => {
   return (
     <Card>
       <Heading align="center" className="mb-8" as="h2" size="L">
-        به کوئرا تسک منیجر خوش برگشتی :)
+        خوش برگشتی😄
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex gap={`${errors ? "XS" : "L"}`} direction="col">
@@ -77,7 +77,7 @@ const LoginForm = () => {
               <ErrorMessage error={errors.password} />
             </Flex>
           </Flex>
-          <Flex className="" gap="M" direction="col">
+          <Flex gap="M" direction="col">
             <Button
               disabled={isLoading}
               type="submit"
@@ -91,7 +91,7 @@ const LoginForm = () => {
                 ثبت‌نام نکرده‌ای؟
               </Text>
               <Link to="/register" color="brand" weight="800" size="M">
-                {"ثبت نام"}
+                ثبت نام
               </Link>
             </Flex>
           </Flex>

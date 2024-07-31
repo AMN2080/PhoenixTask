@@ -22,7 +22,7 @@ const Text = ({
 }: Props) => {
   return (
     <p
-      className={`font-iranyekan 
+      className={`font-IranYekan 
       ${BodySize[size]} 
       ${fontWeight[weight]} 
       ${colors[color][colorVariant]} 
