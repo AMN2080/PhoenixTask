@@ -3,4 +3,4 @@ using PhoenixTask.Domain.Abstractions.Result;
 
 namespace PhoenixTask.Application.Authentication.ForgetPassword;
 
-public sealed record ResetPasswordCommand(string Token,string Password):ICommand<Result>;
+public sealed record ResetPasswordCommand(string Email,string Token,string Password):ICommand<Result>;

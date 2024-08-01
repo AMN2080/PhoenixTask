@@ -68,6 +68,15 @@ public static class DomainErrors
         public static Error CannotChangePassword => new Error(
             "User.CannotChangePassword",
             "The password cannot be changed to the specified password.");
+        public static Error UsernameNotFound => new(
+            "User.UsernameNotFound",
+            "Invalid credential.");
+        public static Error UserNotFound => new(
+            "User.UserNotFound",
+            "Invalid credential.");
+        public static Error BadPassword => new(
+            "User.BadPassword",
+            "Invalid credential.");
     }
     public static class General
     {

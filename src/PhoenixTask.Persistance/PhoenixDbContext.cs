@@ -6,12 +6,14 @@ using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Domain.Abstractions;
 using PhoenixTask.Domain.Abstractions.Events;
 using PhoenixTask.Domain.Abstractions.Primitives;
+using PhoenixTask.Persistance.Extentions;
+using System.Reflection;
 
 namespace PhoenixTask.Persistance;
 
 public sealed class PhoenixDbContext(DbContextOptions options,
     IDateTime dateTime,
-    IMediator mediator) 
+    IMediator mediator)
     : DbContext(options), IUnitOfWork, IDbContext
 {
     private readonly IDateTime _dateTime = dateTime;
@@ -93,5 +95,16 @@ public sealed class PhoenixDbContext(DbContextOptions options,
         IEnumerable<Task> tasks = domainEvents.Select(domainEvent => _mediator.Publish(domainEvent, cancellationToken));
 
         await Task.WhenAll(tasks);
+    }
+
+    public void Insert<TEntity>(TEntity entity) where TEntity : Entity
+        => Set<TEntity>().Add(entity);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        modelBuilder.ApplyUtcDateTimeConverter();
+
+        base.OnModelCreating(modelBuilder);
     }
 }

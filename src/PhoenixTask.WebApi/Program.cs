@@ -5,6 +5,7 @@ using PhoenixTask.Application;
 using PhoenixTask.Infrastructure;
 using PhoenixTask.Persistance;
 using PhoenixTask.WebApi.Middleware;
+using System.Net;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -34,8 +35,9 @@ builder.Services.AddSwaggerGen(swaggerGenOptions =>
         Description = "JWT Authorization header using the Bearer scheme.",
         Name = "Authorization",
         In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
+        Type = SecuritySchemeType.Http,
+        BearerFormat ="JWT",
+        Scheme = "bearer"
     });
 
     swaggerGenOptions.AddSecurityRequirement(new OpenApiSecurityRequirement

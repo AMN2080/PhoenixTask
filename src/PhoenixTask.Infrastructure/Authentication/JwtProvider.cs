@@ -24,9 +24,9 @@ internal sealed class JwtProvider(IOptions<JwtSettings> jwtOptions,
 
         Claim[] claims =
         {
-                new Claim("userId", user.Id.ToString()),
-                new Claim("email", user.Email),
-                new Claim("username", user.UserName)
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Name, user.UserName)
             };
 
         DateTime tokenExpirationTime = _dateTime.UtcNow.AddMinutes(_jwtSettings.TokenExpirationInMinutes);

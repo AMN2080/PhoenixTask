@@ -17,12 +17,6 @@ internal class ExceptionHandlerMiddleware
         _next = next;
         _logger = logger;
     }
-
-    /// <summary>
-    /// Invokes the exception handler middleware with the specified <see cref="HttpContext"/>.
-    /// </summary>
-    /// <param name="httpContext">The HTTP httpContext.</param>
-    /// <returns>The task that can be awaited by the next middleware.</returns>
     public async Task Invoke(HttpContext httpContext)
     {
         try
@@ -37,12 +31,6 @@ internal class ExceptionHandlerMiddleware
         }
     }
 
-    /// <summary>
-    /// Handles the specified <see cref="Exception"/> for the specified <see cref="HttpContext"/>.
-    /// </summary>
-    /// <param name="httpContext">The HTTP httpContext.</param>
-    /// <param name="exception">The exception.</param>
-    /// <returns>The HTTP response that is modified based on the exception.</returns>
     private static async Task HandleExceptionAsync(HttpContext httpContext, Exception exception)
     {
         (HttpStatusCode httpStatusCode, IReadOnlyCollection<Error> errors) = GetHttpStatusCodeAndErrors(exception);
@@ -68,14 +56,4 @@ internal class ExceptionHandlerMiddleware
                DomainException domainException => (HttpStatusCode.BadRequest, new[] { domainException.Error }),
                _ => (HttpStatusCode.InternalServerError, new[] { DomainErrors.General.ServerError })
            };
-}
-internal static class ExceptionHandlerMiddlewareExtensions
-{
-    /// <summary>
-    /// Configure the custom exception handler middleware.
-    /// </summary>
-    /// <param name="builder">The application builder.</param>
-    /// <returns>The configured application builder.</returns>
-    internal static IApplicationBuilder UseCustomExceptionHandler(this IApplicationBuilder builder)
-        => builder.UseMiddleware<ExceptionHandlerMiddleware>();
 }

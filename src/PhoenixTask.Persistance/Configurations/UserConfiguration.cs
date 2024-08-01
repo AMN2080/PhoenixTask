@@ -35,6 +35,11 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
                 .HasColumnName("PasswordHash")
                 .IsRequired();
 
+        builder.Property<string>("_authKey")
+            .HasField("_authKey")
+            .HasColumnName("AuthKey")
+            .IsRequired(false);
+
         builder.Property(user => user.CreatedOnUtc).IsRequired();
 
         builder.Property(user => user.ModifiedOnUtc);
@@ -42,6 +47,8 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(user => user.DeletedOnUtc);
 
         builder.Property(user => user.Deleted).HasDefaultValue(false);
+
+        builder.Property(user=>user.IsChangePassword);
 
         builder.HasQueryFilter(user => !user.Deleted);
 
