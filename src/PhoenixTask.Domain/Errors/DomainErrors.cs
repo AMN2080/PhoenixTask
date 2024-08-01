@@ -63,6 +63,7 @@ public static class DomainErrors
             "The current user does not have the permissions to perform that operation.");
 
         public static Error DuplicateEmail => new Error("User.DuplicateEmail", "The specified email is already in use.");
+        public static Error DuplicateUsername => new Error("User.DuplicateUsername", "The specified username is already in use.");
 
         public static Error CannotChangePassword => new Error(
             "User.CannotChangePassword",
