@@ -16,6 +16,7 @@ import RulesModal from "@/components/templates/RulesModal/RulesModal";
 import { registrationSchema } from "@/logic/schemas/AuthSchema";
 import useAuth from "@/logic/hooks/useAuth";
 import { toast } from "react-toastify";
+import Link from "@/components/modules/ui/Link";
 
 type FormData = z.infer<typeof registrationSchema>;
 
@@ -110,6 +111,14 @@ export default function RegisterPage() {
           <Button disabled={isLoading} type="submit" color="brand" size="full">
             {isLoading ? "در حال ارسال اطلاعات..." : "ثبت‌نام"}
           </Button>
+          <Flex gap="XS" justifyContent="center" alignItems="center">
+            <Text size="M" weight="500">
+              قبلا ثبت‌نام کردی؟
+            </Text>
+            <Link to="/login" color="brand" weight="800" size="M">
+              ورود
+            </Link>
+          </Flex>
         </Flex>
       </form>
     </Card>
