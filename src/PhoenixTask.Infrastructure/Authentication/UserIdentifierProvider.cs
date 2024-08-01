@@ -9,14 +9,14 @@ internal sealed class UserIdentifierProvider(IHttpContextAccessor httpContextAcc
     private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
     public Guid UserId { get; }
-        = new Guid(httpContextAccessor.HttpContext?.User?.FindFirstValue("userId")
+        = new Guid(httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier)
             ?? throw new ArgumentException("The user identifier claim is required.", nameof(httpContextAccessor)));
 
     public string UserName { get; }
-        = httpContextAccessor.HttpContext?.User?.FindFirstValue("email")
-            ?? throw new ArgumentException("The user email is required.", nameof(httpContextAccessor));
+        = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Name)
+            ?? throw new ArgumentException("The username email is required.", nameof(httpContextAccessor));
 
     public string Email { get; }
-        = httpContextAccessor.HttpContext?.User?.FindFirstValue("username")
-            ?? throw new ArgumentException("The user username is required.", nameof(httpContextAccessor));
+        = httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.Email)
+            ?? throw new ArgumentException("The email is required.", nameof(httpContextAccessor));
 }
