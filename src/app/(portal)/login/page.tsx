@@ -34,7 +34,7 @@ const LoginForm = () => {
       if (status === 200)
         toast.success(
           <Text weight="500" size="M">
-            🎉 خوش آمدید
+            🎉 خوش اومدی!
           </Text>,
         );
 
@@ -43,7 +43,7 @@ const LoginForm = () => {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
         toast.error(
           <Text weight="500" size="M">
-            نام کاربری یا کلمه عبور اشتباه است
+            نام کاربری یا رمز عبور اشتباهه
           </Text>,
         );
       }
@@ -84,18 +84,19 @@ const LoginForm = () => {
               color="brand"
               size="full"
             >
-              {isLoading ? "در حال احراز هویت..." : "ورود"}
+              {isLoading ? "در حال بررسی..." : "ورود"}
             </Button>
             <Flex gap="XS" justifyContent="center" alignItems="center">
               <Text size="M" weight="500">
-                ثبت‌نام نکرده‌ای؟
+                ثبت‌نام نکردی؟
               </Text>
               <Link to="/register" color="brand" weight="800" size="M">
-                ثبت نام
+                ثبت‌نام
               </Link>
             </Flex>
           </Flex>
         </Flex>
+        <button className=""></button>
       </form>
     </Card>
   );

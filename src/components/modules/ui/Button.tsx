@@ -2,18 +2,20 @@ import React from "react";
 import {
   fontWeight,
   BodySize,
-} from "../../../logic/SharedComponentStyles/sharedStyles";
+} from "@/logic/SharedComponentStyles/sharedStyles";
 
-const colors: {
+interface colorsProps {
   [color: string]: {
     primary: string;
     secondary: string;
     darker?: string;
     outline?: string;
   };
-} = {
+}
+
+const colors: colorsProps = {
   brand: {
-    primary: "bg-brand-primary",
+    primary: "bg-primary",
     secondary: "bg-brand-secondary text-brand-primary",
     outline: "border-2 border-brand-primary text-brand-primary",
   },
@@ -77,6 +79,7 @@ enum Size {
   full = "w-full",
   small = "w-[100px] h-[9px]",
 }
+
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   variant?: "primary" | "secondary" | "darker" | "outline";
@@ -85,6 +88,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   weight?: keyof typeof fontWeight;
   size?: keyof typeof Size;
 }
+
 const Button = React.forwardRef<HTMLButtonElement, Props>(
   (
     {
@@ -111,17 +115,8 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        className={`
-          ${variant === "primary" && "text-white"} 
-          ${colors[color][variant]}
-          ${BodySize[fontSize]}
-          ${fontWeight[weight]}
-          ${Size[size]}
-           font-black
-           rounded-[6px]
-           p-[10px]
-           ${className}
-        `}
+        // ${variant === "primary" && "text-white"} : if variant not exist, add text-white else don't
+        className={`${variant === "primary" && "text-white"} ${colors[color][variant]} ${BodySize[fontSize]} ${fontWeight[weight]} ${Size[size]} font-black rounded-[6px] p-[10px] ${className}`}
         type={type}
         {...props}
       >
