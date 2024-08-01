@@ -20,12 +20,12 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
               : "قبلا ثبت نام کرده ای؟"}
           </h6>
           <Link
-            className="text-white text-center p-[10px] bg-brand-primary w-[95px] h-[40px] rounded-[6px]"
+            className="text-center p-[10px] bg-brand-primary w-[95px] h-[40px] rounded-[6px]"
             weight="800"
             size="S"
             to={currentPath === "/login" ? "/register" : "/login"}
           >
-            {currentPath === "/login" ? "ثبت نام" : "ورود"}
+            {currentPath === "/login" ? "ثبت‌نام" : "ورود"}
           </Link>
         </div>
       </header>

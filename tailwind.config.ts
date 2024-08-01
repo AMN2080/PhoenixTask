@@ -28,12 +28,24 @@ const config: Config = {
   daisyui: {
     themes: [
       {
-        mytheme: {
+        default: {
           primary: "#ff9800",
           "primary-content": "#fff",
           secondary: "#fbbf24",
-          // background: "#333333",
           background: "#f5f5f5",
+          accent: "#ff5722",
+          neutral: "#757575",
+          "base-100": "#f5f5f5",
+          info: "#2196f3",
+          success: "#4caf50",
+          warning: "#ffc107",
+          error: "#f44336",
+        },
+        themeone: {
+          primary: "#ff9800",
+          "primary-content": "#fff",
+          secondary: "#fbbf24",
+          background: "#333333",
           accent: "#ff5722",
           neutral: "#757575",
           "base-100": "#f5f5f5",
