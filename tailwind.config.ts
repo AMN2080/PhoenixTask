@@ -28,7 +28,7 @@ const config: Config = {
   daisyui: {
     themes: [
       {
-        mytheme: {
+        default: {
           primary: "#208D8E",
           "primary-content": "#C2F7FA",
           secondary: "#12B886",
@@ -39,12 +39,6 @@ const config: Config = {
           "base-200": "#f5f5f5",
           "base-300": "#dedede",
           "base-content": "#1E1E1E",
-          // info: "#00a1bd",
-          // "info-content": "#00090d",
-          // success: "#00c08f",
-          // "success-content": "#000e07",
-          // warning: "#ffa700",
-          // "warning-content": "#160a00",
           error: "#FA5252",
         },
       },

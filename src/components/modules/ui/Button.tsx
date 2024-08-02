@@ -15,63 +15,63 @@ interface colorsProps {
 
 const colors: colorsProps = {
   brand: {
-    primary: "bg-primary",
-    secondary: "bg-brand-secondary text-brand-primary",
-    outline: "border-2 border-brand-primary text-brand-primary",
+    primary: "bg-primary text-primary-content",
+    secondary: "bg-secondary text-secondary-content",
+    outline: "border-2 border-primary text-primary",
   },
-  gray: {
-    primary: "bg-gray-primary",
-    secondary: "bg-gray-secondary text-gray-primary",
-    darker: "bg-gray-darker",
-  },
-  red: {
-    primary: "bg-red-primary",
-    secondary: "bg-red-secondary text-red-primary",
-  },
-  pink: {
-    primary: "bg-pink-primary",
-    secondary: "bg-pink-secondary text-pink-primary",
-  },
-  grape: {
-    primary: "bg-grape-primary",
-    secondary: "bg-grape-secondary text-grape-primary",
-  },
-  violet: {
-    primary: "bg-violet-primary",
-    secondary: "bg-violet-secondary text-violet-primary",
-  },
-  indigo: {
-    primary: "bg-indigo-primary",
-    secondary: "bg-inigo-secondary text-inigo-primary",
-  },
-  blue: {
-    primary: "bg-blue-primary",
-    secondary: "bg-blue-secondary text-blue-primary",
-  },
-  cyan: {
-    primary: "bg-cyan-primary",
-    secondary: "bg-cyan-secondary text-cyan-primary",
-  },
-  teal: {
-    primary: "bg-teal-primary",
-    secondary: "bg-teal-secondary text-teal-primary",
-  },
-  green: {
-    primary: "bg-green-primary",
-    secondary: "bg-green-secondary text-green-primary",
-  },
-  lime: {
-    primary: "bg-lime-primary",
-    secondary: "bg-lime-secondary text-lime-primary",
-  },
-  yellow: {
-    primary: "bg-yellow-primary",
-    secondary: "bg-yellow-secondary text-yellow-primary",
-  },
-  ornage: {
-    primary: "bg-orange-primary",
-    secondary: "bg-orange-secondary text-orange-primary",
-  },
+  // gray: {
+  //   primary: "bg-gray-primary",
+  //   secondary: "bg-gray-secondary text-gray-primary",
+  //   darker: "bg-gray-darker",
+  // },
+  // red: {
+  //   primary: "bg-red-primary",
+  //   secondary: "bg-red-secondary text-red-primary",
+  // },
+  // pink: {
+  //   primary: "bg-pink-primary",
+  //   secondary: "bg-pink-secondary text-pink-primary",
+  // },
+  // grape: {
+  //   primary: "bg-grape-primary",
+  //   secondary: "bg-grape-secondary text-grape-primary",
+  // },
+  // violet: {
+  //   primary: "bg-violet-primary",
+  //   secondary: "bg-violet-secondary text-violet-primary",
+  // },
+  // indigo: {
+  //   primary: "bg-indigo-primary",
+  //   secondary: "bg-inigo-secondary text-inigo-primary",
+  // },
+  // blue: {
+  //   primary: "bg-blue-primary",
+  //   secondary: "bg-blue-secondary text-blue-primary",
+  // },
+  // cyan: {
+  //   primary: "bg-cyan-primary",
+  //   secondary: "bg-cyan-secondary text-cyan-primary",
+  // },
+  // teal: {
+  //   primary: "bg-teal-primary",
+  //   secondary: "bg-teal-secondary text-teal-primary",
+  // },
+  // green: {
+  //   primary: "bg-green-primary",
+  //   secondary: "bg-green-secondary text-green-primary",
+  // },
+  // lime: {
+  //   primary: "bg-lime-primary",
+  //   secondary: "bg-lime-secondary text-lime-primary",
+  // },
+  // yellow: {
+  //   primary: "bg-yellow-primary",
+  //   secondary: "bg-yellow-secondary text-yellow-primary",
+  // },
+  // ornage: {
+  //   primary: "bg-orange-primary",
+  //   secondary: "bg-orange-secondary text-orange-primary",
+  // },
 };
 
 enum Size {
@@ -96,7 +96,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       className,
       children,
       size = "default",
-      color = "gray",
+      color = "brand",
       variant = "primary",
       fontSize = "S",
       weight = "800",
@@ -115,7 +115,6 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        // ${variant === "primary" && "text-white"} : if variant not exist, add text-white else don't
         className={`${variant === "primary" && "text-white"} ${colors[color][variant]} ${BodySize[fontSize]} ${fontWeight[weight]} ${Size[size]} font-black rounded-[6px] p-[10px] ${className}`}
         type={type}
         {...props}

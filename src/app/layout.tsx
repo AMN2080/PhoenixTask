@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
-    <html dir="rtl" lang="fa" data-theme="Cyan">
+    <html dir="rtl" lang="fa" data-theme="default">
       <body>{children}</body>
     </html>
   );
