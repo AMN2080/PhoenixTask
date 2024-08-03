@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PhoenixTask.Persistance")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2933b86121c2052255938155ef198f7a89d119de")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c395b6cf403f07a6efc7dc5fd65cdd01874227cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("PhoenixTask.Persistance")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PhoenixTask.Persistance")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

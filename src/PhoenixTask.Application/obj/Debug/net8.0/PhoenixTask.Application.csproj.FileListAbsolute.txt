@@ -1,9 +1,3 @@
-C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.csproj.AssemblyReference.cache
-C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.AssemblyInfoInputs.cache
-C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.AssemblyInfo.cs
-C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.csproj.CoreCompileInputs.cache
-C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.sourcelink.json
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\bin\Debug\net8.0\PhoenixTask.Application.deps.json
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\bin\Debug\net8.0\PhoenixTask.Application.dll
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\bin\Debug\net8.0\PhoenixTask.Application.pdb
@@ -11,6 +5,12 @@ C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\bin\De
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\bin\Debug\net8.0\PhoenixTask.Domain.dll
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\bin\Debug\net8.0\PhoenixTask.Contracts.pdb
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\bin\Debug\net8.0\PhoenixTask.Domain.pdb
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.csproj.AssemblyReference.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.AssemblyInfoInputs.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.AssemblyInfo.cs
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.csproj.CoreCompileInputs.cache
+C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.sourcelink.json
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixT.EC253DC4.Up2Date
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\PhoenixTask.Application.dll
 C:\Users\e.memarpoor\source\Repos\PhoenixTask\src\PhoenixTask.Application\obj\Debug\net8.0\refint\PhoenixTask.Application.dll

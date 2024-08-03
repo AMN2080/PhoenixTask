@@ -39,8 +39,15 @@ namespace PhoenixTask.Persistance.Migrations
                     b.Property<DateTime?>("DeletedOnUtc")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsChangePassword")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("ModifiedOnUtc")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("_authKey")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("AuthKey");
 
                     b.Property<string>("_passwordHash")
                         .IsRequired()

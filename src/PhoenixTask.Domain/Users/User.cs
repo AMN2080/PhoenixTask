@@ -101,4 +101,5 @@ public sealed class User : AggregateRoot, ISoftDeletableEntity, IAuditableEntity
         _authKey = token;
     }
     private bool CheckToken(string token) => _authKey == token;
+    public string GetToken() => _authKey;
 }

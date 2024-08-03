@@ -6,6 +6,8 @@ using PhoenixTask.Application.Abstractions.Authentication;
 using PhoenixTask.Application.Abstractions.Common;
 using PhoenixTask.Application.Abstractions.Cryptography;
 using PhoenixTask.Application.Abstractions.Emails;
+using PhoenixTask.Application.Abstractions.Messaging;
+using PhoenixTask.Application.Abstractions.Notifications;
 using PhoenixTask.Domain.Users;
 using PhoenixTask.Infrastructure.Authentication;
 using PhoenixTask.Infrastructure.Authentication.Settings;
@@ -13,6 +15,8 @@ using PhoenixTask.Infrastructure.Common;
 using PhoenixTask.Infrastructure.Cryptography;
 using PhoenixTask.Infrastructure.Emails;
 using PhoenixTask.Infrastructure.Emails.Settings;
+using PhoenixTask.Infrastructure.Messaging;
+using PhoenixTask.Infrastructure.Notifications;
 using System.Text;
 
 namespace PhoenixTask.Infrastructure;
@@ -49,7 +53,9 @@ public static class DependencyInjection
 
         services.AddTransient<IEmailService, EmailService>();
 
-        // services.AddSingleton<IIntegrationEventPublisher, IntegrationEventPublisher>();
+        services.AddTransient<IEmailNotificationService, EmailNotificationService>();
+
+        services.AddSingleton<IIntegrationEventPublisher, IntegrationEventPublisher>();
 
         return services;
     }

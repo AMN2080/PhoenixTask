@@ -36,7 +36,7 @@ public class UserController(IMediator mediator) : ApiController(mediator)
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ResetPassword([FromBody]ResetPasswordRequest resetPasswordRequest) =>
      await Result.Create(resetPasswordRequest, DomainErrors.General.UnProcessableRequest)
-        .Map(request => new ResetPasswordCommand(request.Token, request.Password))
+        .Map(request => new ResetPasswordCommand(request.Email,request.Token, request.Password))
         .Bind(command => Mediator.Send(command))
         .Match(Ok, BadRequest);
 }
