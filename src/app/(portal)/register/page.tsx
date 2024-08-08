@@ -111,14 +111,6 @@ export default function RegisterPage() {
           <Button disabled={isLoading} type="submit" color="brand" size="full">
             {isLoading ? "در حال ارسال اطلاعات..." : "ثبت‌نام"}
           </Button>
-          <Flex gap="XS" justifyContent="center" alignItems="center">
-            <Text size="M" weight="500">
-              قبلا ثبت‌نام کردی؟
-            </Text>
-            <Link to="/login" color="brand" weight="800" size="M">
-              ورود
-            </Link>
-          </Flex>
         </Flex>
       </form>
     </Card>
