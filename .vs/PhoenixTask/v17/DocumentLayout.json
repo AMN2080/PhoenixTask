@@ -1,7 +1,33 @@
 {
   "Version": 1,
+<<<<<<< HEAD
   "WorkspaceRootPath": "C:\\Users\\Erfan\\source\\repos\\PhoenixTask\\",
   "Documents": [],
+=======
+  "WorkspaceRootPath": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46C0E345-ED9F-408E-A9D9-8E4E5539A76A}|src\\PhoenixTask.Application\\PhoenixTask.Application.csproj|c:\\users\\e.memarpoor\\source\\repos\\phoenixtask\\src\\phoenixtask.application\\users\\createuser\\createusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46C0E345-ED9F-408E-A9D9-8E4E5539A76A}|src\\PhoenixTask.Application\\PhoenixTask.Application.csproj|solutionrelative:src\\phoenixtask.application\\users\\createuser\\createusercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46C0E345-ED9F-408E-A9D9-8E4E5539A76A}|src\\PhoenixTask.Application\\PhoenixTask.Application.csproj|c:\\users\\e.memarpoor\\source\\repos\\phoenixtask\\src\\phoenixtask.application\\users\\createuser\\sendwelcomeonregisterevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46C0E345-ED9F-408E-A9D9-8E4E5539A76A}|src\\PhoenixTask.Application\\PhoenixTask.Application.csproj|solutionrelative:src\\phoenixtask.application\\users\\createuser\\sendwelcomeonregisterevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F2CD438-DD88-4306-B6DB-17B63EEE872B}|src\\PhoenixTask.Infrastructure\\PhoenixTask.Infrastructure.csproj|c:\\users\\e.memarpoor\\source\\repos\\phoenixtask\\src\\phoenixtask.infrastructure\\emails\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F2CD438-DD88-4306-B6DB-17B63EEE872B}|src\\PhoenixTask.Infrastructure\\PhoenixTask.Infrastructure.csproj|solutionrelative:src\\phoenixtask.infrastructure\\emails\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DBF97AEC-AEC3-4E12-8045-0F9959EBF57D}|src\\PhoenixTask.WebApi\\PhoenixTask.WebApi.csproj|c:\\users\\e.memarpoor\\source\\repos\\phoenixtask\\src\\phoenixtask.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DBF97AEC-AEC3-4E12-8045-0F9959EBF57D}|src\\PhoenixTask.WebApi\\PhoenixTask.WebApi.csproj|solutionrelative:src\\phoenixtask.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F2CD438-DD88-4306-B6DB-17B63EEE872B}|src\\PhoenixTask.Infrastructure\\PhoenixTask.Infrastructure.csproj|c:\\users\\e.memarpoor\\source\\repos\\phoenixtask\\src\\phoenixtask.infrastructure\\emails\\settings\\mailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F2CD438-DD88-4306-B6DB-17B63EEE872B}|src\\PhoenixTask.Infrastructure\\PhoenixTask.Infrastructure.csproj|solutionrelative:src\\phoenixtask.infrastructure\\emails\\settings\\mailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+>>>>>>> e3749b1c68745aac008168c89d465e82dde303f0
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,15 +35,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": -1,
+=======
+          "SelectedChildIndex": 5,
+>>>>>>> e3749b1c68745aac008168c89d465e82dde303f0
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
             },
             {
+<<<<<<< HEAD
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+=======
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Infrastructure\\Emails\\EmailService.cs",
+              "RelativeDocumentMoniker": "src\\PhoenixTask.Infrastructure\\Emails\\EmailService.cs",
+              "ToolTip": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Infrastructure\\Emails\\EmailService.cs",
+              "RelativeToolTip": "src\\PhoenixTask.Infrastructure\\Emails\\EmailService.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAAwCAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T11:10:42.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SendWelcomeOnRegisterEvent.cs",
+              "DocumentMoniker": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Application\\Users\\CreateUser\\SendWelcomeOnRegisterEvent.cs",
+              "RelativeDocumentMoniker": "src\\PhoenixTask.Application\\Users\\CreateUser\\SendWelcomeOnRegisterEvent.cs",
+              "ToolTip": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Application\\Users\\CreateUser\\SendWelcomeOnRegisterEvent.cs",
+              "RelativeToolTip": "src\\PhoenixTask.Application\\Users\\CreateUser\\SendWelcomeOnRegisterEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T11:09:19.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MailSettings.cs",
+              "DocumentMoniker": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Infrastructure\\Emails\\Settings\\MailSettings.cs",
+              "RelativeDocumentMoniker": "src\\PhoenixTask.Infrastructure\\Emails\\Settings\\MailSettings.cs",
+              "ToolTip": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Infrastructure\\Emails\\Settings\\MailSettings.cs",
+              "RelativeToolTip": "src\\PhoenixTask.Infrastructure\\Emails\\Settings\\MailSettings.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T11:05:22.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.WebApi\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\PhoenixTask.WebApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.WebApi\\appsettings.json",
+              "RelativeToolTip": "src\\PhoenixTask.WebApi\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-03T11:05:05.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateUserCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Application\\Users\\CreateUser\\CreateUserCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\PhoenixTask.Application\\Users\\CreateUser\\CreateUserCommandHandler.cs",
+              "ToolTip": "C:\\Users\\e.memarpoor\\source\\Repos\\PhoenixTask\\src\\PhoenixTask.Application\\Users\\CreateUser\\CreateUserCommandHandler.cs",
+              "RelativeToolTip": "src\\PhoenixTask.Application\\Users\\CreateUser\\CreateUserCommandHandler.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAwC0AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-03T10:47:41.566Z",
+              "EditorCaption": ""
+>>>>>>> e3749b1c68745aac008168c89d465e82dde303f0
             }
           ]
         }

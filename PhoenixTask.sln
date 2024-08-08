@@ -5,17 +5,17 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DDDA217D-7CBE-4376-A2DB-41CD1E3495BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoenixTask.Domain", "src\PhoenixTask.Domain\PhoenixTask.Domain.csproj", "{BFA4745E-7C53-47D1-9704-3004CBC771BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoenixTask.Domain", "src\PhoenixTask.Domain\PhoenixTask.Domain.csproj", "{BFA4745E-7C53-47D1-9704-3004CBC771BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoenixTask.Application", "src\PhoenixTask.Application\PhoenixTask.Application.csproj", "{46C0E345-ED9F-408E-A9D9-8E4E5539A76A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoenixTask.Application", "src\PhoenixTask.Application\PhoenixTask.Application.csproj", "{46C0E345-ED9F-408E-A9D9-8E4E5539A76A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoenixTask.Infrastructure", "src\PhoenixTask.Infrastructure\PhoenixTask.Infrastructure.csproj", "{5F2CD438-DD88-4306-B6DB-17B63EEE872B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoenixTask.Infrastructure", "src\PhoenixTask.Infrastructure\PhoenixTask.Infrastructure.csproj", "{5F2CD438-DD88-4306-B6DB-17B63EEE872B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoenixTask.Persistance", "src\PhoenixTask.Persistance\PhoenixTask.Persistance.csproj", "{D47DD504-832D-46F5-AC6C-C882BDDB84B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoenixTask.Persistance", "src\PhoenixTask.Persistance\PhoenixTask.Persistance.csproj", "{D47DD504-832D-46F5-AC6C-C882BDDB84B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoenixTask.WebApi", "src\PhoenixTask.WebApi\PhoenixTask.WebApi.csproj", "{DBF97AEC-AEC3-4E12-8045-0F9959EBF57D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoenixTask.WebApi", "src\PhoenixTask.WebApi\PhoenixTask.WebApi.csproj", "{DBF97AEC-AEC3-4E12-8045-0F9959EBF57D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoenixTask.Contracts", "src\PhoenixTask.Contracts\PhoenixTask.Contracts.csproj", "{FC3E1501-E02B-492F-B185-88F8DFFDF8D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoenixTask.Contracts", "src\PhoenixTask.Contracts\PhoenixTask.Contracts.csproj", "{FC3E1501-E02B-492F-B185-88F8DFFDF8D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

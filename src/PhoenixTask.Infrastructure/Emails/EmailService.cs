@@ -14,7 +14,7 @@ internal sealed class EmailService(IOptions<MailSettings> maiLSettingsOptions) :
     {
         var email = new MailMessage
         {
-            From = new MailAddress(_mailSettings.SenderDisplayName, _mailSettings.SenderEmail),
+            From = new MailAddress(_mailSettings.SenderEmail, _mailSettings.SenderDisplayName),
             Subject = mailRequest.Subject,
             Body = mailRequest.Body
         };

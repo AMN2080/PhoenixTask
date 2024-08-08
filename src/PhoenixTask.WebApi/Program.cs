@@ -5,7 +5,6 @@ using PhoenixTask.Application;
 using PhoenixTask.Infrastructure;
 using PhoenixTask.Persistance;
 using PhoenixTask.WebApi.Middleware;
-using System.Net;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
