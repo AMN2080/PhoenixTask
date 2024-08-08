@@ -1,0 +1,20 @@
+version: '3.4'
+services:
+    sqlserverdb:
+        container_name: sqlservercontainer
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        ports:
+            - 8002:1433
+        environment:
+            - ACCEPT_EULA=Y
+            - MSSQL_SA_PASSWORD=A123456789a*
+    webapi:
+        container_name: webapicontainer
+        image: $phoenixtaskwebapi
+        ports:
+            - 8001:80 
+        build:
+          context: .
+          dockerfile: src/PhoenixTask.WebApi/Dockerfile
+        depends_on:
+            - sqlserverdb
