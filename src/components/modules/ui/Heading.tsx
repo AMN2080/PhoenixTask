@@ -1,7 +1,6 @@
-import React from "react";
+import { createElement } from "react";
 import {
   fontWeight,
-  colors,
   Size,
 } from "@/logic/SharedComponentStyles/sharedStyles";
 
@@ -15,7 +14,6 @@ interface Props {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   align?: keyof typeof TextAlign;
   children: React.ReactNode;
-  color?: keyof typeof colors;
   colorVariant?: "primary" | "secondary";
   size?: keyof typeof Size;
   weight?: keyof typeof fontWeight;
@@ -25,17 +23,16 @@ interface Props {
 const Heading: React.FC<Props> = ({
   as,
   children,
-  color = "default",
   colorVariant = "primary",
   size = "XS",
   weight = "800",
   align = "right",
   className,
 }) => {
-  return React.createElement(
+  return createElement(
     as,
     {
-      className: `font-IranYekan ${Size[size]} ${colors[color][colorVariant]} ${fontWeight[weight]} ${className} ${TextAlign[align]}`,
+      className: `font-IranYekan ${Size[size]} ${fontWeight[weight]} ${className} ${TextAlign[align]}`,
     },
     children,
   );

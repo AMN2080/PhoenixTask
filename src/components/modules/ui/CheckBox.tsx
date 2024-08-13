@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Icon from "./Icon";
 import React, { ReactNode } from "react";
 import Flex from "./Flex";

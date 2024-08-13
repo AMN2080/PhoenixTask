@@ -52,7 +52,7 @@ const LoginForm = () => {
 
   return (
     <Card>
-      <Heading align="center" className="mb-8" as="h2" size="L">
+      <Heading align="center" className="mb-8" as="h2" size="S">
         خوش برگشتی😄
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -96,7 +96,6 @@ const LoginForm = () => {
             </Flex>
           </Flex>
         </Flex>
-        <button className=""></button>
       </form>
     </Card>
   );

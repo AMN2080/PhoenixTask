@@ -11,14 +11,13 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 
   return (
     <main className="m-0 p-0 h-screen w-screen overflow-hidden flex flex-col font-IranYekan relative">
-      <header className="flex justify-between items-center m-20 h-[45px]">
+      <header className="flex justify-between items-center m-20 h-11">
         <h1 className="logo font-IranYekan h-fit">Phoenix Task</h1>
-        <div className="flex items-center">
-          <h6 className="text-base font-medium ml-[7px]">
+        <div className="flex gap-2 items-center">
+          <h6 className="font-medium">
             {currentPath === "/login" || currentPath === "/forget-password" ? "ثبت‌نام نکردی؟" : "قبلا ثبت‌نام کردی؟"}
           </h6>
           <Link
-            className="text-center p-[10px] bg-brand-primary w-[95px] h-[40px] rounded-[6px]"
             weight="800"
             size="S"
             to={currentPath === "/login" || currentPath === "/forget-password" ? "/register" : "/login"}

@@ -1,11 +1,9 @@
 import {
-  colors,
   BodySize,
   fontWeight,
 } from "../../../logic/SharedComponentStyles/sharedStyles";
 interface Props {
   children?: string | string[] | number;
-  color?: keyof typeof colors;
   colorVariant?: "primary" | "secondary";
   size?: keyof typeof BodySize;
   weight?: keyof typeof fontWeight;
@@ -15,7 +13,6 @@ interface Props {
 const Text = ({
   children,
   colorVariant = "primary",
-  color = "default",
   size = "XS",
   weight = "400",
   className,
@@ -25,7 +22,6 @@ const Text = ({
       className={`font-IranYekan 
       ${BodySize[size]} 
       ${fontWeight[weight]} 
-      ${colors[color][colorVariant]} 
       ${className ?? ""}`}
     >
       {children}

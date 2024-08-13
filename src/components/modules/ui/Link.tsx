@@ -3,7 +3,6 @@ import RouterLink from "next/link";
 import {
   fontWeight,
   BodySize,
-  colors,
 } from "../../../logic/SharedComponentStyles/sharedStyles";
 
 interface Props {
@@ -12,7 +11,6 @@ interface Props {
   to: string;
   weight?: keyof typeof fontWeight;
   underline?: boolean;
-  color?: keyof typeof colors;
   colorVariant?: "primary" | "secondary";
   size?: keyof typeof BodySize;
 }
@@ -20,7 +18,6 @@ const Link = ({
   children,
   to,
   underline = false,
-  color = "default",
   className,
   colorVariant = "primary",
   weight = "400",
@@ -30,7 +27,7 @@ const Link = ({
   return (
     <RouterLink
       href={to}
-      className={`font-IranYekan ${colors[color][colorVariant]} ${underline && "underline underline-offset-8"} ${fontWeight[weight]} ${BodySize[size]} ${className}`}
+      className={`font-IranYekan ${underline && "underline underline-offset-8"} ${fontWeight[weight]} ${BodySize[size]} ${className}`}
       {...rest}
     >
       {children}
