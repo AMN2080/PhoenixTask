@@ -1,4 +1,4 @@
-import { IoClose as CloseIcon } from "react-icons/io5";
+import Icon from "@/components/modules/ui/Icon";
 import Button from "@/components/modules/ui/Button";
 import Flex from "@/components/modules/ui/Flex";
 import Heading from "@/components/modules/ui/Heading";
@@ -20,7 +20,7 @@ export default function RulesModal({ visible, onClose }: RulesModalProps) {
           asChild
           className="text-2xl hover:text-red-600 hover:rotate-90 transition-all flex-none"
         >
-          <CloseIcon />
+          <Icon iconName="Close" />
         </Button>
         <Heading className="mb-8" as="h2" size="L" align="center">
           قوانین و مقررات

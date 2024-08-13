@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Icon from "./Icon";
 import React, { ReactNode } from "react";
 import Flex from "./Flex";
-import { TiTick as Tick } from "react-icons/ti";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: ReactNode;
@@ -20,7 +20,7 @@ const CheckBox = React.forwardRef<HTMLInputElement, Props>(
             {...rest}
           />
           <span className="absolute hidden peer-checked:flex pointer-events-none inset-0 justify-center items-center">
-            <Tick size={20} color="#228B22" />
+            <Icon iconName="Tick" className="text-[#228B22] w-4"/>
           </span>
         </div>
         <label className="font-IranYekan" htmlFor={id}>
