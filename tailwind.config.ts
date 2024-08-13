@@ -8,17 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontSize: {
-        lh: ["32px", "46px"], // => Heading L
-        mh: ["28px", "34px"], // => Heading M
-        /*
-         * 2xl => Heading S || Body XL
-         * xl => Heading XS || Body L
-         * base => Body M
-         * sm => Body S
-         * xs => Body xs
-         */
-      },
       fontFamily: {
         IranYekan: ["IRANYekan", "sans-serif"],
       },

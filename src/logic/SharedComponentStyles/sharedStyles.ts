@@ -15,8 +15,8 @@ const fontWeight = {
 enum Size {
   XS = "text-xl",
   S = "text-2xl",
-  M = "text-mh",
-  L = "text-lh",
+  M = "text-3xl",
+  L = "text-4xl",
 }
 
 enum BodySize {
