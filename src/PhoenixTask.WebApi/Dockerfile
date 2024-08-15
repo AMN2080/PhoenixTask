@@ -9,11 +9,13 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+RUN dotnet dev-certs https --trust
 COPY ["src/PhoenixTask.WebApi/PhoenixTask.WebApi.csproj", "src/PhoenixTask.WebApi/"]
 RUN dotnet restore "./src/PhoenixTask.WebApi/PhoenixTask.WebApi.csproj"
 COPY . .
 WORKDIR "/src/src/PhoenixTask.WebApi"
 RUN dotnet build "./PhoenixTask.WebApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
@@ -23,4 +25,3 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "PhoenixTask.WebApi.dll"]
-RUN dotnet dev-certs https --trust
