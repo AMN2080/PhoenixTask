@@ -86,4 +86,13 @@ public static class DomainErrors
 
         public static Error ServerError => new Error("General.ServerError", "The server encountered an unrecoverable error.");
     }
+    public static class Name
+    {
+        public static Error LongerThanAllowed => new("Name.LongerThanAllowed", "The Name is longer than allowed.");
+        public static Error NullOrEmpty => new("Name.NullOrEmpty", "The Name is required.");
+    }
+    public static class Color
+    {
+        public static Error NullOrEmpty => new("Color.NullOrEmpty", "The Color is required.");
+    }
 }
