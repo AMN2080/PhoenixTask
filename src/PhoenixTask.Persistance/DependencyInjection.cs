@@ -17,7 +17,8 @@ public static class DependencyInjection
 
         services.AddSingleton(new ConnectionString(connectionString));
 
-        services.AddDbContext<PhoenixDbContext>(options => options.UseSqlServer(connectionString));
+        services.AddDbContext<PhoenixDbContext>(options =>options.UseInMemoryDatabase("Test"));
+        // services.AddDbContext<PhoenixDbContext>(options => options.UseSqlServer(connectionString));
 
         services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<PhoenixDbContext>());
 

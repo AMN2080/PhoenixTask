@@ -67,7 +67,7 @@ using IServiceScope serviceScope = app.Services.CreateScope();
 
 using PhoenixDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<PhoenixDbContext>();
 
-dbContext.Database.Migrate();
+// dbContext.Database.Migrate();
 
 app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();
