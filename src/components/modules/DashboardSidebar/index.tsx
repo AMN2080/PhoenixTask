@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Icon from "../ui/Icon";
 import Link from "../ui/Link";
 import { useRouter } from "next/navigation";
+import Button from "../ui/Button";
 // import ProfileButton from "../../ui/ProfileButton";
 // import SearchInput from "../../ui/SearchInput";
 // import { logOut } from "../../../services/features/auth/authSlice";
@@ -67,9 +68,13 @@ export default function DashboardSidebar() {
         {/* <SpaceMenu workSpaces={workSpaces || []} /> */}
         <input
           type="text"
-          placeholder="جستجو"
+          placeholder="جستجو در محیط‌های کار"
           className="w-full my-3 p-2 bg-slate-100 text-xs font-IranYekan outline-none rounded-md"
         />
+        <Button className="w-full flex items-center gap-3" variant="outline">
+          <Icon iconName="SquarePlus" className="text-primary" />
+          <span>ایجاد محیط کاری جدید</span>
+        </Button>
       </div>
       <div>
         {/* <SearchInput placeHolder="جستجو کنید" extraClass="my-3" type="sideBar" /> */}

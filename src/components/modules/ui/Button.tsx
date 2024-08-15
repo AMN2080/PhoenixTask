@@ -22,7 +22,7 @@ enum Size {
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
-  variant?: "primary" | "secondary" | "darker" | "outline";
+  variant?: "primary" | "secondary" | "outline";
   color?: string;
   fontSize?: keyof typeof BodySize;
   weight?: keyof typeof fontWeight;
@@ -54,7 +54,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        className={`${variant === "primary" && "text-white"} ${colors[variant]} ${BodySize[fontSize]} ${fontWeight[weight]} ${Size[size]} font-black rounded-[6px] p-[10px] ${className}`}
+        className={`${variant === "primary" && "text-white"} ${colors[variant]} ${BodySize[fontSize]} ${fontWeight[weight]} ${Size[size]} font-IranYekan font-black rounded-[6px] p-[10px] ${className}`}
         type={type}
         {...props}
       >
