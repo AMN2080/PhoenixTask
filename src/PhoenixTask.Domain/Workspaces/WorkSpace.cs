@@ -20,6 +20,15 @@ public sealed class WorkSpace : Entity, IAuditableEntity, ISoftDeletableEntity
         Name = name;
         Color = color;
     }
+#pragma warning disable
+    /// <summary>
+    /// for efcore
+    /// </summary>
+    public WorkSpace()
+    {
+
+    }
+#pragma warning enable
     public Name Name { get; private set; }
     public string Color { get; private set; }
     public DateTime CreatedOnUtc { get; }

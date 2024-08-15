@@ -14,7 +14,7 @@ using PhoenixTask.Application.WorkSpaces.DeleteWorkSpace;
 
 namespace PhoenixTask.WebApi.Controllers;
 
-public class WorkSpaceCntroller(IMediator mediator) : ApiController(mediator)
+public class WorkSpaceController(IMediator mediator) : ApiController(mediator)
 {
     [HttpGet(ApiRoutes.WorkSpace.GetAllWorkSpaces)]
     [ProducesResponseType(typeof(List<WorkSpaceResult>), StatusCodes.Status200OK)]
@@ -36,7 +36,7 @@ public class WorkSpaceCntroller(IMediator mediator) : ApiController(mediator)
     [HttpPost(ApiRoutes.WorkSpace.Create)]
     [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public Task<IActionResult> Create(WorkSpace workSpace)
+    public Task<IActionResult> Create([FromBody]WorkSpace workSpace)
         => Result.Success(new CreateWorkSpaceCommand(workSpace.Name, workSpace.Color))
             .Bind(command => Mediator.Send(command))
             .Match(Ok, NotFound);
@@ -44,7 +44,7 @@ public class WorkSpaceCntroller(IMediator mediator) : ApiController(mediator)
     [HttpPut(ApiRoutes.WorkSpace.Update)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Update(Guid workspaceId, WorkSpaceResult workSpace) 
+    public async Task<IActionResult> Update(Guid workspaceId,[FromBody] WorkSpaceResult workSpace) 
         => await Result.Create(workSpace, DomainErrors.General.UnProcessableRequest)
             .Ensure(request => request.Id == workspaceId, DomainErrors.General.UnProcessableRequest)
             .Map(request => new UpdateWorkspaceCommand(workspaceId, request.Name, request.Color))
