@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Domain.Users;
+using PhoenixTask.Domain.Workspaces;
 using PhoenixTask.Persistance.Infrastructure;
 using PhoenixTask.Persistance.Repositories;
 
@@ -23,6 +24,8 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<PhoenixDbContext>());
 
         services.AddScoped<IUserRepository, UserRepository>();
+
+        services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
 
         return services;
     }

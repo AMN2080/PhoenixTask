@@ -95,4 +95,8 @@ public static class DomainErrors
     {
         public static Error NullOrEmpty => new("Color.NullOrEmpty", "The Color is required.");
     }
+    public static class WorkSpace
+    {
+        public static Error NotFound => new Error("WorkSpace.NotFound", "The workspace with the specified identifier was not found.");
+    }
 }
