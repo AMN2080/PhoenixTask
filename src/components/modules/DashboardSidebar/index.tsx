@@ -68,7 +68,7 @@ export default function DashboardSidebar() {
         {/* <SpaceMenu workSpaces={workSpaces || []} /> */}
         <input
           type="text"
-          placeholder="جستجو در محیط‌های کار"
+          placeholder="جستجو در میزِکارها"
           className="w-full my-3 p-2 bg-slate-100 text-xs font-IranYekan outline-none rounded-md"
         />
         <Button className="w-full flex items-center gap-3" variant="outline">
