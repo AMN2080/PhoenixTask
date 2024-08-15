@@ -1,6 +1,161 @@
 import React from "react";
 
 const iconMap = {
+  Profile: ({ ...rest }) => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      <path
+        fill="currentColor"
+        d="M5.85 17.1q1.275-.975 2.85-1.537T12 15t3.3.563t2.85 1.537q.875-1.025 1.363-2.325T20 12q0-3.325-2.337-5.663T12 4T6.337 6.338T4 12q0 1.475.488 2.775T5.85 17.1M12 13q-1.475 0-2.488-1.012T8.5 9.5t1.013-2.488T12 6t2.488 1.013T15.5 9.5t-1.012 2.488T12 13m0 9q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"
+      />
+    </svg>
+  ),
+  Loading: ({ ...rest }) => (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      <circle cx="12" cy="2" r="0" fill="currentColor">
+        <animate
+          attributeName="r"
+          begin="0"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="2"
+        r="0"
+        fill="currentColor"
+        transform="rotate(45 12 12)"
+      >
+        <animate
+          attributeName="r"
+          begin="0.125s"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="2"
+        r="0"
+        fill="currentColor"
+        transform="rotate(90 12 12)"
+      >
+        <animate
+          attributeName="r"
+          begin="0.25s"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="2"
+        r="0"
+        fill="currentColor"
+        transform="rotate(135 12 12)"
+      >
+        <animate
+          attributeName="r"
+          begin="0.375s"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="2"
+        r="0"
+        fill="currentColor"
+        transform="rotate(180 12 12)"
+      >
+        <animate
+          attributeName="r"
+          begin="0.5s"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="2"
+        r="0"
+        fill="currentColor"
+        transform="rotate(225 12 12)"
+      >
+        <animate
+          attributeName="r"
+          begin="0.625s"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="2"
+        r="0"
+        fill="currentColor"
+        transform="rotate(270 12 12)"
+      >
+        <animate
+          attributeName="r"
+          begin="0.75s"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+      <circle
+        cx="12"
+        cy="2"
+        r="0"
+        fill="currentColor"
+        transform="rotate(315 12 12)"
+      >
+        <animate
+          attributeName="r"
+          begin="0.875s"
+          calcMode="spline"
+          dur="1s"
+          keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+          repeatCount="indefinite"
+          values="0;2;0;0"
+        />
+      </circle>
+    </svg>
+  ),
   ChevronRight: ({ ...rest }) => (
     <svg
       width="24"
@@ -625,33 +780,17 @@ const iconMap = {
     <svg
       width="24"
       height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#818181"
+      viewBox="0 0 512 512"
       xmlns="http://www.w3.org/2000/svg"
       {...reset}
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M6 3H18C19.105 3 20 3.895 20 5V19C20 20.105 19.105 21 18 21H6C4.895 21 4 20.105 4 19V5C4 3.895 4.895 3 6 3Z"
-        stroke-width="1.5"
+        fill="none"
+        stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
-      />
-      <path
-        d="M9 11V13"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M4 5.00302V18.998C4 20.485 5.565 21.452 6.894 20.787L10.894 18.787C11.572 18.447 12 17.755 12 16.997V7.00302C12 6.24502 11.572 5.55302 10.894 5.21402L6.894 3.21402C5.565 2.54902 4 3.51602 4 5.00302Z"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        stroke-width="32"
+        d="M320 176v-40a40 40 0 0 0-40-40H88a40 40 0 0 0-40 40v240a40 40 0 0 0 40 40h192a40 40 0 0 0 40-40v-40m64-160l80 80l-80 80m-193-80h273"
       />
     </svg>
   ),
@@ -954,16 +1093,16 @@ const iconMap = {
     </svg>
   ),
   Tick: ({ ...rest }) => (
-    <svg 
-      width="32" 
-      height="32" 
+    <svg
+      width="32"
+      height="32"
       viewBox="0 0 32 27"
-      xmlns="http://www.w3.org/2000/svg" 
+      xmlns="http://www.w3.org/2000/svg"
       {...rest}
     >
-      <path 
-        fill="currentColor" 
-        d="M26.99 0L10.13 17.17l-5.44-5.54L0 16.41L10.4 27l4.65-4.73l.04.04L32 5.1z" 
+      <path
+        fill="currentColor"
+        d="M26.99 0L10.13 17.17l-5.44-5.54L0 16.41L10.4 27l4.65-4.73l.04.04L32 5.1z"
       />
     </svg>
   ),

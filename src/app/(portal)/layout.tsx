@@ -15,14 +15,22 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         <h1 className="logo font-IranYekan h-fit">Phoenix Task</h1>
         <div className="flex gap-2 items-center">
           <h6 className="font-medium">
-            {currentPath === "/login" || currentPath === "/forget-password" ? "ثبت‌نام نکردی؟" : "قبلا ثبت‌نام کردی؟"}
+            {currentPath === "/login" || currentPath === "/forget-password"
+              ? "ثبت‌نام نکردی؟"
+              : "قبلا ثبت‌نام کردی؟"}
           </h6>
           <Link
             weight="800"
             size="S"
-            to={currentPath === "/login" || currentPath === "/forget-password" ? "/register" : "/login"}
+            to={
+              currentPath === "/login" || currentPath === "/forget-password"
+                ? "/register"
+                : "/login"
+            }
           >
-            {currentPath === "/login" || currentPath === "/forget-password" ? "ثبت‌نام" : "ورود"}
+            {currentPath === "/login" || currentPath === "/forget-password"
+              ? "ثبت‌نام"
+              : "ورود"}
           </Link>
         </div>
       </header>
