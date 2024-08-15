@@ -11,7 +11,7 @@ import Flex from "@/components/modules/ui/Flex";
 import Heading from "@/components/modules/ui/Heading";
 import Input from "@/components/modules/ui/Input";
 import Text from "@/components/modules/ui/Text";
-import ErrorMessage from "@/components/templates/AuthError/ErrorMessage";
+import ErrorMessage from "@/components/templates/AuthError";
 import RulesModal from "@/components/templates/RulesModal/RulesModal";
 import { registrationSchema } from "@/logic/schemas/AuthSchema";
 import useAuth from "@/logic/hooks/useAuth";

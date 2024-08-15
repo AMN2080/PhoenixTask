@@ -15,7 +15,7 @@ import Text from "@/components/modules/ui/Text";
 import { loginSchema } from "@/logic/schemas/AuthSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useAuth from "@/logic/hooks/useAuth";
-import ErrorMessage from "@/components/templates/AuthError/ErrorMessage";
+import ErrorMessage from "@/components/templates/AuthError";
 
 type FormData = z.infer<typeof loginSchema>;
 
