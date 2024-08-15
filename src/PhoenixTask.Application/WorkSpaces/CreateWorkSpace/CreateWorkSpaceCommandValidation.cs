@@ -11,7 +11,5 @@ internal sealed class CreateWorkSpaceCommandValidation : AbstractValidator<Creat
         RuleFor(e => e.Name).NotEmpty().WithError(ValidationErrors.CreateWorkSpace.NameIsRequired);
 
         RuleFor(e=>e.Color).NotEmpty().WithError(ValidationErrors.CreateWorkSpace.ColorIsRequired);
-
-        RuleFor(e => e.UserId).NotEmpty().WithError(ValidationErrors.CreateWorkSpace.UserIdIsRequired);
     }
 }

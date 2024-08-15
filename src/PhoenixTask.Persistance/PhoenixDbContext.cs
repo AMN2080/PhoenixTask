@@ -5,6 +5,7 @@ using PhoenixTask.Application.Abstractions.Common;
 using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Domain.Abstractions;
 using PhoenixTask.Domain.Abstractions.Events;
+using PhoenixTask.Domain.Abstractions.Maybe;
 using PhoenixTask.Domain.Abstractions.Primitives;
 using PhoenixTask.Persistance.Extentions;
 using System.Reflection;
@@ -107,4 +108,14 @@ public sealed class PhoenixDbContext(DbContextOptions options,
 
         base.OnModelCreating(modelBuilder);
     }
+
+    public async Task<Maybe<TEntity>> GetBydIdAsync<TEntity>(Guid id) where TEntity : Entity
+        => id == Guid.Empty ?
+        Maybe<TEntity>.None :
+        Maybe<TEntity>.From(await Set<TEntity>().FirstOrDefaultAsync(e => e.Id == id));
+
+    public new void Remove<TEntity>(TEntity entity)
+        where TEntity : Entity
+        => Set<TEntity>().Remove(entity);
+    
 }

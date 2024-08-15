@@ -13,19 +13,19 @@ internal sealed class CreateWorkSpaceCommandHandler
     IUserRepository userRepository,
     IWorkSpaceRepository workSpaceRepository,
     IUnitOfWork unitOfWork)
-    : ICommandHandler<CreateWorkSpaceCommand, Result<Guid>>
+    : ICommandHandler<CreateWorkSpaceCommand, Result<string>>
 {
     private readonly IUserIdentifierProvider _userIdentifierProvider = userIdentifierProvider;
     private readonly IUserRepository _userRepository = userRepository;
     private readonly IWorkSpaceRepository _workSpaceRepository = workSpaceRepository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
-    public async Task<Result<Guid>> Handle(CreateWorkSpaceCommand request, CancellationToken cancellationToken)
+    public async Task<Result<string>> Handle(CreateWorkSpaceCommand request, CancellationToken cancellationToken)
     {
         var userId=_userIdentifierProvider.UserId;
         var maybeUser = await _userRepository.GetByIdAsync(userId);
         if (maybeUser.HasNoValue)
         {
-            return Result.Failure<Guid>(DomainErrors.User.NotFound);
+            return Result.Failure<string>(DomainErrors.User.NotFound);
         }
 
         var nameResult = Name.Create(request.Name);
@@ -33,7 +33,7 @@ internal sealed class CreateWorkSpaceCommandHandler
 
         if (nameResult.IsFailure)
         {
-            return Result.Failure<Guid>(nameResult.Error);
+            return Result.Failure<string>(nameResult.Error);
         }
 
         var workSpace = WorkSpace.Create(maybeUser.Value, nameResult.Value, request.Color);
@@ -42,6 +42,6 @@ internal sealed class CreateWorkSpaceCommandHandler
 
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        return workSpace.Id;
+        return workSpace.Id.ToString();
     }
 }

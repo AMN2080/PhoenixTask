@@ -3,4 +3,4 @@ using PhoenixTask.Domain.Abstractions.Result;
 
 namespace PhoenixTask.Application.WorkSpaces.CreateWorkSpace;
 
-public sealed record CreateWorkSpaceCommand(string Name, string Color) : ICommand<Result<Guid>>;
+public sealed record CreateWorkSpaceCommand(string Name, string Color) : ICommand<Result<string>>;
