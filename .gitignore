@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # Nextjs ignore
 next-env.d.ts
 .next/
+/src/PhoenixTask.WebApi/PhoenixTask.WebApi.csproj.user

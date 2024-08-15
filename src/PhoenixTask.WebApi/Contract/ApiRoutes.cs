@@ -14,4 +14,12 @@ public static class ApiRoutes
         public const string ForgetPassword = "users/reset-password";
         public const string ResetPassword = "users/reset-password/set-password";
     }
+    public static class WorkSpace
+    {
+        public const string GetAllWorkSpaces = "workspace/";
+        public const string Create = "workspace/create";
+        public const string GetById = "workspace/{workspaceId:guid}";
+        public const string Update = "workspace/{workspaceId:guid}";
+        public const string Remove = "workspace/{workspaceId:guid}";
+    }
 }
