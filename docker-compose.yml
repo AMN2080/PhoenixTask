@@ -12,9 +12,12 @@ services:
         container_name: webapicontainer
         image: $phoenixtaskwebapi
         ports:
-            - 8001:80 
+            - 8080:8080 
+            - 8090:8090
         build:
           context: .
           dockerfile: src/PhoenixTask.WebApi/Dockerfile
+        environment:
+            - ASPNETCORE_Kestrel__Certificates__Default__Path:'localhost-dev.pfx'
         depends_on:
             - sqlserverdb

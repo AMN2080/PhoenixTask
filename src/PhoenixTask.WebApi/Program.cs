@@ -1,11 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PhoenixTask.Application;
 using PhoenixTask.Infrastructure;
 using PhoenixTask.Persistance;
 using PhoenixTask.WebApi.Middleware;
-var builder = WebApplication.CreateBuilder(args);
+using System.Reflection;
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+bool runFromContainer = builder.Configuration.GetValue<bool>("RunIncontainer", false);
+if (runFromContainer)
+{
+    #region Docker Config
+    var httpsPort = builder.Configuration.GetValue("ASPNETCORE_HTTPS_PORT", 44388);
+    var certPassword = "1580489e-7a6a-45e3-8b18-1d02c2ee6860";// builder.Configuration.GetValue<string>("CertPassword");
+    var certPath = "localhost-dev.pfx";// builder.Configuration.GetValue<string>("CertPath");
+    Console.WriteLine(certPath);
+    Console.WriteLine(File.Exists(certPath));
+    foreach (var item in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)))
+    {
+        Console.WriteLine(item);
+    }
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.Listen(System.Net.IPAddress.Any, httpsPort, listenoption => listenoption.UseHttps(certPath,certPassword));
+    });
+    #endregion
+}
 
 // Add services to the container.
 builder.Services
@@ -35,7 +55,7 @@ builder.Services.AddSwaggerGen(swaggerGenOptions =>
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        BearerFormat ="JWT",
+        BearerFormat = "JWT",
         Scheme = "bearer"
     });
 
@@ -58,11 +78,11 @@ builder.Services.AddSwaggerGen(swaggerGenOptions =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 using IServiceScope serviceScope = app.Services.CreateScope();
 
 using PhoenixDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<PhoenixDbContext>();
