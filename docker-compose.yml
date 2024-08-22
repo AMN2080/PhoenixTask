@@ -12,8 +12,8 @@ services:
         container_name: webapicontainer
         image: $phoenixtaskwebapi
         ports:
-            - 8080:8080 
-            - 8090:8090
+            - 2023:8080 
+            - 44388:44388
         build:
           context: .
           dockerfile: src/PhoenixTask.WebApi/Dockerfile
