@@ -1,3 +1,3 @@
 export default function ColumnView() {
-  return <>hello</>;
+  return <>نمایش ستونی</>;
 }

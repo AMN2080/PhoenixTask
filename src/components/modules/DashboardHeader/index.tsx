@@ -77,12 +77,12 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
 
   return (
     <div className="sm:pt-1 xl:pt-4 flex-grow">
-      <div className="flex items-center justify-between border-b dark:border-b-[rgb(241,177,39,0.5)]">
+      <div className="flex items-center justify-between border-b">
         <div className="flex items-center pt-4">
-          <div className="flex items-center py-4 divide-x-2 relative dark:divide-[rgb(241,177,39,0.5)]">
+          <div className="flex items-center py-4 divide-x-2 relative">
             <div
               ref={marker}
-              className="absolute h-[3px] w-0 bg-208D8E -bottom-[2px] left-0 duration-500 rounded-lg dark:bg-[#F1B127]"
+              className="absolute h-[3px] w-0 bg-208D8E -bottom-[2px] left-0 duration-500 rounded-lg"
             ></div>
             {/* <NavLink
               ref={listRef}
@@ -90,7 +90,7 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
               onClick={(e) => indicator(e.target)}
               className="border-l-2 border-l-999999"
             > */}
-            <Link to="list" className="border-l-2">
+            <Link to="list" className="border-l-2 px-5 flex items-center gap-1">
               <Icon
                 iconName="ListView"
                 className={`${location === "list" ? "text-primary" : ""}}`}
@@ -117,7 +117,10 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
               to={"/columnview"}
               onClick={(e) => indicator(e.target)}
             > */}
-            <Link to="column" className="border-l-2">
+            <Link
+              to="column"
+              className="border-l-2 px-5 flex items-center gap-1"
+            >
               <Icon
                 iconName="ColumnView"
                 className={`${location === "column" ? "text-primary" : ""}}`}
@@ -142,7 +145,10 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
               to={"/calendarview"}
               onClick={(e) => indicator(e.target)}
             > */}
-            <Link to="calendar" className="border-l-2">
+            <Link
+              to="calendar"
+              className="border-l-2 px-5 flex items-center gap-1"
+            >
               <Icon
                 iconName="Calendar"
                 className={`${location === "calendar" ? "text-primary" : ""}}`}
@@ -164,7 +170,7 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
             {/* </NavLink> */}
           </div>
         </div>
-        <div className="flex items-center gap-4 divide-x-2 divide-x-reverse dark:divide-[rgb(241,177,39,0.5)]">
+        <div className="flex items-center gap-4 divide-x-2 divide-x-reverse">
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             {/* <input
@@ -196,9 +202,9 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-between font-medium py-4 gap-4 border-b dark:border-b-[rgb(241,177,39,0.5)]">
+      <div className="flex items-center justify-between font-medium py-4 gap-4 border-b">
         <div className="flex items-center gap-4">
-          <span className="border-l-2 border-l-999999 pl-4 dark:border-l-[rgb(241,177,39,0.5)]">
+          <span className="border-l-2 border-l-999999 pl-4">
             <input
               type="text"
               placeholder="جستجو در وظیفه‌ها"

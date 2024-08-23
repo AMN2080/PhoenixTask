@@ -1,3 +1,3 @@
 export default function ListView() {
-  return <></>;
+  return <p>نمایش لیستی</p>;
 }
