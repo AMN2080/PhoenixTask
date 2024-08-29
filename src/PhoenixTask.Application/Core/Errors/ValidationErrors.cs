@@ -22,4 +22,14 @@ internal static class ValidationErrors
         internal static Error NameIsRequired => new("UpdateWorkSpace.NameIsRequired", "The name is required.");
         internal static Error ColorIsRequired => new("UpdateWorkSpace.ColorIsRequired", "The color is required.");
     }
+    internal sealed class CreateProject
+    {
+        internal static Error NameIsRequired => new("CreateProject.NameIsRequired", "The name is required.");
+        internal static Error WorkSpaceIdIsRequired => new("CreateProject.UserIdIsRequired", "The werkspace identifier is required.");
+    }
+    internal sealed class UpdateProject
+    {
+        internal static Error NameIsRequired => new("UpdateProject.NameIsRequired", "The name is required.");
+    }
+
 }
