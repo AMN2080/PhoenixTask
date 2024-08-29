@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PhoenixTask.Application.Abstractions.Data;
@@ -17,8 +18,8 @@ public static class DependencyInjection
 
         services.AddSingleton(new ConnectionString(connectionString));
 
-        services.AddDbContext<PhoenixDbContext>(options =>options.UseInMemoryDatabase("Test"));
-        // services.AddDbContext<PhoenixDbContext>(options => options.UseSqlServer(connectionString));
+        // services.AddDbContext<PhoenixDbContext>(options =>options.UseInMemoryDatabase("Test"));
+        services.AddDbContext<PhoenixDbContext>(options => options.UseSqlServer(connectionString));
 
         services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<PhoenixDbContext>());
 
@@ -29,5 +30,15 @@ public static class DependencyInjection
         services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
 
         return services;
+    }
+    public static IApplicationBuilder UsePersistance(this IApplicationBuilder app)
+    {
+        using IServiceScope serviceScope = app.ApplicationServices.CreateScope();
+
+        using PhoenixDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<PhoenixDbContext>();
+
+        dbContext.Database.Migrate();
+
+        return app;
     }
 }

@@ -22,7 +22,7 @@ if (runFromContainer)
     }
     builder.WebHost.ConfigureKestrel(options =>
     {
-        options.Listen(System.Net.IPAddress.Any, httpsPort, listenoption => listenoption.UseHttps(certPath,certPassword));
+        options.Listen(System.Net.IPAddress.Any, httpsPort, listenoption => listenoption.UseHttps(certPath, certPassword));
     });
     #endregion
 }
@@ -77,17 +77,10 @@ builder.Services.AddSwaggerGen(swaggerGenOptions =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-// {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-// }
-using IServiceScope serviceScope = app.Services.CreateScope();
+app.UseSwagger();
+app.UseSwaggerUI();
 
-using PhoenixDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<PhoenixDbContext>();
-
-// dbContext.Database.Migrate();
+app.UsePersistance();
 
 app.UseCustomExceptionHandler();
 app.UseHttpsRedirection();

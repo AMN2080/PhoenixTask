@@ -99,4 +99,8 @@ public static class DomainErrors
     {
         public static Error NotFound => new Error("WorkSpace.NotFound", "The workspace with the specified identifier was not found.");
     }
+    public static class Project
+    {
+        public static Error NotFound => new Error("Project.NotFound", "The project with the specified identifier was not found.");
+    }
 }
