@@ -1,6 +1,6 @@
 import { useState } from "react";
 import profileService, { IChange, IProfile } from "../services/profile-service";
-import useAuthStore from "../stores/useAuthStore";
+import useAuthStore from "../stores/slices/authSlice";
 
 const useProfile = () => {
   const [error, setError] = useState<Error>();

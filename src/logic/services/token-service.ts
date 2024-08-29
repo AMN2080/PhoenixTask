@@ -1,16 +1,23 @@
-import useAuthStore from "../stores/useAuthStore";
+import store from "../stores/authStore";
+import { setAccessToken, setRefreshToken } from "../stores/slices/authSlice";
 
 class TokenManager {
-  static getAccessToken = () => useAuthStore.getState().accessToken;
+  static getAccessToken = () => store.getState().auth.accessToken;
 
   static setAccessToken = (token: string) => {
-    useAuthStore.setState({ accessToken: token });
+    store.dispatch(setAccessToken(token));
   };
 
-  static getRefreshToken = () => useAuthStore.getState().refreshToken;
+  static getRefreshToken = () => store.getState().auth.refreshToken;
 
-  static setRefreshToken = (token: string) =>
-    useAuthStore.setState({ refreshToken: token });
+  static setRefreshToken = (token: string) => {
+    store.dispatch(setRefreshToken(token));
+  };
+
+  static clearTokens = () => {
+    store.dispatch(setAccessToken(""));
+    store.dispatch(setRefreshToken(""));
+  };
 }
 
 export default TokenManager;

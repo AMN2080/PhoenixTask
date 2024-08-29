@@ -1,7 +1,14 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import APIClient from "../services/api-client";
 import TokenManager from "../services/token-service";
-import useAuthStore from "../stores/useAuthStore";
+import { RootState } from "../stores/authStore";
+import {
+  setUser,
+  setAccessToken,
+  setRefreshToken,
+  clearAuth,
+} from "../stores/slices/authSlice";
 import { AxiosError } from "axios";
 
 interface LoginData {
@@ -38,6 +45,7 @@ export interface User extends Omit<LoginResponse, "access" | "refresh"> {}
 
 const useAuth = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const login = async (data: LoginData) => {
     try {
@@ -51,7 +59,10 @@ const useAuth = () => {
 
       TokenManager.setAccessToken(access);
       TokenManager.setRefreshToken(refresh);
-      useAuthStore.setState({ user: userData });
+
+      dispatch(setUser(userData));
+      dispatch(setAccessToken(access));
+      dispatch(setRefreshToken(refresh));
 
       return status;
     } catch (error) {
@@ -84,10 +95,11 @@ const useAuth = () => {
   };
 
   const logout = () => {
-    useAuthStore.setState({}, true);
+    dispatch(clearAuth());
+    TokenManager.clearTokens();
   };
 
-  const user = useAuthStore((s: { user: User | null }) => s.user);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return {
     login,
