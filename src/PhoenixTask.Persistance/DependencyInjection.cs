@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PhoenixTask.Application.Abstractions.Data;
+using PhoenixTask.Domain.Projects;
 using PhoenixTask.Domain.Users;
 using PhoenixTask.Domain.Workspaces;
 using PhoenixTask.Persistance.Infrastructure;
@@ -28,6 +29,8 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
 
         services.AddScoped<IWorkSpaceRepository, WorkSpaceRepository>();
+
+        services.AddScoped<IProjectRepository, ProjectRepository>();
 
         return services;
     }
