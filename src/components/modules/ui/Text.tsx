@@ -1,11 +1,11 @@
 import {
-  BodySize,
+  fontSize,
   fontWeight,
 } from "../../../logic/SharedComponentStyles/sharedStyles";
 interface Props {
   children?: string | string[] | number;
   colorVariant?: "primary" | "secondary";
-  size?: keyof typeof BodySize;
+  size?: keyof typeof fontSize;
   weight?: keyof typeof fontWeight;
   className?: string;
 }
@@ -20,7 +20,7 @@ const Text = ({
   return (
     <p
       className={`font-IranYekan 
-      ${BodySize[size]} 
+      ${fontSize[size]} 
       ${fontWeight[weight]} 
       ${className ?? ""}`}
     >

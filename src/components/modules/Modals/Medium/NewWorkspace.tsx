@@ -53,7 +53,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
   const { isLoadingPost } = useAppSelector((state) => state.workSpaces);
   const user = useAppSelector((state) => state.auth.user);
   const username = user?.username.substring(0, 2);
-  const handleCheckBoxColor = (data: { color: 'string'; id: number }) => {
+  const handleCheckBoxColor = (data: { color: "string"; id: number }) => {
     setSelectedColor({ ...selectedColor, color: data.color, id: data.id });
   };
 
@@ -117,11 +117,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
         ) : (
           <div className="mt-11 w-full dark:text-[#F7F9F9]">
             {workSpaceStep === "ساختن ورک اسپیس جدید" ? (
-              <Input
-                label="نام ورک اسپیس"
-                type="text"
-                id="newWork"
-              />
+              <Input label="نام ورک اسپیس" type="text" id="newWork" />
             ) : workSpaceStep === "انتخاب رنگ ورک اسپیس" ? (
               <>
                 {/* select color */}
@@ -199,13 +195,9 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
 
             {/* Button  */}
             <div className="mt-16">
-              <Button
-                value={
-                  workSpaceStep === "مرور اطلاعات" ? "ساختن ورک اسپیس" : "ادامه"
-                }
-                onClick={handleWorkSpaceStep}
-                disabled={isLoadingPost}
-              />
+              <Button onClick={handleWorkSpaceStep} disabled={isLoadingPost}>
+                {workSpaceStep === "مرور اطلاعات" ? "ساختن ورک اسپیس" : "ادامه"}
+              </Button>
             </div>
           </div>
         )}

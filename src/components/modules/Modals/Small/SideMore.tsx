@@ -41,7 +41,7 @@ const SideMore = ({
   const [selectedBoardId, setSelectedBoardId] = useState("");
   const [confirm, setConfirm] = useState(false);
   const { selectedProjectId, projects } = useAppSelector(
-    (state) => state.boards
+    (state) => state.boards,
   );
 
   const dispatch = useAppDispatch();
@@ -49,10 +49,10 @@ const SideMore = ({
 
   const newTaskState = () => {
     const projectIndex = projects.findIndex(
-      (workspace) => workspace.projectId === selectedProjectId
+      (workspace) => workspace.projectId === selectedProjectId,
     );
     const projectsBoards = projects[projectIndex].projectBoards.map(
-      (board) => board
+      (board) => board,
     );
     setBoardList(projectsBoards as never[]);
     setNewTaskStatus("ستون");
@@ -92,7 +92,7 @@ const SideMore = ({
               <Modal>
                 <NewProject id={id} />
               </Modal>,
-              document.body
+              document.body,
             )}
 
           {medium === "تسک" &&
@@ -108,7 +108,7 @@ const SideMore = ({
                   <AddNewTask handleAddNewTask={handleAddNewTask} />
                 )}
               </Modal>,
-              document.body
+              document.body,
             )}
         </li>
         {/* edit name task or project */}
@@ -142,7 +142,8 @@ const SideMore = ({
           {confirm ? (
             <div className="flex items-center justify-around border p-2 rounded-md ">
               <p className="text-xs text-black dark:text-[#F7F9F9] ">
-                از حذف {sideMoreState === 'تسک' ? 'پروژه' : 'ورک اسپیس'} مطمئنید؟
+                از حذف {sideMoreState === "تسک" ? "پروژه" : "ورک اسپیس"}{" "}
+                مطمئنید؟
               </p>
               <button
                 className="focus:outline-none mr-2 text-xs"
@@ -178,10 +179,7 @@ const SideMore = ({
           <span className="absolute right-5 text-2xl text-white dark:text-[#0F111A] ">
             <BiShareAlt />
           </span>
-          <Button
-            value="اشتراک گذاری"
-            className="hover:bg-208D8E hover:text-white"
-          />
+          <Button>اشتراک گذاری</Button>
         </li>
 
         {medium === "اشتراک ورک اسپیس" &&
@@ -189,14 +187,14 @@ const SideMore = ({
             <Modal>
               <ShareModal ModalTitle="ورک اسپیس" id={id} />
             </Modal>,
-            document.body
+            document.body,
           )}
         {medium === "اشتراک تسک" &&
           createPortal(
             <Modal>
               <ShareModal ModalTitle="پروژه" id={id} />
             </Modal>,
-            document.body
+            document.body,
           )}
       </ul>
     </>

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import RouterLink from "next/link";
 import {
   fontWeight,
-  BodySize,
+  fontSize,
 } from "../../../logic/SharedComponentStyles/sharedStyles";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
   weight?: keyof typeof fontWeight;
   underline?: boolean;
   colorVariant?: "primary" | "secondary";
-  size?: keyof typeof BodySize;
+  size?: keyof typeof fontSize;
 }
 const Link = ({
   children,
@@ -27,7 +27,7 @@ const Link = ({
   return (
     <RouterLink
       href={to}
-      className={`font-IranYekan ${underline && "underline underline-offset-8"} ${fontWeight[weight]} ${BodySize[size]} ${className}`}
+      className={`font-IranYekan ${underline && "underline underline-offset-8"} ${fontWeight[weight]} ${fontSize[size]} ${className}`}
       {...rest}
     >
       {children}

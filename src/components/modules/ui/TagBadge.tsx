@@ -1,5 +1,5 @@
 import {
-  BodySize,
+  fontSize,
   fontWeight,
 } from "../../../logic/SharedComponentStyles/sharedStyles";
 import Text from "./Text";
@@ -7,7 +7,7 @@ import Text from "./Text";
 interface Props {
   className?: string;
   children: string;
-  size?: keyof typeof BodySize;
+  size?: keyof typeof fontSize;
   weight?: keyof typeof fontWeight;
 }
 const TagBadge: React.FC<Props> = ({

@@ -12,19 +12,12 @@ const fontWeight = {
   "950": "font-heavy",
 };
 
-enum Size {
-  XS = "text-xl",
-  S = "text-2xl",
-  M = "text-3xl",
-  L = "text-4xl",
-}
+const fontSize = {
+  XS: "text-xs",
+  S: "text-sm",
+  M: "text-base",
+  L: "text-xl",
+  XL: "text-2xl",
+};
 
-enum BodySize {
-  XS = "text-xs",
-  S = "text-sm",
-  M = "text-base",
-  L = "text-xl",
-  XL = "text-2xl",
-}
-
-export { fontWeight, BodySize, Size };
+export { fontWeight, fontSize };

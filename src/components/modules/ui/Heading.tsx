@@ -1,14 +1,18 @@
 import { createElement } from "react";
-import {
-  fontWeight,
-  Size,
-} from "@/logic/SharedComponentStyles/sharedStyles";
+import { fontWeight } from "@/logic/SharedComponentStyles/sharedStyles";
 
-enum TextAlign {
-  center = "text-center",
-  left = "text-left",
-  right = "text-right",
-}
+const TextAlign = {
+  center: "text-center",
+  left: "text-left",
+  right: "text-right",
+};
+
+const Size = {
+  XS: "text-xl",
+  S: "text-2xl",
+  M: "text-3xl",
+  L: "text-4xl",
+};
 
 interface Props {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

@@ -58,20 +58,20 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
   const checkHasMember = (memberName: string) => {
     if (ModalTitle === "ورک اسپیس") {
       const workspaceIndex = workMembers.findIndex(
-        (workspace) => workspace._id === id
+        (workspace) => workspace._id === id,
       );
       const hasMember = workMembers[workspaceIndex].members.some(
-        (member) => member.user.username === memberName
+        (member) => member.user.username === memberName,
       );
       return hasMember;
     }
     if (ModalTitle === "پروژه") {
       const project = workSpaces.map((workSpace) =>
-        workSpace.projects.find((project) => project._id === id)
+        workSpace.projects.find((project) => project._id === id),
       );
       project.some((project) => project?.members);
       const hasMember = project[0]?.members.some(
-        (member) => member.user.username === memberName
+        (member) => member.user.username === memberName,
       );
       return hasMember;
     }
@@ -92,13 +92,13 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
       const selectedProject: any = [];
       projects.forEach((project) => {
         project.forEach(
-          (item) => item._id === id && selectedProject.push(project)
+          (item) => item._id === id && selectedProject.push(project),
         );
       });
 
       if (selectedProject.length > 0) {
         const projectMembers = selectedProject[0].find(
-          (project: { _id: string | undefined }) => project._id === id
+          (project: { _id: string | undefined }) => project._id === id,
         );
 
         setMembers(projectMembers.members);
@@ -177,11 +177,11 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
 
               <div className="w-24">
                 <Button
-                  value="ارسال"
-                  className="rounded-tr-none rounded-br-none focus:outline-none"
                   onClick={handleAddMember}
                   disabled={isLoadingPost || isLoadingProject}
-                />
+                >
+                  ارسال
+                </Button>
               </div>
             </div>
 

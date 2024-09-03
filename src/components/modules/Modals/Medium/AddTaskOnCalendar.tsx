@@ -43,7 +43,7 @@ const AddTaskOnCalendar = ({ clickDate }: AddTaskOnCalendar) => {
         </div>
 
         <div className="w-32">
-          <Button value="ساختن تسک" />
+          <Button>ساختن تسک</Button>
         </div>
       </div>
     </div>

@@ -35,7 +35,7 @@ const ForgetForm = () => {
         toast.success(
           <Text weight="500" size="M">
             🎉 خوش اومدی!
-          </Text>
+          </Text>,
         );
 
       router.push("/:workspaceId/:projectId");
@@ -44,7 +44,7 @@ const ForgetForm = () => {
         toast.error(
           <Text weight="500" size="M">
             نام کاربری یا رمز عبور اشتباهه
-          </Text>
+          </Text>,
         );
       }
     }
@@ -78,7 +78,6 @@ const ForgetForm = () => {
             </Button>
           </Flex>
         </Flex>
-        <button className=""></button>
       </form>
     </Card>
   );

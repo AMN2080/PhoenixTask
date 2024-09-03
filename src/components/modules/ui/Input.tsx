@@ -2,13 +2,11 @@ import { forwardRef } from "react";
 
 import React from "react";
 import Flex from "./Flex";
-import {
-  BodySize,
-} from "../../../logic/SharedComponentStyles/sharedStyles";
+import { fontSize } from "../../../logic/SharedComponentStyles/sharedStyles";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  labelFontSize?: keyof typeof BodySize;
+  labelFontSize?: keyof typeof fontSize;
   labelColorVariant?: "primary" | "secondary";
 }
 
@@ -27,7 +25,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     return (
       <Flex direction="col" gap="XS">
         <label
-          className={`font-IranYekan block ${BodySize[labelFontSize]}`}
+          className={`font-IranYekan block ${fontSize[labelFontSize]}`}
           htmlFor={id}
         >
           {label}

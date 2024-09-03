@@ -1,46 +1,44 @@
-import React from "react";
+import { ButtonHTMLAttributes, forwardRef } from "react";
 import {
   fontWeight,
-  BodySize,
+  fontSize,
 } from "@/logic/SharedComponentStyles/sharedStyles";
 
-interface Colors {
-  [key: string]: string;
-}
-
-const colors: Colors = {
+// variant types of button
+const variants = {
   primary: "bg-primary text-primary-content",
   secondary: "bg-secondary text-secondary-content",
   outline: "border-2 border-primary text-primary",
 };
 
-enum Size {
-  default = "p-3",
-  full = "w-full",
-  small = "w-[100px] h-[9px]",
-}
+// button size
+const Size = {
+  default: "p-3",
+  full: "w-full",
+  small: "w-[100px] h-[9px]",
+};
 
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   variant?: "primary" | "secondary" | "outline";
   color?: string;
-  fontSize?: keyof typeof BodySize;
+  textSize?: keyof typeof fontSize;
   weight?: keyof typeof fontWeight;
   size?: keyof typeof Size;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, Props>(
+const Button = forwardRef<HTMLButtonElement, Props>(
   (
     {
-      asChild,
+      asChild, // without this prop, button will be a default button + className
       className,
       children,
       size = "default",
       variant = "primary",
-      fontSize = "S",
+      textSize = "S",
       weight = "800",
       type = "button",
-      ...props
+      ...props // onClick, onChange, etc.
     },
     ref,
   ) => {
@@ -54,7 +52,7 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        className={`${variant === "primary" && "text-white"} ${colors[variant]} ${BodySize[fontSize]} ${fontWeight[weight]} ${Size[size]} font-IranYekan font-black rounded-[6px] p-[10px] ${className}`}
+        className={`${variants[variant]} ${fontSize[textSize]} ${fontWeight[weight]} ${Size[size]} font-IranYekan font-black rounded-[6px] p-[10px] ${className}`}
         type={type}
         {...props}
       >

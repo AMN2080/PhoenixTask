@@ -23,7 +23,9 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
     const element = event.target as HTMLInputElement;
     setBoardId(element.value);
   };
-  useEffect(() => {true}, [status]);
+  useEffect(() => {
+    true;
+  }, [status]);
 
   return (
     <div className="modal-box w-[400px] dark:bg-[#15202B]">
@@ -64,7 +66,7 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
                 {data &&
                   data.map((item) => {
                     return (
-                      <option key={item._id} value={item._id} >
+                      <option key={item._id} value={item._id}>
                         {item.name}
                       </option>
                     );
@@ -75,12 +77,13 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
             {/* button */}
             <div className="mt-16">
               <Button
-                value={"ادامه"}
                 onClick={() => {
                   const selectedValue = selectRef.current?.value;
                   selectedValue && selectedHandle(selectedValue);
                 }}
-              />
+              >
+                ادامه
+              </Button>
             </div>
           </div>
         </div>

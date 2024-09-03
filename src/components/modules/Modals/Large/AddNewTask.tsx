@@ -193,11 +193,14 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
 
               <div className="w-32 h-8">
                 {isLoading ? (
-                  <button className="disabled:pointer-events-none  bg-208D8E hover:bg-[#1d7f80] focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all w-full h-10 p-2.5 text-sm font-bold leading-4 flex justify-center items-center text-white rounded-md dark:bg-[#F1B127] dark:text-[#0F111A]">
+                  <Button
+                    size="full"
+                    className="disabled:pointer-events-none h-10 p-2.5 text-sm font-bold leading-4 flex justify-center items-center"
+                  >
                     <BsThreeDots className="animate-ping" />
-                  </button>
+                  </Button>
                 ) : (
-                  <Button value="ساخت تسک" onClick={handleNewTaskButton} />
+                  <Button onClick={handleNewTaskButton}>ساخت تسک</Button>
                 )}
               </div>
             </div>
@@ -207,7 +210,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
         {calendar.modal &&
           createPortal(
             <QuckCalendar handleCalendar={handleCalendar} />,
-            document.body
+            document.body,
           )}
       </div>
     </>
