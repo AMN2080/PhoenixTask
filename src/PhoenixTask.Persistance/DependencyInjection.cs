@@ -32,6 +32,8 @@ public static class DependencyInjection
 
         services.AddScoped<IProjectRepository, ProjectRepository>();
 
+        services.AddScoped<IBoardRepository, BoardRepository>();
+
         return services;
     }
     public static IApplicationBuilder UsePersistance(this IApplicationBuilder app)

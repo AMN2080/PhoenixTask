@@ -30,4 +30,12 @@ public static class ApiRoutes
         public const string Update = "/workspace/{workspaceId:guid}/project/{projectId:guid}";
         public const string Remove = "/workspace/{workspaceId:guid}/project/{projectId:guid}";
     }
+    public static class Boards
+    {
+        public const string GetProjectBoards = "/board/get/{projectId:guid}";
+        public const string Create = "/board/{projectId:guid}";
+        public const string GetById = "/board/{board:guid}";
+        public const string Update = "/board/{board:guid}";
+        public const string Remove = "/board/{board:guid}";
+    }
 }
