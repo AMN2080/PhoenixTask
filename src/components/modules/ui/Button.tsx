@@ -21,7 +21,6 @@ const Size = {
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   variant?: "primary" | "secondary" | "outline";
-  color?: string;
   textSize?: keyof typeof fontSize;
   weight?: keyof typeof fontWeight;
   size?: keyof typeof Size;

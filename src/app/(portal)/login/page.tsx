@@ -6,7 +6,6 @@ import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Button from "@/components/modules/ui/Button";
-import Card from "@/components/modules/ui/Card";
 import Flex from "@/components/modules/ui/Flex";
 import Heading from "@/components/modules/ui/Heading";
 import Input from "@/components/modules/ui/Input";
@@ -51,7 +50,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Card>
+    <div className="bg-white max-w-[640px] w-full shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25)] p-6 rounded-b-[20px]">
       <Heading align="center" className="mb-8" as="h2" size="S">
         خوش برگشتی😄
       </Heading>
@@ -78,26 +77,26 @@ const LoginForm = () => {
             </Flex>
           </Flex>
           <Flex gap="M" direction="col">
-            <Button
-              disabled={isLoading}
-              type="submit"
-              color="brand"
-              size="full"
-            >
+            <Button disabled={isLoading} type="submit" size="full">
               {isLoading ? "در حال بررسی..." : "ورود"}
             </Button>
             <Flex gap="XS" justifyContent="center" alignItems="center">
               <Text size="M" weight="500">
                 رمزت رو فراموش کردی؟
               </Text>
-              <Link to="/forget-password" color="brand" weight="800" size="M">
+              <Link
+                to="/forget-password"
+                colorVariant="primary"
+                weight="800"
+                size="M"
+              >
                 فراموشی رمز
               </Link>
             </Flex>
           </Flex>
         </Flex>
       </form>
-    </Card>
+    </div>
   );
 };
 

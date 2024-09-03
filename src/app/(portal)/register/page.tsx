@@ -5,7 +5,6 @@ import { FieldError, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Button from "@/components/modules/ui/Button";
-import Card from "@/components/modules/ui/Card";
 import CheckBox from "@/components/modules/ui/CheckBox";
 import Flex from "@/components/modules/ui/Flex";
 import Heading from "@/components/modules/ui/Heading";
@@ -58,7 +57,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <Card>
+    <div className="bg-white max-w-[640px] w-full shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25)] p-6 rounded-b-[20px]">
       <Heading align="center" className="mb-8" as="h2" size="L">
         به جمع فینیکس تسکی‌ها بپیوند😎
       </Heading>
@@ -93,7 +92,7 @@ export default function RegisterPage() {
           <CheckBox
             {...register("termsAndCondition")}
             className={getErrorStyles(errors.termsAndCondition)}
-            id="rules"
+            connectorId="rules"
             label={
               <span>
                 <Button onClick={handleOpenModal} asChild>
@@ -108,12 +107,12 @@ export default function RegisterPage() {
           <ErrorMessage error={errors.termsAndCondition} />
 
           <RulesModal visible={showModal} onClose={handleCloseModal} />
-          <Button disabled={isLoading} type="submit" color="brand" size="full">
+          <Button disabled={isLoading} type="submit" size="full">
             {isLoading ? "در حال ارسال اطلاعات..." : "ثبت‌نام"}
           </Button>
         </Flex>
       </form>
-    </Card>
+    </div>
   );
 }
 

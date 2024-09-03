@@ -6,7 +6,6 @@ import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Button from "@/components/modules/ui/Button";
-import Card from "@/components/modules/ui/Card";
 import Flex from "@/components/modules/ui/Flex";
 import Heading from "@/components/modules/ui/Heading";
 import Input from "@/components/modules/ui/Input";
@@ -51,7 +50,7 @@ const ForgetForm = () => {
   };
 
   return (
-    <Card>
+    <div className="bg-white max-w-[640px] w-full shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25)] p-6 rounded-b-[20px]">
       <Heading align="center" className="mb-8" as="h2" size="L">
         آدم فراموش‌کاره پیش میاد😊
       </Heading>
@@ -68,18 +67,13 @@ const ForgetForm = () => {
             <ErrorMessage error={errors.email} />
           </Flex>
           <Flex gap="M" direction="col">
-            <Button
-              disabled={isLoading}
-              type="submit"
-              color="brand"
-              size="full"
-            >
+            <Button disabled={isLoading} type="submit" size="full">
               {isLoading ? "در حال بررسی..." : "ارسال"}
             </Button>
           </Flex>
         </Flex>
       </form>
-    </Card>
+    </div>
   );
 };
 
