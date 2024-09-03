@@ -1,7 +1,7 @@
-import Button from "../../ui/Button";
+import Button from "../../UI/Button";
 import { FiLink } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
-import CloseIcon from "../../ui/Close";
+import CloseIcon from "../../UI/Close";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
 import {

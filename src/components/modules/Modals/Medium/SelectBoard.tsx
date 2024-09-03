@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "../../ui/Button";
-import CloseIcon from "../../ui/Close";
+import Button from "../../UI/Button";
+import CloseIcon from "../../UI/Close";
 import { useAppDispatch } from "../../../services/app/hook";
 import { toggleMediumModal } from "../../../services/app/store";
 

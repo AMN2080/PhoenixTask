@@ -1,10 +1,10 @@
-import Input from "../../ui/Input";
-import Button from "../../ui/Button";
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
 import { Dispatch, SetStateAction, useState } from "react";
-import CheckBoxColor from "../../ui/CheckBoxColor";
+import CheckBoxColor from "../../UI/CheckBoxColor";
 import { BiBlock } from "react-icons/bi";
 import { AiOutlineArrowLeft, AiOutlineLoading3Quarters } from "react-icons/ai";
-import CloseIcon from "../../ui/Close";
+import CloseIcon from "../../UI/Close";
 import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
 import { toast } from "react-toastify";
 import {

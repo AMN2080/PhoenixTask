@@ -1,6 +1,6 @@
-import Input from "../../ui/Input";
-import Button from "../../ui/Button";
-import CloseIcon from "../../ui/Close";
+import Input from "../../UI/Input";
+import Button from "../../UI/Button";
+import CloseIcon from "../../UI/Close";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
 import { createProject, toggleMediumModal } from "../../../services/app/store";

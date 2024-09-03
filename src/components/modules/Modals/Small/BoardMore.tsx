@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../../services/app/hook";
 import { toggleXSmallModal } from "../../../services/app/store";
 import { MorePosition } from "../../dashboard/dashboardSidebar/ProjectList";
 import { useState } from "react";
-import Confirm from "../../ui/Confirm";
+import Confirm from "../../UI/Confirm";
 
 type BoardMoreProps = {
   position: MorePosition;
@@ -31,7 +31,7 @@ const BoardMore = ({
         className="absolute top-7  min-w-40 mt-1 left-2 rounded-lg p-3 z-50 bg-white shadow-lg dark:bg-[#15202B]"
       >
         {confirm ? (
-          <li className={`${liStyle} !mt-0 p-2`}>  
+          <li className={`${liStyle} !mt-0 p-2`}>
             <Confirm
               status="ستون"
               cancel={setConfirm}

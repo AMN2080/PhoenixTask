@@ -1,7 +1,7 @@
 import { AiOutlinePlus, AiOutlineLink } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import { SlNote } from "react-icons/sl";
-import Button from "../../ui/Button";
+import Button from "../../UI/Button";
 import { BiShareAlt } from "react-icons/bi";
 import { useState } from "react";
 import { createPortal } from "react-dom";

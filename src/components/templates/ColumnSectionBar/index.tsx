@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Icon from "../../modules/ui/Icon";
+import Icon from "../../modules/Icon/old methods";
 import Modal from "../../modules/Modals/Modal";
 import AddNewTask from "../../modules/Modals/Large/AddNewTask";
 import BoardMore from "../../modules/Modals/Small/BoardMore";

@@ -16,9 +16,8 @@ const Size = {
 
 interface Props {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  align?: keyof typeof TextAlign;
   children: React.ReactNode;
-  colorVariant?: "primary" | "secondary";
+  align?: keyof typeof TextAlign;
   size?: keyof typeof Size;
   weight?: keyof typeof fontWeight;
   className?: string;

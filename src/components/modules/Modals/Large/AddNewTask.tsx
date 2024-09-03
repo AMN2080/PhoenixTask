@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { FiLink, FiFlag, FiUserPlus, FiEye } from "react-icons/fi";
 import { BsCalendar3, BsTags, BsThreeDots } from "react-icons/bs";
-import Button from "../../ui/Button";
+import Button from "../../UI/Button";
 import { createPortal } from "react-dom";
 import QuckCalendar from "./QuickCalendar";
 import { toast } from "react-toastify";
-import CloseIcon from "../../ui/Close";
+import CloseIcon from "../../UI/Close";
 import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
 import { toggleMediumModal } from "../../../services/app/store";
 

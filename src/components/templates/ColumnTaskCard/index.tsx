@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import Icon from "@/components/modules/ui/Icon";
+import Icon from "@/components/modules/UI/Icon";
 // import { FiCheckCircle } from "react-icons/fi";
 // import { TbCalendarTime } from "react-icons/tb";
 // import TaskInfo from "../../taskInformation/TaskInfo";

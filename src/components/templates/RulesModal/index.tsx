@@ -1,8 +1,8 @@
-import Icon from "@/components/modules/ui/Icon";
-import Button from "@/components/modules/ui/Button";
-import Flex from "@/components/modules/ui/Flex";
-import Heading from "@/components/modules/ui/Heading";
-import Text from "@/components/modules/ui/Text";
+import Icon from "@/components/modules/UI/Icon";
+import Button from "@/components/modules/UI/Button";
+import Flex from "@/components/modules/UI/Flex";
+import Heading from "@/components/modules/UI/Heading";
+import Text from "@/components/modules/UI/Text";
 
 interface RulesModalProps {
   visible?: boolean;

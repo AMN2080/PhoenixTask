@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import Icon from "../ui/Icon";
-import Link from "../ui/Link";
+import Icon from "../Icon/old methods";
+import Link from "../UI/Link";
 import { useRouter } from "next/navigation";
-import Button from "../ui/Button";
+import Button from "../UI/Button";
 // import ProfileButton from "../../ui/ProfileButton";
 // import SearchInput from "../../ui/SearchInput";
 // import { logOut } from "../../../services/features/auth/authSlice";
