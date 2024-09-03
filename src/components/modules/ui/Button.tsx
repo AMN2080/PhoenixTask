@@ -51,7 +51,14 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        className={`${variants[variant]} ${fontSize[textSize]} ${fontWeight[weight]} ${Size[size]} font-IranYekan font-black rounded-[6px] p-[10px] ${className}`}
+        className={`
+          ${variants[variant]}
+          ${fontSize[textSize]}
+          ${fontWeight[weight]}
+          ${Size[size]}
+          font-IranYekan font-black rounded-md p-[10px]
+          ${className}
+        `}
         type={type}
         {...props}
       >

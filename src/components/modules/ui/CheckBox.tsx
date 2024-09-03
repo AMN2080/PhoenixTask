@@ -1,17 +1,16 @@
-import { ReactNode, forwardRef, InputHTMLAttributes } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import Icon from "./Icon";
 import Flex from "./Flex";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  label: ReactNode;
   connectorId: string;
 }
 
 const CheckBox = forwardRef<HTMLInputElement, Props>(
-  ({ connectorId, label, className, ...rest }, ref) => {
+  ({ connectorId, className, children, ...rest }, ref) => {
     return (
       <Flex gap="XS" alignItems="center">
-        <div className="w-[20px] h-[20px] relative">
+        <div className="w-5 h-5 relative">
           <input
             id={connectorId}
             ref={ref}
@@ -20,11 +19,11 @@ const CheckBox = forwardRef<HTMLInputElement, Props>(
             {...rest}
           />
           <span className="absolute hidden peer-checked:flex pointer-events-none inset-0 justify-center items-center">
-            <Icon iconName="Tick" className="text-[#228B22] w-4" />
+            <Icon iconName="Tick" className="text-green-600 w-4" />
           </span>
         </div>
         <label className="font-IranYekan" htmlFor={connectorId}>
-          {label}
+          {children}
         </label>
       </Flex>
     );

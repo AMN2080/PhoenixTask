@@ -1,12 +1,13 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-const gapSize = {
+const FlexGap = {
   XS: "gap-2",
   S: "gap-4",
   M: "gap-6",
   L: "gap-8",
   XL: "gap-10",
 };
+
 const FlexDirection = {
   row: "flex-row",
   row_reverse: "flex-row-reverse",
@@ -34,31 +35,29 @@ const alignMap = {
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   direction?: keyof typeof FlexDirection;
-  gap?: keyof typeof gapSize;
+  gap?: keyof typeof FlexGap;
   justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly";
   alignItems?: "start" | "end" | "center" | "baseline" | "stretch";
-  width?: "w-full" | "w-fit";
 }
 
 const Flex = ({
   children,
+  className = "w-full",
   justifyContent = "start",
   alignItems = "start",
   direction = "row",
   gap = "XS",
-  className,
-  width = "w-full",
   ...rest
 }: Props) => {
   return (
     <div
-      className={`flex 
-      ${gapSize[gap]}
-      ${FlexDirection[direction]} 
-      ${justifyContent ? justifyMap[justifyContent] : "justify-start"}
-      ${alignItems ? alignMap[alignItems] : "items-start"}
-      ${className ?? ""}
-      ${width}
+      className={`
+        flex
+        ${FlexGap[gap]}
+        ${FlexDirection[direction]}
+        ${justifyMap[justifyContent]}
+        ${alignMap[alignItems]}
+        ${className}
       `}
       {...rest}
     >

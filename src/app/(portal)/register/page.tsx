@@ -93,17 +93,16 @@ export default function RegisterPage() {
             {...register("termsAndCondition")}
             className={getErrorStyles(errors.termsAndCondition)}
             connectorId="rules"
-            label={
-              <span>
-                <Button onClick={handleOpenModal} asChild>
-                  <Text className="underline underline-offset-8" size="M">
-                    قوانین و مقررات
-                  </Text>
-                </Button>{" "}
-                را می‌پذیرم.
-              </span>
-            }
-          />
+          >
+            <span>
+              <Button onClick={handleOpenModal} asChild>
+                <Text className="underline underline-offset-8" size="M">
+                  قوانین و مقررات
+                </Text>
+              </Button>{" "}
+              را می‌پذیرم.
+            </span>
+          </CheckBox>
           <ErrorMessage error={errors.termsAndCondition} />
 
           <RulesModal visible={showModal} onClose={handleCloseModal} />
