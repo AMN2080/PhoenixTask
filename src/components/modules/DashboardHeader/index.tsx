@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Icon from "../Icon/old methods";
+import Icon from "../Icon";
 import Link from "../UI/Link";
 // import { RxUpdate } from "react-icons/rx"; // TODO: create Update-Icon
 // import TabBtn from "./TabBtn";

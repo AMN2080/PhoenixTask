@@ -1,5 +1,5 @@
 import { forwardRef, InputHTMLAttributes } from "react";
-import Icon from "../Icon/old methods";
+import Icon from "../Icon";
 import Flex from "./Flex";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {

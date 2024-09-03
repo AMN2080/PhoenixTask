@@ -1,4 +1,4 @@
-import Icon from "@/components/modules/UI/Icon";
+import Icon from "@/components/modules/Icon";
 import Button from "@/components/modules/UI/Button";
 import Flex from "@/components/modules/UI/Flex";
 import Heading from "@/components/modules/UI/Heading";
