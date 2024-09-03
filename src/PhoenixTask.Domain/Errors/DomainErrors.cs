@@ -103,4 +103,8 @@ public static class DomainErrors
     {
         public static Error NotFound => new Error("Project.NotFound", "The project with the specified identifier was not found.");
     }
+    public static class Board
+    {
+        public static Error NotFound => new Error("Board.NotFound", "The board with the specified identifier was not found.");
+    }
 }
