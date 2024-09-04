@@ -32,7 +32,7 @@ export default function RegisterPage() {
     try {
       await signUp(data);
       toast.success(
-        <Text weight="500" size="M">
+        <Text weight="500" textSize="M">
           👌حساب کاربری با موفقیت ایجاد شد
         </Text>,
       );
@@ -42,7 +42,7 @@ export default function RegisterPage() {
         usernameError: string;
       };
       toast.error(
-        <Text weight="500" size="M">
+        <Text weight="500" textSize="M">
           {usernameError || emailError}
         </Text>,
       );
@@ -96,7 +96,7 @@ export default function RegisterPage() {
           >
             <span>
               <Button onClick={handleOpenModal} asChild>
-                <Text className="underline underline-offset-8" size="M">
+                <Text className="underline underline-offset-8" textSize="M">
                   قوانین و مقررات
                 </Text>
               </Button>{" "}

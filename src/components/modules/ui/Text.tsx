@@ -5,23 +5,22 @@ import {
 interface Props {
   children?: string | string[] | number;
   colorVariant?: "primary" | "secondary";
-  size?: keyof typeof fontSize;
+  textSize?: keyof typeof fontSize;
   weight?: keyof typeof fontWeight;
   className?: string;
 }
 
 const Text = ({
   children,
-  colorVariant = "primary",
-  size = "XS",
+  textSize = "XS",
   weight = "400",
-  className = "",,
+  className = "",
 }: Props) => {
   return (
     <p
       className={`
-        font-IranYekan 
-        ${fontSize[size]} 
+        font-IranYekan text-neutral-content
+        ${fontSize[textSize]} 
         ${fontWeight[weight]} 
         ${className}
       `}

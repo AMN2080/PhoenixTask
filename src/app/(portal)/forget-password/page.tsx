@@ -32,7 +32,7 @@ const ForgetForm = () => {
       const status = await login(data);
       if (status === 200)
         toast.success(
-          <Text weight="500" size="M">
+          <Text weight="500" textSize="M">
             🎉 خوش اومدی!
           </Text>,
         );
@@ -41,7 +41,7 @@ const ForgetForm = () => {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
         toast.error(
-          <Text weight="500" size="M">
+          <Text weight="500" textSize="M">
             نام کاربری یا رمز عبور اشتباهه
           </Text>,
         );

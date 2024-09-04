@@ -26,7 +26,7 @@ export default function RulesModal({ visible, onClose }: RulesModalProps) {
           قوانین و مقررات
         </Heading>
         <Flex>
-          <Text size="M"> ادب رو رعایت کنین دوستان </Text>
+          <Text textSize="M"> ادب رو رعایت کنین دوستان </Text>
         </Flex>
       </div>
     </div>

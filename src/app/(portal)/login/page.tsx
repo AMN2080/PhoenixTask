@@ -32,7 +32,7 @@ const LoginForm = () => {
       const status = await login(data);
       if (status === 200)
         toast.success(
-          <Text weight="500" size="M">
+          <Text weight="500" textSize="M">
             🎉 خوش اومدی!
           </Text>,
         );
@@ -41,7 +41,7 @@ const LoginForm = () => {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
         toast.error(
-          <Text weight="500" size="M">
+          <Text weight="500" textSize="M">
             نام کاربری یا رمز عبور اشتباهه
           </Text>,
         );
@@ -81,7 +81,7 @@ const LoginForm = () => {
               {isLoading ? "در حال بررسی..." : "ورود"}
             </Button>
             <Flex gap="XS" justifyContent="center" alignItems="center">
-              <Text size="M" weight="500">
+              <Text textSize="M" weight="500">
                 رمزت رو فراموش کردی؟
               </Text>
               <Link to="/forget-password" weight="800" textSize="M">
