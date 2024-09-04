@@ -1,8 +1,5 @@
 import { ReactNode } from "react";
-import {
-  fontSize,
-  fontWeight,
-} from "@/logic/SharedComponentStyles/sharedStyles";
+import { fontSize, fontWeight } from "./sharedStyles";
 
 interface Props {
   children: ReactNode;

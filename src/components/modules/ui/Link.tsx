@@ -3,7 +3,7 @@ import RouterLink from "next/link";
 import {
   fontWeight,
   fontSize,
-} from "@/logic/SharedComponentStyles/sharedStyles";
+} from "./sharedStyles";
 
 interface Props {
   className?: string;

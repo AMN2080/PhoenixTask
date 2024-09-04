@@ -1,8 +1,5 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import {
-  fontWeight,
-  fontSize,
-} from "@/logic/SharedComponentStyles/sharedStyles";
+import { fontWeight, fontSize } from "./sharedStyles";
 
 // variant types of button
 const variants = {
