@@ -87,8 +87,9 @@ export default function DashboardSidebar() {
       {isError && <div className="m-auto text-FB0606">{`${message}`}</div>}
       {isSuccess && <WorkSpaceList workSpaces={workSpacesToRender} />} */}
         <Link
-          className="flex items-center gap-2 font-IranYekan font-extrabold"
-          size="S"
+          className="flex items-center gap-2"
+          weight="800"
+          textSize="S"
           to="/profile/personal-info"
         >
           <Icon iconName="Profile" className="" />

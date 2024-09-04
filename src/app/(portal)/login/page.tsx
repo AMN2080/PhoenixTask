@@ -84,12 +84,7 @@ const LoginForm = () => {
               <Text size="M" weight="500">
                 رمزت رو فراموش کردی؟
               </Text>
-              <Link
-                to="/forget-password"
-                colorVariant="primary"
-                weight="800"
-                size="M"
-              >
+              <Link to="/forget-password" weight="800" textSize="M">
                 فراموشی رمز
               </Link>
             </Flex>

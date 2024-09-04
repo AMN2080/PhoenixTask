@@ -21,7 +21,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           </h6>
           <Link
             weight="800"
-            size="S"
+            textSize="S"
             to={
               currentPath === "/login" || currentPath === "/forget-password"
                 ? "/register"
