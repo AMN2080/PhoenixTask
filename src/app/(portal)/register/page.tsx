@@ -65,27 +65,27 @@ export default function RegisterPage() {
         <Flex gap={`${errors ? "XS" : "M"}`} direction="col">
           <Input
             className={getErrorStyles(errors.username)}
-            {...register("username")}
-            id="username"
+            connectorId="username"
             label="نام کاربری"
+            {...register("username")}
           />
           <ErrorMessage error={errors.username} />
 
           <Input
             className={getErrorStyles(errors.email)}
-            {...register("email")}
-            type="email"
-            id="email"
+            connectorId="email"
             label="ایمیل"
+            type="email"
+            {...register("email")}
           />
           <ErrorMessage error={errors.email} />
 
           <Input
             className={getErrorStyles(errors.password)}
-            {...register("password")}
-            type="password"
-            id="password"
+            connectorId="password"
             label="رمز عبور"
+            type="password"
+            {...register("password")}
           />
           <ErrorMessage error={errors.password} />
 

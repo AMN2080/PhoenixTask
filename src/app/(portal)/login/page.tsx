@@ -58,10 +58,10 @@ const LoginForm = () => {
         <Flex gap={`${errors ? "XS" : "L"}`} direction="col">
           <Flex gap={`${errors ? "XS" : "M"}`} direction="col">
             <Input
-              {...register("username")}
               className={getErrorStyles(errors.username)}
-              id="username"
+              connectorId="username"
               label="نام کاربری"
+              {...register("username")}
             />
             <ErrorMessage error={errors.username} />
 
@@ -69,8 +69,8 @@ const LoginForm = () => {
               <Input
                 {...register("password")}
                 className={getErrorStyles(errors.password)}
+                connectorId="password"
                 type="password"
-                id="password"
                 label="رمز عبور"
               />
               <ErrorMessage error={errors.password} />

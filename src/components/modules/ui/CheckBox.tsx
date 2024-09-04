@@ -30,5 +30,5 @@ const CheckBox = forwardRef<HTMLInputElement, Props>(
   },
 );
 
-CheckBox.displayName = "CheckBox in /components/modules/ui";
+CheckBox.displayName = "CheckBox in /components/modules/UI";
 export default CheckBox;

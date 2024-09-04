@@ -1,40 +1,32 @@
-import { forwardRef } from "react";
-
-import React from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import Flex from "./Flex";
-import { fontSize } from "../../../logic/SharedComponentStyles/sharedStyles";
+import { fontSize } from "@/logic/SharedComponentStyles/sharedStyles";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  connectorId: string;
   label: string;
-  labelFontSize?: keyof typeof fontSize;
-  labelColorVariant?: "primary" | "secondary";
+  type?: "text" | "email" | "password";
+  textSize?: keyof typeof fontSize;
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
   (
-    {
-      label,
-      className,
-      id,
-      labelColorVariant = "primary",
-      labelFontSize = "S",
-      ...rest
-    },
+    { className, connectorId, type = "text", label, textSize = "S", ...rest },
     ref,
   ) => {
     return (
       <Flex direction="col" gap="XS">
         <label
-          className={`font-IranYekan block ${fontSize[labelFontSize]}`}
-          htmlFor={id}
+          className={`font-IranYekan block text-neutral-content ${fontSize[textSize]}`}
+          htmlFor={connectorId}
         >
           {label}
         </label>
         <input
           ref={ref}
-          id={id}
-          className={`outline-none w-full p-1 rounded-[6px] border border-solid border-gray-aaa h-[40px] ${className}`}
-          type="text"
+          className={`outline-none w-full p-1 rounded-md border h-10 ${className}`}
+          id={connectorId}
+          type={type}
           {...rest}
         />
       </Flex>
@@ -42,5 +34,5 @@ const Input = forwardRef<HTMLInputElement, Props>(
   },
 );
 
-Input.displayName = "Input in /components/modules/ui";
+Input.displayName = "Input in /components/modules/UI";
 export default Input;

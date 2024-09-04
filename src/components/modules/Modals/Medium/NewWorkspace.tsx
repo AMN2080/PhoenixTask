@@ -117,7 +117,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
         ) : (
           <div className="mt-11 w-full dark:text-[#F7F9F9]">
             {workSpaceStep === "ساختن ورک اسپیس جدید" ? (
-              <Input label="نام ورک اسپیس" type="text" id="newWork" />
+              <Input connectorId="newWork" label="نام ورک اسپیس" />
             ) : workSpaceStep === "انتخاب رنگ ورک اسپیس" ? (
               <>
                 {/* select color */}

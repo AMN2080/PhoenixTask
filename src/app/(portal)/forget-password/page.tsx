@@ -59,10 +59,10 @@ const ForgetForm = () => {
           <Flex gap={`${errors ? "XS" : "M"}`} direction="col">
             <Input
               className={getErrorStyles(errors.email)}
-              {...register("email")}
-              type="email"
-              id="email"
+              connectorId="email"
               label="ایمیل"
+              type="email"
+              {...register("email")}
             />
             <ErrorMessage error={errors.email} />
           </Flex>

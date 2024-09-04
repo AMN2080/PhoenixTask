@@ -68,5 +68,5 @@ const Button = forwardRef<HTMLButtonElement, Props>(
   },
 );
 
-Button.displayName = "Button in /components/modules/ui";
+Button.displayName = "Button in /components/modules/UI";
 export default Button;
