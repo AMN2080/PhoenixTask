@@ -29,7 +29,7 @@ const Heading: React.FC<Props> = ({
   size = "XS",
   weight = "800",
   align = "right",
-  className,
+  className = "",
 }) => {
   return createElement(
     as,

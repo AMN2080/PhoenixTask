@@ -11,10 +11,10 @@ interface Props {
   weight?: keyof typeof fontWeight;
 }
 const TagBadge: React.FC<Props> = ({
-  className,
   children,
   size,
   weight = "800",
+  className = "",
 }) => {
   return (
     <span

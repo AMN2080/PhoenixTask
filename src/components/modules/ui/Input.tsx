@@ -11,7 +11,14 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = forwardRef<HTMLInputElement, Props>(
   (
-    { className, connectorId, type = "text", label, textSize = "S", ...rest },
+    {
+      className = "",
+      connectorId,
+      type = "text",
+      label,
+      textSize = "S",
+      ...rest
+    },
     ref,
   ) => {
     return (

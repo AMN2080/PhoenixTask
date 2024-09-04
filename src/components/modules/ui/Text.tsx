@@ -15,7 +15,7 @@ const Text = ({
   colorVariant = "primary",
   size = "XS",
   weight = "400",
-  className,
+  className = "",,
 }: Props) => {
   return (
     <p

@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
   (
     {
       asChild, // without this prop, button will be a default button + className
-      className,
+      className = "",
       children,
       size = "default",
       variant = "primary",

@@ -18,7 +18,7 @@ const Link = ({
   children,
   to,
   underline = false,
-  className,
+  className = "",
   weight = "400",
   textSize = "XS",
   ...rest
