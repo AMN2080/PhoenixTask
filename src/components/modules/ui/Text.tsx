@@ -1,10 +1,11 @@
+import { ReactNode } from "react";
 import {
   fontSize,
   fontWeight,
-} from "../../../logic/SharedComponentStyles/sharedStyles";
+} from "@/logic/SharedComponentStyles/sharedStyles";
+
 interface Props {
-  children?: string | string[] | number;
-  colorVariant?: "primary" | "secondary";
+  children: ReactNode;
   textSize?: keyof typeof fontSize;
   weight?: keyof typeof fontWeight;
   className?: string;
@@ -20,8 +21,8 @@ const Text = ({
     <p
       className={`
         font-IranYekan text-neutral-content
-        ${fontSize[textSize]} 
-        ${fontWeight[weight]} 
+        ${fontSize[textSize]}
+        ${fontWeight[weight]}
         ${className}
       `}
     >

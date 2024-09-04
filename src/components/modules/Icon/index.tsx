@@ -1,4 +1,4 @@
-import { lazy, Suspense, SVGProps } from "react";
+import { lazy, Suspense, SVGProps, ComponentType } from "react";
 
 const iconMap = {
   Calendar: lazy(() => import("./icons/Calendar")),
@@ -22,7 +22,7 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 }
 
 const Icon = ({ iconName, ...rest }: IconProps) => {
-  const IconComponent = iconMap[iconName] as React.ComponentType<
+  const IconComponent = iconMap[iconName] as ComponentType<
     SVGProps<SVGSVGElement>
   >;
   if (!IconComponent) return null;

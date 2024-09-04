@@ -1,4 +1,4 @@
-import { createElement } from "react";
+import { createElement, ReactNode, FC } from "react";
 import { fontWeight } from "@/logic/SharedComponentStyles/sharedStyles";
 
 const TextAlign = {
@@ -16,14 +16,14 @@ const Size = {
 
 interface Props {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  children: React.ReactNode;
+  children: ReactNode;
   align?: keyof typeof TextAlign;
   size?: keyof typeof Size;
   weight?: keyof typeof fontWeight;
   className?: string;
 }
 
-const Heading: React.FC<Props> = ({
+const Heading: FC<Props> = ({
   as,
   children,
   size = "XS",
