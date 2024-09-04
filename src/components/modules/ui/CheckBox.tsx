@@ -14,7 +14,10 @@ const CheckBox = forwardRef<HTMLInputElement, Props>(
           <input
             id={connectorId}
             ref={ref}
-            className={`peer appearance-none w-full h-full checked:bg-brand-secondary checked:border-brand-primary transition-all duration-300 border border-solid border-gray-999 rounded-[4px] ${className}`}
+            className={`
+              appearance-none w-full h-full checked:bg-primary-content checked:border-primary transition-all duration-300 border border-solid border-gray-400 rounded-md
+              ${className}
+            `}
             type="checkbox"
             {...rest}
           />

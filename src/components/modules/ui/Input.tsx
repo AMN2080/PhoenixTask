@@ -17,14 +17,20 @@ const Input = forwardRef<HTMLInputElement, Props>(
     return (
       <Flex direction="col" gap="XS">
         <label
-          className={`font-IranYekan block text-neutral-content ${fontSize[textSize]}`}
+          className={`
+            font-IranYekan block text-neutral-content
+            ${fontSize[textSize]}
+          `}
           htmlFor={connectorId}
         >
           {label}
         </label>
         <input
           ref={ref}
-          className={`outline-none w-full p-1 rounded-md border h-10 ${className}`}
+          className={`
+            outline-none w-full p-1 rounded-md border h-10
+            ${className}
+          `}
           id={connectorId}
           type={type}
           {...rest}

@@ -19,10 +19,12 @@ const Text = ({
 }: Props) => {
   return (
     <p
-      className={`font-IranYekan 
-      ${fontSize[size]} 
-      ${fontWeight[weight]} 
-      ${className ?? ""}`}
+      className={`
+        font-IranYekan 
+        ${fontSize[size]} 
+        ${fontWeight[weight]} 
+        ${className}
+      `}
     >
       {children}
     </p>

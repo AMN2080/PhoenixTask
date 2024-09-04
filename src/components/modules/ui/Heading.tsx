@@ -34,7 +34,13 @@ const Heading: React.FC<Props> = ({
   return createElement(
     as,
     {
-      className: `font-IranYekan text-neutral-content ${Size[size]} ${fontWeight[weight]} ${TextAlign[align]} ${className}`,
+      className: `
+        font-IranYekan text-neutral-content
+        ${Size[size]}
+        ${fontWeight[weight]}
+        ${TextAlign[align]}
+        ${className}
+      `,
     },
     children,
   );

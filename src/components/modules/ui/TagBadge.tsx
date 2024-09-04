@@ -18,8 +18,10 @@ const TagBadge: React.FC<Props> = ({
 }) => {
   return (
     <span
-      className={`inline-flex items-center p-2 justify-center h-[24px] rounded-[14px] 
-      ${className ?? ""}`}
+      className={`
+        inline-flex items-center p-2 justify-center h-6 rounded-2xl
+        ${className}
+      `}
     >
       <Text weight={weight} size={size}>
         {children}

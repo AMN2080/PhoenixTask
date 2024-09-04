@@ -52,11 +52,11 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       <button
         ref={ref}
         className={`
+          font-IranYekan font-black rounded-md p-3
           ${variants[variant]}
           ${fontSize[textSize]}
           ${fontWeight[weight]}
           ${Size[size]}
-          font-IranYekan font-black rounded-md p-[10px]
           ${className}
         `}
         type={type}

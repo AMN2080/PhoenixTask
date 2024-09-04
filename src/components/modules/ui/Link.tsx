@@ -13,6 +13,7 @@ interface Props {
   underline?: boolean;
   textSize?: keyof typeof fontSize;
 }
+
 const Link = ({
   children,
   to,
@@ -25,7 +26,13 @@ const Link = ({
   return (
     <RouterLink
       href={to}
-      className={`font-IranYekan text-primary ${underline && "underline underline-offset-8"} ${fontWeight[weight]} ${fontSize[textSize]} ${className}`}
+      className={`
+        font-IranYekan text-primary
+        ${underline && "underline underline-offset-8"}
+        ${fontWeight[weight]}
+        ${fontSize[textSize]}
+        ${className}
+      `}
       {...rest}
     >
       {children}
