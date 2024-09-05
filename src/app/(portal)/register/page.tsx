@@ -4,18 +4,20 @@ import { useState } from "react";
 import { FieldError, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import Button from "@/components/modules/UI/Button";
-import CheckBox from "@/components/modules/UI/CheckBox";
-import Flex from "@/components/modules/UI/Flex/Flex";
-import Heading from "@/components/modules/UI/Heading";
-import Input from "@/components/modules/UI/Input";
-import Text from "@/components/modules/UI/Text";
 import ErrorMessage from "@/components/templates/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
 import { registrationSchema } from "@/logic/schemas/AuthSchema";
 import useAuth from "@/logic/hooks/useAuth";
 import { toast } from "react-toastify";
-import Link from "@/components/modules/UI/Link";
+import {
+  Button,
+  CheckBox,
+  Flex,
+  Heading,
+  Input,
+  Text,
+  Link,
+} from "@/components/modules/UI";
 
 type FormData = z.infer<typeof registrationSchema>;
 
