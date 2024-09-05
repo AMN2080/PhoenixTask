@@ -37,7 +37,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
       <section className="flex justify-center items-center z-50 -m-4">
         {children}
       </section>
-      <div className="authentication_bg absolute h-3/4 w-full bottom-0"></div>
+      <div className="absolute top-[450px] w-full h-screen z-[-1] skew-y-[-6deg] bg-gradient-to-l from-primary to-secondary"></div>
     </main>
   );
 }
