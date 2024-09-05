@@ -1,6 +1,5 @@
 import { forwardRef, InputHTMLAttributes } from "react";
-import { Flex } from "../";
-import Icon from "../Icon";
+import { Icon } from "../";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   connectorId: string;
@@ -9,7 +8,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 const CheckBox = forwardRef<HTMLInputElement, Props>(
   ({ connectorId, className = "", children, ...rest }, ref) => {
     return (
-      <Flex gap="XS" alignItems="center">
+      <div className="w-full flex items-center gap-2">
         <div className="w-5 h-5 relative">
           <input
             id={connectorId}
@@ -28,7 +27,7 @@ const CheckBox = forwardRef<HTMLInputElement, Props>(
         <label className="font-IranYekan" htmlFor={connectorId}>
           {children}
         </label>
-      </Flex>
+      </div>
     );
   },
 );

@@ -1,5 +1,4 @@
 import { forwardRef, InputHTMLAttributes } from "react";
-import { Flex } from "../";
 import { fontSize } from "../sharedStyles";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
@@ -22,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     ref,
   ) => {
     return (
-      <Flex direction="col" gap="XS">
+      <div className="w-full flex flex-col items-center gap-2">
         <label
           className={`
             font-IranYekan block text-neutral-content
@@ -42,7 +41,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           type={type}
           {...rest}
         />
-      </Flex>
+      </div>
     );
   },
 );
