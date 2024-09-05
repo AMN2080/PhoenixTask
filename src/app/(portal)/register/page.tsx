@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import Button from "@/components/modules/UI/Button";
 import CheckBox from "@/components/modules/UI/CheckBox";
-import Flex from "@/components/modules/UI/Flex";
+import Flex from "@/components/modules/UI/Flex/Flex";
 import Heading from "@/components/modules/UI/Heading";
 import Input from "@/components/modules/UI/Input";
 import Text from "@/components/modules/UI/Text";

@@ -1,6 +1,6 @@
 import { forwardRef, InputHTMLAttributes } from "react";
-import Flex from "./Flex";
-import { fontSize } from "./sharedStyles";
+import { Flex } from "../";
+import { fontSize } from "../sharedStyles";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   connectorId: string;

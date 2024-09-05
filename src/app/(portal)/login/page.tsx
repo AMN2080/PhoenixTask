@@ -5,16 +5,18 @@ import axios from "axios";
 import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import Button from "@/components/modules/UI/Button";
-import Flex from "@/components/modules/UI/Flex";
-import Heading from "@/components/modules/UI/Heading";
-import Input from "@/components/modules/UI/Input";
-import Link from "@/components/modules/UI/Link";
-import Text from "@/components/modules/UI/Text";
 import { loginSchema } from "@/logic/schemas/AuthSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useAuth from "@/logic/hooks/useAuth";
 import ErrorMessage from "@/components/templates/AuthError";
+import {
+  Button,
+  Flex,
+  Heading,
+  Input,
+  Link,
+  Text,
+} from "@/components/modules/UI";
 
 type FormData = z.infer<typeof loginSchema>;
 

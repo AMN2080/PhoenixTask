@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import Icon from "../Icon";
+import Icon from "../UI/Icon";
 import Link from "../UI/Link";
 import { useRouter } from "next/navigation";
 import Button from "../UI/Button";

@@ -1,5 +1,5 @@
 import { createElement, ReactNode, FC } from "react";
-import { fontWeight } from "./sharedStyles";
+import { fontWeight } from "../sharedStyles";
 
 const TextAlign = {
   right: "text-right",

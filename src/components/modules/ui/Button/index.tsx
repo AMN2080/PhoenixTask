@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import { fontWeight, fontSize } from "./sharedStyles";
+import { fontWeight, fontSize } from "../sharedStyles";
 
 // variant types of button
 const variants = {

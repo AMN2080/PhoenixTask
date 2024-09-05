@@ -1,9 +1,6 @@
 import { ReactNode } from "react";
 import RouterLink from "next/link";
-import {
-  fontWeight,
-  fontSize,
-} from "./sharedStyles";
+import { fontWeight, fontSize } from "../sharedStyles";
 
 interface Props {
   className?: string;

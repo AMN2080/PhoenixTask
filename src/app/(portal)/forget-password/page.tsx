@@ -6,7 +6,7 @@ import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Button from "@/components/modules/UI/Button";
-import Flex from "@/components/modules/UI/Flex";
+import Flex from "@/components/modules/UI/Flex/Flex";
 import Heading from "@/components/modules/UI/Heading";
 import Input from "@/components/modules/UI/Input";
 import Link from "@/components/modules/UI/Link";

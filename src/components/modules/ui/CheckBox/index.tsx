@@ -1,6 +1,6 @@
 import { forwardRef, InputHTMLAttributes } from "react";
+import { Flex } from "../";
 import Icon from "../Icon";
-import Flex from "./Flex";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   connectorId: string;

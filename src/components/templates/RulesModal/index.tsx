@@ -1,6 +1,6 @@
-import Icon from "@/components/modules/Icon";
+import Icon from "@/components/modules/UI/Icon";
 import Button from "@/components/modules/UI/Button";
-import Flex from "@/components/modules/UI/Flex";
+import Flex from "@/components/modules/UI/Flex/Flex";
 import Heading from "@/components/modules/UI/Heading";
 import Text from "@/components/modules/UI/Text";
 
