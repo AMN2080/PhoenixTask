@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import ErrorMessage from "@/components/templates/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
-import { registrationSchema } from "@/logic/schemas/AuthSchema";
+import { registerSchema } from "@/logic/schemas/AuthSchema";
 import useAuth from "@/logic/hooks/useAuth";
 import { toast } from "react-toastify";
 import {
@@ -19,7 +19,7 @@ import {
   Link,
 } from "@/components/modules/UI";
 
-type FormData = z.infer<typeof registrationSchema>;
+type FormData = z.infer<typeof registerSchema>;
 
 export default function RegisterPage() {
   const { signUp, isLoading } = useAuth();
@@ -28,7 +28,7 @@ export default function RegisterPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(registrationSchema) });
+  } = useForm<FormData>({ resolver: zodResolver(registerSchema) });
 
   const onSubmit = async (data: FormData) => {
     try {

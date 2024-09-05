@@ -1,13 +1,11 @@
 "use client";
 
 import { z } from "zod";
-import axios from "axios";
 import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { loginSchema } from "@/logic/schemas/AuthSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import useAuth from "@/logic/hooks/useAuth";
 import ErrorMessage from "@/components/templates/AuthError";
 import {
   Button,
