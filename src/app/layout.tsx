@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+import Provider from "@/logic/store/Provider";
 import "./globals.css";
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
 
 export const metadata: Metadata = {
   title: "Phoenix Task",
   description: "a web-app for everything",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
-    <html lang="fa">
-      <body>{children}</body>
+    <html dir="rtl" lang="fa" data-theme="default">
+      <body className="font-IranYekan">
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

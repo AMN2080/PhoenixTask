@@ -9,8 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        "yekan-bold": "IR-Yekan-bold",
-        "yekan-heading": "IR-Yekan-heading",
+        IranYekan: ["IRANYekan", "sans-serif"],
       },
     },
   },
@@ -18,18 +17,18 @@ const config: Config = {
   daisyui: {
     themes: [
       {
-        mytheme: {
-          primary: "#ff9800",
-          "primary-content": "#fff",
-          secondary: "#fbbf24",
-          background: "#333333",
-          accent: "#ff5722",
-          neutral: "#757575",
-          "base-100": "#f5f5f5",
-          info: "#2196f3",
-          success: "#4caf50",
-          warning: "#ffc107",
-          error: "#f44336",
+        default: {
+          primary: "#208D8E",
+          "primary-content": "#C2F7FA",
+          secondary: "#12B886",
+          "secondary-content": "#C3FAE8",
+          neutral: "#D3D3D3",
+          "neutral-content": "#1E1E1E",
+          "base-100": "#fff",
+          "base-200": "#f5f5f5",
+          "base-300": "#dedede",
+          "base-content": "#1E1E1E",
+          error: "#FA5252",
         },
       },
     ],
