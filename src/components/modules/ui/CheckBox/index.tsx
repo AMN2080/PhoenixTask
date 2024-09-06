@@ -1,5 +1,5 @@
 import { forwardRef, InputHTMLAttributes } from "react";
-import { Icon } from "../";
+import Icon from "../Icon";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   connectorId: string;
