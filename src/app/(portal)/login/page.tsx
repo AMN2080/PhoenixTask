@@ -1,10 +1,9 @@
 "use client";
 
-import { z } from "zod";
 import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { loginSchema } from "@/logic/schemas/AuthSchema";
+import { loginSchema, loginType } from "@/logic/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/components/templates/AuthError";
 import {
@@ -16,18 +15,16 @@ import {
   Text,
 } from "@/components/modules/UI";
 
-type FormData = z.infer<typeof loginSchema>;
-
 const LoginForm = () => {
-  const router = useRouter();
-  const { login, isLoading } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(loginSchema) });
+  } = useForm<loginType>({ resolver: zodResolver(loginSchema) });
 
-  const onSubmit = async (data: FormData) => {
+  const router = useRouter();
+  const { login, isLoading } = useAuth();
+  const onSubmit = async (data: loginType) => {
     try {
       const status = await login(data);
       if (status === 200)

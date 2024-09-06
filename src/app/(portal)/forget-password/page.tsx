@@ -1,11 +1,13 @@
 "use client";
 
-import { z } from "zod";
 import axios from "axios";
 import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import { sendResetLinkSchema } from "@/logic/schemas/AuthSchema";
+import {
+  forgotPasswordSchema,
+  forgotPasswordType,
+} from "@/logic/schemas/forgotPasswordSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useAuth from "@/logic/hooks/useAuth";
 import ErrorMessage from "@/components/templates/AuthError";
@@ -18,8 +20,6 @@ import {
   Link,
 } from "@/components/modules/UI";
 
-type FormData = z.infer<typeof sendResetLinkSchema>;
-
 const ForgetForm = () => {
   const router = useRouter();
   const { login, isLoading } = useAuth();
@@ -27,7 +27,9 @@ const ForgetForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(sendResetLinkSchema) });
+  } = useForm<forgotPasswordType>({
+    resolver: zodResolver(forgotPasswordSchema),
+  });
 
   const onSubmit = async (data: FormData) => {
     try {

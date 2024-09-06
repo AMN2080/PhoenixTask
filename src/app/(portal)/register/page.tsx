@@ -3,10 +3,9 @@
 import { useState } from "react";
 import { FieldError, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import ErrorMessage from "@/components/templates/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
-import { registerSchema } from "@/logic/schemas/AuthSchema";
+import { registerSchema, registerType } from "@/logic/schemas/registerSchema";
 import useAuth from "@/logic/hooks/useAuth";
 import { toast } from "react-toastify";
 import {
@@ -19,8 +18,6 @@ import {
   Link,
 } from "@/components/modules/UI";
 
-type FormData = z.infer<typeof registerSchema>;
-
 export default function RegisterPage() {
   const { signUp, isLoading } = useAuth();
   const [showModal, setShowModal] = useState(false);
@@ -28,9 +25,9 @@ export default function RegisterPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ resolver: zodResolver(registerSchema) });
+  } = useForm<registerType>({ resolver: zodResolver(registerSchema) });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: registerType) => {
     try {
       await signUp(data);
       toast.success(
