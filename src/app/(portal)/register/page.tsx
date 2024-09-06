@@ -1,12 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldError, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/components/templates/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
 import { registerSchema, registerType } from "@/logic/schemas/registerSchema";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { toast } from "react-toastify";
+import {
+  register as registerUser,
+  reset,
+} from "@/logic/services/auth/authSlice";
 import {
   Button,
   CheckBox,
@@ -18,7 +24,6 @@ import {
 } from "@/components/modules/UI";
 
 export default function RegisterPage() {
-  const { signUp, isLoading } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const {
     register,
@@ -26,25 +31,46 @@ export default function RegisterPage() {
     formState: { errors },
   } = useForm<registerType>({ resolver: zodResolver(registerSchema) });
 
-  const onSubmit = async (data: registerType) => {
-    try {
-      await signUp(data);
-      toast.success(
-        <Text weight="500" textSize="M">
-          👌حساب کاربری با موفقیت ایجاد شد
-        </Text>,
-      );
-    } catch (error) {
-      const { usernameError, emailError } = error as {
-        emailError: string;
-        usernameError: string;
-      };
-      toast.error(
-        <Text weight="500" textSize="M">
-          {usernameError || emailError}
-        </Text>,
-      );
+  const { isSuccess, isLoading, isError, message } = useAppSelector(
+    (state) => state.auth,
+  );
+
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isError) {
+      toast.dismiss();
+      toast.error(`${message}`);
+      dispatch(reset());
     }
+    if (isSuccess) {
+      toast.dismiss();
+      toast.success(`ثبت نام با موفقیت انجام شد 🎉`, {
+        autoClose: 1000,
+        rtl: true,
+      });
+      router.push("/login");
+      dispatch(reset());
+    }
+  }, [isSuccess, isError, message, isLoading, router, dispatch]);
+
+  const onSubmit = async ({
+    username,
+    email,
+    password,
+    confirmPassword,
+    rules,
+  }: registerType) => {
+    dispatch(
+      registerUser({
+        username: typeof username === "string" ? username.toLowerCase() : "",
+        email: typeof email === "string" ? email.toLowerCase() : "",
+        password,
+        confirmPassword,
+        rules,
+      }),
+    );
   };
 
   const handleOpenModal = () => {
@@ -87,8 +113,17 @@ export default function RegisterPage() {
           />
           <ErrorMessage error={errors.password} />
 
+          <Input
+            className={getErrorStyles(errors.password)}
+            connectorId="confirmPassword"
+            label="تکرار رمز عبور"
+            type="password"
+            {...register("confirmPassword")}
+          />
+          <ErrorMessage error={errors.confirmPassword} />
+
           <CheckBox
-            {...register("termsAndCondition")}
+            {...register("rules")}
             className={getErrorStyles(errors.termsAndCondition)}
             connectorId="rules"
           >
@@ -101,11 +136,20 @@ export default function RegisterPage() {
               را می‌پذیرم.
             </span>
           </CheckBox>
-          <ErrorMessage error={errors.termsAndCondition} />
+          <ErrorMessage error={errors.rules} />
 
           <RulesModal visible={showModal} onClose={handleCloseModal} />
-          <Button disabled={isLoading} type="submit" size="full">
-            {isLoading ? "در حال ارسال اطلاعات..." : "ثبت‌نام"}
+          <Button
+            disabled={isLoading}
+            type="submit"
+            size="full"
+            className="relative h-11"
+          >
+            {isLoading ? (
+              <span className="loading loading-dots loading-lg absolute left-[45%] -bottom-0 text-white" />
+            ) : (
+              "ثبت‌نام"
+            )}
           </Button>
         </Flex>
       </form>

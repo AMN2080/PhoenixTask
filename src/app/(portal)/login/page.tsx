@@ -99,8 +99,17 @@ const LoginForm = () => {
             </Flex>
           </Flex>
           <Flex gap="M" direction="col">
-            <Button disabled={isLoading} type="submit" size="full">
-              {isLoading ? "در حال بررسی..." : "ورود"}
+            <Button
+              disabled={isLoading}
+              type="submit"
+              size="full"
+              className="relative h-11"
+            >
+              {isLoading ? (
+                <span className="loading loading-dots loading-lg absolute left-[45%] -bottom-0 text-white" />
+              ) : (
+                "ورود"
+              )}
             </Button>
             <Flex gap="XS" justifyContent="center" alignItems="center">
               <Text textSize="M" weight="500">
