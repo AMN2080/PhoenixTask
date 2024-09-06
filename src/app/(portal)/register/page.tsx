@@ -124,7 +124,7 @@ export default function RegisterPage() {
 
           <CheckBox
             {...register("rules")}
-            className={getErrorStyles(errors.termsAndCondition)}
+            className={getErrorStyles(errors.rules)}
             connectorId="rules"
           >
             <span>
