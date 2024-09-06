@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Provider from "@/logic/store/Provider";
 import "./globals.css";
 
 interface RootLayoutProps {
@@ -13,7 +14,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
   return (
     <html dir="rtl" lang="fa" data-theme="default">
-      <body className="font-IranYekan">{children}</body>,
+      <body className="font-IranYekan">
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

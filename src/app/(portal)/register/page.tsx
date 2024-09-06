@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/components/templates/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
 import { registerSchema, registerType } from "@/logic/schemas/registerSchema";
-import useAuth from "@/logic/hooks/useAuth";
 import { toast } from "react-toastify";
 import {
   Button,

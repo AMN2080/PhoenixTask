@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userService from "./userService";
-import { FieldValues } from "../../../pages/profile/PersonalInfo";
+import { personalInfoType } from "@/logic/schemas/personalInfo";
 import { logOut } from "../auth/authSlice";
 import { AxiosError } from "axios";
 
@@ -27,20 +27,34 @@ type initialStateType = {
   theme: string;
 };
 
+// Helper function to safely access localStorage
+const getFromLocalStorage = (key: string) => {
+  if (typeof window !== "undefined") {
+    return JSON.parse(localStorage.getItem(key) as string);
+  }
+  return null;
+};
+
+const getThemeFromLocalStorage = () => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("theme") || "light"; // Default theme
+  }
+  return "light"; // Default theme when localStorage is unavailable (SSR)
+};
+
 const initialState: initialStateType = {
-  user: JSON.parse(localStorage.getItem("user") as string) || null,
-  // user: null,
+  user: getFromLocalStorage("user") || null,
   isLoading: false,
   isError: false,
   isSuccess: false,
-  theme: localStorage.getItem("theme") as string,
+  theme: getThemeFromLocalStorage(),
   message: "",
 };
 
 // updateUserById
 export const updateUserById = createAsyncThunk(
   "user/updateUserById",
-  async (userData: FieldValues, thunkAPI) => {
+  async (userData: personalInfoType, thunkAPI) => {
     try {
       return await userService.updateUserById(userData);
     } catch (error: unknown) {
@@ -50,10 +64,8 @@ export const updateUserById = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
-
-
 
 export const fetchAddedMemberWorkspace = createAsyncThunk(
   "user/fetchAddedMemberWorkspace",
@@ -67,7 +79,7 @@ export const fetchAddedMemberWorkspace = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 const userSlice = createSlice({
@@ -83,6 +95,9 @@ const userSlice = createSlice({
     },
     setTheme: (state, action) => {
       state.theme = action.payload;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("theme", action.payload); // Save theme to localStorage
+      }
     },
   },
   extraReducers: (builder) => {

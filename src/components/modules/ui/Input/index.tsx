@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
     ref,
   ) => {
     return (
-      <div className="w-full flex flex-col items-center gap-2">
+      <div className="w-full flex flex-col gap-2">
         <label
           className={`
             font-IranYekan block text-neutral-content

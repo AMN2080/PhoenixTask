@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
-import { FieldValues } from "../../../pages/auth/Register";
+import { registerType } from "@/logic/schemas/registerSchema";
 import { AxiosError } from "axios";
+import { loginType } from "@/logic/schemas/loginSchema";
 
 type User = {
   _id: string;
@@ -19,9 +20,16 @@ type initialStateType = {
   message: unknown;
 };
 
+const getFromLocalStorage = (key: string) => {
+  if (typeof window !== "undefined") {
+    return JSON.parse(localStorage.getItem(key) as string);
+  }
+  return null;
+};
+
 const initialState: initialStateType = {
-  user: JSON.parse(localStorage.getItem("user") as string) || null,
-  authToken: JSON.parse(localStorage.getItem("authToken") as string) || null,
+  user: getFromLocalStorage("user") || null,
+  authToken: getFromLocalStorage("authToken") || null,
   isLoading: false,
   isError: false,
   isSuccess: false,
@@ -31,7 +39,7 @@ const initialState: initialStateType = {
 // Register user
 export const register = createAsyncThunk(
   "Auth/register",
-  async (userData: FieldValues, thunkAPI) => {
+  async (userData: registerType, thunkAPI) => {
     try {
       return await authService.register(userData);
     } catch (error: unknown) {
@@ -41,13 +49,13 @@ export const register = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Login user
 export const login = createAsyncThunk(
   "Auth/login",
-  async (userData: FieldValues, thunkAPI) => {
+  async (userData: loginType, thunkAPI) => {
     try {
       return await authService.login(userData);
     } catch (error: unknown) {
@@ -58,13 +66,13 @@ export const login = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Forgot Password
 export const forgot = createAsyncThunk(
   "Auth/forget-password",
-  async (userEmail: FieldValues, thunkAPI) => {
+  async (userEmail: registerType, thunkAPI) => {
     try {
       return await authService.forgot(userEmail);
     } catch (error: unknown) {
@@ -75,7 +83,7 @@ export const forgot = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 const authSlice = createSlice({
@@ -92,8 +100,10 @@ const authSlice = createSlice({
 
     // Logout
     logOut: (state) => {
-      localStorage.removeItem("authToken");
-      localStorage.removeItem("user");
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("user");
+      }
       state.user = null;
       state.authToken = null;
     },

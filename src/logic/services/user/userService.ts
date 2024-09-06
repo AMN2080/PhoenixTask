@@ -1,12 +1,12 @@
 import AXIOS from "../utils/AXIOS";
-import { FieldValues } from "../../../pages/profile/PersonalInfo";
-import store from "../../store/store";
-import { updateUser } from "../../auth/authSlice";
+import { personalInfoType } from "@/logic/schemas/personalInfo";
+import store from "@/logic/store/store";
+import { updateUser } from "../auth/authSlice";
 
 const API_URL = "/api/users/";
 
 // updateUserById
-const updateUserById = async (userData: FieldValues) => {
+const updateUserById = async (userData: personalInfoType) => {
   const id = JSON.parse(localStorage.getItem("user") as string)?._id;
   const response = await AXIOS.put(API_URL + id, userData);
   if (response.data) {

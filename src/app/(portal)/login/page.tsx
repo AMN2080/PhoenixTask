@@ -1,11 +1,14 @@
 "use client";
 
+import { useEffect } from "react";
 import { FieldError, useForm } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { loginSchema, loginType } from "@/logic/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/components/templates/AuthError";
+import { login as loginUser, reset } from "@/logic/services/auth/authSlice";
 import {
   Button,
   Flex,
@@ -23,27 +26,49 @@ const LoginForm = () => {
   } = useForm<loginType>({ resolver: zodResolver(loginSchema) });
 
   const router = useRouter();
-  const { login, isLoading } = useAuth();
-  const onSubmit = async (data: loginType) => {
-    try {
-      const status = await login(data);
-      if (status === 200)
-        toast.success(
-          <Text weight="500" textSize="M">
-            🎉 خوش اومدی!
-          </Text>,
-        );
+  const searchParams = useSearchParams;
 
-      router.push("/:workspaceId/:projectId");
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response?.status === 401) {
-        toast.error(
-          <Text weight="500" textSize="M">
-            نام کاربری یا رمز عبور اشتباهه
-          </Text>,
-        );
-      }
+  const dispatch = useAppDispatch();
+  const { isSuccess, isLoading, isError, message } = useAppSelector(
+    (state) => state.auth,
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.dismiss();
+      toast.error(
+        `${
+          message === "Invalid email/username or password"
+            ? "نام کاربری/ایمیل یا رمز عبور نادرست است."
+            : message
+        } ❗`,
+      );
+      dispatch(reset());
     }
+    if (isSuccess) {
+      toast.dismiss();
+      toast.success(` خوش آمدید 🎉`, { autoClose: 2000, rtl: true });
+      dispatch(reset());
+    }
+
+    const redirect = searchParams.toString().includes("redirect")
+      ? searchParams.toString().includes("redirect")
+      : null;
+    if (isSuccess && redirect) {
+      const redirectUrl = Array.isArray(redirect) ? redirect[0] : redirect;
+      router.push(redirectUrl);
+    } else if (isSuccess) {
+      router.push("/listview");
+    }
+  }, [isSuccess, isError, isLoading, message, router, dispatch, searchParams]);
+
+  const onSubmit = (data: loginType) => {
+    dispatch(
+      loginUser({
+        username: data.username,
+        password: data.password,
+      }),
+    );
   };
 
   return (
