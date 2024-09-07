@@ -13,6 +13,14 @@ public sealed class WorkSpaceMember : Member
         WorkSpace = workSpace;
         WorkSpaceId = workSpace.Id;
     }
+    /// <summary>
+    /// efcore
+    /// </summary>
+#pragma warning disable
+    public WorkSpaceMember()
+    {
+        
+    }
     public Guid WorkSpaceId { get; private set; }
     public WorkSpace WorkSpace { get; private set; }
     public static WorkSpaceMember Create(WorkSpace workSpace, User user, params Role[] roles)

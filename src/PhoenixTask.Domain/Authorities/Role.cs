@@ -9,5 +9,4 @@ public class Role : Enumeration<Role>
     public Role() { }
     public static readonly Role Default = new(1, nameof(Default));
     public ICollection<Permission> Permissions { get; set; } = [];
-    public ICollection<User> Users { get; set; } = [];
 }

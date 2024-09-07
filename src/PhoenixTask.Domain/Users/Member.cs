@@ -4,7 +4,7 @@ using PhoenixTask.Domain.Authorities;
 
 namespace PhoenixTask.Domain.Users;
 
-public abstract class Member : AggregateRoot , IAuditableEntity
+public abstract class Member : AggregateRoot , IAuditableEntity , ISoftDeletableEntity
 {
     protected Member(User user,ICollection<Role> roles)
         :base(Guid.NewGuid())
@@ -32,6 +32,11 @@ public abstract class Member : AggregateRoot , IAuditableEntity
     public DateTime CreatedOnUtc { get; }
 
     public DateTime? ModifiedOnUtc { get; }
+
+    public DateTime? DeletedOnUtc { get; }
+
+    public bool Deleted { get; }
+
     public void Update(params Role[] roles)
     {
         Roles = roles;

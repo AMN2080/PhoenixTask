@@ -13,6 +13,14 @@ public sealed class ProjectMember : Member
         Project = project;
         ProjectId = project.Id;
     }
+    /// <summary>
+    /// efcore
+    /// </summary>
+    #pragma warning disable
+    public ProjectMember()
+    {
+        
+    }
     public Guid ProjectId { get; private set; }
     public Project Project { get; private set; }
 
