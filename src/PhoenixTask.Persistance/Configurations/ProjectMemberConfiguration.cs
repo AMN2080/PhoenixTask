@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PhoenixTask.Domain.Workspaces;
+using PhoenixTask.Domain.Projects;
 
 namespace PhoenixTask.Persistance.Configurations;
-internal sealed class WorkSpaceMemberConfiguration : IEntityTypeConfiguration<WorkSpaceMember>
+
+internal sealed class ProjectMemberConfiguration : IEntityTypeConfiguration<ProjectMember>
 {
-    public void Configure(EntityTypeBuilder<WorkSpaceMember> builder)
+    public void Configure(EntityTypeBuilder<ProjectMember> builder)
     {
         builder.HasKey(x => x.Id);
 
