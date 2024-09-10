@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using PhoenixTask.Application;
 using PhoenixTask.Infrastructure;
+using PhoenixTask.Infrastructure.Authentication;
 using PhoenixTask.Persistance;
 using PhoenixTask.WebApi.Middleware;
 using System.Reflection;
@@ -26,7 +28,7 @@ if (runFromContainer)
     });
     #endregion
 }
-
+builder.Configuration.AddUserSecrets(Assembly.GetExecutingAssembly());
 // Add services to the container.
 builder.Services
     .AddApplication()
@@ -75,6 +77,9 @@ builder.Services.AddSwaggerGen(swaggerGenOptions =>
                 });
 });
 
+builder.Services.AddAuthorization();
+builder.Services.AddSingleton<IAuthorizationHandler, PermissionAuthorzationHandler>();
+builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
 var app = builder.Build();
 
 app.UseSwagger();

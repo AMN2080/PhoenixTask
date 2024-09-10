@@ -1,6 +1,6 @@
-﻿namespace PhoenixTask.Persistance.Infrastructure;
+﻿namespace PhoenixTask.Domain.Authorities;
 
-public enum Permission
+public enum PermissionType
 {
     // CreateWorkSpace = 1,
     UpdateWorkSpace = 2,

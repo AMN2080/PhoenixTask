@@ -14,49 +14,49 @@ internal sealed class RolePermissionConfiguration : IEntityTypeConfiguration<Rol
 
         #region AdminRole
 
-            Create(Role.Admin, Infrastructure.Permission.UpdateWorkSpace),
-            Create(Role.Admin, Infrastructure.Permission.DeleteWorkSpace),
-            Create(Role.Admin, Infrastructure.Permission.ReadWorkSpace),
-            Create(Role.Admin, Infrastructure.Permission.ManageUsers),
-            Create(Role.Admin, Infrastructure.Permission.CreateProject),
-            Create(Role.Admin, Infrastructure.Permission.UpdateProject),
-            Create(Role.Admin, Infrastructure.Permission.DeleteProject),
-            Create(Role.Admin, Infrastructure.Permission.ReadProject),
-            Create(Role.Admin, Infrastructure.Permission.CreateBoard),
-            Create(Role.Admin, Infrastructure.Permission.UpdateBoard),
-            Create(Role.Admin, Infrastructure.Permission.DeleteBoard),
-            Create(Role.Admin, Infrastructure.Permission.ReadBoard),
-            Create(Role.Admin, Infrastructure.Permission.ManageAdmin),
+            Create(Role.Admin, PermissionType.UpdateWorkSpace),
+            Create(Role.Admin, PermissionType.DeleteWorkSpace),
+            Create(Role.Admin, PermissionType.ReadWorkSpace),
+            Create(Role.Admin, PermissionType.ManageUsers),
+            Create(Role.Admin, PermissionType.CreateProject),
+            Create(Role.Admin, PermissionType.UpdateProject),
+            Create(Role.Admin, PermissionType.DeleteProject),
+            Create(Role.Admin, PermissionType.ReadProject),
+            Create(Role.Admin, PermissionType.CreateBoard),
+            Create(Role.Admin, PermissionType.UpdateBoard),
+            Create(Role.Admin, PermissionType.DeleteBoard),
+            Create(Role.Admin, PermissionType.ReadBoard),
+            Create(Role.Admin, PermissionType.ManageAdmin),
 
         #endregion
 
         #region ProjectManagerRole
 
-        Create(Role.ProjectManager, Infrastructure.Permission.CreateProject),
-        Create(Role.ProjectManager, Infrastructure.Permission.UpdateProject),
-        Create(Role.ProjectManager, Infrastructure.Permission.DeleteProject),
-        Create(Role.ProjectManager, Infrastructure.Permission.ReadProject),
-        Create(Role.ProjectManager, Infrastructure.Permission.ManageUsers),
-        Create(Role.ProjectManager, Infrastructure.Permission.CreateBoard),
-        Create(Role.ProjectManager, Infrastructure.Permission.UpdateBoard),
-        Create(Role.ProjectManager, Infrastructure.Permission.DeleteBoard),
-        Create(Role.ProjectManager, Infrastructure.Permission.ReadBoard),
+        Create(Role.ProjectManager, PermissionType.CreateProject),
+        Create(Role.ProjectManager, PermissionType.UpdateProject),
+        Create(Role.ProjectManager, PermissionType.DeleteProject),
+        Create(Role.ProjectManager, PermissionType.ReadProject),
+        Create(Role.ProjectManager, PermissionType.ManageUsers),
+        Create(Role.ProjectManager, PermissionType.CreateBoard),
+        Create(Role.ProjectManager, PermissionType.UpdateBoard),
+        Create(Role.ProjectManager, PermissionType.DeleteBoard),
+        Create(Role.ProjectManager, PermissionType.ReadBoard),
 
         #endregion
 
         #region TeamMemberRole
 
-        Create(Role.TeamMember, Infrastructure.Permission.ReadWorkSpace),
-        Create(Role.TeamMember, Infrastructure.Permission.ReadProject),
-        Create(Role.TeamMember, Infrastructure.Permission.ReadBoard),
+        Create(Role.TeamMember, PermissionType.ReadWorkSpace),
+        Create(Role.TeamMember, PermissionType.ReadProject),
+        Create(Role.TeamMember, PermissionType.ReadBoard),
 
         #endregion
 
         #region ViewerRole
 
-        Create(Role.Viewer, Infrastructure.Permission.ReadWorkSpace),
-        Create(Role.Viewer, Infrastructure.Permission.ReadProject),
-        Create(Role.Viewer, Infrastructure.Permission.ReadBoard)
+        Create(Role.Viewer, PermissionType.ReadWorkSpace),
+        Create(Role.Viewer, PermissionType.ReadProject),
+        Create(Role.Viewer, PermissionType.ReadBoard)
 
         #endregion
             );
@@ -64,7 +64,7 @@ internal sealed class RolePermissionConfiguration : IEntityTypeConfiguration<Rol
 
     static RolePermission Create(
         Role role,
-        Infrastructure.Permission permission)
+        PermissionType permission)
         => new RolePermission
         {
             RoleId = role.Value,

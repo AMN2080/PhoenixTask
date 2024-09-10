@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PhoenixTask.Application.Abstractions.Data;
+using PhoenixTask.Application.Authentication;
 using PhoenixTask.Domain.Projects;
 using PhoenixTask.Domain.Users;
 using PhoenixTask.Domain.Workspaces;
@@ -33,6 +34,10 @@ public static class DependencyInjection
         services.AddScoped<IProjectRepository, ProjectRepository>();
 
         services.AddScoped<IBoardRepository, BoardRepository>();
+
+        services.AddScoped<IPermissionService, PermissionService>();
+
+        services.AddScoped<IWorkSpaceMemberRepository, WorkSpaceMemberRepository>();
 
         return services;
     }

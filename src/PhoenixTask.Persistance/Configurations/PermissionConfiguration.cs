@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PhoenixTask.Domain.Authorities;
 
 namespace PhoenixTask.Persistance.Configurations;
 
@@ -9,7 +10,7 @@ internal sealed class PermissionConfiguration : IEntityTypeConfiguration<Domain.
     {
         builder.HasKey(x => x.Id);
 
-        var permissions = Enum.GetValues<Infrastructure.Permission>()
+        var permissions = Enum.GetValues<PermissionType>()
             .Select(p => new Domain.Authorities.Permission
             {
                 Id = (int)p,
