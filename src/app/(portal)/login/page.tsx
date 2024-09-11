@@ -58,7 +58,7 @@ const LoginForm = () => {
       const redirectUrl = Array.isArray(redirect) ? redirect[0] : redirect;
       router.push(redirectUrl);
     } else if (isSuccess) {
-      router.push("/listview");
+      router.push("/list");
     }
   }, [isSuccess, isError, isLoading, message, router, dispatch, searchParams]);
 

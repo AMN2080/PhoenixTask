@@ -20,7 +20,6 @@ import {
   Heading,
   Input,
   Text,
-  Link,
 } from "@/components/modules/UI";
 
 export default function RegisterPage() {
@@ -55,20 +54,12 @@ export default function RegisterPage() {
     }
   }, [isSuccess, isError, message, isLoading, router, dispatch]);
 
-  const onSubmit = async ({
-    username,
-    email,
-    password,
-    confirmPassword,
-    rules,
-  }: registerType) => {
+  const onSubmit = async ({ username, email, password }: registerType) => {
     dispatch(
       registerUser({
-        username: typeof username === "string" ? username.toLowerCase() : "",
-        email: typeof email === "string" ? email.toLowerCase() : "",
+        username,
+        email,
         password,
-        confirmPassword,
-        rules,
       }),
     );
   };

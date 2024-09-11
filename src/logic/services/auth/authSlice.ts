@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
-import { registerType } from "@/logic/schemas/registerSchema";
+// import { registerType } from "@/logic/schemas/registerSchema";
+// import { loginType } from "@/logic/schemas/loginSchema";
+import { registerType, loginType, forgetPasswordType } from "./authType";
 import { AxiosError } from "axios";
-import { loginType } from "@/logic/schemas/loginSchema";
 
 type User = {
   _id: string;
@@ -12,7 +13,8 @@ type User = {
 };
 
 type initialStateType = {
-  authToken: { accessToken: string; refreshToken: string } | null;
+  // authToken: { accessToken: string; refreshToken: string } | null;
+  authToken: { access: string; refresh: string } | null;
   user: User | null;
   isLoading: boolean;
   isError: boolean;
@@ -58,7 +60,10 @@ export const login = createAsyncThunk(
   "Auth/login",
   async (userData: loginType, thunkAPI) => {
     try {
-      return await authService.login(userData);
+      const test = await authService.login(userData);
+      console.log(test);
+
+      return test;
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         const message =
@@ -71,11 +76,11 @@ export const login = createAsyncThunk(
 );
 
 // Forgot Password
-export const forgot = createAsyncThunk(
+export const forgotPassword = createAsyncThunk(
   "Auth/forget-password",
-  async (userEmail: registerType, thunkAPI) => {
+  async (email: forgetPasswordType, thunkAPI) => {
     try {
-      return await authService.forgot(userEmail);
+      return await authService.forgotPassword(email);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         const message =
@@ -142,9 +147,13 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        const { accessToken, refreshToken } = action.payload.data;
-        state.authToken = { accessToken, refreshToken };
-        state.user = action.payload.data.toBeSendUserData;
+        console.log(action.payload);
+
+        // const { accessToken, refreshToken } = action.payload.data;
+        const { access, refresh } = action.payload;
+        state.authToken = { access, refresh };
+        // state.user = action.payload.data.toBeSendUserData;
+        state.user = action.payload;
         state.message = action.payload.message;
       })
       .addCase(login.rejected, (state, action) => {
@@ -153,15 +162,15 @@ const authSlice = createSlice({
         state.message = action.payload;
       })
       // Forgot
-      .addCase(forgot.pending, (state) => {
+      .addCase(forgotPassword.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(forgot.fulfilled, (state, action) => {
+      .addCase(forgotPassword.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.message = action.payload.message;
       })
-      .addCase(forgot.rejected, (state, action) => {
+      .addCase(forgotPassword.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

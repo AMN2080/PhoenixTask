@@ -1,6 +1,6 @@
 "use client";
 
-import axios from "axios";
+import { useEffect } from "react";
 import { FieldError, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -9,20 +9,18 @@ import {
   forgotPasswordType,
 } from "@/logic/schemas/forgotPasswordSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import useAuth from "@/logic/hooks/useAuth";
 import ErrorMessage from "@/components/templates/AuthError";
 import {
   Button,
   Flex,
   Heading,
   Input,
-  Text,
-  Link,
 } from "@/components/modules/UI";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { forgotPassword, reset } from "@/logic/services/auth/authSlice";
 
 const ForgetForm = () => {
   const router = useRouter();
-  const { login, isLoading } = useAuth();
   const {
     register,
     handleSubmit,
@@ -31,26 +29,42 @@ const ForgetForm = () => {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
-  const onSubmit = async (data: FormData) => {
-    try {
-      const status = await login(data);
-      if (status === 200)
-        toast.success(
-          <Text weight="500" textSize="M">
-            🎉 خوش اومدی!
-          </Text>,
-        );
+  const dispatch = useAppDispatch();
+  const { isSuccess, isLoading, isError, message } = useAppSelector(
+    (state) => state.auth,
+  );
 
-      router.push("/:workspaceId/:projectId");
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response?.status === 401) {
-        toast.error(
-          <Text weight="500" textSize="M">
-            نام کاربری یا رمز عبور اشتباهه
-          </Text>,
-        );
-      }
+  useEffect(() => {
+    if (isError) {
+      toast.dismiss();
+      toast.error(message as string);
+      dispatch(reset());
     }
+    if (isSuccess) {
+      toast.dismiss();
+      toast.success(`ایمیل خود را بررسی کنید 🎉`, {
+        rtl: true,
+      });
+      router.push("/forget-password");
+      dispatch(reset());
+    }
+  }, [isSuccess, isError, message, isLoading, router, dispatch]);
+
+  const onSubmit = async ({ email }: forgotPasswordType) => {
+    dispatch(forgotPassword({ email }));
+    // if (status === 200)
+    //   toast.success(
+    //     <Text weight="500" textSize="M">
+    //       🎉 خوش اومدی!
+    //     </Text>,
+    //   );
+    //   if (axios.isAxiosError(error) && error.response?.status === 401) {
+    //     toast.error(
+    //       <Text weight="500" textSize="M">
+    //         نام کاربری یا رمز عبور اشتباهه
+    //       </Text>,
+    //     );
+    //   }
   };
 
   return (
