@@ -10,6 +10,7 @@ public sealed class SendWelcomeOnRegisterEvent(IEmailNotificationService emailNo
     private readonly IEmailNotificationService _emailNotificationService = emailNotificationService;
     public async Task Handle(UserCreatedDomainEvent notification, CancellationToken cancellationToken)
     {
+#warning WelcomeEmail Disabled
         //var welcomeEmail = new WelcomeEmail(notification.User.Email.Value, notification.User.UserName.Value);
         //await _emailNotificationService.SendWelcomeEmail(welcomeEmail);
         await Task.CompletedTask;

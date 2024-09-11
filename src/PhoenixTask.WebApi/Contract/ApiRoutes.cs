@@ -21,6 +21,8 @@ public static class ApiRoutes
         public const string GetById = "workspace/{workspaceId:guid}";
         public const string Update = "workspace/{workspaceId:guid}";
         public const string Remove = "workspace/{workspaceId:guid}";
+        public const string InviteMember = "workspace/{workspaceId:guid}/member/{userId:guid}/add";
+        public const string RemoveMember = "workspace/{workspaceId:guid}/member/{userId:guid}/remove";
     }
     public static class Projects
     {

@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using PhoenixTask.Application.WorkSpaces.AddUserToWorkSpace;
 using PhoenixTask.Application.WorkSpaces.CreateWorkSpace;
-using PhoenixTask.Application.WorkSpaces.DeleteWorkSpace;
+using PhoenixTask.Application.WorkSpaces.DeleteWorkSpaceMember;
 using PhoenixTask.Application.WorkSpaces.GetAllWorkSpaces;
 using PhoenixTask.Application.WorkSpaces.GetWorkSpaceById;
 using PhoenixTask.Application.WorkSpaces.UpdateWorkSpace;
@@ -36,7 +37,7 @@ public class WorkSpaceController(IMediator mediator) : ApiController(mediator)
     [HttpPost(ApiRoutes.WorkSpace.Create)]
     [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public Task<IActionResult> Create([FromBody]WorkSpace workSpace)
+    public Task<IActionResult> Create([FromBody] WorkSpace workSpace)
         => Result.Success(new CreateWorkSpaceCommand(workSpace.Name, workSpace.Color))
             .Bind(command => Mediator.Send(command))
             .Match(Ok, NotFound);
@@ -44,18 +45,26 @@ public class WorkSpaceController(IMediator mediator) : ApiController(mediator)
     [HttpPut(ApiRoutes.WorkSpace.Update)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Update(Guid workspaceId,[FromBody] WorkSpaceResult workSpace) 
+    public async Task<IActionResult> Update(Guid workspaceId, [FromBody] WorkSpaceResult workSpace)
         => await Result.Create(workSpace, DomainErrors.General.UnProcessableRequest)
             .Ensure(request => request.Id == workspaceId, DomainErrors.General.UnProcessableRequest)
             .Map(request => new UpdateWorkspaceCommand(workspaceId, request.Name, request.Color))
             .Bind(command => Mediator.Send(command))
             .Match(Ok, BadRequest);
 
-    [HttpDelete(ApiRoutes.WorkSpace.Remove)]
+    [HttpPost(ApiRoutes.WorkSpace.InviteMember)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Delete(Guid workspaceId) 
-        => await Result.Success(new DeleteWorkspaceCommand(workspaceId))
+    public async Task<IActionResult> Grant(Guid workspaceId, Guid userId,[FromQuery] int role)
+        => await Result.Success(new CreateWorkSpaceMemberCommand(workspaceId, userId, role))
+            .Bind(command => Mediator.Send(command))
+            .Match(Ok, BadRequest);
+    
+    [HttpDelete(ApiRoutes.WorkSpace.RemoveMember)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Revoke(Guid workspaceId, Guid userId)
+        => await Result.Success(new DeleteWorkSpaceMemberCommand(workspaceId, userId))
             .Bind(command => Mediator.Send(command))
             .Match(Ok, BadRequest);
 }
