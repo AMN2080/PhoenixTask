@@ -14,33 +14,33 @@ const Description = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
     >
       <path
         d="M1.99899 2.49901H10.0023"
-        stroke-width="0.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M3.49936 4.49998H10.0021"
-        stroke-width="0.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M3.49936 6.50059H10.0021"
-        stroke-width="0.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M1.99899 8.50157H10.0023"
-        stroke-width="0.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M6.00058 10.5022H10.0022"
-        stroke-width="0.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="0.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),

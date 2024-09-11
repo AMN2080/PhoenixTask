@@ -41,6 +41,7 @@ export const register = createAsyncThunk(
   "Auth/register",
   async (userData: registerType, thunkAPI) => {
     try {
+      console.log(userData);
       return await authService.register(userData);
     } catch (error: unknown) {
       if (error instanceof AxiosError) {

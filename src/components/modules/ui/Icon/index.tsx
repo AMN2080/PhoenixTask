@@ -1,20 +1,21 @@
-import { lazy, Suspense, SVGProps, ComponentType } from "react";
+import dynamic from "next/dynamic";
+import { SVGProps } from "react";
 
 const iconMap = {
-  Calendar: lazy(() => import("./icons/Calendar")),
-  CheckBox: lazy(() => import("./icons/CheckBox")),
-  Close: lazy(() => import("./icons/Close")),
-  ColumnView: lazy(() => import("./icons/ColumnView")),
-  Comment: lazy(() => import("./icons/Comment")),
-  Description: lazy(() => import("./icons/Description")),
-  ListView: lazy(() => import("./icons/ListView")),
-  Loading: lazy(() => import("./icons/Loading")),
-  Logout: lazy(() => import("./icons/Logout")),
-  More: lazy(() => import("./icons/More")),
-  Profile: lazy(() => import("./icons/Profile")),
-  Remove: lazy(() => import("./icons/Remove")),
-  SquarePlus: lazy(() => import("./icons/SquarePlus")),
-  Tick: lazy(() => import("./icons/Tick")),
+  Calendar: dynamic(() => import("./icons/Calendar")),
+  CheckBox: dynamic(() => import("./icons/CheckBox")),
+  Close: dynamic(() => import("./icons/Close")),
+  ColumnView: dynamic(() => import("./icons/ColumnView")),
+  Comment: dynamic(() => import("./icons/Comment")),
+  Description: dynamic(() => import("./icons/Description")),
+  ListView: dynamic(() => import("./icons/ListView")),
+  Loading: dynamic(() => import("./icons/Loading")),
+  Logout: dynamic(() => import("./icons/Logout")),
+  More: dynamic(() => import("./icons/More")),
+  Profile: dynamic(() => import("./icons/Profile")),
+  Remove: dynamic(() => import("./icons/Remove")),
+  SquarePlus: dynamic(() => import("./icons/SquarePlus")),
+  Tick: dynamic(() => import("./icons/Tick")),
 };
 
 interface IconProps extends SVGProps<SVGSVGElement> {
@@ -22,16 +23,10 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 }
 
 const Icon = ({ iconName, ...rest }: IconProps) => {
-  const IconComponent = iconMap[iconName] as ComponentType<
-    SVGProps<SVGSVGElement>
-  >;
+  const IconComponent = iconMap[iconName];
   if (!IconComponent) return null;
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <IconComponent {...rest} />
-    </Suspense>
-  );
+  return <IconComponent {...rest} />;
 };
 
 export default Icon;

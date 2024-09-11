@@ -14,8 +14,8 @@ const Checkbox = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
     >
       <path
         d="M10.1373 7.24158L7.46793 9.90935L5.86313 8.30936"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <rect
         x="1.99789"
@@ -23,8 +23,8 @@ const Checkbox = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
         width="12.005"
         height="12.005"
         rx="3.33333"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),

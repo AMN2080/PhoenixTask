@@ -14,15 +14,15 @@ const Close = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
     >
       <path
         d="M10.6666 11.1666L21.3333 21.8333"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M21.3333 11.1666L10.6666 21.8333"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   ),
