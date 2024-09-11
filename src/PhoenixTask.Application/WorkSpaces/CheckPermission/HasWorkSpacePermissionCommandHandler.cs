@@ -4,7 +4,7 @@ using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Application.Abstractions.Messaging;
 using PhoenixTask.Domain.Workspaces;
 
-namespace PhoenixTask.Application.Authentication.CheckPermission;
+namespace PhoenixTask.Application.WorkSpaces.CheckPermission;
 
 internal sealed class HasWorkSpacePermissionCommandHandler(
     IDbContext dbContext,

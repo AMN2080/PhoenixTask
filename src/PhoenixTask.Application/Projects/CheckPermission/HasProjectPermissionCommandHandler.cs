@@ -4,7 +4,7 @@ using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Application.Abstractions.Messaging;
 using PhoenixTask.Domain.Projects;
 
-namespace PhoenixTask.Application.Authentication.CheckPermission;
+namespace PhoenixTask.Application.Projects.CheckPermission;
 
 internal sealed class HasProjectPermissionCommandHandler(
     IDbContext dbContext,

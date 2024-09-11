@@ -6,7 +6,7 @@ namespace PhoenixTask.Domain.Workspaces;
 
 public sealed class WorkSpaceMember : Member
 {
-    public WorkSpaceMember(WorkSpace workSpace, User user, ICollection<Role> roles)
+    private WorkSpaceMember(WorkSpace workSpace, User user, ICollection<Role> roles)
         : base(user, roles)
     {
 

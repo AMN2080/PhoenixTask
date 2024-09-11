@@ -107,4 +107,12 @@ public static class DomainErrors
     {
         public static Error NotFound => new Error("Board.NotFound", "The board with the specified identifier was not found.");
     }
+    public static class Role
+    {
+        public static Error NotFound => new Error("Role.NotFound", "The role was not found.");
+    }
+    public static class WorkSpaceMember
+    {
+        public static Error NotFound => new Error("WorkSpaceMember.NotFound", "The member was not found.");
+    }
 }
