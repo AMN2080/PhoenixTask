@@ -25,7 +25,7 @@ internal sealed class DeleteWorkSpaceMemberCommandHandler(
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
     public async Task<Result> Handle(DeleteWorkSpaceMemberCommand request, CancellationToken cancellationToken)
     {
-        var maybeMember = await _workSpaceMemberRepository.GetByIdAsync(request.WorkSpaceId, request.UserId);
+        var maybeMember = await _workSpaceMemberRepository.GetMemberByIdAsync(request.WorkSpaceId, request.UserId);
 
         if (maybeMember.HasNoValue)
         {
