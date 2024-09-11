@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FieldError, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorMessage from "@/components/templates/AuthError";
+import ErrorMessage from "@/components/modules/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
 import { registerSchema, registerType } from "@/logic/schemas/registerSchema";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";

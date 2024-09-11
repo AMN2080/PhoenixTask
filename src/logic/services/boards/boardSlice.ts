@@ -1,7 +1,7 @@
 import changePositionReducer from "./reducers/changePositionReducer";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import boardService from "./boardService";
-import { commentType } from "../../../components/dashboard/dashboardColumnView/TaskCard";
+import { commentType } from "./boardType";
 import {
   fetchAssignTask,
   fetchUnAssignTask,
@@ -124,7 +124,7 @@ const fetchBoards = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 // Change Board Position
 const fetchChangeBoardPosition = createAsyncThunk(
@@ -139,7 +139,7 @@ const fetchChangeBoardPosition = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 //  Change Task Position
 const fetchChangeTaskPosition = createAsyncThunk(
@@ -154,7 +154,7 @@ const fetchChangeTaskPosition = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 //  Change Task Board
 const fetchChangeTaskBoard = createAsyncThunk(
@@ -167,7 +167,7 @@ const fetchChangeTaskBoard = createAsyncThunk(
       id: string;
       boardId: string;
     },
-    thunkAPI
+    thunkAPI,
   ) => {
     try {
       return await boardService.fetchChangeTaskBoard({ id, boardId });
@@ -178,7 +178,7 @@ const fetchChangeTaskBoard = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // create Board
@@ -194,7 +194,7 @@ const createBoard = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Add comment
@@ -215,7 +215,7 @@ const addComment = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Delete comment
@@ -231,7 +231,7 @@ const deleteComment = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Update comment
@@ -252,9 +252,8 @@ const updateComment = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
-
 
 // fetch select Board
 export const fetchSelectBoard = createAsyncThunk(
@@ -269,8 +268,8 @@ export const fetchSelectBoard = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
-)
+  },
+);
 
 // delete Board
 const deleteBoard = createAsyncThunk(
@@ -285,7 +284,7 @@ const deleteBoard = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // rename board
@@ -301,7 +300,7 @@ const editBoardName = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 const boardsSlice = createSlice({
@@ -380,13 +379,13 @@ const boardsSlice = createSlice({
         });
         if (projectIndex >= 0) {
           state.projects[projectIndex].projectBoards = action.payload.sort(
-            (b: Task, a: Task) => a.position - b.position
+            (b: Task, a: Task) => a.position - b.position,
           );
         } else {
           state.projects.push({
             projectId,
             projectBoards: action.payload.sort(
-              (b: Task, a: Task) => a.position - b.position
+              (b: Task, a: Task) => a.position - b.position,
             ),
           });
         }
@@ -438,7 +437,7 @@ const boardsSlice = createSlice({
             ?.projectBoards.find((board) => board._id === state.selectedBoardId)
             ?.tasks.find((task) => task._id === state.selectedTaskId)
             ?.comments.push(action.payload);
-        }
+        },
       )
       .addCase(addComment.rejected, (state, action) => {
         state.addCommentIsLoading = false;
@@ -459,7 +458,7 @@ const boardsSlice = createSlice({
           ?.tasks.find((task) => task._id === state.selectedTaskId)?.comments;
 
         const commentIndex = curCommentArr?.findIndex(
-          (comment) => comment._id === action.payload
+          (comment) => comment._id === action.payload,
         );
 
         if (commentIndex || commentIndex === 0)
@@ -488,7 +487,7 @@ const boardsSlice = createSlice({
               if (comment._id === action.payload._id)
                 comment.text = action.payload.text;
             });
-        }
+        },
       )
       .addCase(updateComment.rejected, (state, action) => {
         state.editingCommentIsLoading = false;
@@ -524,7 +523,7 @@ const boardsSlice = createSlice({
           ?.tasks.map((task) => {
             if (task._id === state.selectedTaskId) {
               task.taskAssigns = task.taskAssigns.filter(
-                (user) => user._id !== action.payload
+                (user) => user._id !== action.payload,
               );
             }
           });
@@ -621,16 +620,16 @@ const boardsSlice = createSlice({
 
         // find project and board index
         const projectIndx = state.projects.findIndex(
-          (project) => project.projectId === selectedProject
+          (project) => project.projectId === selectedProject,
         );
 
         const boardIndx = state.projects[projectIndx].projectBoards.findIndex(
-          (board) => board._id === boardId
+          (board) => board._id === boardId,
         );
 
         // dispatch task to board
         state.projects[projectIndx].projectBoards[boardIndx].tasks.push(
-          action.payload
+          action.payload,
         );
       })
 
@@ -648,15 +647,15 @@ const boardsSlice = createSlice({
 
         // find project and board index
         const projectIndx = state.projects.findIndex(
-          (project) => project.projectId === selectedProject
+          (project) => project.projectId === selectedProject,
         );
         const boardIndx = state.projects[projectIndx].projectBoards.findIndex(
-          (board) => board._id === boardId
+          (board) => board._id === boardId,
         );
 
         state.projects[projectIndx].projectBoards[boardIndx].tasks =
           state.projects[projectIndx].projectBoards[boardIndx].tasks.filter(
-            (task) => task._id != action.payload._id
+            (task) => task._id != action.payload._id,
           );
       });
   },
