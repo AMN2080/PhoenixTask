@@ -1,5 +1,5 @@
-// import { useAppDispatch } from "../services/app/hook";
-// import { closeAllModals } from "../services/app/store";
+import { useAppDispatch } from "@/logic/store/hook";
+import { closeAllModals } from "@/logic/store/store";
 
 type modalProps = {
   children: React.ReactNode;
@@ -7,9 +7,9 @@ type modalProps = {
 };
 
 const Modal = ({ children, className }: modalProps) => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const handleOnModals = () => {
-    // dispatch(closeAllModals());
+    dispatch(closeAllModals());
   };
 
   return (

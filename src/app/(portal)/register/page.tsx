@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import {
   register as registerUser,
   reset,
-} from "@/logic/services/auth/authSlice";
+} from "@/logic/store/slices/authSlice";
 import {
   Button,
   CheckBox,

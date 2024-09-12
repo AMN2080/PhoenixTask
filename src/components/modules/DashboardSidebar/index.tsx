@@ -98,7 +98,7 @@ export default function DashboardSidebar() {
           پروفایل
           <button className="flex items-center w-fit gap-2 ">
             <span
-              className={`flex justify-center items-center rounded-full bg-yellow-300 dark:text-[#1E2124] ${className}`}
+              className="flex justify-center items-center rounded-full bg-yellow-300 dark:text-[#1E2124] w-9 h-9 p-2"
             >
               {user?.username.slice(0, 2)}
             </span>

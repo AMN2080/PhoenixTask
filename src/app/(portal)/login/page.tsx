@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { loginSchema, loginType } from "@/logic/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/components/modules/AuthError";
-import { login as loginUser, reset } from "@/logic/services/auth/authSlice";
+import { login as loginUser, reset } from "@/logic/store/slices/authSlice";
 import {
   Button,
   Flex,

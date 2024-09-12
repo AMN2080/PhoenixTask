@@ -8,7 +8,9 @@ const iconMap = {
   ColumnView: dynamic(() => import("./icons/ColumnView")),
   Comment: dynamic(() => import("./icons/Comment")),
   Description: dynamic(() => import("./icons/Description")),
+  Eye: dynamic(() => import("./icons/Eye")),
   Flag: dynamic(() => import("./icons/Flag")),
+  Link: dynamic(() => import("./icons/Link")),
   ListView: dynamic(() => import("./icons/ListView")),
   Loading: dynamic(() => import("./icons/Loading")),
   Logout: dynamic(() => import("./icons/Logout")),
@@ -17,7 +19,9 @@ const iconMap = {
   Remove: dynamic(() => import("./icons/Remove")),
   RoundArrow: dynamic(() => import("./icons/RoundArrow")),
   SquarePlus: dynamic(() => import("./icons/SquarePlus")),
+  Tag: dynamic(() => import("./icons/Tag")),
   Tick: dynamic(() => import("./icons/Tick")),
+  UserPlus: dynamic(() => import("./icons/UserPlus")),
 };
 
 interface IconProps extends SVGProps<SVGSVGElement> {

@@ -1,13 +1,10 @@
 import { useState } from "react";
-import { FiLink, FiFlag, FiUserPlus, FiEye } from "react-icons/fi";
-import { BsCalendar3, BsTags, BsThreeDots } from "react-icons/bs";
-import Button from "../../UI/Button";
+import { Icon, Button } from "@/components/modules/UI";
 import { createPortal } from "react-dom";
 import QuckCalendar from "./QuickCalendar";
 import { toast } from "react-toastify";
-import CloseIcon from "../../UI/Close";
-import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
-import { toggleMediumModal } from "../../../services/app/store";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { toggleMediumModal } from "@/logic/store/store";
 
 type addNewTaskProps = {
   handleAddNewTask?: ((data: (string | undefined)[]) => void) | undefined;
@@ -98,12 +95,13 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                   />
                 </div>
               </div>
-              <span
-                className="cursor-pointer text-[#BDBDBD] dark:text-[#F7F9F9]"
+              <Button
                 onClick={() => dispatch(toggleMediumModal(""))}
+                asChild
+                className="text-2xl hover:text-red-600 hover:rotate-90 transition-all flex-none"
               >
-                <CloseIcon />
-              </span>
+                <Icon iconName="Close" />
+              </Button>
             </div>
 
             {/* task subHeader */}
@@ -118,7 +116,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
               />
               برای
               <span className="w-9 h-9 mr-3 p-1 text-D3D3D3 rounded-full border-2 border-dashed flex justify-center items-center">
-                <FiUserPlus />
+                <Icon iconName="UserPlus" />
               </span>
             </div>
 
@@ -140,7 +138,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                 htmlFor="addFileTask"
                 className="w-28 border border-208D8E p-1 rounded-md flex justify-center items-center text-base font-normal mr-4 text-208D8E dark:border-[#F1B127] dark:text-[#F1B127]"
               >
-                <FiLink />
+                <Icon iconName="Link" />
                 <span className="text-black mr-1 dark:text-[#F7F9F9]">
                   آپلود فایل
                 </span>
@@ -161,7 +159,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                 {/* priority */}
                 <li className={`${listOfIcons} `}>
                   <span>
-                    <FiFlag />
+                    <Icon iconName="Flag" />
                   </span>
                 </li>
                 <li
@@ -172,17 +170,21 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                   }  `}
                   onClick={() => handleCalendar(true)}
                 >
-                  {calendar.value === "" ? <BsCalendar3 /> : showTime}
+                  {calendar.value === "" ? (
+                    <Icon iconName="Calendar" />
+                  ) : (
+                    showTime
+                  )}
                 </li>
 
                 <li className={listOfIcons}>
-                  <BsTags />
+                  <Icon iconName="Tag" />
                 </li>
 
                 <li
                   className={`w-12 h-12 text-[#C1C1C1] -z-10 rounded-full border-2 flex justify-center items-center cursor-pointer border-none relative text-6xl`}
                 >
-                  <FiEye />
+                  <Icon iconName="Eye" />
                   <span className="h-6 w-6 rounded-full -top-2 right-0 flex justify-center items-center absolute text-sm bg-4AB7D8 text-black dark:bg-[#F1B127]">
                     ۲
                   </span>
@@ -197,7 +199,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                     size="full"
                     className="disabled:pointer-events-none h-10 p-2.5 text-sm font-bold leading-4 flex justify-center items-center"
                   >
-                    <BsThreeDots className="animate-ping" />
+                    <Icon iconName="More" />
                   </Button>
                 ) : (
                   <Button onClick={handleNewTaskButton}>ساخت تسک</Button>
