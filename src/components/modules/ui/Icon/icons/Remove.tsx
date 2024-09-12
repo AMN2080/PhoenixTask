@@ -13,8 +13,8 @@ const Remove = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
       {...rest}
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M13.6627 17.2544H6.98868C6.14475 17.2544 5.44349 16.6031 5.38062 15.7608L4.65759 5.96973H15.9697L15.2708 15.7567C15.2104 16.6007 14.5083 17.2544 13.6627 17.2544V17.2544Z"
         strokeWidth="1.20907"
         strokeLinecap="round"

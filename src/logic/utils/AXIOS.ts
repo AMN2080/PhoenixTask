@@ -1,6 +1,6 @@
 import axios from "axios";
 import { authTokenUpdate, logOut } from "../auth/authSlice";
-import store from "../../store/store";
+import store from "../store/store";
 
 const baseURL = "https://quera-task-server.vercel.app";
 

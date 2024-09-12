@@ -1,7 +1,7 @@
-import AXIOS from "../utils/AXIOS";
+import AXIOS from "@/logic/utils/AXIOS";
 import { personalInfoType } from "@/logic/schemas/personalInfo";
 import store from "@/logic/store/store";
-import { updateUser } from "../auth/authSlice";
+import { updateUser } from "@/logic/store/slices/authSlice";
 
 const API_URL = "/api/users/";
 

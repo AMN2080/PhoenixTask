@@ -1,5 +1,5 @@
 "use client";
-// test
+import { useEffect, useState } from "react";
 import {
   Collapsible,
   CollapseTable,
@@ -21,7 +21,15 @@ const ListView = () => {
 
   const dispatch = useAppDispatch();
 
-  const colors = JSON.parse(localStorage.getItem("Colors") || "[]");
+  const [colors, setColors] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedColors = JSON.parse(localStorage.getItem("Colors") || "[]");
+      setColors(storedColors);
+    }
+  }, []);
+
   const titleClass = "px-3 py-1 rounded text-base text-white";
   const chevronClass = "text-lg mr-10";
   const workspaceProjects = workSpaces.filter(

@@ -1,5 +1,8 @@
-import AXIOS from "../utils/AXIOS";
-import { createCommentDataType, updateCommentDataType } from "./boardSlice";
+import AXIOS from "@/logic/utils/AXIOS";
+import {
+  createCommentDataType,
+  updateCommentDataType,
+} from "@/logic/store/slices/boardSlice";
 const API_URL = {
   comment: "/api/comments/",
   board: "/api/board/",
@@ -86,10 +89,10 @@ const editBoardName = async (data: (string | undefined)[]) => {
   return response.data;
 };
 
-const fetchSelectBoard = async (id:string) => {
+const fetchSelectBoard = async (id: string) => {
   const response = await AXIOS.get(API_URL.board + id);
   return await response.data;
-}
+};
 
 const boardService = {
   createBoard,
@@ -102,7 +105,7 @@ const boardService = {
   fetchChangeBoardPosition,
   fetchChangeTaskBoard,
   fetchChangeTaskPosition,
-  fetchSelectBoard
+  fetchSelectBoard,
 };
 
 export default boardService;

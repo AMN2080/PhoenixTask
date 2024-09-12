@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import userService from "./userService";
-import { personalInfoType } from "@/logic/schemas/personalInfo";
-import { logOut } from "../auth/authSlice";
 import { AxiosError } from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import userService from "@/logic/services/userService";
+import { personalInfoType } from "@/logic/schemas/personalInfo";
+import { logOut } from "./authSlice";
 
 type User = {
   _id: string;

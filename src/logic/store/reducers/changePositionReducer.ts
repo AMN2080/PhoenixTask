@@ -1,5 +1,5 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { initialStateType } from "../boardSlice";
+import { initialStateType } from "@/logic/store/slices/boardSlice";
 
 const changePositionReducer = (state: initialStateType, action: AnyAction) => {
   const { source, destination, type } = action.payload;
@@ -9,13 +9,13 @@ const changePositionReducer = (state: initialStateType, action: AnyAction) => {
 
   // Find the currently active project based on selectedProjectId in the global state. If it doesn't exist, return early.
   const activeProject = state.projects.find(
-    ({ projectId }) => projectId === state.selectedProjectId
+    ({ projectId }) => projectId === state.selectedProjectId,
   );
   if (!activeProject) return;
 
   // Get all the boards for the active project, sorted in descending order of their position values.
   const allBoards = [...activeProject.projectBoards].sort(
-    (b, a) => a.position - b.position
+    (b, a) => a.position - b.position,
   );
 
   // If the dragged item is a column, update the position of the affected board(s) within allBoards.
@@ -32,7 +32,7 @@ const changePositionReducer = (state: initialStateType, action: AnyAction) => {
 
   // Find the active board where the item was dragged from. If it doesn't exist, return early.
   const activeBoard = activeProject.projectBoards.find(
-    ({ _id }) => _id === source.droppableId
+    ({ _id }) => _id === source.droppableId,
   );
   if (!activeBoard) return;
 
@@ -44,7 +44,7 @@ const changePositionReducer = (state: initialStateType, action: AnyAction) => {
 
   if (start !== finish && type === "task") {
     const targetBoard = activeProject.projectBoards.find(
-      ({ _id }) => _id === destination.droppableId
+      ({ _id }) => _id === destination.droppableId,
     );
     reorderedItem.board = destination.droppableId;
     if (!targetBoard) return;

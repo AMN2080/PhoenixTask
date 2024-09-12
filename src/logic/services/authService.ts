@@ -1,5 +1,5 @@
 import axios from "axios";
-import { registerType, loginType } from "./authType";
+import { registerType, loginType } from "@/logic/types/authType";
 import { forgotPasswordType } from "@/logic/schemas/forgotPasswordSchema";
 
 // const API_URL = "https://quera-task-server.vercel.app/api/auth/";

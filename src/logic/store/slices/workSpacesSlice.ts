@@ -1,12 +1,12 @@
+import { AxiosError } from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import WorkspaceService from "./workSpaceService";
+import WorkspaceService from "@/logic/services/workSpaceService";
 import {
   createProject,
   deleteProject,
   editProjectName,
-} from "../projects/projectSlice";
-import { AxiosError } from "axios";
-import { fetchAddedMemberWorkspace } from "../user/userSlice";
+} from "./projectSlice";
+import { fetchAddedMemberWorkspace } from "./userSlice";
 
 export type ProjectProps = {
   _id: string;
@@ -76,7 +76,7 @@ const fetchAllWorkSpaces = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 const createWorkSpace = createAsyncThunk(
@@ -91,7 +91,7 @@ const createWorkSpace = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Delete WorkSpace by id
@@ -107,7 +107,7 @@ const deleteWorkSpace = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Rename WorkSpace
@@ -123,7 +123,7 @@ const updateWorkSpace = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Add member to workSpace by id
@@ -139,7 +139,7 @@ const addWorkSpaceMember = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // Remove member than workSpace by id
@@ -155,7 +155,7 @@ const removeWorkSpaceMember = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 const workSpacesSlice = createSlice({
@@ -230,7 +230,7 @@ const workSpacesSlice = createSlice({
       .addCase(deleteWorkSpace.fulfilled, (state, action) => {
         state.isLoadingPost = false;
         state.workSpaces = state.workSpaces.filter(
-          (item) => item._id != action.payload._id
+          (item) => item._id != action.payload._id,
         );
         state.isSuccessPost = true;
         state.messagePost = "ورک اسپیس حذف شد";
@@ -290,7 +290,7 @@ const workSpacesSlice = createSlice({
         const memberName = action.payload.username;
         const { workspaceId, userId } = action.payload;
         const workSpaceIndex = state.workSpaces.findIndex(
-          (workspace) => workspace._id === workspaceId
+          (workspace) => workspace._id === workspaceId,
         );
 
         state.isErrorPost = false;
@@ -370,7 +370,7 @@ const workSpacesSlice = createSlice({
           role: "member",
         };
         const workSpaceIndex = state.workSpaces.findIndex(
-          (workspace) => workspace._id === state.selectedWorkSpaceId
+          (workspace) => workspace._id === state.selectedWorkSpaceId,
         );
 
         state.workSpaces[workSpaceIndex].members.push(memberObject);

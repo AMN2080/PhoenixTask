@@ -1,6 +1,10 @@
-import AXIOS from "../utils/AXIOS";
-import { assignInfoType, taskinfoType, unAssignInfoType } from "./taskSlice";
-import { createTask } from "./taskSlice";
+import AXIOS from "@/logic/utils/AXIOS";
+import {
+  assignInfoType,
+  taskinfoType,
+  unAssignInfoType,
+} from "@/logic/store/slices/taskSlice";
+import { createTask } from "@/logic/store/slices/taskSlice";
 const API_URL = "/api/task/";
 
 // update task
@@ -16,14 +20,14 @@ const fetchUpdateTask = async (taskinfo: taskinfoType) => {
 // assign task
 const fetchAssignTask = async (assignInfo: assignInfoType) => {
   const response = await AXIOS.put(
-    API_URL + assignInfo.taskId + "/assign/" + assignInfo.usernameOrId
+    API_URL + assignInfo.taskId + "/assign/" + assignInfo.usernameOrId,
   );
   if (response.data) return response.data;
 };
 // unAassign task
 const fetchUnAssignTask = async (unAssignInfo: unAssignInfoType) => {
   const response = await AXIOS.delete(
-    API_URL + unAssignInfo.taskId + "/assign/" + unAssignInfo.usernameOrId
+    API_URL + unAssignInfo.taskId + "/assign/" + unAssignInfo.usernameOrId,
   );
   if (response) return unAssignInfo.usernameOrId;
 };

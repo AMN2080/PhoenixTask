@@ -1,4 +1,4 @@
-import AXIOS from "../utils/AXIOS";
+import AXIOS from "@/logic/utils/AXIOS";
 const API_URL = "/api/workspace/";
 
 const fetchAllWorkSpaces = async () => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Icon } from "@/components/modules/UI";
+import { Heading, Flex, Icon } from "@/components/modules/UI";
 
 type CollapsibleProps = {
   title: string;
@@ -21,8 +21,10 @@ const Collapsible = ({
 
   return (
     <div className="mt-8">
-      <div
-        className="flex items-center gap-2 w-fit cursor-pointer"
+      <Flex
+        alignItems="center"
+        gap="XS"
+        className="w-fit cursor-pointer"
         onClick={() => {
           setIsExpanded(!isExpanded);
         }}
@@ -40,12 +42,22 @@ const Collapsible = ({
             />
           )}
         </span>
-        <h3 className={titleClass}>{title}</h3>
-        <div className="text-sm font-normal flex items-center justify-between">
+        <Heading as="h3" className={titleClass}>
+          {title}
+        </Heading>
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          className="text-sm font-normal"
+        >
           <div>{numberTask && numberTask + " تسک"}</div>
-        </div>
-      </div>
-      {isExpanded && <div className="flex flex-col">{children}</div>}
+        </Flex>
+      </Flex>
+      {isExpanded && (
+        <Flex direction="col" className="">
+          {children}
+        </Flex>
+      )}
     </div>
   );
 };

@@ -1,14 +1,15 @@
-import changePositionReducer from "./reducers/changePositionReducer";
+import { AxiosError } from "axios";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import boardService from "./boardService";
-import { commentType } from "./boardType";
+import changePositionReducer from "@/logic/store/reducers/changePositionReducer";
+import boardService from "@/logic/services/boardService";
+import { commentType } from "@/logic/types/boardType";
 import {
   fetchAssignTask,
   fetchUnAssignTask,
   fetchUpdateTask,
-} from "../tasks/taskSlice";
-import { fetchCreateTask, fetchDeleteTask } from "../tasks/taskSlice";
-import { AxiosError } from "axios";
+  fetchCreateTask,
+  fetchDeleteTask,
+} from "./taskSlice";
 
 type PositionProps = {
   id: string;

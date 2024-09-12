@@ -31,8 +31,8 @@ const Calendar = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
         strokeLinejoin="round"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M19 4H5C3.895 4 3 4.895 3 6V19C3 20.105 3.895 21 5 21H19C20.105 21 21 20.105 21 19V6C21 4.895 20.105 4 19 4Z"
         strokeWidth="1.5"
         strokeLinecap="round"

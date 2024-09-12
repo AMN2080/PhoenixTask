@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import AXIOS from "../utils/AXIOS";
-import ProjectsService from "./projectService";
 import { AxiosError } from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import AXIOS from "@/logic/utils/AXIOS";
+import ProjectsService from "@/logic/services/projectService";
 // import { fetchAddedMember } from "../user/userSlice";
 
 export type ProjectsProps = {
@@ -61,7 +61,7 @@ const fetchProjects = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // create project by workSpace id and name
@@ -77,7 +77,7 @@ const createProject = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // delete project by project id
@@ -93,7 +93,7 @@ const deleteProject = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // edit project name by id and new Name
@@ -109,7 +109,7 @@ const editProjectName = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // add member to project by id and member username
@@ -125,7 +125,7 @@ const addMemberToProject = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // remove Member Than Project by id and member username
@@ -141,7 +141,7 @@ const removeMemberThanProject = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 const projectSlice = createSlice({
@@ -301,7 +301,7 @@ const projectSlice = createSlice({
         state.isLoadingPost = false;
         state.isSuccessPost = true;
         state.addedMemberUserName = memberName;
-      state.messagePost = `کاربر ${memberName} به پروژه اضافه شد`;
+        state.messagePost = `کاربر ${memberName} به پروژه اضافه شد`;
       })
       .addCase(addMemberToProject.rejected, (state, action) => {
         state.isSuccessPost = false;
@@ -324,13 +324,13 @@ const projectSlice = createSlice({
             if (project.name === state.selectedProject) {
               test.push(project);
             }
-          })
+          }),
         );
 
         const workspaceId = test[0].workspace;
         const projectId = test[0]._id;
         const workspaceIndex = state.workSpaces.findIndex(
-          (workspace) => workspace.workSpaceId === workspaceId
+          (workspace) => workspace.workSpaceId === workspaceId,
         );
 
         const projectIndex = state.workSpaces[
@@ -349,9 +349,7 @@ const projectSlice = createSlice({
         state.isLoadingPost = false;
         state.isErrorPost = true;
         state.messagePost = action.error;
-      })
-
-
+      });
   },
 });
 

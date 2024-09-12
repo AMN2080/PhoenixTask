@@ -1,6 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import taskService from "./taskService";
 import { AxiosError } from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import taskService from "@/logic/services/taskService";
 
 export type createTask = {
   name: string | undefined;
@@ -14,7 +14,7 @@ type initialStateType = {
   isSuccess: boolean;
   isError: boolean;
   message: unknown;
-  
+
   taskAssignisLoading: boolean;
   taskAssignisSuccess: boolean;
   taskAssignisError: boolean;
@@ -45,7 +45,7 @@ const fetchCreateTask = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // delete task
@@ -61,7 +61,7 @@ const fetchDeleteTask = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // update task
@@ -83,7 +83,7 @@ const fetchUpdateTask = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 // assign task
@@ -103,7 +103,7 @@ const fetchAssignTask = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 // unAssign task
 export type unAssignInfoType = {
@@ -122,7 +122,7 @@ const fetchUnAssignTask = createAsyncThunk(
         return thunkAPI.rejectWithValue(message);
       }
     }
-  }
+  },
 );
 
 const tasksSlice = createSlice({

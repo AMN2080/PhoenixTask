@@ -1,66 +1,68 @@
 "use client";
 
 import { useEffect } from "react";
-import Icon from "../UI/Icon";
-import Link from "../UI/Link";
 import { useRouter } from "next/navigation";
-import Button from "../UI/Button";
+import { Flex, Icon, Link, Button } from "@/components/modules/UI";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { fetchAllWorkSpaces, resetAllState } from "@/logic/store/store";
+import { logOut } from "@/logic/store/slices/authSlice";
+import { ProjectProps } from "@/logic/store/slices/workSpacesSlice";
 // import ProfileButton from "../../ui/ProfileButton";
 // import SearchInput from "../../ui/SearchInput";
-// import { logOut } from "../../../services/features/auth/authSlice";
 // import NewSpace from "./NewSpace";
 // import WorkSpaceList from "./WorkSpaceList";
 // import SpaceMenu from "./SpaceMenu";
-// import { fetchAllWorkSpaces, resetAllState } from "../../../services/app/store";
-// import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
-// import { ProjectProps } from "../../../services/features/workSpaceList/workSpacesSlice";
 
 export type workSpacesType = {
   _id: string;
   name: string;
   user: string;
-  // projects: ProjectProps;
+  projects: ProjectProps;
 }[];
 
 export default function DashboardSidebar() {
   const router = useRouter();
 
-  // const {
-  //   message,
-  //   isError,
-  //   isLoading,
-  //   isSuccess,
-  //   workSpaces,
-  //   selectedSpace,
-  //   searchedWorkSpace,
-  // } = useAppSelector((state) => state.workSpaces);
-  // const { user } = useAppSelector((state) => state.auth);
-  // const dispatch = useAppDispatch();
+  const {
+    message,
+    isError,
+    isLoading,
+    isSuccess,
+    workSpaces,
+    selectedSpace,
+    searchedWorkSpace,
+  } = useAppSelector((state) => state.workSpaces);
+  const { user } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
-  // useEffect(() => {
-  //   !isSuccess && workSpaces.length === 0 && dispatch(fetchAllWorkSpaces());
-  // }, [dispatch, selectedSpace, workSpaces.length, isSuccess, workSpaces]);
+  useEffect(() => {
+    !isSuccess && workSpaces.length === 0 && dispatch(fetchAllWorkSpaces());
+  }, [dispatch, selectedSpace, workSpaces.length, isSuccess, workSpaces]);
 
-  // const getSelectedWorkSpaces = workSpaces.filter((workSpace) => {
-  //   return workSpace._id === selectedSpace;
-  // });
+  const getSelectedWorkSpaces = workSpaces.filter((workSpace) => {
+    return workSpace._id === selectedSpace;
+  });
 
-  // const workSpacesToRender = getSelectedWorkSpaces.length
-  //   ? getSelectedWorkSpaces
-  //   : searchedWorkSpace
-  //     ? searchedWorkSpace
-  //     : isSuccess
-  //       ? workSpaces
-  //       : [];
+  const workSpacesToRender = getSelectedWorkSpaces.length
+    ? getSelectedWorkSpaces
+    : searchedWorkSpace
+      ? searchedWorkSpace
+      : isSuccess
+        ? workSpaces
+        : [];
 
   const clickProfile = () => {
-    // dispatch(resetAllState());
-    // dispatch(logOut());
+    dispatch(resetAllState());
+    dispatch(logOut());
     router.push("/login");
   };
 
   return (
-    <div className="flex flex-col justify-between w-1/5 h-screen py-10 pr-12 pl-4 border-l border-gray-400">
+    <Flex
+      direction="col"
+      justifyContent="between"
+      className="w-1/5 h-screen py-10 pr-12 pl-4 border-l border-gray-400"
+    >
       <div>
         <h1 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#118C80] to-[#4AB7D8]">
           Phoenix Task Manager
@@ -94,6 +96,14 @@ export default function DashboardSidebar() {
         >
           <Icon iconName="Profile" className="" />
           پروفایل
+          <button className="flex items-center w-fit gap-2 ">
+            <span
+              className={`flex justify-center items-center rounded-full bg-yellow-300 dark:text-[#1E2124] ${className}`}
+            >
+              {user?.username.slice(0, 2)}
+            </span>
+            {user?.username}
+          </button>
           {/* <ProfileButton userName={user?.username} className="w-9 h-9 p-2" /> */}
         </Link>
         <button
@@ -104,6 +114,6 @@ export default function DashboardSidebar() {
           خروج
         </button>
       </div>
-    </div>
+    </Flex>
   );
 }
