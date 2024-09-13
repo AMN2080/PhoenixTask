@@ -10,7 +10,7 @@ import { logOut } from "@/logic/store/slices/authSlice";
 import { ProjectProps } from "@/logic/store/slices/workSpacesSlice";
 // import ProfileButton from "../../ui/ProfileButton";
 // import SearchInput from "../../ui/SearchInput";
-// import NewSpace from "./NewSpace";
+import NewWorkSpaceButton from "./NewWorkSpaceButton";
 // import WorkSpaceList from "./WorkSpaceList";
 // import SpaceMenu from "./SpaceMenu";
 
@@ -62,7 +62,7 @@ export default function DashboardSidebar() {
     <Flex
       direction="col"
       justifyContent="between"
-      className="w-1/5 h-screen py-10 pr-12 pl-4 border-l border-gray-400"
+      className="w-1/6 h-screen py-10 pr-12 pl-4 border-l border-gray-400"
     >
       <div>
         <h1 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#118C80] to-[#4AB7D8]">
@@ -74,44 +74,33 @@ export default function DashboardSidebar() {
           placeholder="جستجو در میزِکارها"
           className="w-full my-3 p-2 bg-slate-100 text-xs font-IranYekan outline-none rounded-md"
         />
-        <Button
-          className="flex items-center gap-3"
-          variant="outline"
-          size="full"
-        >
-          <Icon iconName="SquarePlus" className="text-primary" />
-          <span>ایجاد محیط کاری جدید</span>
-        </Button>
+        <NewWorkSpaceButton />
       </div>
-      <div>
-        {/* <SearchInput placeHolder="جستجو کنید" extraClass="my-3" type="sideBar" /> */}
-        {/* <NewSpace /> */}
-        {/* {isLoading && <Icon iconName="Loading" />}
+      {/* <SearchInput placeHolder="جستجو کنید" extraClass="my-3" type="sideBar" /> */}
+      {/* {isLoading && <Icon iconName="Loading" />}
       {isError && <div className="m-auto text-FB0606">{`${message}`}</div>}
       {isSuccess && <WorkSpaceList workSpaces={workSpacesToRender} />} */}
+      <div>
         <Link
           className="flex items-center gap-2"
           weight="800"
           textSize="S"
           to="/profile/personal-info"
         >
-          <Icon iconName="Profile" className="" />
-          پروفایل
-          <button className="flex items-center w-fit gap-2 ">
-            <span className="flex justify-center items-center rounded-full bg-yellow-300 dark:text-[#1E2124] w-9 h-9 p-2">
-              {user?.username.slice(0, 2)}
-            </span>
-            {user?.username}
-          </button>
-          {/* <ProfileButton userName={user?.username} className="w-9 h-9 p-2" /> */}
+          <Icon
+            iconName="Profile"
+            className="border-2 border-primary overflow-hidden rounded-full w-9 h-9 p-2"
+          />
+          {user?.username}
         </Link>
-        <button
+        <Button
+          asChild
           className="w-fit mt-5 flex items-center gap-2 text-base font-IranYekan font-extrabold text-red-400"
           onClick={() => clickProfile()}
         >
           <Icon iconName="Logout" />
           خروج
-        </button>
+        </Button>
       </div>
     </Flex>
   );

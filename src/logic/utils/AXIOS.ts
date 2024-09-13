@@ -1,8 +1,9 @@
 import axios from "axios";
-import { authTokenUpdate, logOut } from "../auth/authSlice";
-import store from "../store/store";
+import { authTokenUpdate, logOut } from "@/logic/store/slices/authSlice";
+import store from "@/logic/store/store";
 
-const baseURL = "https://quera-task-server.vercel.app";
+// const baseURL = "https://quera-task-server.vercel.app";
+const baseURL = "http://185.8.174.74:8000/";
 
 const getFromLocalStorage = (key: string) => {
   if (typeof window !== "undefined") {

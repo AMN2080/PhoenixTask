@@ -1,16 +1,12 @@
-import Input from "../../UI/Input";
-import Button from "../../UI/Button";
 import { Dispatch, SetStateAction, useState } from "react";
-import CheckBoxColor from "../../UI/CheckBoxColor";
-import { BiBlock } from "react-icons/bi";
-import { AiOutlineArrowLeft, AiOutlineLoading3Quarters } from "react-icons/ai";
-import CloseIcon from "../../UI/Close";
-import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
+import { Button, Input, Flex, CheckBox } from "@/components/UI";
+// import CheckBoxColor from "../../UI/CheckBoxColor";
+// import { BiBlock } from "react-icons/bi";
+// import { AiOutlineArrowLeft } from "react-icons/ai";
+import Icon from "@/components/Icon";
 import { toast } from "react-toastify";
-import {
-  createWorkSpace,
-  toggleMediumModal,
-} from "../../../services/app/store";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { createWorkSpace, toggleMediumModal } from "@/logic/store/store";
 
 type workspaceProps = {
   workSpaceStep: string;
@@ -23,7 +19,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
     id: 0,
   });
   const [workspaceName, setWorkSpaceName] = useState("");
-  const fontList = "text-sm font-semibold text-black dark:text-inherit";
+  const fontList = "text-sm font-semibold text-black";
   const liStyle = "w-full flex justify-between items-center";
   const dataColor = [
     { id: 1, color: "bg-[#84C6A1]" },
@@ -74,48 +70,44 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
   };
 
   return (
-    <div className="modal-box z-50 w-3/4 max-w-lgl min-w-[500px] dark:bg-[#15202B]">
+    <div className="modal-box z-50 w-3/4 max-w-lgl min-w-[500px]">
       <div className="p-5 rounded-lg">
         {/* card header */}
-        <div className="w-full flex justify-between items-center">
+        <Flex justifyContent="between" alignItems="center">
           <label
             htmlFor="my-modal-3"
-            className="text-323232 cursor-pointer"
+            className="text-neutral-content cursor-pointer"
             onClick={() => dispatch(toggleMediumModal(""))}
           >
-            <CloseIcon />
+            <Icon iconName="Close" />
           </label>
 
-          <div className="font-semibold text-2xl text-black dark:text-[#F7F9F9]">
+          <div className="font-semibold text-2xl text-black">
             {workSpaceStep}
           </div>
           {/* back page */}
           {workSpaceStep === "انتخاب رنگ ورک اسپیس" ||
           workSpaceStep === "مرور اطلاعات" ? (
             <div
-              className="cursor-pointer dark:text-[#F7F9F9]"
+              className="cursor-pointer"
               onClick={() => {
                 workSpaceStep === "انتخاب رنگ ورک اسپیس"
                   ? setWorkSpaceStepe("ساختن ورک اسپیس جدید")
                   : setWorkSpaceStepe("انتخاب رنگ ورک اسپیس");
               }}
             >
-              <AiOutlineArrowLeft />
+              {/* <AiOutlineArrowLeft /> */}
             </div>
           ) : (
             <span></span>
           )}
-        </div>
+        </Flex>
 
         {/* card content */}
         {isLoadingPost ? (
-          <AiOutlineLoading3Quarters
-            size="2.8rem"
-            color="208D8E"
-            className="m-auto mt-3 animate-spin"
-          />
+          <Icon iconName="Loading" />
         ) : (
-          <div className="mt-11 w-full dark:text-[#F7F9F9]">
+          <div className="mt-11 w-full">
             {workSpaceStep === "ساختن ورک اسپیس جدید" ? (
               <Input connectorId="newWork" label="نام ورک اسپیس" />
             ) : workSpaceStep === "انتخاب رنگ ورک اسپیس" ? (
@@ -130,13 +122,11 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
                   </div>
 
                   {/* list of colors */}
-                  <div className="mr-9 flex flex-col dark:text-[#F7F9F9]">
-                    <span className="text-sm text-black dark:text-inherit">
-                      رنگ ورک اسپیس
-                    </span>
+                  <div className="mr-9 flex flex-col">
+                    <span className="text-sm text-black">رنگ ورک اسپیس</span>
                     <ul className="mt-5  h-10 flex justify-start content-between flex-wrap">
                       <li
-                        className="h-4 w-4 mr-3 rounded-sm hover:cursor-pointer text-black dark:text-inherit"
+                        className="h-4 w-4 mr-3 rounded-sm hover:cursor-pointer text-black"
                         onClick={() => {
                           setSelectedColor({
                             ...selectedColor,
@@ -145,16 +135,17 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
                           });
                         }}
                       >
-                        <BiBlock />
+                        {/* <BiBlock /> */}
                       </li>
-                      {dataColor.map((li) => (
+                      {/* {dataColor.map((li) => (
+                        <CheckBox />
                         <CheckBoxColor
                           key={li.id}
                           data={li}
                           selectedColor={selectedColor}
                           handleCheckBoxColor={handleCheckBoxColor}
                         />
-                      ))}
+                      ))} */}
                     </ul>
                   </div>
                 </div>
@@ -162,7 +153,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
             ) : (
               <>
                 {/* Browsing info */}
-                <ul className="w-full px-3 py-6 flex flex-col border rounded-lg dark:text-[#F7F9F9]">
+                <ul className="w-full px-3 py-6 flex flex-col border rounded-lg">
                   {/* workspace name */}
                   <li className={liStyle}>
                     <span className={fontList}>نام ورک اسپیس</span>

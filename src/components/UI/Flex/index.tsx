@@ -30,6 +30,7 @@ const alignMap = {
   center: "items-center",
   baseline: "items-baseline",
   stretch: "items-stretch",
+  between: "items-between",
 };
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -37,7 +38,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   direction?: keyof typeof FlexDirection;
   gap?: keyof typeof FlexGap;
   justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly";
-  alignItems?: "start" | "end" | "center" | "baseline" | "stretch";
+  alignItems?: "start" | "end" | "center" | "baseline" | "stretch" | "between";
 }
 
 const Flex = ({
