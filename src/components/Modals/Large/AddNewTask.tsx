@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Icon, Button } from "@/components/UI";
+import { Button } from "@/components/UI";
+import Icon from "@/components/Icon";
 import { createPortal } from "react-dom";
 import QuckCalendar from "./QuickCalendar";
 import { toast } from "react-toastify";

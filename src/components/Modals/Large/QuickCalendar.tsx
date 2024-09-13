@@ -4,9 +4,9 @@ import persian_fa from "react-date-object/locales/persian_fa";
 import { Calendar } from "react-multi-date-picker";
 import "react-multi-date-picker/styles/colors/teal.css";
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
-import { BsCalendar4 } from "react-icons/bs";
 import "./customCalendar.css";
-import { useAppSelector } from "../../../services/app/hook";
+import { useAppSelector } from "@/logic/store/hook";
+import Icon from "@/components/Icon";
 
 type QuickCalendarProps = {
   handleCalendar: (modalState: boolean, value?: any) => void;
@@ -66,7 +66,7 @@ const QuickCalendar = ({
           <div className="w-full h-32 border-b-2 flex items-center font-medium justify-around">
             <div className={HeaderFont}>
               <span className="ml-3">
-                <BsCalendar4 />
+                <Icon iconName="Calendar" />
               </span>
               ددلاین
               <span className={HeaderDate}>{deadline.showDeadline}</span>
