@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Flex, Icon, Link, Button } from "@/components/modules/UI";
+import { Flex, Link, Button } from "@/components/UI";
+import Icon from "@/components/Icon";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { fetchAllWorkSpaces, resetAllState } from "@/logic/store/store";
 import { logOut } from "@/logic/store/slices/authSlice";
@@ -97,9 +98,7 @@ export default function DashboardSidebar() {
           <Icon iconName="Profile" className="" />
           پروفایل
           <button className="flex items-center w-fit gap-2 ">
-            <span
-              className="flex justify-center items-center rounded-full bg-yellow-300 dark:text-[#1E2124] w-9 h-9 p-2"
-            >
+            <span className="flex justify-center items-center rounded-full bg-yellow-300 dark:text-[#1E2124] w-9 h-9 p-2">
               {user?.username.slice(0, 2)}
             </span>
             {user?.username}

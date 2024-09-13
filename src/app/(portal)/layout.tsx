@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "@/components/modules/UI/Link";
+import { Link } from "@/components/UI";
 import { usePathname } from "next/navigation";
 interface AuthLayoutProps {
   children: React.ReactNode;

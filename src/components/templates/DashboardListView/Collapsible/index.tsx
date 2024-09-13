@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Heading, Flex, Icon } from "@/components/modules/UI";
+import { Heading, Flex } from "@/components/UI";
+import Icon from "@/components/Icon";
 
 type CollapsibleProps = {
   title: string;

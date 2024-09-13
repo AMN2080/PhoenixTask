@@ -1,5 +1,5 @@
 import { FieldError } from "react-hook-form";
-import Text from "@/components/modules/UI/Text";
+import { Text } from "@/components/UI";
 
 interface ErrorMessageProps {
   error: FieldError | undefined;

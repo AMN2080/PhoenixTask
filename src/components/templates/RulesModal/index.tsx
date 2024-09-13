@@ -1,4 +1,5 @@
-import { Icon, Button, Flex, Heading, Text } from "@/components/modules/UI";
+import { Button, Flex, Heading, Text } from "@/components/UI";
+import Icon from "@/components/Icon";
 
 interface RulesModalProps {
   visible?: boolean;

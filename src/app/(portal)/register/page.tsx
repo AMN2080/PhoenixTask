@@ -13,16 +13,9 @@ import {
   register as registerUser,
   reset,
 } from "@/logic/store/slices/authSlice";
-import {
-  Button,
-  CheckBox,
-  Flex,
-  Heading,
-  Input,
-  Text,
-} from "@/components/modules/UI";
+import { Button, CheckBox, Flex, Heading, Input, Text } from "@/components/UI";
 
-export default function RegisterPage() {
+export default function RegisterForm() {
   const [showModal, setShowModal] = useState(false);
   const {
     register,

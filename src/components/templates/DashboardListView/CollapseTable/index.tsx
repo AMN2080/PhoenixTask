@@ -1,7 +1,7 @@
-import { Icon } from "@/components/modules/UI";
-import { Task } from "@/logic/services/boards/boardSlice";
-import getGregorianDate from "@/logic/shamsi-date/getGregorianDate";
-import { getPersianDateWithOutTime } from "@/logic/utils/getPersianDate";
+import Icon from "@/components/Icon";
+import { Task } from "@/logic/store/slices/boardSlice";
+import getGregorianDate from "@/logic/utils/date/getGregorianDate";
+import { getPersianDateWithOutTime } from "@/logic/utils/date/getPersianDate";
 
 interface StatusProjects {
   tasks: Task[];

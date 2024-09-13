@@ -6,7 +6,7 @@ import {
 } from "@/components/templates/DashboardListView";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { fetchBoards } from "@/logic/store/store";
-import { Icon } from "@/components/modules/UI";
+import Icon from "@/components/Icon";
 
 const ListView = () => {
   const { isError, message, isSuccess, isLoading, workSpaces } = useAppSelector(

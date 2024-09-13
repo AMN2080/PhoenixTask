@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Icon from "../../modules/UI/Icon";
-import Modal from "../../modules/Modals/Modal";
-import AddNewTask from "../../modules/Modals/Large/AddNewTask";
-import BoardMore from "../../modules/Modals/Small/BoardMore";
+import Icon from "@/components/Icon";
+import Modal from "@/components/Modals/Modal";
+import AddNewTask from "@/components/Modals/Large/AddNewTask";
+import BoardMore from "@/components/Modals/Small/BoardMore";
 // import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
 // import {
 //   deleteBoard,
