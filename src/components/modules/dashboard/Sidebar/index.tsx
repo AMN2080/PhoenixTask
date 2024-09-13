@@ -7,19 +7,12 @@ import Icon from "@/components/Icon";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { fetchAllWorkSpaces, resetAllState } from "@/logic/store/store";
 import { logOut } from "@/logic/store/slices/authSlice";
-import { ProjectProps } from "@/logic/store/slices/workSpacesSlice";
+import { workSpacesType } from "@/logic/types/workSpaceType";
 // import ProfileButton from "../../ui/ProfileButton";
 // import SearchInput from "../../ui/SearchInput";
 import NewWorkSpaceButton from "./NewWorkSpaceButton";
 // import WorkSpaceList from "./WorkSpaceList";
 // import SpaceMenu from "./SpaceMenu";
-
-export type workSpacesType = {
-  _id: string;
-  name: string;
-  user: string;
-  projects: ProjectProps;
-}[];
 
 export default function DashboardSidebar() {
   const router = useRouter();
