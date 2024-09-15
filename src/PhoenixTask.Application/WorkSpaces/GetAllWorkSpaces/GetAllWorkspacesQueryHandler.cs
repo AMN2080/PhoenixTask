@@ -4,7 +4,7 @@ using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Application.Abstractions.Messaging;
 using PhoenixTask.Contracts.WorkSpaces;
 using PhoenixTask.Domain.Abstractions.Maybe;
-using System.Collections.Immutable;
+using Member = PhoenixTask.Domain.Workspaces.WorkSpaceMember;
 using WorkSpaceEntity = PhoenixTask.Domain.Workspaces.WorkSpace;
 
 namespace PhoenixTask.Application.WorkSpaces.GetAllWorkSpaces;
@@ -19,12 +19,19 @@ internal sealed class GetAllWorkspacesQueryHandler
     {
         var userId = _userIdentifierProvider.UserId;
 
-        var workspacesResult = _dbContext.Set<WorkSpaceEntity>()
+        var workspacesResult =await _dbContext.Set<WorkSpaceEntity>()
             .AsNoTracking()
             .Where(w => w.OwnerId == userId)
             .Select(w => new WorkSpaceResult(w.Id, w.Name.Value, w.Color))
-            .ToImmutableList();
+            .ToListAsync();
 
-        return workspacesResult.AsReadOnly();
+        var sharedWorkSpaces = await _dbContext.Set<Member>()
+            .Include(e=>e.WorkSpace)
+            .AsNoTracking()
+            .Where(e=>e.UserId == userId)
+            .Select(w => new WorkSpaceResult(w.WorkSpace.Id, w.WorkSpace.Name.Value, w.WorkSpace.Color))
+            .ToListAsync();
+
+        return Maybe<IEnumerable<WorkSpaceResult>>.From(workspacesResult.Union(sharedWorkSpaces));
     }
 }
