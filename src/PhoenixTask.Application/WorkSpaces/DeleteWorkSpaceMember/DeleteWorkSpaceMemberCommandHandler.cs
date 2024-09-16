@@ -41,7 +41,7 @@ internal sealed class DeleteWorkSpaceMemberCommandHandler(
             return Result.Failure(DomainErrors.User.NotFound);
         }
 
-        var currentUserHasAccess = await _sender.Send(new HasWorkSpacePermissionCommand(member.WorkSpace.Id, PermissionType.ManageAdmin));
+        var currentUserHasAccess = await _sender.Send(new HasWorkSpacePermissionCommand(member.WorkSpaceId, PermissionType.ManageAdmin));
 
         if(!currentUserHasAccess)
         {

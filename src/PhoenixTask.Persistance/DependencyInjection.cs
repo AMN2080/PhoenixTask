@@ -35,8 +35,6 @@ public static class DependencyInjection
 
         services.AddScoped<IBoardRepository, BoardRepository>();
 
-        services.AddScoped<IPermissionService, PermissionService>();
-
         services.AddScoped<IWorkSpaceMemberRepository, WorkSpaceMemberRepository>();
 
         return services;

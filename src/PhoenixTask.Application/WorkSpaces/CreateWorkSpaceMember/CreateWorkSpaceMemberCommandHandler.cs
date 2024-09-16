@@ -41,7 +41,7 @@ internal sealed class CreateWorkSpaceMemberCommandHandler(
             return Result.Failure(DomainErrors.User.NotFound);
         }
 
-        var userAlreadyHasRole = await _workSpaceMemberRepository.UserHasRoleAsync(maybeUser.Value, maybeWorkSpace.Value, maybeRole.Value);
+        var userAlreadyHasRole = await _workSpaceMemberRepository.AnyAsync(maybeWorkSpace.Value.OwnerId, maybeUser.Value.Id, maybeRole.Value.Value);
 
         if (userAlreadyHasRole)
         {

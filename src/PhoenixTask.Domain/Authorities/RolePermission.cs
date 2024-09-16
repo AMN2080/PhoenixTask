@@ -1,7 +1,9 @@
-﻿namespace PhoenixTask.Domain.Authorities;
+﻿using PhoenixTask.Domain.Abstractions.Primitives;
+
+namespace PhoenixTask.Domain.Authorities;
 
 public class RolePermission
 {
-    public int RoleId { get; set; }
+    public int RoleValue { get; set; }
     public int PermissionId { get; set; }
 }

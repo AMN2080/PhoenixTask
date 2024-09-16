@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using PhoenixTask.Domain.Abstractions.Maybe;
 using PhoenixTask.Domain.Abstractions.Primitives;
 
@@ -15,4 +16,6 @@ public interface IDbContext
             where TEntity : Entity;
     void Remove<TEntity>(TEntity entity)
             where TEntity : Entity;
+
+    Task<int> ExecuteSqlAsync(string sql, IEnumerable<SqlParameter> parameters, CancellationToken cancellationToken = default);
 }

@@ -10,10 +10,6 @@ internal sealed class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
         builder.HasKey(x => x.Value);
 
-        builder.HasMany(x => x.Permissions)
-            .WithMany()
-            .UsingEntity<RolePermission>();
-
         builder.HasData(Role.List);
     }
 }

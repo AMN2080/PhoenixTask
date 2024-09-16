@@ -8,7 +8,7 @@ internal sealed class RolePermissionConfiguration : IEntityTypeConfiguration<Rol
 {
     public void Configure(EntityTypeBuilder<RolePermission> builder)
     {
-        builder.HasKey(x => new { x.RoleId, x.PermissionId });
+        builder.HasKey(x => new { x.RoleValue, x.PermissionId });
 
         builder.HasData(
 
@@ -67,7 +67,7 @@ internal sealed class RolePermissionConfiguration : IEntityTypeConfiguration<Rol
         PermissionType permission)
         => new RolePermission
         {
-            RoleId = role.Value,
+            RoleValue = role.Value,
             PermissionId = (int)permission
         };
 }

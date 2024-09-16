@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using PhoenixTask.Application.Abstractions.Common;
@@ -22,6 +23,9 @@ public sealed class PhoenixDbContext(DbContextOptions options,
     public new DbSet<TEntity> Set<TEntity>()
             where TEntity : Entity
             => base.Set<TEntity>();
+
+    public Task<int> ExecuteSqlAsync(string sql, IEnumerable<SqlParameter> parameters, CancellationToken cancellationToken = default)
+         => Database.ExecuteSqlRawAsync(sql, parameters, cancellationToken);
 
     public async override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {

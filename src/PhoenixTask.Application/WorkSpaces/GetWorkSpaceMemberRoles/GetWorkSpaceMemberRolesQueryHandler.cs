@@ -2,6 +2,7 @@
 using PhoenixTask.Application.Abstractions.Messaging;
 using PhoenixTask.Application.WorkSpaces.CheckPermission;
 using PhoenixTask.Domain.Abstractions.Maybe;
+using PhoenixTask.Domain.Users;
 using PhoenixTask.Domain.Workspaces;
 using WorkSpaceMemberModel = PhoenixTask.Contracts.WorkSpaces.WorkSpaceMember;
 
@@ -9,11 +10,13 @@ namespace PhoenixTask.Application.WorkSpaces.GetWorkSpaceMemberRoles;
 
 internal sealed class GetWorkSpaceMemberRolesQueryHandler(
     IWorkSpaceMemberRepository workSpaceMemberRepository,
+    IUserRepository userRepository,
     ISender sender)
     : IQueryHandler<GetWorkSpaceMemberRolesQuery, Maybe<IEnumerable<WorkSpaceMemberModel>>>
 {
     private readonly IWorkSpaceMemberRepository _workSpaceMemberRepository = workSpaceMemberRepository;
     private readonly ISender _sender = sender;
+    private readonly IUserRepository _userRepository = userRepository;
 
     public async Task<Maybe<IEnumerable<WorkSpaceMemberModel>>> Handle(GetWorkSpaceMemberRolesQuery request, CancellationToken cancellationToken)
     {
@@ -24,14 +27,6 @@ internal sealed class GetWorkSpaceMemberRolesQueryHandler(
             return Maybe<IEnumerable<WorkSpaceMemberModel>>.None;
         }
 
-        var members = await _workSpaceMemberRepository.GetMembersByIdAsync(request.WorkSpaceId);
-
-        var result = members.Select(e =>
-        new WorkSpaceMemberModel(e.User.Id,
-        e.User.Email,
-        e.Roles.Select(x => x.Value).ToArray()
-        ));
-
-        return Maybe<IEnumerable<WorkSpaceMemberModel>>.From(result);
+        throw new NotImplementedException();
     }
 }
