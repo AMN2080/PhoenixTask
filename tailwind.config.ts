@@ -29,6 +29,7 @@ const config: Config = {
           "base-300": "#dedede",
           "base-content": "#1E1E1E",
           error: "#FA5252",
+          "error-content": "#F5F5F5"
         },
       },
     ],

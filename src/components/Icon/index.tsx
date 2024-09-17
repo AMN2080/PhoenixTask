@@ -21,6 +21,7 @@ const iconMap = {
   SquarePlus: dynamic(() => import("./icons/SquarePlus")),
   Tag: dynamic(() => import("./icons/Tag")),
   Tick: dynamic(() => import("./icons/Tick")),
+  Update: dynamic(() => import("./icons/Update")),
   UserPlus: dynamic(() => import("./icons/UserPlus")),
 };
 

@@ -1,9 +1,18 @@
 import { AxiosError } from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import WorkspaceService from "@/logic/services/workSpaceService";
-import { createProject, deleteProject, editProjectName } from "./projectSlice";
+import {
+  createProject,
+  deleteProject,
+  editProjectName,
+} from "./projectSlice";
 import { fetchAddedMemberWorkspace } from "./userSlice";
-import { ProjectPropsType } from "@/logic/types/workSpaceType";
+
+export type ProjectProps = {
+  _id: string;
+  boards: [];
+  name: string;
+}[];
 
 type MemberProps = {
   user: {
@@ -16,7 +25,7 @@ export type WorkSpacesProps = {
   _id: string;
   name: string;
   user: string;
-  projects: ProjectPropsType;
+  projects: ProjectProps;
   members: MemberProps[];
 }[];
 

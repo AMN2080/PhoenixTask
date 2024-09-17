@@ -1,8 +1,10 @@
 import AXIOS from "@/logic/utils/AXIOS";
-const API_URL = "/api/workspace/";
+// const API_URL = "/api/workspace/";
+const API_URL = "/workspaces/";
 
 const fetchAllWorkSpaces = async () => {
-  const response = await AXIOS.get(API_URL + "get-all");
+  // const response = await AXIOS.get(API_URL + "get-all");
+  const response = await AXIOS.get(API_URL);
   return response.data;
 };
 

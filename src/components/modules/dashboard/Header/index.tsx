@@ -1,79 +1,77 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "@/components/Icon";
 import { Link } from "@/components/UI";
-// import { RxUpdate } from "react-icons/rx"; // TODO: create Update-Icon
-// import TabBtn from "./TabBtn";
 // import Date from "./Date";
 // import Share from "../../ui/Share"; // TODO: Share Modal
-// import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
-// import { fetchBoards, fetchProjects } from "../../../services/app/store";
-// import { resetBoards } from "../../../services/features/boards/boardSlice";
-// import { setTheme } from "../../../services/features/user/userSlice";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { fetchBoards, fetchProjects } from "@/logic/store/store";
+import { resetBoards } from "@/logic/store/slices/boardSlice";
+import { setTheme } from "@/logic/store/slices/userSlice";
 
 type DashboardHeaderProps = {
   location: string;
 };
 
 export default function DashboardHeader({ location }: DashboardHeaderProps) {
-  // const { selectedWorkSpaceId } = useAppSelector((state) => state.workSpaces);
-  // const { selectedProjectId, isLoading: boardsIsLoading } = useAppSelector(
-  //   (state) => state.boards,
-  // );
-  // const { isLoading: projectIsLoading } = useAppSelector(
-  //   (state) => state.projects,
-  // );
-  // const dispatch = useAppDispatch();
-  // let date = false;
+  const { selectedWorkSpaceId } = useAppSelector((state) => state.workSpaces);
+  const { selectedProjectId, isLoading: boardsIsLoading } = useAppSelector(
+    (state) => state.boards,
+  );
+  const { isLoading: projectIsLoading } = useAppSelector(
+    (state) => state.projects,
+  );
+  const dispatch = useAppDispatch();
+  let date = false;
   const iconStyle = "w-5 h-5";
   const columnRef = useRef<HTMLAnchorElement>(null);
   const listRef = useRef<HTMLAnchorElement>(null);
   const calendarRef = useRef<HTMLAnchorElement>(null);
   const marker = useRef<HTMLDivElement>(null);
-  // const { theme } = useAppSelector((state) => state.user);
-  // const [themeStatus, setThemeStatus] = useState(theme === "dark");
-  // const handleDarkMode = () => {
-  //   const newThemeStatus = theme === "dark" ? "light" : "dark";
-  //   setThemeStatus(newThemeStatus === "dark");
-  //   const htmlTag = document.querySelector("html");
-  //   htmlTag?.classList.toggle("dark");
-  //   localStorage.setItem("theme", newThemeStatus);
-  //   dispatch(setTheme(newThemeStatus));
-  // };
+  const { theme } = useAppSelector((state) => state.user);
+  const [themeStatus, setThemeStatus] = useState(theme === "dark");
+  const handleDarkMode = () => {
+    const newThemeStatus = theme === "dark" ? "light" : "dark";
+    setThemeStatus(newThemeStatus === "dark");
+    const htmlTag = document.querySelector("html");
+    htmlTag?.classList.toggle("dark");
+    localStorage.setItem("theme", newThemeStatus);
+    dispatch(setTheme(newThemeStatus));
+  };
 
-  // if (location === "calendar") date = true;
+  if (location === "calendar") date = true;
 
-  // function indicator(e: EventTarget) {
-  //   const parent = (e as HTMLElement).closest("a");
-  //   if (marker.current) {
-  //     marker.current.style.left = parent?.offsetLeft + "px";
-  //     marker.current.style.width = parent?.offsetWidth + "px";
-  //   }
-  // }
+  function indicator(e: EventTarget) {
+    const parent = (e as HTMLElement).closest("a");
+    if (marker.current) {
+      marker.current.style.left = parent?.offsetLeft + "px";
+      marker.current.style.width = parent?.offsetWidth + "px";
+    }
+  }
 
-  // useEffect(() => {
-  //   if (marker.current && location === "list") {
-  //     indicator(listRef.current as EventTarget);
-  //   }
-  // if (marker.current && location === "") {
-  //   indicator(listRef.current as EventTarget);
-  // }
-  //   if (marker.current && location === "column") {
-  //     indicator(columnRef.current as EventTarget);
-  //   }
-  //   if (marker.current && location === "calendar") {
-  //     indicator(calendarRef.current as EventTarget);
-  //   }
-  // }, [location]);
+  useEffect(() => {
+    if (marker.current && location === "list") {
+      indicator(listRef.current as EventTarget);
+    }
+    if (marker.current && location === "") {
+      indicator(listRef.current as EventTarget);
+    }
+    if (marker.current && location === "column") {
+      indicator(columnRef.current as EventTarget);
+    }
+    if (marker.current && location === "calendar") {
+      indicator(calendarRef.current as EventTarget);
+    }
+  }, [location]);
 
   // update columnView or listView state when click update btn
-  // const updateClickHandler = () => {
-  //   if (location === "list" && selectedWorkSpaceId !== "") {
-  //     dispatch(fetchProjects(selectedWorkSpaceId));
-  //     dispatch(resetBoards());
-  //   }
-  //   if (location === "column" && selectedProjectId !== "")
-  //     dispatch(fetchBoards(selectedProjectId));
-  // };
+  const updateClickHandler = () => {
+    if (location === "list" && selectedWorkSpaceId !== "") {
+      dispatch(fetchProjects(selectedWorkSpaceId));
+      dispatch(resetBoards());
+    }
+    if (location === "column" && selectedProjectId !== "")
+      dispatch(fetchBoards(selectedProjectId));
+  };
 
   return (
     <div className="sm:pt-1 xl:pt-4 flex-grow">
@@ -84,12 +82,6 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
               ref={marker}
               className="absolute h-[3px] w-0 bg-208D8E -bottom-[2px] left-0 duration-500 rounded-lg"
             ></div>
-            {/* <NavLink
-              ref={listRef}
-              to={"/listview"}
-              onClick={(e) => indicator(e.target)}
-              className="border-l-2 border-l-999999"
-            > */}
             <Link to="list" className="border-l-2 px-5 flex items-center gap-1">
               <Icon
                 iconName="ListView"
@@ -97,26 +89,6 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
               />
               <span>نمایش لیستی</span>
             </Link>
-            {/* <TabBtn
-                classes={
-                  location === "list"
-                    ? "text-208D8E font-bold dark:text-[#F1B127]"
-                    : "text-323232 font-medium dark:text-[#F7F9F9]"
-                }
-                title="نمایش لیستی"
-                icon={
-                  <Icon
-                    iconName="ListView"
-                    className={`${location === "list" ? "text-primary" : ""}}`}
-                  />
-                }
-              /> */}
-            {/* </NavLink> */}
-            {/* <NavLink
-              ref={columnRef}
-              to={"/columnview"}
-              onClick={(e) => indicator(e.target)}
-            > */}
             <Link
               to="column"
               className="border-l-2 px-5 flex items-center gap-1"
@@ -127,24 +99,6 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
               />
               <span>نمایش لیستی</span>
             </Link>
-            {/* <TabBtn
-                classes={
-                  location === "column"
-                    ? "text-208D8E font-bold dark:text-[#F1B127]"
-                    : "text-323232 font-medium dark:text-[#F7F9F9]"
-                }
-                title="نمایش ستونی"
-                icon={<Icon
-                iconName="ColumnView"
-                className={`${location === "column" ? "text-primary" : ""}}`}
-              />}
-              /> */}
-            {/* </NavLink> */}
-            {/* <NavLink
-              ref={calendarRef}
-              to={"/calendarview"}
-              onClick={(e) => indicator(e.target)}
-            > */}
             <Link
               to="calendar"
               className="border-l-2 px-5 flex items-center gap-1"
@@ -155,19 +109,6 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
               />
               <span>نمایش لیستی</span>
             </Link>
-            {/* <TabBtn
-                classes={
-                  location === "calendar"
-                    ? "text-208D8E font-bold dark:text-[#F1B127]"
-                    : "text-323232 font-medium dark:text-[#F7F9F9]"
-                }
-                title="تقویم"
-                icon={<Icon
-                  iconName="Calendar"
-                  className={`${location === "calendar" ? "text-primary" : ""}}`}
-                />}
-              /> */}
-            {/* </NavLink> */}
           </div>
         </div>
         <div className="flex items-center gap-4 divide-x-2 divide-x-reverse">
@@ -213,19 +154,20 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
           </span>
           {/* {date && <Date />} */}
         </div>
-        {/* {!location.includes("calendar") && (
+        {!location.includes("calendar") && (
           <button
             className="flex gap-1 items-center"
             onClick={updateClickHandler}
           >
-            <RxUpdate
+            <Icon
+              iconName="Update"
               className={
-                (projectIsLoading || boardsIsLoading) && "animate-spin"
+                projectIsLoading || boardsIsLoading ? "animate-spin" : ""
               }
             />
             <span>بروزرسانی</span>
           </button>
-        )} */}
+        )}
       </div>
     </div>
   );
