@@ -23,9 +23,6 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
   const dispatch = useAppDispatch();
   let date = false;
   const iconStyle = "w-5 h-5";
-  const columnRef = useRef<HTMLAnchorElement>(null);
-  const listRef = useRef<HTMLAnchorElement>(null);
-  const calendarRef = useRef<HTMLAnchorElement>(null);
   const marker = useRef<HTMLDivElement>(null);
   const { theme } = useAppSelector((state) => state.user);
   const [themeStatus, setThemeStatus] = useState(theme === "dark");
@@ -39,29 +36,6 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
   };
 
   if (location === "calendar") date = true;
-
-  function indicator(e: EventTarget) {
-    const parent = (e as HTMLElement).closest("a");
-    if (marker.current) {
-      marker.current.style.left = parent?.offsetLeft + "px";
-      marker.current.style.width = parent?.offsetWidth + "px";
-    }
-  }
-
-  useEffect(() => {
-    if (marker.current && location === "list") {
-      indicator(listRef.current as EventTarget);
-    }
-    if (marker.current && location === "") {
-      indicator(listRef.current as EventTarget);
-    }
-    if (marker.current && location === "column") {
-      indicator(columnRef.current as EventTarget);
-    }
-    if (marker.current && location === "calendar") {
-      indicator(calendarRef.current as EventTarget);
-    }
-  }, [location]);
 
   // update columnView or listView state when click update btn
   const updateClickHandler = () => {
@@ -80,7 +54,7 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
           <div className="flex items-center py-4 divide-x-2 relative">
             <div
               ref={marker}
-              className="absolute h-[3px] w-0 bg-208D8E -bottom-[2px] left-0 duration-500 rounded-lg"
+              className="absolute h-1 w-0 bg-208D8E -bottom-[2px] left-0 duration-500 rounded-lg"
             ></div>
             <Link to="list" className="border-l-2 px-5 flex items-center gap-1">
               <Icon
