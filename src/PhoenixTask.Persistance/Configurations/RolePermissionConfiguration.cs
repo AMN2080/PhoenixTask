@@ -6,12 +6,8 @@ namespace PhoenixTask.Persistance.Configurations;
 
 internal sealed class RolePermissionConfiguration : IEntityTypeConfiguration<RolePermission>
 {
-    public void Configure(EntityTypeBuilder<RolePermission> builder)
-    {
-        builder.HasKey(x => new { x.RoleValue, x.PermissionId });
-
-        builder.HasData(
-
+    internal static RolePermission[] RolePermissions =
+        {
         #region AdminRole
 
             Create(Role.Admin, PermissionType.UpdateWorkSpace),
@@ -59,7 +55,12 @@ internal sealed class RolePermissionConfiguration : IEntityTypeConfiguration<Rol
         Create(Role.Viewer, PermissionType.ReadBoard)
 
         #endregion
-            );
+    };
+    public void Configure(EntityTypeBuilder<RolePermission> builder)
+    {
+        builder.HasKey(x => new { x.RoleValue, x.PermissionId });
+
+        builder.HasData(RolePermissions);
     }
 
     static RolePermission Create(

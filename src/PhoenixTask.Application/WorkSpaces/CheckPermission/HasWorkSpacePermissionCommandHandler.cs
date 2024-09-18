@@ -15,6 +15,6 @@ internal sealed class HasWorkSpacePermissionCommandHandler(
         => await _workSpaceMemberRepository
         .UserHasAccess(request.WorkSpaceId,
             _userIdentifierProvider.UserId,
-            Domain.Authorities.PermissionType.ReadWorkSpace);
+            request.Permission);
 
 }
