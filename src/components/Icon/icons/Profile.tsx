@@ -13,8 +13,8 @@ const Profile = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(
       <g
         fill="none"
         stroke="#888888"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
         <circle cx="7" cy="6.75" r="2.25" />
         <path d="M11 13.5a4.5 4.5 0 0 0-8 0" />
