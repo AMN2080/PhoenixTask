@@ -1,10 +1,15 @@
-import axios from "axios";
+import axios, {
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import { authTokenUpdate, logOut } from "@/logic/store/slices/authSlice";
 import store from "@/logic/store/store";
 
-// const baseURL = "https://quera-task-server.vercel.app";
-const baseURL = "http://185.8.174.74:8000/";
+// Base URL for API requests
+const baseURL = "http://185.8.174.74:8000";
 
+// Utility function to get token from local storage
 const getFromLocalStorage = (key: string) => {
   if (typeof window !== "undefined") {
     return JSON.parse(localStorage.getItem(key) as string);
@@ -12,18 +17,45 @@ const getFromLocalStorage = (key: string) => {
   return null;
 };
 
-let authToken = getFromLocalStorage("authToken") || null;
-
-const AXIOS = axios.create({
+const axiosInstance = axios.create({
   baseURL,
 });
 
-AXIOS.interceptors.request.use(
-  async (config) => {
-    if (typeof window !== "undefined" && authToken?.accessToken) {
-      authToken = getFromLocalStorage("authToken") || null;
-      if (authToken) {
-        config.headers["x-auth-token"] = authToken.accessToken;
+// Request interceptor
+axiosInstance.interceptors.request.use(
+  async (config: InternalAxiosRequestConfig) => {
+    const authToken = getFromLocalStorage("authToken");
+    if (!authToken) return config;
+
+    if (config.url === "/accounts/login/") return config;
+
+    try {
+      const { accessToken, refreshToken } = authToken;
+
+      const decodedAccessToken = JSON.parse(atob(accessToken.split(".")[1]));
+      const isExpired = new Date(decodedAccessToken.exp * 1000) < new Date();
+
+      if (isExpired && refreshToken) {
+        const {
+          data: { access },
+        } = await axios.post<{ access: string }>(
+          `${baseURL}/accounts/refresh/`,
+          { refresh: refreshToken },
+        );
+
+        // Update the access token in local storage and Redux store
+        const newAuthToken = { accessToken: access, refreshToken };
+        localStorage.setItem("authToken", JSON.stringify(newAuthToken));
+        store.dispatch(authTokenUpdate(newAuthToken));
+
+        config.headers.Authorization = `Bearer ${access}`;
+      } else {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+    } catch (error) {
+      store.dispatch(logOut());
+      if (typeof window !== "undefined") {
+        window.location.href = "/login";
       }
     }
 
@@ -32,61 +64,35 @@ AXIOS.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
-AXIOS.interceptors.response.use(
-  (response) => {
-    return response.data;
-  },
+// Response interceptor
+axiosInstance.interceptors.response.use(
+  (response: AxiosResponse) => response,
   async (error) => {
     const originalRequest = error.config;
 
-    // if the error status code is 401 and it's a refresh token request
-    if (
-      error.response?.status === 401 &&
-      originalRequest.url.endsWith("/refreshtoken")
-    ) {
-      // Redirect the user to the login page if refresh token is expired or invalid
-      if (typeof window !== "undefined") {
-        localStorage.removeItem("authToken");
-        window.location.href = "/login";
-      }
-      return Promise.reject(error);
-    }
-
-    // if the error status code is 401 and we haven't retried the request yet
+    // Check if the error status code is 401 and handle token refresh
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
-        if (typeof window !== "undefined") {
-          // Get a new access token using the refresh token
-          const token = getFromLocalStorage("authToken");
+        const authToken = getFromLocalStorage("authToken");
+        if (!authToken) throw new Error("Refresh token not found");
 
-          const response = await axios.post(
-            `${baseURL}/api/auth/refreshtoken`,
-            {
-              refreshToken: token.refreshToken,
-            },
-          );
+        const { refreshToken } = authToken;
 
-          // Update the access token in local storage with the new token
-          const newAccessToken = response.data.data.accessToken;
-          const currentRefreshToken = token.refreshToken;
-          authToken = {
-            accessToken: newAccessToken,
-            refreshToken: currentRefreshToken,
-          };
+        const response = await axios.post(`${baseURL}/accounts/refresh/`, {
+          refresh: refreshToken,
+        });
 
-          localStorage.setItem("authToken", JSON.stringify(authToken));
+        const newAccessToken = response.data.access;
+        const newAuthToken = { accessToken: newAccessToken, refreshToken };
+        localStorage.setItem("authToken", JSON.stringify(newAuthToken));
+        store.dispatch(authTokenUpdate(newAuthToken));
 
-          // Update the access token in store with the new token
-          store.dispatch(authTokenUpdate(authToken));
-
-          // Update the authorization header with the new access token and retry the request
-          AXIOS.defaults.headers.common["x-auth-token"] = newAccessToken;
-          return AXIOS(originalRequest);
-        }
+        axiosInstance.defaults.headers.common["Authorization"] =
+          `Bearer ${newAccessToken}`;
+        return axiosInstance(originalRequest);
       } catch (refreshError) {
-        // Log out if both tokens are expired or invalid
         store.dispatch(logOut());
         if (typeof window !== "undefined") {
           window.location.href = "/login";
@@ -99,4 +105,4 @@ AXIOS.interceptors.response.use(
   },
 );
 
-export default AXIOS;
+export default axiosInstance;
