@@ -1,6 +1,8 @@
-﻿using PhoenixTask.Application.Abstractions.Authentication;
+﻿using MediatR;
+using PhoenixTask.Application.Abstractions.Authentication;
 using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Application.Abstractions.Messaging;
+using PhoenixTask.Application.Projects.CheckPermission;
 using PhoenixTask.Domain.Abstractions.Result;
 using PhoenixTask.Domain.Errors;
 using PhoenixTask.Domain.Projects;
@@ -12,16 +14,18 @@ internal sealed class DeleteProjectCommandHandler(
     IUserIdentifierProvider userIdentifierProvider,
     IWorkSpaceRepository workSpaceRepository,
     IProjectRepository projectRepository,
-    IUnitOfWork unitOfWork) : ICommandHandler<DeleteProjectCommand, Result>
+    IUnitOfWork unitOfWork,
+    ISender sender) : ICommandHandler<DeleteProjectCommand, Result>
 {
     private readonly IUserIdentifierProvider _userIdentifierProvider = userIdentifierProvider;
     private readonly IWorkSpaceRepository _workSpaceRepository = workSpaceRepository;
     private readonly IProjectRepository _projectRepository = projectRepository;
+    private readonly ISender _sender = sender;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     public async Task<Result> Handle(DeleteProjectCommand request, CancellationToken cancellationToken)
     {
-        var maybeProject =await _projectRepository.GetByIdAsync(request.ProjectId);
+        var maybeProject = await _projectRepository.GetByIdAsync(request.ProjectId);
 
         if (maybeProject.HasNoValue)
         {
@@ -32,9 +36,9 @@ internal sealed class DeleteProjectCommandHandler(
 
         #region UserPermitToDeleteProject
 
-        var maybeWorkSpace = await _workSpaceRepository.GetByIdAsync(project.WorkSpaceId);
+        var hasAccess = await _sender.Send(new HasProjectPermissionCommand(project.Id, Domain.Authorities.PermissionType.DeleteProject));
 
-        if (maybeWorkSpace.Value.OwnerId != _userIdentifierProvider.UserId)
+        if (!hasAccess)
         {
             return Result.Failure(DomainErrors.User.InvalidPermissions);
         }

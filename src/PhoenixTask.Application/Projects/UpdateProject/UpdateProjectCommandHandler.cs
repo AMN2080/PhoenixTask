@@ -1,6 +1,8 @@
-﻿using PhoenixTask.Application.Abstractions.Authentication;
+﻿using MediatR;
+using PhoenixTask.Application.Abstractions.Authentication;
 using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Application.Abstractions.Messaging;
+using PhoenixTask.Application.Projects.CheckPermission;
 using PhoenixTask.Domain.Abstractions.Result;
 using PhoenixTask.Domain.Errors;
 using PhoenixTask.Domain.Projects;
@@ -12,12 +14,14 @@ internal sealed class UpdateProjectCommandHandler(
     IUserIdentifierProvider userIdentifierProvider,
     IWorkSpaceRepository workSpaceRepository,
     IProjectRepository projectRepository,
-    IUnitOfWork unitOfWork) : ICommandHandler<UpdateProjectCommand, Result>
+    IUnitOfWork unitOfWork,
+    ISender sender) : ICommandHandler<UpdateProjectCommand, Result>
 {
     private readonly IWorkSpaceRepository _workSpaceRepository = workSpaceRepository;
     private readonly IUserIdentifierProvider _userIdentifierProvider = userIdentifierProvider;
     private readonly IProjectRepository _projectRepository = projectRepository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly ISender _sender = sender;
 
     public async Task<Result> Handle(UpdateProjectCommand request, CancellationToken cancellationToken)
     {
@@ -39,9 +43,9 @@ internal sealed class UpdateProjectCommandHandler(
 
         #region UserPermitToUpdateProject
 
-        var maybeWorkSpace = await _workSpaceRepository.GetByIdAsync(project.WorkSpaceId);
+        var hasAccess = await _sender.Send(new HasProjectPermissionCommand(project.Id, Domain.Authorities.PermissionType.UpdateProject));
 
-        if (maybeWorkSpace.Value.OwnerId != _userIdentifierProvider.UserId)
+        if (!hasAccess)
         {
             return Result.Failure(DomainErrors.User.InvalidPermissions);
         }

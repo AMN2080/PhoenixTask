@@ -1,5 +1,7 @@
-﻿using PhoenixTask.Application.Abstractions.Authentication;
+﻿using MediatR;
+using PhoenixTask.Application.Abstractions.Authentication;
 using PhoenixTask.Application.Abstractions.Messaging;
+using PhoenixTask.Application.Projects.CheckPermission;
 using PhoenixTask.Contracts.Projects;
 using PhoenixTask.Domain.Abstractions.Result;
 using PhoenixTask.Domain.Errors;
@@ -11,16 +13,18 @@ namespace PhoenixTask.Application.Projects.GetProjectById;
 internal sealed class GetProjectByIdQueryHandler(
     IUserIdentifierProvider userIdentifierProvider,
     IProjectRepository projectRepository,
-    IWorkSpaceRepository workSpaceRepository) : IQueryHandler<GetProjectByIdQuery, Result<ProjectResult>>
+    IWorkSpaceRepository workSpaceRepository,
+    ISender sender) : IQueryHandler<GetProjectByIdQuery, Result<ProjectResult>>
 {
     private readonly IWorkSpaceRepository _workSpaceRepository = workSpaceRepository;
     private readonly IUserIdentifierProvider _userIdentifierProvider = userIdentifierProvider;
     private readonly IProjectRepository _projectRepository = projectRepository;
+    private readonly ISender _sender = sender;
     public async Task<Result<ProjectResult>> Handle(GetProjectByIdQuery request, CancellationToken cancellationToken)
     {
         var maybeProject = await _projectRepository.GetByIdAsync(request.ProjectId);
 
-        if(maybeProject.HasNoValue)
+        if (maybeProject.HasNoValue)
         {
             return Result.Failure<ProjectResult>(DomainErrors.Project.NotFound);
         }
@@ -29,8 +33,9 @@ internal sealed class GetProjectByIdQueryHandler(
 
         #region UserPermitToAccessProject
 
-        var maybeWorkspace = await _workSpaceRepository.GetByIdAsync(project.Id);
-        if (maybeWorkspace.Value.OwnerId != _userIdentifierProvider.UserId)
+        var hasAccess = await _sender.Send(new HasProjectPermissionCommand(project.Id, Domain.Authorities.PermissionType.ReadProject));
+
+        if (!hasAccess)
         {
             return Result.Failure<ProjectResult>(DomainErrors.User.InvalidPermissions);
         }
