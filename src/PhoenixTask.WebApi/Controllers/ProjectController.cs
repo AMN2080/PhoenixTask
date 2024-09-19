@@ -1,9 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PhoenixTask.Application.Projects.CreateProject;
+using PhoenixTask.Application.Projects.CreateProjectMember;
 using PhoenixTask.Application.Projects.DeleteProject;
+using PhoenixTask.Application.Projects.DeleteProjectMember;
 using PhoenixTask.Application.Projects.GetProjectById;
 using PhoenixTask.Application.Projects.GetProjectByWorkSpace;
+using PhoenixTask.Application.Projects.GetProjectMembers;
 using PhoenixTask.Application.Projects.UpdateProject;
 using PhoenixTask.Contracts.Projects;
 using PhoenixTask.Domain.Abstractions.Maybe;
@@ -51,4 +54,30 @@ public class ProjectController(IMediator mediator) : ApiController(mediator)
         => await Result.Success(new DeleteProjectCommand(projectId))
         .Bind(command => Mediator.Send(command))
         .Match(Ok, BadRequest);
+
+
+    [HttpPost(ApiRoutes.Projects.InviteMember)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Grant(Guid projectId, Guid userId, [FromQuery] int role)
+        => await Result.Success(new CreateProjectMemberCommand(projectId, userId, role))
+            .Bind(command => Mediator.Send(command))
+            .Match(Ok, BadRequest);
+
+    [HttpDelete(ApiRoutes.Projects.RemoveMember)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Revoke(Guid projectId, Guid userId)
+        => await Result.Success(new DeleteProjectMemberCommand(projectId, userId))
+            .Bind(command => Mediator.Send(command))
+            .Match(Ok, BadRequest);
+
+
+    [HttpGet(ApiRoutes.Projects.Members)]
+    [ProducesResponseType(typeof(List<ProjectMember>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Members(Guid projectId)
+        => await Maybe<GetProjectMemberQuery>.From(new GetProjectMemberQuery(projectId))
+            .Bind(command => Mediator.Send(command))
+            .Match(Ok, BadRequest);
 }

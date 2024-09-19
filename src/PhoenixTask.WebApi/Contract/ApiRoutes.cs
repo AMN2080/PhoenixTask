@@ -32,6 +32,9 @@ public static class ApiRoutes
         public const string GetById = "project/{projectId:guid}";
         public const string Update = "project/{projectId:guid}";
         public const string Remove = "project/{projectId:guid}";
+        public const string InviteMember = "project/{projectId:guid}/member/{userId:guid}/add";
+        public const string RemoveMember = "project/{projectId:guid}/member/{userId:guid}/remove";
+        public const string Members = "project/{projectId:guid}/member/";
     }
     public static class Boards
     {
