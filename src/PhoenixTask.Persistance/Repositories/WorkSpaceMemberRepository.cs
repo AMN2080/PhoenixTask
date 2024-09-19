@@ -23,7 +23,7 @@ internal class WorkSpaceMemberRepository(IDbContext dbContext
 
     public async Task<Maybe<WorkSpaceMember>> GetMemberByIdAsync(Guid workSpaceId, Guid memberId)
         => await DbContext.Set<WorkSpaceMember>()
-            .SingleOrDefaultAsync(x => x.UserId == memberId && x.WorkSpaceId == workSpaceId);
+            .FirstOrDefaultAsync(x => x.UserId == memberId && x.WorkSpaceId == workSpaceId);
 
     public async Task<IEnumerable<WorkSpaceMember>> GetMembersByIdAsync(Guid workSpaceId)
         => DbContext.Set<WorkSpaceMember>().Where(x => x.WorkSpaceId == workSpaceId);
