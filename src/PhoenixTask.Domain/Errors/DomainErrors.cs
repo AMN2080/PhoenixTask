@@ -115,4 +115,9 @@ public static class DomainErrors
     {
         public static Error NotFound => new Error("WorkSpaceMember.NotFound", "The member was not found.");
     }
+    public static class ProjectMember
+    {
+        public static Error NotFound => new Error("ProjectMember.NotFound", "The member was not found.");
+    }
+
 }
