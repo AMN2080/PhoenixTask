@@ -37,6 +37,8 @@ public static class DependencyInjection
 
         services.AddScoped<IWorkSpaceMemberRepository, WorkSpaceMemberRepository>();
 
+        services.AddScoped<IProjectMemberRepository, ProjectMemberRepository>();
+
         return services;
     }
     public static IApplicationBuilder UsePersistance(this IApplicationBuilder app)
