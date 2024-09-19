@@ -27,6 +27,13 @@ internal sealed class GetWorkSpaceMemberRolesQueryHandler(
             return Maybe<IEnumerable<WorkSpaceMemberModel>>.None;
         }
 
-        throw new NotImplementedException();
+        var users = await _workSpaceMemberRepository.GetWorkSpaceUsers(request.WorkSpaceId);
+
+        if(users.Any())
+        {
+            return Maybe<IEnumerable<WorkSpaceMemberModel>>.From(users.Select(x => new WorkSpaceMemberModel(x.Id, x.Email)));
+        }
+
+        return Maybe<IEnumerable<WorkSpaceMemberModel>>.From([]);
     }
 }

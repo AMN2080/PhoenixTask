@@ -5,6 +5,7 @@ using PhoenixTask.Application.WorkSpaces.CreateWorkSpace;
 using PhoenixTask.Application.WorkSpaces.DeleteWorkSpaceMember;
 using PhoenixTask.Application.WorkSpaces.GetAllWorkSpaces;
 using PhoenixTask.Application.WorkSpaces.GetWorkSpaceById;
+using PhoenixTask.Application.WorkSpaces.GetWorkSpaceMemberRoles;
 using PhoenixTask.Application.WorkSpaces.UpdateWorkSpace;
 using PhoenixTask.Contracts.WorkSpaces;
 using PhoenixTask.Domain.Abstractions.Maybe;
@@ -65,6 +66,15 @@ public class WorkSpaceController(IMediator mediator) : ApiController(mediator)
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Revoke(Guid workspaceId, Guid userId)
         => await Result.Success(new DeleteWorkSpaceMemberCommand(workspaceId, userId))
+            .Bind(command => Mediator.Send(command))
+            .Match(Ok, BadRequest);
+
+
+    [HttpGet(ApiRoutes.WorkSpace.Members)]
+    [ProducesResponseType(typeof(List<WorkSpaceMember>),StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Members(Guid workspaceId)
+        => await Maybe<GetWorkSpaceMemberRolesQuery>.From(new GetWorkSpaceMemberRolesQuery(workspaceId))
             .Bind(command => Mediator.Send(command))
             .Match(Ok, BadRequest);
 }

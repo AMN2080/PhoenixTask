@@ -34,7 +34,6 @@ internal class WorkSpaceMemberRepository(IDbContext dbContext
                      join member in DbContext.Set<WorkSpaceMember>().AsNoTracking()
                      on user.Id equals member.UserId
                      where member.WorkSpaceId == workSpaceId
-                     && member.UserId != _userIdentifierProvider.UserId
                      select user).ToListAsync();
         return await users;
     }
