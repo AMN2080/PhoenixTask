@@ -7,7 +7,6 @@ using PhoenixTask.WebApi.Contract;
 namespace PhoenixTask.WebApi.Infrastructure;
 
 [Authorize]
-[Route("api")]
 public class ApiController : ControllerBase
 {
     protected ApiController(IMediator mediator) => Mediator = mediator;
