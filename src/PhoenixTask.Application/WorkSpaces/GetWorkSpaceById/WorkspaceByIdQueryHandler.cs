@@ -1,5 +1,6 @@
-﻿using PhoenixTask.Application.Abstractions.Authentication;
+﻿using MediatR;
 using PhoenixTask.Application.Abstractions.Messaging;
+using PhoenixTask.Application.WorkSpaces.CheckPermission;
 using PhoenixTask.Contracts.WorkSpaces;
 using PhoenixTask.Domain.Abstractions.Maybe;
 using PhoenixTask.Domain.Workspaces;
@@ -7,16 +8,14 @@ using PhoenixTask.Domain.Workspaces;
 namespace PhoenixTask.Application.WorkSpaces.GetWorkSpaceById;
 
 internal sealed class WorkspaceByIdQueryHandler(
-    IUserIdentifierProvider userIdentifierProvider,
-    IWorkSpaceRepository workSpaceRepository)
+    IWorkSpaceRepository workSpaceRepository,
+    ISender sender)
     : IQueryHandler<WorkspaceByIdQuery, Maybe<WorkSpaceResult>>
 {
     private readonly IWorkSpaceRepository _workSpaceRepository = workSpaceRepository;
-    private readonly IUserIdentifierProvider _userIdentifierProvider = userIdentifierProvider;
+    private readonly ISender _sender = sender;
     public async Task<Maybe<WorkSpaceResult>> Handle(WorkspaceByIdQuery request, CancellationToken cancellationToken)
     {
-        var userId = _userIdentifierProvider.UserId;
-
         var maybeWorkSpace = await _workSpaceRepository.GetByIdAsync(request.WorkSpaceId);
 
         if (maybeWorkSpace.HasNoValue)
@@ -26,7 +25,8 @@ internal sealed class WorkspaceByIdQueryHandler(
 
         var workspace = maybeWorkSpace.Value;
 
-        if (workspace.OwnerId != userId)
+        var hasAccess = await _sender.Send(new HasWorkSpacePermissionCommand(workspace.Id, Domain.Authorities.PermissionType.ReadProject));
+        if (!hasAccess)
         {
             return Maybe<WorkSpaceResult>.None;
         }

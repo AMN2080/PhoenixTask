@@ -1,6 +1,8 @@
-﻿using PhoenixTask.Application.Abstractions.Authentication;
+﻿using MediatR;
+using PhoenixTask.Application.Abstractions.Authentication;
 using PhoenixTask.Application.Abstractions.Data;
 using PhoenixTask.Application.Abstractions.Messaging;
+using PhoenixTask.Application.WorkSpaces.CheckPermission;
 using PhoenixTask.Domain.Abstractions.Result;
 using PhoenixTask.Domain.Errors;
 using PhoenixTask.Domain.Workspaces;
@@ -8,17 +10,15 @@ using PhoenixTask.Domain.Workspaces;
 namespace PhoenixTask.Application.WorkSpaces.UpdateWorkSpace;
 
 internal sealed class UpdateWorkspaceCommandHandler
-    (IUserIdentifierProvider userIdentifierProvider,
-    IWorkSpaceRepository workSpaceRepository,
+    (IWorkSpaceRepository workSpaceRepository,
+    ISender sender,
     IUnitOfWork unitOfWork) : ICommandHandler<UpdateWorkspaceCommand, Result>
 {
-    private readonly IUserIdentifierProvider _userIdentifierProvider = userIdentifierProvider;
     private readonly IWorkSpaceRepository _workSpaceRepository = workSpaceRepository;
     private readonly IUnitOfWork _unitOfWork = unitOfWork;
+    private readonly ISender _sender = sender;
     public async Task<Result> Handle(UpdateWorkspaceCommand request, CancellationToken cancellationToken)
     {
-        var userId = _userIdentifierProvider.UserId;
-
         var maybeWorkSpace = await _workSpaceRepository.GetByIdAsync(request.WorkSpaceId);
 
         if (maybeWorkSpace.HasNoValue)
@@ -28,7 +28,8 @@ internal sealed class UpdateWorkspaceCommandHandler
 
         var workSpace = maybeWorkSpace.Value;
 
-        if (workSpace.OwnerId != userId)
+        var hasAccess = await _sender.Send(new HasWorkSpacePermissionCommand(workSpace.Id, Domain.Authorities.PermissionType.UpdateWorkSpace));
+        if (!hasAccess)
         {
             return Result.Failure(DomainErrors.User.InvalidPermissions);
         }
