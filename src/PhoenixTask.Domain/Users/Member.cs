@@ -46,8 +46,3 @@ public abstract class Member : AggregateRoot, IAuditableEntity, ISoftDeletableEn
         RoleValue = role.Value;
     }
 }
-public enum MemberType
-{
-    WorkSpaceMember = 1,
-    ProjectMember = 2
-}
