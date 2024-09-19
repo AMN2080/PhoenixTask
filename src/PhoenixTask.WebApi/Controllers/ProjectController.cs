@@ -17,13 +17,13 @@ public class ProjectController(IMediator mediator) : ApiController(mediator)
 {
     [HttpGet(ApiRoutes.Projects.GetWorkSpaceProjects)]
     [ProducesResponseType(typeof(List<ProjectResult>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> Get(Guid workspaceId)
+    public async Task<IActionResult> GetAll(Guid workspaceId)
         => Ok(await Mediator.Send(new GetProjectByWorkSpaceQuery(workspaceId)));
 
     [HttpGet(ApiRoutes.Projects.GetById)]
     [ProducesResponseType(typeof(ProjectResult), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Get(Guid workspaceId, Guid projectId)
+    public async Task<IActionResult> Get(Guid projectId)
         => await Result.Success(new GetProjectByIdQuery(projectId))
         .Bind(command => Mediator.Send(command))
         .Match(Ok, NotFound);
@@ -39,7 +39,7 @@ public class ProjectController(IMediator mediator) : ApiController(mediator)
     [HttpPut(ApiRoutes.Projects.Update)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Update(Guid workspaceId, [FromBody] ProjectResult project)
+    public async Task<IActionResult> Update([FromBody] ProjectResult project)
         => await Result.Success(new UpdateProjectCommand(project.Id, project.Name))
         .Bind(command => Mediator.Send(command))
         .Match(Ok, BadRequest);
@@ -47,7 +47,7 @@ public class ProjectController(IMediator mediator) : ApiController(mediator)
     [HttpDelete(ApiRoutes.Projects.Remove)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> Delete(Guid workspaceId, Guid projectId)
+    public async Task<IActionResult> Delete(Guid projectId)
         => await Result.Success(new DeleteProjectCommand(projectId))
         .Bind(command => Mediator.Send(command))
         .Match(Ok, BadRequest);

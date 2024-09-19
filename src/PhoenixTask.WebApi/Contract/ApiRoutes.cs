@@ -29,9 +29,9 @@ public static class ApiRoutes
     {
         public const string GetWorkSpaceProjects = "workspace/{workspaceId:guid}/projects";
         public const string Create = "workspace/{workspaceId:guid}/project";
-        public const string GetById = "workspace/{workspaceId:guid}/project/{projectId:guid}";
-        public const string Update = "workspace/{workspaceId:guid}/project/{projectId:guid}";
-        public const string Remove = "workspace/{workspaceId:guid}/project/{projectId:guid}";
+        public const string GetById = "project/{projectId:guid}";
+        public const string Update = "project/{projectId:guid}";
+        public const string Remove = "project/{projectId:guid}";
     }
     public static class Boards
     {
