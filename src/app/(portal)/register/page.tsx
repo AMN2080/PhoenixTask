@@ -15,7 +15,7 @@ import {
 } from "@/logic/store/slices/authSlice";
 import { Button, CheckBox, Flex, Heading, Input, Text } from "@/components/UI";
 
-export default function RegisterForm() {
+function RegisterPage() {
   const [showModal, setShowModal] = useState(false);
   const {
     register,
@@ -144,3 +144,5 @@ export default function RegisterForm() {
 const getErrorStyles = (error: FieldError | undefined) => {
   return error ? "border-red-600 border-2" : "";
 };
+
+export default RegisterPage;

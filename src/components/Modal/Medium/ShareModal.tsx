@@ -188,12 +188,12 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
             <div className="w-full mt-7 flex justify-between items-center ">
               <div className="flex items-center dark:text-[#F7F9F9]">
                 <FiLink />
-                <span className="mr-3 text-sm font-normal text-[#1E1E1E] dark:text-[#F7F9F9]">
+                <span className="mr-3 text-sm font-normal text-neutral-content dark:text-[#F7F9F9]">
                   لینک خصوصی
                 </span>
               </div>
 
-              <div className="w-20 h-6 px-3 py-1 text-xs flex items-center justify-center font-normal text-[#1E1E1E] rounded-md border border-[#E9EBF0] cursor-pointer dark:text-[#F7F9F9]">
+              <div className="w-20 h-6 px-3 py-1 text-xs flex items-center justify-center font-normal text-neutral-content rounded-md border border-[#E9EBF0] cursor-pointer dark:text-[#F7F9F9]">
                 کپی لینک
               </div>
             </div>

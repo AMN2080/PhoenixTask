@@ -14,7 +14,7 @@ import { Button, Flex, Heading, Input } from "@/components/UI";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { forgotPassword, reset } from "@/logic/store/slices/authSlice";
 
-const ForgetForm = () => {
+function ForgetPasswordPage() {
   const router = useRouter();
   const {
     register,
@@ -88,10 +88,10 @@ const ForgetForm = () => {
       </form>
     </div>
   );
-};
+}
 
 const getErrorStyles = (error: FieldError | undefined) => {
   return error ? "border-red-600 border-2" : "";
 };
 
-export default ForgetForm;
+export default ForgetPasswordPage;

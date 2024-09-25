@@ -20,7 +20,7 @@ const BoardMore = ({
   handleEditMood,
 }: BoardMoreProps) => {
   const liStyle =
-    "flex items-center cursor-pointer mt-3 text-sm text-[#1E1E1E] font-normal dark:text-[#F7F9F9]";
+    "flex items-center cursor-pointer mt-3 text-sm text-neutral-content font-normal dark:text-[#F7F9F9]";
   const [confirm, setConfirm] = useState(false);
   const dispatch = useAppDispatch();
 

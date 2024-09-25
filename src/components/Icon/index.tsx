@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { SVGProps } from "react";
 
 const iconMap = {
+  AccountInfo: dynamic(() => import("./icons/AccountInfo")),
   Calendar: dynamic(() => import("./icons/Calendar")),
   CheckBox: dynamic(() => import("./icons/CheckBox")),
   Close: dynamic(() => import("./icons/Close")),
@@ -15,9 +16,11 @@ const iconMap = {
   Loading: dynamic(() => import("./icons/Loading")),
   Logout: dynamic(() => import("./icons/Logout")),
   More: dynamic(() => import("./icons/More")),
+  PersonalINfo: dynamic(() => import("./icons/PersonalInfo")),
   Profile: dynamic(() => import("./icons/Profile")),
   Remove: dynamic(() => import("./icons/Remove")),
   RoundArrow: dynamic(() => import("./icons/RoundArrow")),
+  Setting: dynamic(() => import("./icons/Setting")),
   SquarePlus: dynamic(() => import("./icons/SquarePlus")),
   Tag: dynamic(() => import("./icons/Tag")),
   Tick: dynamic(() => import("./icons/Tick")),

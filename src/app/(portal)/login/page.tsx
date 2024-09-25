@@ -11,7 +11,7 @@ import ErrorMessage from "@/components/modules/AuthError";
 import { login as loginUser, reset } from "@/logic/store/slices/authSlice";
 import { Button, Flex, Heading, Input, Link, Text } from "@/components/UI";
 
-const LoginForm = () => {
+function LoginPage() {
   const {
     register,
     handleSubmit,
@@ -117,10 +117,10 @@ const LoginForm = () => {
       </form>
     </div>
   );
-};
+}
 
 const getErrorStyles = (error: FieldError | undefined) => {
   return error ? "border-red-600 border-2" : "";
 };
 
-export default LoginForm;
+export default LoginPage;

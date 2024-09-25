@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Input } from "@/components/UI";
+import { Button, Input, Flex, Heading } from "@/components/UI";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { personalInfo, personalInfoType } from "@/logic/schemas/personalInfo";
@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { toast } from "react-toastify";
 import { updateUserById, resetUser } from "@/logic/store/store";
 
-const PersonalInfo = () => {
+function PersonalInfoPage() {
   const {
     register,
     handleSubmit,
@@ -51,34 +51,39 @@ const PersonalInfo = () => {
     );
   };
 
-  const errorMsgStyle = "text-FC0733 text-xs absolute py-1";
+  const errorMsgStyle = "text-[#FC0733] text-xs absolute py-1";
   const errorInputStyle = "border-FB0606";
 
   return (
-    <div className="w-96  mr-14 dark:text-[#F7F9F9]">
-      <h3 className="text-1E1E1E text-2xl font-bold mb-9 dark:text-inherit">
+    <div className="w-96 mr-14">
+      <Heading
+        as="h3"
+        size="S"
+        weight="600"
+        className="text-neutral-content mb-9"
+      >
         اطلاعات فردی
-      </h3>
-      <div className="flex flex-col">
+      </Heading>
+      <Flex direction="col">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
           {/* User Prof img */}
-          <div className="flex mb-6 gap-4">
-            <span className="w-24 h-24 grid place-content-center overflow-hidden  text-4xl rounded-full bg-EAF562">
+          <Flex gap="S" className="mb-6">
+            <span className="w-24 h-24 grid place-content-center overflow-hidden text-4xl rounded-full bg-[#EAF562]">
               test
             </span>
-            <div className="flex flex-col justify-center gap-3 ">
+            <Flex direction="col" justifyContent="center" gap="S">
               <label
-                className=" border border-208D8E rounded-lg p-2 cursor-pointer grid place-content-center text-xl text-208D8E dark:border-[#F1B127] dark:text-[#F1B127]"
+                className="border border-[#208D8E] rounded-lg p-2 cursor-pointer grid place-content-center text-xl text-[#208D8E]"
                 htmlFor="img"
               >
                 ویرایش تصویر پروفایل
               </label>
               <input hidden type="file" id="img" />
-              <span className="text-xs text-8A8989">
+              <span className="text-xs text-[#8A8989]">
                 این تصویر برای عموم قابل نمایش است.
               </span>
-            </div>
-          </div>
+            </Flex>
+          </Flex>
 
           {/* User Credentials */}
           <div className="mb-9">
@@ -106,7 +111,7 @@ const PersonalInfo = () => {
             <p className={errorMsgStyle}>{errors.phone?.message}</p>
           </div>
 
-          <div className=" relative">
+          <div className="relative">
             <Button
               variant="primary"
               disabled={isLoading}
@@ -118,9 +123,9 @@ const PersonalInfo = () => {
             )}
           </div>
         </form>
-      </div>
+      </Flex>
     </div>
   );
-};
+}
 
-export default PersonalInfo;
+export default PersonalInfoPage;

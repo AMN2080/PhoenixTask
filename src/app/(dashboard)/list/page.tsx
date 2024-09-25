@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { fetchBoards } from "@/logic/store/store";
 import Icon from "@/components/Icon";
 
-const ListView = () => {
+function ListViewPage() {
   const { isError, message, isSuccess, isLoading, workSpaces } = useAppSelector(
     (state) => state.projects,
   );
@@ -91,6 +91,6 @@ const ListView = () => {
       ))}
     </div>
   );
-};
+}
 
-export default ListView;
+export default ListViewPage;

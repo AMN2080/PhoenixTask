@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import ColumnSectionBar from "@/components/templates/ColumnSectionBar";
 
@@ -17,7 +17,7 @@ type BoardProps = {
   tasks: Task[];
 };
 
-export default function ColumnView({
+function ColumnViewPage({
   title,
   number,
   tasks,
@@ -95,3 +95,5 @@ export default function ColumnView({
     </Draggable>
   );
 }
+
+export default ColumnViewPage;

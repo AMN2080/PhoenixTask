@@ -1,3 +1,5 @@
-export default function AccountInfo() {
+function AccountInfoPage() {
   return <></>;
 }
+
+export default AccountInfoPage;

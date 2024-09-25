@@ -34,7 +34,7 @@ const QuickCalendar = ({
     "جمعه",
   ];
   const HeaderFont =
-    "flex items-center justify-center text-2xl font-medium text-[#1E1E1E] dark:text-[#F7F9F9]";
+    "flex items-center justify-center text-2xl font-medium text-neutral-content dark:text-[#F7F9F9]";
   const HeaderDate = "text-208D8E mr-3 dark:text-[#F1B127]";
 
   // handle deadLine value and show deadline
