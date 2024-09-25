@@ -4,15 +4,15 @@ import {
   configureStore,
   createAction,
 } from "@reduxjs/toolkit";
-import calendarReducer from "../services/calendar/calendarSlice";
-import authReducer from "../services/auth/authSlice";
+import calendarReducer from "./slices/calendarSlice";
+import authReducer from "./slices/authSlice";
 import modalReducer, {
   closeAllModals,
   toggleLargeModal,
   toggleMediumModal,
   toggleSmallModal,
   toggleXSmallModal,
-} from "../services/modals/modalSlice";
+} from "./slices/modalSlice";
 import projectReducer, {
   fetchProjects,
   resetProject,
@@ -23,7 +23,7 @@ import projectReducer, {
   addMemberToProject,
   removeMemberThanProject,
   setSelectedProjectSidebar,
-} from "../services/projects/projectSlice";
+} from "./slices/projectSlice";
 import taskReducer, {
   resetTask,
   fetchCreateTask,
@@ -31,7 +31,7 @@ import taskReducer, {
   fetchUpdateTask,
   fetchAssignTask,
   fetchUnAssignTask,
-} from "../services/tasks/taskSlice";
+} from "./slices/taskSlice";
 import boardReducer, {
   fetchBoards,
   fetchChangeBoardPosition,
@@ -48,12 +48,12 @@ import boardReducer, {
   editBoardName,
   resetPostBoard,
   resetBoard,
-} from "../services/boards/boardSlice";
+} from "./slices/boardSlice";
 import userReducer, {
   fetchAddedMemberWorkspace,
   updateUserById,
   resetUser,
-} from "../services/user/userSlice";
+} from "./slices/userSlice";
 import workSpacesReducer, {
   fetchAllWorkSpaces,
   createWorkSpace,
@@ -62,7 +62,7 @@ import workSpacesReducer, {
   addWorkSpaceMember,
   removeWorkSpaceMember,
   resetPostWorkspace,
-} from "../services/workSpaceList/workSpacesSlice";
+} from "./slices/workSpacesSlice";
 
 // Define the appReducer to combine all the reducers used in the application
 const appReducer = combineReducers({

@@ -7,18 +7,11 @@ import { toast } from "react-toastify";
 import { useRouter, useSearchParams } from "next/navigation";
 import { loginSchema, loginType } from "@/logic/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorMessage from "@/components/templates/AuthError";
-import { login as loginUser, reset } from "@/logic/services/auth/authSlice";
-import {
-  Button,
-  Flex,
-  Heading,
-  Input,
-  Link,
-  Text,
-} from "@/components/modules/UI";
+import ErrorMessage from "@/components/modules/AuthError";
+import { login as loginUser, reset } from "@/logic/store/slices/authSlice";
+import { Button, Flex, Heading, Input, Link, Text } from "@/components/UI";
 
-const LoginForm = () => {
+function LoginPage() {
   const {
     register,
     handleSubmit,
@@ -58,7 +51,7 @@ const LoginForm = () => {
       const redirectUrl = Array.isArray(redirect) ? redirect[0] : redirect;
       router.push(redirectUrl);
     } else if (isSuccess) {
-      router.push("/listview");
+      router.push("/list");
     }
   }, [isSuccess, isError, isLoading, message, router, dispatch, searchParams]);
 
@@ -124,10 +117,10 @@ const LoginForm = () => {
       </form>
     </div>
   );
-};
+}
 
 const getErrorStyles = (error: FieldError | undefined) => {
   return error ? "border-red-600 border-2" : "";
 };
 
-export default LoginForm;
+export default LoginPage;

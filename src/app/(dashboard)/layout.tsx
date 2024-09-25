@@ -1,6 +1,7 @@
 "use client";
-import DashboardHeader from "@/components/modules/DashboardHeader";
-import DashboardSidebar from "@/components/modules/DashboardSidebar";
+import DashboardHeader from "@/components/modules/dashboard/Header";
+import DashboardSidebar from "@/components/modules/dashboard/Sidebar";
+import { Flex } from "@/components/UI";
 import { usePathname } from "next/navigation";
 
 interface AuthLayoutProps {
@@ -24,12 +25,12 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
   }
 
   return (
-    <div className="flex flex-row w-full max-h-screen overflow-hidden select-none">
+    <Flex className="w-full max-h-screen overflow-hidden select-none">
       <DashboardSidebar />
       <div className="w-4/5 pr-4 pl-10 min-h-screen">
         <DashboardHeader location={location.slice(1)} />
         <div className={`${wraperClasses} relative`}>{children}</div>
       </div>
-    </div>
+    </Flex>
   );
 }

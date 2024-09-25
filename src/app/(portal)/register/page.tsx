@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FieldError, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorMessage from "@/components/templates/AuthError";
+import ErrorMessage from "@/components/modules/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
 import { registerSchema, registerType } from "@/logic/schemas/registerSchema";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
@@ -12,18 +12,10 @@ import { toast } from "react-toastify";
 import {
   register as registerUser,
   reset,
-} from "@/logic/services/auth/authSlice";
-import {
-  Button,
-  CheckBox,
-  Flex,
-  Heading,
-  Input,
-  Text,
-  Link,
-} from "@/components/modules/UI";
+} from "@/logic/store/slices/authSlice";
+import { Button, CheckBox, Flex, Heading, Input, Text } from "@/components/UI";
 
-export default function RegisterPage() {
+function RegisterPage() {
   const [showModal, setShowModal] = useState(false);
   const {
     register,
@@ -55,20 +47,12 @@ export default function RegisterPage() {
     }
   }, [isSuccess, isError, message, isLoading, router, dispatch]);
 
-  const onSubmit = async ({
-    username,
-    email,
-    password,
-    confirmPassword,
-    rules,
-  }: registerType) => {
+  const onSubmit = async ({ username, email, password }: registerType) => {
     dispatch(
       registerUser({
-        username: typeof username === "string" ? username.toLowerCase() : "",
-        email: typeof email === "string" ? email.toLowerCase() : "",
+        username,
+        email,
         password,
-        confirmPassword,
-        rules,
       }),
     );
   };
@@ -82,8 +66,8 @@ export default function RegisterPage() {
 
   return (
     <div className="bg-white max-w-[640px] w-full shadow-[0_50px_100px_-20px_rgba(50,50,93,0.25)] p-6 rounded-b-[20px]">
-      <Heading align="center" className="mb-8" as="h2" size="L">
-        به جمع فینیکس تسکی‌ها بپیوند😎
+      <Heading align="center" className="mb-8" as="h2" size="S">
+        به جمع فینکس تسکی‌ها بپیوند😎
       </Heading>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Flex gap={`${errors ? "XS" : "M"}`} direction="col">
@@ -160,3 +144,5 @@ export default function RegisterPage() {
 const getErrorStyles = (error: FieldError | undefined) => {
   return error ? "border-red-600 border-2" : "";
 };
+
+export default RegisterPage;

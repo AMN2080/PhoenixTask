@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "@/components/modules/UI/Link";
+import { Link, Flex } from "@/components/UI";
 import { usePathname } from "next/navigation";
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
   const currentPath = usePathname();
 
   return (
-    <main className="m-0 p-0 h-screen w-full overflow-hidden flex flex-col font-IranYekan relative">
+    <Flex direction="col" alignItems="between" className="m-0 p-0 h-screen w-full overflow-hidden font-IranYekan relative">
       <header className="flex justify-between items-center mx-20 mt-10 h-11">
         <h1 className="logo font-IranYekan h-fit">Phoenix Task</h1>
         <div className="flex gap-2 items-center">
@@ -38,6 +38,6 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         {children}
       </section>
       <div className="absolute top-[450px] w-full h-screen z-[-1] skew-y-[-6deg] bg-gradient-to-l from-primary to-secondary"></div>
-    </main>
+    </Flex>
   );
 }
