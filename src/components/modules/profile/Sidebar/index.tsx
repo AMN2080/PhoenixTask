@@ -26,7 +26,7 @@ function ProfileSidebar() {
         <ul className="flex flex-col gap-8 mt-11">
           <li>
             <Link
-              className="flex gap-3 cursor-pointer px-[10px] py-1 rounded hover:bg-[#c5ffff] transition-all"
+              className="flex gap-3 cursor-pointer px-[10px] py-1 rounded transition-all"
               to={"/profile/personal-info"}
             >
               <Icon iconName="PersonalINfo" className="text-neutral-content" />
@@ -38,7 +38,7 @@ function ProfileSidebar() {
           <li>
             <Link
               to={"/profile/account-info"}
-              className="flex gap-3 cursor-pointer px-[10px] py-1 rounded hover:bg-[#c5ffff] transition-all dark:hover:bg-[#2c3640]"
+              className="flex gap-3 cursor-pointer px-[10px] py-1 rounded transition-all"
             >
               <Icon iconName="AccountInfo" className="text-neutral-content" />
               <span className="font-medium text-xl text-neutral-content">
@@ -49,7 +49,7 @@ function ProfileSidebar() {
           <li>
             <Link
               to={"/profile/situation"}
-              className="flex gap-3 cursor-pointer px-[10px] py-1 rounded hover:bg-[#c5ffff] transition-all"
+              className="flex gap-3 cursor-pointer px-[10px] py-1 rounded transition-all"
             >
               <Icon iconName="Setting" className="text-neutral-content" />
               <span className="font-medium text-xl text-neutral-content">

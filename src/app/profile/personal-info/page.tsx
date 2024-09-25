@@ -120,15 +120,13 @@ function PersonalInfoPage() {
           </div>
 
           <div className="relative">
-            <Button
-              variant="primary"
-              disabled={isLoading}
-              type="submit"
-              value={`${isLoading ? "" : "ثبت تغییرات"}`}
-            ></Button>
-            {isLoading && (
-              <span className="loading loading-dots loading-lg absolute left-[45%] -bottom-0 text-white"></span>
-            )}
+            <Button disabled={isLoading} type="submit" size="full">
+              {isLoading ? (
+                <span className="loading loading-dots loading-lg absolute left-[45%] -bottom-0 text-white" />
+              ) : (
+                "ثبت تغییرات"
+              )}
+            </Button>
           </div>
         </form>
       </Flex>
