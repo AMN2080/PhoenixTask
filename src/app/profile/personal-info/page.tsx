@@ -24,6 +24,8 @@ function PersonalInfoPage() {
     (state) => state.user,
   );
 
+  const { user } = useAppSelector((state) => state.auth);
+
   useEffect(() => {
     if (isError) {
       toast.dismiss();
@@ -68,9 +70,15 @@ function PersonalInfoPage() {
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
           {/* User Prof img */}
           <Flex gap="S" className="mb-6">
-            <span className="w-24 h-24 grid place-content-center overflow-hidden text-4xl rounded-full bg-[#EAF562]">
-              test
-            </span>
+            <div>
+              <Flex
+                justifyContent="center"
+                alignItems="center"
+                className="overflow-hidden bg-base-300 text-base-content rounded-full text-2xl w-20 h-20"
+              >
+                {user?.username.slice(0, 2).toUpperCase()}
+              </Flex>
+            </div>
             <Flex direction="col" justifyContent="center" gap="S">
               <label
                 className="border border-[#208D8E] rounded-lg p-2 cursor-pointer grid place-content-center text-xl text-[#208D8E]"

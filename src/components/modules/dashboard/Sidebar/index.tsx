@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Flex, Link, Button } from "@/components/UI";
+import { Flex, Link, Button, Heading } from "@/components/UI";
 import Icon from "@/components/Icon";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { fetchAllWorkSpaces, resetAllState } from "@/logic/store/store";
@@ -58,9 +58,13 @@ export default function DashboardSidebar() {
       className="w-1/6 h-screen py-10 pr-12 pl-4 border-l border-gray-400"
     >
       <div>
-        <h1 className="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#118C80] to-[#4AB7D8]">
+        <Heading
+          as="h1"
+          size="XS"
+          className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
+        >
           Phoenix Task Manager
-        </h1>
+        </Heading>
         {/* <SpaceMenu workSpaces={workSpaces || []} /> */}
         <input
           type="text"

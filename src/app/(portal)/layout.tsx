@@ -10,7 +10,11 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
   const currentPath = usePathname();
 
   return (
-    <Flex direction="col" alignItems="between" className="m-0 p-0 h-screen w-full overflow-hidden font-IranYekan relative">
+    <Flex
+      direction="col"
+      alignItems="between"
+      className="m-0 p-0 h-screen w-full overflow-hidden font-IranYekan relative"
+    >
       <header className="flex justify-between items-center mx-20 mt-10 h-11">
         <h1 className="logo font-IranYekan h-fit">Phoenix Task</h1>
         <div className="flex gap-2 items-center">

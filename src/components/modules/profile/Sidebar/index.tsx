@@ -5,15 +5,14 @@ import { useRouter } from "next/navigation";
 function ProfileSidebar() {
   const router = useRouter();
   return (
-    <section className="w-1/5 h-screen pt-10 border-l-[0.5px] border-[#AAAAAA]">
+    <section className="w-1/6 h-screen pt-10 border-l-[0.5px] border-[#AAAAAA]">
       <Flex direction="col" className="w-[80%] mr-12">
         <Heading
-          as="h2"
-          size="M"
-          weight="700"
-          className="bg-gradient-to-r from-[#118C80] to-[#4AB7D8] bg-clip-text text-transparent"
+          as="h1"
+          size="XS"
+          className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary"
         >
-          کوئرا تسک منیجر
+          Phoenix Task Manager
         </Heading>
         <div className="self-start mt-20">
           <Button
