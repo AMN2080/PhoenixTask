@@ -42,16 +42,18 @@ public sealed class Task : AggregateRoot, IAuditableEntity, ISoftDeletableEntity
         return task;
     }
 
-    void Update(Name name, string description, DateTime deadLine, int priority, int order)
+    public void Update(Name name,Board board, string description, DateTime deadLine, int priority, int order)
     {
         Ensure.NotEmpty(name, "The name is required.", nameof(name));
         Ensure.NotEmpty(description, "The description is required.", nameof(description));
+        Ensure.NotNull(board, "The board is required.", nameof(board));
 
         Name = name;
         Description = description;
         DeadLine = deadLine;
         Priority = priority;
         Order = order;
+        BoardId = board.Id;
 
         AddDomainEvent(new TaskUpdatedDomainEvent(this));
     }

@@ -45,4 +45,8 @@ internal static class ValidationErrors
     {
         internal static Error DescriptionIsRequierd => new("CreateTask.DescriptionIsRequierd", "The description is required.");
     }
+    internal sealed class UpdateTask
+    {
+        internal static Error DescriptionIsRequierd => new("UpdateTask.DescriptionIsRequierd", "The description is required.");
+    }
 }

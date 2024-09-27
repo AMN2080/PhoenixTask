@@ -119,5 +119,9 @@ public static class DomainErrors
     {
         public static Error NotFound => new Error("ProjectMember.NotFound", "The member was not found.");
     }
+    public static class Task
+    {
+        public static Error NotFound => new Error("Task.NotFound", "The task with the specified identifier was not found.");
+    }
 
 }
