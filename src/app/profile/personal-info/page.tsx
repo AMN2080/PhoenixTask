@@ -91,7 +91,7 @@ function PersonalInfoPage() {
             </Flex>
           </Flex>
 
-          <div className="mb-9">
+          <Flex direction="col" gap="S">
             <Input
               label="نام"
               connectorId="firstName"
@@ -115,7 +115,7 @@ function PersonalInfoPage() {
               {...register("phone")}
             />
             <ErrorMessage error={errors.phone} />
-          </div>
+          </Flex>
 
           <div className="relative">
             <Button disabled={isLoading} type="submit" size="full">
