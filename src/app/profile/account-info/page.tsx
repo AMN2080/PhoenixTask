@@ -4,6 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { accountInfo, accountInfoType } from "@/logic/schemas/accountInfo";
+import ErrorMessage from "@/components/modules/AuthError";
 import { Button, Flex, Input } from "@/components/UI";
 // import Button from "../../components/ui/Button";
 
@@ -20,7 +21,6 @@ const AccountInfoPage = () => {
     console.log(data);
   };
 
-  const errorMsgStyle = "text-FC0733 text-xs absolute py-1";
   const errorInputStyle = "border-FB0606";
 
   return (
@@ -37,7 +37,7 @@ const AccountInfoPage = () => {
               className={errors.email?.message && errorInputStyle}
               {...register("email")}
             />
-            <p className={errorMsgStyle}>{errors.email?.message}</p>
+            <ErrorMessage error={errors.email} />
 
             <Input
               label="نام کاربری"
@@ -45,7 +45,7 @@ const AccountInfoPage = () => {
               className={errors.username?.message && errorInputStyle}
               {...register("username")}
             />
-            <p className={errorMsgStyle}>{errors.username?.message}</p>
+            <ErrorMessage error={errors.username} />
 
             <Input
               label="رمزعبور فعلی"
@@ -54,7 +54,7 @@ const AccountInfoPage = () => {
               className={errors.oldPassword?.message && errorInputStyle}
               {...register("oldPassword")}
             />
-            <p className={errorMsgStyle}>{errors.oldPassword?.message}</p>
+            <ErrorMessage error={errors.oldPassword} />
 
             <Input
               label="رمزعبور جدید"
@@ -63,7 +63,7 @@ const AccountInfoPage = () => {
               className={errors.newPassword?.message && errorInputStyle}
               {...register("newPassword")}
             />
-            <p className={errorMsgStyle}>{errors.newPassword?.message}</p>
+            <ErrorMessage error={errors.newPassword} />
 
             <Input
               label="تکرار رمزعبور جدید"
@@ -72,9 +72,7 @@ const AccountInfoPage = () => {
               className={errors.confirmNewPassword?.message && errorInputStyle}
               {...register("confirmNewPassword")}
             />
-            <p className={errorMsgStyle}>
-              {errors.confirmNewPassword?.message}
-            </p>
+            <ErrorMessage error={errors.confirmNewPassword} />
           </Flex>
           <Button variant="primary">ثبت تغییرات</Button>
         </form>

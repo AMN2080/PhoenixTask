@@ -1,6 +1,7 @@
 "use client";
 
 import { Button, Input, Flex, Heading } from "@/components/UI";
+import ErrorMessage from "@/components/modules/AuthError";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { personalInfo, personalInfoType } from "@/logic/schemas/personalInfo";
@@ -53,7 +54,6 @@ function PersonalInfoPage() {
     );
   };
 
-  const errorMsgStyle = "text-[#FC0733] text-xs absolute py-1";
   const errorInputStyle = "border-FB0606";
 
   return (
@@ -68,7 +68,6 @@ function PersonalInfoPage() {
       </Heading>
       <Flex direction="col">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-          {/* User Prof img */}
           <Flex gap="S" className="mb-6">
             <div>
               <Flex
@@ -93,7 +92,6 @@ function PersonalInfoPage() {
             </Flex>
           </Flex>
 
-          {/* User Credentials */}
           <div className="mb-9">
             <Input
               label="نام"
@@ -101,14 +99,15 @@ function PersonalInfoPage() {
               className={errors.firstName?.message && errorInputStyle}
               {...register("firstName")}
             />
-            <p className={errorMsgStyle}>{errors.firstName?.message}</p>
+            <ErrorMessage error={errors.firstName} />
+
             <Input
               label="نام خانوادگی"
               connectorId="lastName"
               className={errors.lastName?.message && errorInputStyle}
               {...register("lastName")}
             />
-            <p className={errorMsgStyle}>{errors.lastName?.message}</p>
+            <ErrorMessage error={errors.lastName} />
 
             <Input
               label="شماره تلفن"
@@ -116,7 +115,7 @@ function PersonalInfoPage() {
               className={errors.phone?.message && errorInputStyle}
               {...register("phone")}
             />
-            <p className={errorMsgStyle}>{errors.phone?.message}</p>
+            <ErrorMessage error={errors.phone} />
           </div>
 
           <div className="relative">
