@@ -44,4 +44,8 @@ public static class ApiRoutes
         public const string Update = "board/{board:guid}";
         public const string Remove = "board/{board:guid}";
     }
+    public static class Tasks
+    {
+        public const string Create = "task/{boardId:guid}";
+    }
 }
