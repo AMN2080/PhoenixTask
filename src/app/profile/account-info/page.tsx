@@ -21,7 +21,7 @@ const AccountInfoPage = () => {
   const errorInputStyle = "border-FB0606";
 
   return (
-    <div className="w-96 mr-14 dark:text-[#F7F9F9]">
+    <div className="w-96 mr-14">
       <h3 className="text-neutral-content text-2xl font-bold mb-9">
         اطلاعات حساب
       </h3>
@@ -71,7 +71,7 @@ const AccountInfoPage = () => {
             />
             <ErrorMessage error={errors.confirmNewPassword} />
           </Flex>
-          <Button variant="primary">ثبت تغییرات</Button>
+          <Button>ثبت تغییرات</Button>
         </form>
       </div>
     </div>

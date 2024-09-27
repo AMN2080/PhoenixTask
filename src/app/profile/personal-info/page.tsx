@@ -66,7 +66,7 @@ function PersonalInfoPage() {
         اطلاعات فردی
       </Heading>
       <Flex direction="col">
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
           <Flex gap="S" className="mb-6">
             <div>
               <Flex
