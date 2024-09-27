@@ -8,4 +8,5 @@ public interface ITaskRepository
     public void Update(Task task);
     public void Remove(Task task);
     public Task<Maybe<Task>> GetByIdAsync(Guid id);
+    public Task<IEnumerable<Task>> GetByBoard(Guid boardId);
 }
