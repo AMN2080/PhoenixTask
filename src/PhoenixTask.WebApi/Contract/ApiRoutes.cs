@@ -47,5 +47,6 @@ public static class ApiRoutes
     public static class Tasks
     {
         public const string Create = "task/{boardId:guid}";
+        public const string GetBoardTasks = "task/get/{boardId:guid}";
     }
 }
