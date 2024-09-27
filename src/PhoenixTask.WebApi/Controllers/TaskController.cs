@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PhoenixTask.Application.Tasks.CreateTask;
+using PhoenixTask.Application.Tasks.DeleteTask;
 using PhoenixTask.Application.Tasks.GetTasks.GetTasksByBoard;
 using PhoenixTask.Application.Tasks.UpdateTask;
 using PhoenixTask.Contracts.Tasks;
@@ -32,4 +33,12 @@ public class TaskController(IMediator mediator) : ApiController(mediator)
         => await Result.Success(new UpdateTaskCommand(taskId, model.BoardId, model.Name, model.Description, model.DeadLine, model.Order, model.Priority))
             .Bind(command => Mediator.Send(command))
             .Match(Ok, BadRequest);
+
+    [HttpDelete(ApiRoutes.Tasks.Remove)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Delete(Guid taskId)
+    => await Result.Success(new DeleteTaskCommand(taskId))
+        .Bind(command => Mediator.Send(command))
+        .Match(Ok, BadRequest);
 }
