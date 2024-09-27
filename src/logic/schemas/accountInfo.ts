@@ -2,36 +2,31 @@ import { z } from "zod";
 
 const validationErrors = {
   username: "نام کاربری باید حداقل ۳ کاراکتر داشته باشد.",
-  emailRequired: "وارد کردن ایمیل الزامی است.",
+  passwordRequired: "رمز عبور را وارد کنید.",
   invalidEmail: "ایمیل نامعتبر است.",
   passwordSize: "رمز عبور باید حداقل ۸ کاراکتر داشته باشد.",
   weekPassword: "رمزعبور باید شامل حرف و عدد باشد.",
-  confirmPassword: "تکرار رمزعبور با رمزعبور مطابقت ندارد.",
+  confirmPassword: "تکرار رمزعبور با رمزعبور جدید مطابقت ندارد.",
   confirmRules: "لطفا تایید کنید که قوانین را خوانده و با آن موافقید.",
 };
 
-const registerSchema = z
+const accountInfo = z
   .object({
+    email: z.string().email(validationErrors.invalidEmail),
     username: z.string().min(3, validationErrors.username),
-    email: z
-      .string()
-      .min(1, validationErrors.emailRequired)
-      .email(validationErrors.invalidEmail),
-    password: z
+    oldPassword: z.string().min(1, validationErrors.passwordRequired),
+    newPassword: z
       .string()
       .min(8, validationErrors.passwordSize)
       .regex(/[a-zA-Z]/, validationErrors.weekPassword)
       .regex(/[0-9]/, validationErrors.weekPassword),
-    confirmPassword: z.string().min(1, validationErrors.confirmPassword),
-    rules: z
-      .boolean()
-      .refine((value) => value === true, validationErrors.confirmRules),
+    confirmNewPassword: z.string().min(1, validationErrors.confirmPassword),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.newPassword === data.confirmNewPassword, {
     path: ["confirmPassword"],
     message: validationErrors.confirmPassword,
   });
 
-type registerType = z.infer<typeof registerSchema>;
+type accountInfoType = z.infer<typeof accountInfo>;
 
-export { registerSchema, type registerType };
+export { accountInfo, type accountInfoType };
