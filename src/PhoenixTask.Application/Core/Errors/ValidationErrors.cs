@@ -41,5 +41,8 @@ internal static class ValidationErrors
         internal static Error NameIsRequired => new("UpdateBoard.NameIsRequired", "The name is required.");
         internal static Error ColorIsRequired => new("UpdateBoard.ColorIsRequired", "The color is required.");
     }
-
+    internal sealed class CreateTask
+    {
+        internal static Error DescriptionIsRequierd => new("CreateTask.DescriptionIsRequierd", "The description is required.");
+    }
 }
