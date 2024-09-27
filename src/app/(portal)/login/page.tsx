@@ -7,9 +7,8 @@ import { toast } from "react-toastify";
 import { useRouter, useSearchParams } from "next/navigation";
 import { loginSchema, loginType } from "@/logic/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorMessage from "@/components/modules/AuthError";
 import { login as loginUser, reset } from "@/logic/store/slices/authSlice";
-import { Button, Flex, Heading, Input, Link, Text } from "@/components/UI";
+import { Button, Flex, Heading, Input, Link, Text, ErrorMessage } from "@/components/UI";
 
 function LoginPage() {
   const {

@@ -1,7 +1,6 @@
 "use client";
 
-import { Button, Input, Flex, Heading } from "@/components/UI";
-import ErrorMessage from "@/components/modules/AuthError";
+import { Button, Input, Flex, Heading, ErrorMessage } from "@/components/UI";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { personalInfo, personalInfoType } from "@/logic/schemas/personalInfo";

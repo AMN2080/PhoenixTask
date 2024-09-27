@@ -4,8 +4,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { accountInfo, accountInfoType } from "@/logic/schemas/accountInfo";
-import ErrorMessage from "@/components/modules/AuthError";
-import { Button, Flex, Input } from "@/components/UI";
+import { Button, Flex, Input, ErrorMessage } from "@/components/UI";
 // import Button from "../../components/ui/Button";
 
 const AccountInfoPage = () => {

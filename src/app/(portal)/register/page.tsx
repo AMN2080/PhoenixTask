@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { FieldError, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorMessage from "@/components/modules/AuthError";
 import RulesModal from "@/components/templates/RulesModal";
 import { registerSchema, registerType } from "@/logic/schemas/registerSchema";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
@@ -13,7 +12,7 @@ import {
   register as registerUser,
   reset,
 } from "@/logic/store/slices/authSlice";
-import { Button, CheckBox, Flex, Heading, Input, Text } from "@/components/UI";
+import { Button, CheckBox, Flex, Heading, Input, Text, ErrorMessage } from "@/components/UI";
 
 function RegisterPage() {
   const [showModal, setShowModal] = useState(false);

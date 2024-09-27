@@ -9,8 +9,7 @@ import {
   forgotPasswordType,
 } from "@/logic/schemas/forgotPasswordSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ErrorMessage from "@/components/modules/AuthError";
-import { Button, Flex, Heading, Input } from "@/components/UI";
+import { Button, Flex, Heading, Input, ErrorMessage } from "@/components/UI";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { forgotPassword, reset } from "@/logic/store/slices/authSlice";
 
