@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using PhoenixTask.Domain.Projects;
 using PhoenixTask.Domain.Users;
 using PhoenixTask.Domain.Workspaces;
 using Task = PhoenixTask.Domain.Tasks.Task;
@@ -24,7 +25,8 @@ internal sealed class TaskConfiguration : IEntityTypeConfiguration<Task>
 
         builder.HasOne<User>()
             .WithMany()
-            .HasForeignKey(x => x.CreatorId);
+            .HasForeignKey(x => x.CreatorId)
+            .OnDelete(DeleteBehavior.ClientCascade);
 
         builder.Property(task => task.Description)
             .HasMaxLength(200);
@@ -34,6 +36,11 @@ internal sealed class TaskConfiguration : IEntityTypeConfiguration<Task>
         builder.Property(task => task.Priority);
 
         builder.Property(task => task.Order);
+
+        builder.HasOne<Board>()
+            .WithMany()
+            .HasForeignKey(task=>task.BoardId);
+
 
         builder.Property(task => task.CreatedOnUtc).IsRequired();
 
