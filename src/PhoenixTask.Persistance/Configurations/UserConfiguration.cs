@@ -30,6 +30,36 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
                 .IsRequired();
         });
 
+        builder.OwnsOne(user => user.FirstName, firstNameBuilder =>
+        {
+            firstNameBuilder.WithOwner();
+
+            firstNameBuilder.Property(firstName => firstName.Value)
+                .HasColumnName(nameof(User.FirstName))
+                .HasMaxLength(FirstName.MaxLength)
+                .IsRequired(false);
+        });
+
+        builder.OwnsOne(user => user.LastName, lastNameBuilder =>
+        {
+            lastNameBuilder.WithOwner();
+
+            lastNameBuilder.Property(lastName => lastName.Value)
+                .HasColumnName(nameof(User.LastName))
+                .HasMaxLength(LastName.MaxLength)
+                .IsRequired(false);
+        });
+
+        builder.OwnsOne(user => user.PhoneNumber, phoneNumberBuilder =>
+        {
+            phoneNumberBuilder.WithOwner();
+
+            phoneNumberBuilder.Property(phoneNumber => phoneNumber.Value)
+                .HasColumnName(nameof(User.PhoneNumber))
+                .HasMaxLength(PhoneNumber.MaxLength)
+                .IsRequired(false);
+        });
+
         builder.Property<string>("_passwordHash")
                 .HasField("_passwordHash")
                 .HasColumnName("PasswordHash")
@@ -48,7 +78,7 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(user => user.Deleted).HasDefaultValue(false);
 
-        builder.Property(user=>user.IsChangePassword);
+        builder.Property(user => user.IsChangePassword);
 
         builder.HasQueryFilter(user => !user.Deleted);
 
