@@ -123,5 +123,13 @@ public static class DomainErrors
     {
         public static Error NotFound => new Error("Task.NotFound", "The task with the specified identifier was not found.");
     }
+    public static class PhoneNumber
+    {
+        public static Error NullOrEmpty => new("PhoneNumber.NullOrEmpty", "The PhoneNumber is required.");
+
+        public static Error LongerThanAllowed => new("PhoneNumber.LongerThanAllowed", "The PhoneNumber is longer than allowed.");
+
+        public static Error InvalidFormat => new("PhoneNumber.InvalidFormat", "The PhoneNumber format is invalid.");
+    }
 
 }
