@@ -1,4 +1,5 @@
-﻿using PhoenixTask.Domain.Abstractions;
+﻿#pragma warning disable
+using PhoenixTask.Domain.Abstractions;
 using PhoenixTask.Domain.Abstractions.Guards;
 using PhoenixTask.Domain.Abstractions.Primitives;
 using PhoenixTask.Domain.Abstractions.Result;
@@ -23,24 +24,16 @@ public sealed class User : AggregateRoot, ISoftDeletableEntity, IAuditableEntity
         _passwordHash = passwordHash;
         IsChangePassword = false;
     }
-#pragma warning disable
-    /// <summary>
-    /// for ef core
-    /// </summary>
-    public User()
-    {
-
-    }
-#pragma warning enable
+    private User() { }
+    public FirstName? FirstName { get; private set; }
+    public LastName? LastName { get; private set; }
     public UserName UserName { get; private set; }
+    public PhoneNumber? PhoneNumber { get; private set; }
     public Email Email { get; private set; }
     public bool IsChangePassword { get; private set; }
     public DateTime CreatedOnUtc { get; }
-
     public DateTime? ModifiedOnUtc { get; }
-
     public DateTime? DeletedOnUtc { get; }
-
     public bool Deleted { get; }
     public static User Create(UserName username, Email email, string passwordHash)
     {
@@ -80,13 +73,13 @@ public sealed class User : AggregateRoot, ISoftDeletableEntity, IAuditableEntity
 
         AddDomainEvent(new UserForgetPasswordDomainEvent(this));
     }
-    public Result ResetPassword(string token,string password)
+    public Result ResetPassword(string token, string password)
     {
         if (IsChangePassword == false)
         {
             return Result.Failure(DomainErrors.User.CannotChangePassword);
         }
-        if(!CheckToken(token))
+        if (!CheckToken(token))
         {
             return Result.Failure(DomainErrors.User.CannotChangePassword);
         }
@@ -102,4 +95,10 @@ public sealed class User : AggregateRoot, ISoftDeletableEntity, IAuditableEntity
     }
     private bool CheckToken(string token) => _authKey == token;
     public string GetToken() => _authKey;
+    public void Update(FirstName firstName, LastName lastName, PhoneNumber phoneNumber)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        PhoneNumber = phoneNumber;
+    }
 }
