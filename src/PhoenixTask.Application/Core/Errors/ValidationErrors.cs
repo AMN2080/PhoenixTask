@@ -49,4 +49,8 @@ internal static class ValidationErrors
     {
         internal static Error DescriptionIsRequierd => new("UpdateTask.DescriptionIsRequierd", "The description is required.");
     }
+    internal sealed class UpdateUser
+    {
+        internal static Error HaveAtLeastOnePropertyNotNull => new("UpdateUser.HaveAtLeastOnePropertyNotNull", "At least one of FirstName, LastName, or PhoneNumber must be provided.");
+    }
 }
