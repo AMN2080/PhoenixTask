@@ -6,6 +6,7 @@ namespace PhoenixTask.Domain.Users;
 
 public sealed class FirstName : ValueObject
 {
+    public static FirstName Default => new(string.Empty);
     public const int MaxLength = 35;
     private FirstName(string value) => Value = value;
     public string Value { get; }
