@@ -2,7 +2,7 @@
 using PhoenixTask.Domain.Abstractions.Primitives;
 
 namespace PhoenixTask.Application.Core.Exceptions;
-public sealed class ValidationException : Exception
+public sealed class ValidationException : FluentValidation.ValidationException
 {
     public ValidationException(IEnumerable<ValidationFailure> failures)
         : base("One or more validation failures has occurred.") =>
@@ -11,5 +11,5 @@ public sealed class ValidationException : Exception
             .Select(failure => new Error(failure.ErrorCode, failure.ErrorMessage))
             .ToList();
 
-    public IReadOnlyCollection<Error> Errors { get; }
+    public new IReadOnlyCollection<Error> Errors { get; }
 }
