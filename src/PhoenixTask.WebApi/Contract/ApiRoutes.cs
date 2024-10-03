@@ -13,6 +13,7 @@ public static class ApiRoutes
         public const string ChangePassword = "users/{userId:guid}/change-password";
         public const string ForgetPassword = "users/reset-password";
         public const string ResetPassword = "users/reset-password/set-password";
+        public const string UpdateUser = "users/{userId:guid}";
     }
     public static class WorkSpace
     {

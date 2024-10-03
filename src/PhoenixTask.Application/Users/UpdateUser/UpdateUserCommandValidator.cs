@@ -4,16 +4,27 @@ using PhoenixTask.Application.Core.Extensions;
 
 namespace PhoenixTask.Application.Users.UpdateUser;
 
-internal sealed class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
+public sealed class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
 {
     public UpdateUserCommandValidator()
     {
-        RuleFor(e => e)
-            .Must(HaveAtLeastOnePropertyNotNull).WithError(ValidationErrors.UpdateUser.HaveAtLeastOnePropertyNotNull);
-    }
+        RuleFor(e => e.FirstName)
+            .NotEmpty()
+            .When(e => IsNullOrEmpty(e.LastName, e.PhoneNumber))
+            .WithError(ValidationErrors.UpdateUser.HaveAtLeastOnePropertyNotNull);
 
-    private bool HaveAtLeastOnePropertyNotNull(UpdateUserCommand command)
+        RuleFor(e => e.LastName)
+            .NotEmpty()
+            .When(e => IsNullOrEmpty(e.FirstName, e.PhoneNumber))
+            .WithError(ValidationErrors.UpdateUser.HaveAtLeastOnePropertyNotNull);
+
+        RuleFor(e => e.PhoneNumber)
+            .NotEmpty()
+            .When(e => IsNullOrEmpty(e.FirstName, e.LastName))
+            .WithError(ValidationErrors.UpdateUser.HaveAtLeastOnePropertyNotNull);
+    }
+    bool IsNullOrEmpty(params string?[] properies)
     {
-        return command.FirstName != null || command.LastName != null || command.PhoneNumber != null;
+        return properies.All(p=>string.IsNullOrEmpty(p));
     }
 }
