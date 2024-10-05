@@ -1,4 +1,5 @@
 ﻿using PhoenixTask.Domain.Abstractions.Primitives;
+using System.Xml.Serialization;
 
 namespace PhoenixTask.Domain.Errors;
 
@@ -131,5 +132,10 @@ public static class DomainErrors
 
         public static Error InvalidFormat => new("PhoneNumber.InvalidFormat", "The PhoneNumber format is invalid.");
     }
-
+    public static class Key
+    {
+        public static Error NullOrEmpty => new("Key.NullOrEmpty", "The Key is required.");
+        public static Error InvalidFormat => new("Key.InvalidFormat", "The Key format is invalid.");
+        public static Error LongerThanAllowed => new("Key.LongerThanAllowed", "The Key is longer than allowed.");
+    }
 }

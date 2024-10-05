@@ -7,11 +7,11 @@ namespace PhoenixTask.Domain.Users;
 public sealed class UserSetting : Entity
 {
     private UserSetting() { }
-    private UserSetting(User user, string key, string value)
-        : base(Guid.NewGuid())
+    private UserSetting(User user, Key key, string value)
+        : base()
     {
         Ensure.NotNull(user, "The user is requierd.", nameof(user));
-        Ensure.NotEmpty(key, "The key is requierd.", nameof(key));
+        Ensure.NotNull(key, "The key is requierd.", nameof(key));
         Ensure.NotEmpty(value, "The value is requierd.", nameof(value));
 
         UserId = user.Id;
@@ -19,6 +19,6 @@ public sealed class UserSetting : Entity
         Value = value;
     }
     public Guid UserId { get; private set; }
-    public string Key { get; set; }
+    public Key Key { get;private set; }
     public string Value { get; set; }
 }
