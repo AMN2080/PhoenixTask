@@ -1,10 +1,9 @@
-import { BsTrash } from "react-icons/bs";
-import { SlNote } from "react-icons/sl";
-import { useAppDispatch } from "../../../services/app/hook";
-import { toggleXSmallModal } from "../../../services/app/store";
-import { MorePosition } from "../../dashboard/dashboardSidebar/ProjectList";
+import Icon from "@/components/Icon";
+import { useAppDispatch } from "@/logic/store/hook";
+import { toggleXSmallModal } from "@/logic/store/store";
+import { MorePosition } from "@/components/modules/dashboard/Sidebar/ProjectList";
 import { useState } from "react";
-import Confirm from "../../UI/Confirm";
+import ConfirmDelete from "@/components/templates/DashboardColumnView/ConfirmDelete";
 
 type BoardMoreProps = {
   position: MorePosition;
@@ -32,7 +31,7 @@ const BoardMore = ({
       >
         {confirm ? (
           <li className={`${liStyle} !mt-0 p-2`}>
-            <Confirm
+            <ConfirmDelete
               status="ستون"
               cancel={setConfirm}
               accept={handleDeleteBoard}
@@ -48,14 +47,14 @@ const BoardMore = ({
               }}
             >
               <span className="text-sm">
-                <SlNote />
+                <Icon iconName="Edit" />
               </span>
               <p className="mr-2">ویرایش نام ستون</p>
             </li>
 
             <li className={liStyle} onClick={() => setConfirm(true)}>
               <span className="text-sm">
-                <BsTrash />
+                <Icon iconName="Remove" />
               </span>
               <p className="mr-2">حذف ستون</p>
             </li>
