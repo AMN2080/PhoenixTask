@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
-import { LuEdit } from "react-icons/lu";
-import { commentType } from "../dashboard/dashboardColumnView/TaskCard";
+import Icon from "@/components/Icon";
+// import { LuEdit } from "react-icons/lu";
+import { commentType } from "@/logic/types/boardType";
 import AddComment from "../../AddComment";
 import getPersianDate from "@/logic/utils/date/getPersianDate";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
@@ -225,21 +225,21 @@ const TaskInfoBodyLeft = ({ comments, taskId }: TaskInfoBodyLeftType) => {
                             editingCommentId && "hidden"
                           }`}
                         >
-                          <AiOutlineDelete
-                            className="cursor-pointer text-white hover:text-red-500 mr-2"
+                          <Icon
+                            iconName="Remove"
                             onClick={() => {
                               setConfirmationModaIsOpen(true);
                               setDeletingCommentId(comment._id);
                             }}
-                            size="16"
+                            className="cursor-pointer text-white hover:text-red-500 mr-2 text-base"
                           />
-                          <LuEdit
+                          {/* <LuEdit
                             className="cursor-pointer text-white hover:text-red-500"
                             onClick={() =>
                               handleEditClick(comment._id, comment.text)
                             }
                             size="15"
-                          />
+                          /> */}
                         </div>
                       ) : (
                         <div className="absolute -bottom-[3px] -left-[3px] flex gap-1">
