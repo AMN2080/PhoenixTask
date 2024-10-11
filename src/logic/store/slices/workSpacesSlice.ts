@@ -1,11 +1,7 @@
 import { AxiosError } from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import WorkspaceService from "@/logic/services/workSpaceService";
-import {
-  createProject,
-  deleteProject,
-  editProjectName,
-} from "./projectSlice";
+import { createProject, deleteProject, editProjectName } from "./projectSlice";
 import { fetchAddedMemberWorkspace } from "./userSlice";
 
 export type ProjectProps = {
@@ -215,7 +211,7 @@ const workSpacesSlice = createSlice({
         state.isLoadingPost = false;
         state.workSpaces = [...state.workSpaces, action.payload];
         state.isSuccessPost = true;
-        state.messagePost = `ورک اسپیس با موفقیت ساخته شد 🎉`;
+        state.messagePost = `محیط کاری با موفقیت ساخته شد 🎉`;
       })
       .addCase(createWorkSpace.rejected, (state, action) => {
         state.isLoadingPost = false;
@@ -233,7 +229,7 @@ const workSpacesSlice = createSlice({
           (item) => item._id != action.payload._id,
         );
         state.isSuccessPost = true;
-        state.messagePost = "ورک اسپیس حذف شد";
+        state.messagePost = "محیط کاری حذف شد";
       })
       .addCase(deleteWorkSpace.rejected, (state, action) => {
         state.isLoadingPost = false;
@@ -272,7 +268,7 @@ const workSpacesSlice = createSlice({
         state.isLoadingPost = false;
         state.isSuccessPost = true;
         state.addedMemberUserName = memberName;
-        state.messagePost = `کاربر ${memberName} به ورک اسپیس اضافه شد`;
+        state.messagePost = `کاربر ${memberName} به محیط کاری اضافه شد`;
       })
       .addCase(addWorkSpaceMember.rejected, (state, action) => {
         state.isSuccessPost = false;

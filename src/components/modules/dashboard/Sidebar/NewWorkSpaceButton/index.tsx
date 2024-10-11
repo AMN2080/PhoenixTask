@@ -19,7 +19,7 @@ import {
 } from "@/logic/store/store";
 
 const NewSpace = () => {
-  const [workSpaceStep, setWorkSpaceStepe] = useState("ساختن ورک اسپیس جدید");
+  const [workSpaceStep, setWorkSpaceStepe] = useState("ساختن محیط کاری جدید");
 
   const dispatch = useAppDispatch();
   const { medium } = useAppSelector((state) => state.modals);
@@ -62,7 +62,7 @@ const NewSpace = () => {
       toast.dismiss();
       messagePost != "" && toast.success(`${messagePost}`, { rtl: true });
       dispatch(resetPostWorkspace());
-      medium != "اشتراک ورک اسپیس" && dispatch(closeAllModals());
+      medium != "اشتراک محیط کاری" && dispatch(closeAllModals());
     }
     // project
     if (isErrorProject) {

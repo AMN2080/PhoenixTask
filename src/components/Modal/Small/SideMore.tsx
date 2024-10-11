@@ -87,7 +87,7 @@ const SideMore = ({
           >
             ساختن {sideMoreState === "تسک" ? "تسک" : "پروژه"} جدید
           </span>
-          {medium === "ورک اسپیس" &&
+          {medium === "محیط کاری" &&
             createPortal(
               <Modal>
                 <NewProject id={id} />
@@ -123,7 +123,7 @@ const SideMore = ({
             <SlNote />
           </span>
           <span>
-            ویرایش نام {sideMoreState === "تسک" ? "پروژه" : "ورک اسپیس"}
+            ویرایش نام {sideMoreState === "تسک" ? "پروژه" : "محیط کاری"}
           </span>
         </li>
         {/* copy Link */}
@@ -142,7 +142,7 @@ const SideMore = ({
           {confirm ? (
             <div className="flex items-center justify-around border p-2 rounded-md ">
               <p className="text-xs text-black dark:text-[#F7F9F9] ">
-                از حذف {sideMoreState === "تسک" ? "پروژه" : "ورک اسپیس"}{" "}
+                از حذف {sideMoreState === "تسک" ? "پروژه" : "محیط کاری"}{" "}
                 مطمئنید؟
               </p>
               <button
@@ -182,10 +182,10 @@ const SideMore = ({
           <Button>اشتراک گذاری</Button>
         </li>
 
-        {medium === "اشتراک ورک اسپیس" &&
+        {medium === "اشتراک محیط کاری" &&
           createPortal(
             <Modal>
-              <ShareModal ModalTitle="ورک اسپیس" id={id} />
+              <ShareModal ModalTitle="محیط کاری" id={id} />
             </Modal>,
             document.body,
           )}

@@ -56,16 +56,16 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
   const handleWorkSpaceStep = () => {
     const nameInput =
       document.querySelector<HTMLInputElement>("#newWork")?.value;
-    if (workSpaceStep === "ساختن ورک اسپیس جدید" && nameInput?.trim()) {
+    if (workSpaceStep === "ساختن محیط کاری جدید" && nameInput?.trim()) {
       setWorkSpaceName(nameInput);
-      setWorkSpaceStepe("انتخاب رنگ ورک اسپیس");
-    } else if (workSpaceStep === "انتخاب رنگ ورک اسپیس") {
+      setWorkSpaceStepe("انتخاب رنگ محیط کاری");
+    } else if (workSpaceStep === "انتخاب رنگ محیط کاری") {
       setWorkSpaceStepe("مرور اطلاعات");
     } else if (workSpaceStep === "مرور اطلاعات") {
       dispatch(createWorkSpace(workspaceName));
-      setWorkSpaceStepe("ساختن ورک اسپیس جدید");
+      setWorkSpaceStepe("ساختن محیط کاری جدید");
     } else {
-      toast.warning("نام ورک اسپیس را وارد کنید", { rtl: true });
+      toast.warning("نام محیط کاری را وارد کنید", { rtl: true });
     }
   };
 
@@ -86,14 +86,14 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
             {workSpaceStep}
           </div>
           {/* back page */}
-          {workSpaceStep === "انتخاب رنگ ورک اسپیس" ||
+          {workSpaceStep === "انتخاب رنگ محیط کاری" ||
           workSpaceStep === "مرور اطلاعات" ? (
             <div
               className="cursor-pointer"
               onClick={() => {
-                workSpaceStep === "انتخاب رنگ ورک اسپیس"
-                  ? setWorkSpaceStepe("ساختن ورک اسپیس جدید")
-                  : setWorkSpaceStepe("انتخاب رنگ ورک اسپیس");
+                workSpaceStep === "انتخاب رنگ محیط کاری"
+                  ? setWorkSpaceStepe("ساختن محیط کاری جدید")
+                  : setWorkSpaceStepe("انتخاب رنگ محیط کاری");
               }}
             >
               {/* <AiOutlineArrowLeft /> */}
@@ -108,9 +108,9 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
           <Icon iconName="Loading" />
         ) : (
           <div className="mt-11 w-full">
-            {workSpaceStep === "ساختن ورک اسپیس جدید" ? (
-              <Input connectorId="newWork" label="نام ورک اسپیس" />
-            ) : workSpaceStep === "انتخاب رنگ ورک اسپیس" ? (
+            {workSpaceStep === "ساختن محیط کاری جدید" ? (
+              <Input connectorId="newWork" label="نام محیط کاری" />
+            ) : workSpaceStep === "انتخاب رنگ محیط کاری" ? (
               <>
                 {/* select color */}
                 <div className="w-full flex">
@@ -123,7 +123,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
 
                   {/* list of colors */}
                   <div className="mr-9 flex flex-col">
-                    <span className="text-sm text-black">رنگ ورک اسپیس</span>
+                    <span className="text-sm text-black">رنگ محیط کاری</span>
                     <ul className="mt-5  h-10 flex justify-start content-between flex-wrap">
                       <li
                         className="h-4 w-4 mr-3 rounded-sm hover:cursor-pointer text-black"
@@ -156,14 +156,14 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
                 <ul className="w-full px-3 py-6 flex flex-col border rounded-lg">
                   {/* workspace name */}
                   <li className={liStyle}>
-                    <span className={fontList}>نام ورک اسپیس</span>
+                    <span className={fontList}>نام محیط کاری</span>
                     <span className={fontList}>{workspaceName}</span>
                   </li>
 
                   {/* workspace color*/}
 
                   <li className={`mt-6 ${liStyle}`}>
-                    <span className={fontList}>رنگ ورک اسپیس</span>
+                    <span className={fontList}>رنگ محیط کاری</span>
                     <span className={fontList}>
                       <div
                         className={`h-4 w-4 mr-3 rounded-sm ${selectedColor.color}`}
@@ -187,7 +187,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
             {/* Button  */}
             <div className="mt-16">
               <Button onClick={handleWorkSpaceStep} disabled={isLoadingPost}>
-                {workSpaceStep === "مرور اطلاعات" ? "ساختن ورک اسپیس" : "ادامه"}
+                {workSpaceStep === "مرور اطلاعات" ? "ساختن محیط کاری" : "ادامه"}
               </Button>
             </div>
           </div>

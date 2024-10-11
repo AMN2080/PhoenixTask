@@ -3,13 +3,13 @@ import { createPortal } from "react-dom";
 import Icon from "@/components/Icon";
 // import { FiCheckCircle } from "react-icons/fi";
 // import { TbCalendarTime } from "react-icons/tb";
-// import TaskInfo from "../../taskInformation/TaskInfo";
+import TaskInfo from "@/components/templates/DashboardColumnView/TaskInfo";
 import { Draggable } from "react-beautiful-dnd";
-// import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
-// import { fetchDeleteTask } from "../../../services/app/store";
-// import { getPersianDateWithOutTime } from "../../taskInformation/getPersianDate";
-// import getGregorianDate from "../../taskInformation/getGregorianDate";
-// import Confirm from "../../ui/Confirm";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { fetchDeleteTask } from "@/logic/store/store";
+import { getPersianDateWithOutTime } from "@/logic/utils/date/getPersianDate";
+import getGregorianDate from "@/logic/utils/date/getGregorianDate";
+import ConfirmDelete from "@/components/templates/DashboardColumnView/ConfirmDelete";
 
 export type taskAssignsType = {
   _id: string;
@@ -70,7 +70,7 @@ const ColumnTaskCard = ({
   };
   const [isExpanded, setIsExpanded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  // const { searchedTaskValue } = useAppSelector((state) => state.boards);
+  const { searchedTaskValue } = useAppSelector((state) => state.boards);
   const colors = JSON.parse(localStorage.getItem("Colors") as string);
 
   const [confirm, setConfirm] = useState(false);
@@ -78,15 +78,15 @@ const ColumnTaskCard = ({
     setIsOpen(false);
   };
 
-  // const { isLoading } = useAppSelector((state) => state.tasks);
-  // const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector((state) => state.tasks);
+  const dispatch = useAppDispatch();
   const handleCardHover = (isHovering: boolean) => {
     setIsExpanded(isHovering);
   };
 
   const handleDeleteTask = (event: React.MouseEvent) => {
     event.stopPropagation();
-    // dispatch(fetchDeleteTask(_id));
+    dispatch(fetchDeleteTask(_id));
   };
 
   return (
@@ -95,7 +95,7 @@ const ColumnTaskCard = ({
         key={_id}
         draggableId={_id}
         index={position}
-        // isDragDisabled={searchedTaskValue !== ""}
+        isDragDisabled={searchedTaskValue !== ""}
       >
         {(provided) => (
           <div
@@ -158,9 +158,9 @@ const ColumnTaskCard = ({
                 {/* <TbCalendarTime size="0.9rem" /> */}
               </span>
               <div className="text-343434 text-xs mt-1">
-                {/* {deadline
+                {deadline
                   ? getPersianDateWithOutTime(getGregorianDate(deadline))
-                  : "تعریف نشده"} */}
+                  : "تعریف نشده"}
               </div>
             </div>
             <div className="flex justify-between dark:text-[#1E2124]">
@@ -182,8 +182,8 @@ const ColumnTaskCard = ({
               ${isExpanded ? "h-9 mt-5 pt-4" : "h-[0px] opacity-0 mt-0 pt-0"}
               `}
             >
-              {/* {confirm ? (
-                <Confirm
+              {confirm ? (
+                <ConfirmDelete
                   status="تسک"
                   cancel={setConfirm}
                   accept={handleDeleteTask}
@@ -191,8 +191,8 @@ const ColumnTaskCard = ({
               ) : (
                 <>
                   <div className="hover:text-208D8E hover:scale-110 cursor-pointer">
-                    <FiCheckCircle />
-                    <Icon iconName="CheckBox"></Icon>
+                    {/* <FiCheckCircle /> */}
+                    <Icon iconName="CheckBox" />
                   </div>
                   {isLoading ? (
                     <Icon iconName="More"></Icon>
@@ -208,19 +208,19 @@ const ColumnTaskCard = ({
                     </div>
                   )}
                 </>
-              )} */}
+              )}
             </div>
           </div>
         )}
       </Draggable>
-      {/* {isOpen &&
+      {isOpen &&
         createPortal(
           <TaskInfo
             taskInfo={taskInfo}
             handleCloseTaskInfo={handleCloseTaskInfo}
           />,
           document.body,
-        )} */}
+        )}
     </>
   );
 };

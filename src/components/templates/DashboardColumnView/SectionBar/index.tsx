@@ -4,14 +4,14 @@ import Icon from "@/components/Icon";
 import Modal from "@/components/Modal/";
 import AddNewTask from "@/components/Modal/Large/AddNewTask";
 import BoardMore from "@/components/Modal/Small/BoardMore";
-// import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
-// import {
-//   deleteBoard,
-//   editBoardName,
-//   fetchCreateTask,
-//   toggleMediumModal,
-//   toggleXSmallModal,
-// } from "../../../services/app/store";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import {
+  deleteBoard,
+  editBoardName,
+  fetchCreateTask,
+  toggleMediumModal,
+  toggleXSmallModal,
+} from "@/logic/store/store";
 
 type MorePosition = {
   top: number | string | undefined;
@@ -39,8 +39,8 @@ export default function ColumnSectionBar({
     left: 0,
   });
 
-  // const dispatch = useAppDispatch();
-  // const { medium, xSmall } = useAppSelector((state) => state.modals);
+  const dispatch = useAppDispatch();
+  const { medium, xSmall } = useAppSelector((state) => state.modals);
   const [editMood, setEditMood] = useState("");
   const handleEditMood = (toggle: string | undefined) => {
     toggle && setEditMood(toggle);
@@ -92,20 +92,20 @@ export default function ColumnSectionBar({
 
   // handle delete board with dispatch
   const handleDeleteBoard = () => {
-    // dispatch(deleteBoard(id));
+    dispatch(deleteBoard(id));
   };
 
   const handleAddNewTask = (data: (string | undefined)[]) => {
     const [name, description, deadline] = [...data];
     const formData = { name, description, boardId: id, deadline };
-    // dispatch(fetchCreateTask(formData));
+    dispatch(fetchCreateTask(formData));
   };
 
   const handleNewBoard = () => {
     const val =
       document.querySelector<HTMLInputElement>("#editBoardName")?.value;
     const data = [id, val];
-    // val?.trim() && dispatch(editBoardName(data));
+    val?.trim() && dispatch(editBoardName(data));
     setEditMood("");
   };
   return (
@@ -152,19 +152,17 @@ export default function ColumnSectionBar({
                   onClick={(e) => {
                     e.stopPropagation();
                     handleBoardModal(e);
-                    // dispatch(toggleXSmallModal(id));
+                    dispatch(toggleXSmallModal(id));
                   }}
                 >
                   <Icon iconName="More"></Icon>
-                  {/* <BsThreeDots /> */}
                 </span>
                 <span
                   className="hover:scale-110 text-xl data-[title]:text-red-500"
                   title="افزودن تسک"
-                  // onClick={() => dispatch(toggleMediumModal(id))}
+                  onClick={() => dispatch(toggleMediumModal(id))}
                 >
                   <Icon iconName="SquarePlus"></Icon>
-                  {/* <BsPlus /> */}
                 </span>
               </div>
             )}
@@ -172,7 +170,7 @@ export default function ColumnSectionBar({
         )}
       </div>
 
-      {/* {medium === id &&
+      {medium === id &&
         createPortal(
           <Modal>
             <AddNewTask handleAddNewTask={handleAddNewTask} />
@@ -190,7 +188,7 @@ export default function ColumnSectionBar({
             />
           </Modal>,
           document.body,
-        )} */}
+        )}
     </>
   );
 }

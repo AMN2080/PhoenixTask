@@ -56,7 +56,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
 
   // check has member
   const checkHasMember = (memberName: string) => {
-    if (ModalTitle === "ورک اسپیس") {
+    if (ModalTitle === "محیط کاری") {
       const workspaceIndex = workMembers.findIndex(
         (workspace) => workspace._id === id,
       );
@@ -79,7 +79,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
 
   // handle and setMembers for map
   const handleMembers = () => {
-    if (ModalTitle === "ورک اسپیس") {
+    if (ModalTitle === "محیط کاری") {
       const filter = workMembers.filter((item) => item._id === id);
       if (filter.length > 0) {
         const membersArray: Members[] = (filter[0] as any).members;
@@ -111,7 +111,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
     const inviteValue = inputInvite.current?.value;
     !inputInvite.current?.value.trim() &&
       toast.warning("اسم ممبر یادت نره !", { rtl: true });
-    if (ModalTitle === "ورک اسپیس" && inviteValue?.trim()) {
+    if (ModalTitle === "محیط کاری" && inviteValue?.trim()) {
       const workspaceIds: (string | undefined)[] = [id, inviteValue];
       checkHasMember(inviteValue)
         ? toast.error(`کاربر ${inviteValue} از قبل اضافه شده !`, { rtl: true })
@@ -129,7 +129,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
 
   // Remove member with called dispatch redux toolkit
   const handleRemoveMember = (selectedMemberId: string) => {
-    if (ModalTitle === "ورک اسپیس") {
+    if (ModalTitle === "محیط کاری") {
       const workspaceIds = [id, selectedMemberId];
       inputInvite.current?.value && (inputInvite.current.value = "");
       dispatch(removeWorkSpaceMember(workspaceIds));

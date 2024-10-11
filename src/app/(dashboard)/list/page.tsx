@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import {
   Collapsible,
@@ -46,7 +47,7 @@ function ListViewPage() {
   if (!isSuccess) {
     return (
       <div className="m-auto">
-        ورک اسپیسی را جهت نمایش اطلاعات انتخاب کنید 😃
+        محیط کاری‌ای را جهت نمایش اطلاعات انتخاب کنید 😃
       </div>
     );
   }

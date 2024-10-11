@@ -3,9 +3,9 @@ import { fontWeight, fontSize } from "../sharedStyles";
 
 // variant types of button
 const variants = {
-  primary: "bg-primary text-primary-content",
-  secondary: "bg-secondary text-secondary-content",
-  outline: "border-2 border-primary text-primary",
+  primary: "bg-primary hover:bg-secondary text-primary-content",
+  secondary: "bg-secondary hover:bg-primary text-secondary-content",
+  outline: "border-2 border-primary hover:border-secondary text-primary hover:text-secondary",
 };
 
 // button size
@@ -49,7 +49,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       <button
         ref={ref}
         className={`
-          font-IranYekan font-black rounded-md p-3
+          font-IranYekan font-black rounded-md p-3 duration-700
           ${variants[variant]}
           ${fontSize[textSize]}
           ${fontWeight[weight]}
