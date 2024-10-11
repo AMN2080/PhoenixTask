@@ -1,6 +1,6 @@
 import Icon from "@/components/Icon";
 import { taskAssignsType } from "@/logic/types/boardType";
-import TaskAssign from "./taskAssign";
+import TaskAssign from "../../TaskAssign";
 import { useState } from "react";
 
 export type TaskInfoHeaderRightType = {
