@@ -23,6 +23,7 @@ const iconMap = {
   Remove: dynamic(() => import("./icons/Remove")),
   RoundArrow: dynamic(() => import("./icons/RoundArrow")),
   Setting: dynamic(() => import("./icons/Setting")),
+  Share: dynamic(() => import("./icons/Share")),
   SquarePlus: dynamic(() => import("./icons/SquarePlus")),
   Tag: dynamic(() => import("./icons/Tag")),
   Tick: dynamic(() => import("./icons/Tick")),

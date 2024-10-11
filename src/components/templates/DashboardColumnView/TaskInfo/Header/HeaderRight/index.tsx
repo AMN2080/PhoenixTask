@@ -1,11 +1,7 @@
-import { RiArrowLeftSLine, RiUserAddLine } from "react-icons/ri";
-import DashedBorderCard from "../ui/DashedBorderCard";
-import { BsCheckSquare } from "react-icons/bs";
-import { FiFlag } from "react-icons/fi";
-import { taskAssignsType } from "../dashboard/dashboardColumnView/TaskCard";
+import Icon from "@/components/Icon";
+import { taskAssignsType } from "@/logic/types/boardType";
 import TaskAssign from "./taskAssign";
 import { useState } from "react";
-import { HiOutlineShare } from "react-icons/hi";
 
 export type TaskInfoHeaderRightType = {
   taskAssigns: taskAssignsType[];
@@ -38,21 +34,17 @@ const TaskInfoHeaderRight = ({
             >
               {title}
             </button>
-            <button
-              className={`mr-[2px] text-white bg-${btnColor} group-hover:scale-110 group-hover:rounded-e-md transition-all`}
-            >
-              <RiArrowLeftSLine size="24"></RiArrowLeftSLine>
-            </button>
           </div>
-          {/* Set To Complete */}
-          <BsCheckSquare role="button" size="32" color="#BDBDBD" />
 
           {/* Assign task */}
           <ul dir="ltr" className="flex -space-x-2 ">
             <li onClick={() => setTaskAssignModal(true)}>
-              <DashedBorderCard classes="border-C1C1C1">
-                <RiUserAddLine color="#C1C1C1" size="20"></RiUserAddLine>
-              </DashedBorderCard>
+              <div className="border-[1.5px] border-dashed rounded-full p-1.5 cursor-pointer border-[#C1C1C1]">
+                <Icon
+                  iconName="UserPlus"
+                  className="text-[#C1C1C1] text-[20px]"
+                />
+              </div>{" "}
             </li>
             <>
               {[...taskAssigns].slice(0, 3).map((user, index) => (
@@ -84,9 +76,9 @@ const TaskInfoHeaderRight = ({
           )}
 
           {/* Priority Flag */}
-          <DashedBorderCard classes="border-FB0606">
-            <FiFlag color="#FB0606" size="20" />
-          </DashedBorderCard>
+          <div className="border-[1.5px] border-dashed rounded-full p-1.5 cursor-pointer border-error">
+            <Icon iconName="Flag" className="text-error text-xl" />
+          </div>
         </div>
         {/* Share */}
         <div>
@@ -94,7 +86,7 @@ const TaskInfoHeaderRight = ({
             className="flex items-center justify-center gap-1 "
             role="button"
           >
-            <HiOutlineShare size="24" color="#BDBDBD" />
+            <Icon iconName="Share" className="text-[#BDBDBD] text-2xl" />
             <span className="text-base font-dana font-medium text-1E1E1E dark:text-[#F7F9F9]">
               اشتراک گذاری
             </span>
