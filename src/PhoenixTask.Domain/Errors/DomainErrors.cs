@@ -131,5 +131,10 @@ public static class DomainErrors
 
         public static Error InvalidFormat => new("PhoneNumber.InvalidFormat", "The PhoneNumber format is invalid.");
     }
-
+    public static class Key
+    {
+        public static Error NullOrEmpty => new("Key.NullOrEmpty", "The key is required.");
+        public static Error LongerThanAllowed => new("Key.LongerThanAllowed", "The key is longer than allowed.");
+        public static Error InvalidFormat => new("Key.InvalidFormat", "The key format is invalid.");
+    }
 }
