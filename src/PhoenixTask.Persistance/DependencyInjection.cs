@@ -41,6 +41,8 @@ public static class DependencyInjection
 
         services.AddScoped<ITaskRepository , TaskRepository>();
 
+        services.AddScoped<ISettingRepository , SettingRepository>();
+
         return services;
     }
     public static IApplicationBuilder UsePersistance(this IApplicationBuilder app)
