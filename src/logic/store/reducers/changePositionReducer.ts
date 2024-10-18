@@ -32,7 +32,7 @@ const changePositionReducer = (state: initialStateType, action: AnyAction) => {
 
   // Find the active board where the item was dragged from. If it doesn't exist, return early.
   const activeBoard = activeProject.projectBoards.find(
-    ({ _id }) => _id === source.droppableId,
+    ({ id }) => id === source.droppableId,
   );
   if (!activeBoard) return;
 
@@ -44,7 +44,7 @@ const changePositionReducer = (state: initialStateType, action: AnyAction) => {
 
   if (start !== finish && type === "task") {
     const targetBoard = activeProject.projectBoards.find(
-      ({ _id }) => _id === destination.droppableId,
+      ({ id }) => id === destination.droppableId,
     );
     reorderedItem.board = destination.droppableId;
     if (!targetBoard) return;

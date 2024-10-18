@@ -5,7 +5,7 @@ import ProjectsService from "@/logic/services/projectService";
 // import { fetchAddedMember } from "../user/userSlice";
 
 export type ProjectsProps = {
-  _id: string;
+  id: string;
   name: string;
   workspace: string;
   members: { user: { username: string } }[];
@@ -52,7 +52,8 @@ const fetchProjects = createAsyncThunk(
   "projects/fetchProjects",
   async (id: string, thunkAPI) => {
     try {
-      const response = await AXIOS.get(`/api/projects/workspaces/${id}`);
+      // const response = await AXIOS.get(`/api/projects/workspaces/${id}`);
+      const response = await AXIOS.get(`/workspaces/${id}/projects/`);
       return await response.data;
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
@@ -250,7 +251,7 @@ const projectSlice = createSlice({
         state.workSpaces[workSpaceIndex].projects = state.workSpaces[
           workSpaceIndex
         ].projects.filter((project) => {
-          return project._id != action.payload._id;
+          return project.id != action.payload.id;
         });
         state.isSuccessPost = true;
         state.messagePost = "پروژه حذف شد ";
@@ -279,7 +280,7 @@ const projectSlice = createSlice({
         state.workSpaces[workSpaceIndex].projects = state.workSpaces[
           workSpaceIndex
         ].projects.map((project) => {
-          return project._id === action.payload._id
+          return project.id === action.payload.id
             ? { ...project, name: action.payload.name }
             : project;
         });
@@ -328,14 +329,14 @@ const projectSlice = createSlice({
         );
 
         const workspaceId = test[0].workspace;
-        const projectId = test[0]._id;
+        const projectId = test[0].id;
         const workspaceIndex = state.workSpaces.findIndex(
           (workspace) => workspace.workSpaceId === workspaceId,
         );
 
         const projectIndex = state.workSpaces[
           workspaceIndex
-        ].projects.findIndex((project) => project._id === projectId);
+        ].projects.findIndex((project) => project.id === projectId);
 
         state.workSpaces[workspaceIndex].projects[projectIndex].members =
           state.workSpaces[workspaceIndex].projects[

@@ -1,14 +1,15 @@
 type ProjectPropsType = {
-  _id: string;
+  id: string;
   boards: [];
   name: string;
 }[];
 
 type workSpacesType = {
-  _id: string;
+  id: string;
   name: string;
-  user: string;
-  projects: ProjectPropsType;
+  color: string;
+  // user: string;
+  // projects: ProjectPropsType;
 }[];
 
 export { type workSpacesType, type ProjectPropsType };

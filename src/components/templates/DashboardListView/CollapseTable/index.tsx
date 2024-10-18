@@ -26,8 +26,8 @@ const CollapseTable = ({ tasks, color }: StatusProjects) => {
             </tr>
           </thead>
           <tbody>
-            {tasks.map(({ _id, name, description, taskAssigns, deadline }) => (
-              <tr key={_id} className="text-sm">
+            {tasks.map(({ id, name, description, taskAssigns, deadline }) => (
+              <tr key={id} className="text-sm">
                 <th className="flex items-center mr-16 py-6 w-72">
                   <span className={`w-4 h-4 ${color} rounded-sm ml-2 `}></span>
                   {name}
@@ -37,7 +37,7 @@ const CollapseTable = ({ tasks, color }: StatusProjects) => {
                     {taskAssigns.length ? (
                       <>
                         {[...taskAssigns].slice(0, 3).map((member, index) => (
-                          <div className="w-9 h-9 " key={member._id}>
+                          <div className="w-9 h-9 " key={member.id}>
                             <div
                               className={`${colors[index]} w-full h-full rounded-full flex items-center justify-center pt-1 text-white border-2 dark:border-[#0F111A]`}
                             >

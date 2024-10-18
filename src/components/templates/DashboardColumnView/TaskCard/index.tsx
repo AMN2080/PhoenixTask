@@ -12,16 +12,16 @@ import getGregorianDate from "@/logic/utils/date/getGregorianDate";
 import ConfirmDelete from "@/components/templates/DashboardColumnView/ConfirmDelete";
 
 export type taskAssignsType = {
-  _id: string;
+  id: string;
   username: string;
   email: string;
 };
 
 export type commentType = {
-  _id: string; // comment _id
+  id: string; // comment id
   text: string;
   user: {
-    _id: string; // user _id
+    id: string; // user id
     username: string;
     firstname: string;
     email: string;
@@ -31,7 +31,7 @@ export type commentType = {
 };
 
 export type Task = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   label?: [];
@@ -47,7 +47,7 @@ export type Task = {
 const ColumnTaskCard = ({
   name,
   description,
-  _id,
+  id,
   position,
   comments,
   taskAssigns,
@@ -59,7 +59,7 @@ const ColumnTaskCard = ({
   const taskInfo = {
     name,
     description,
-    _id,
+    id,
     comments,
     taskAssigns,
     position,
@@ -86,14 +86,14 @@ const ColumnTaskCard = ({
 
   const handleDeleteTask = (event: React.MouseEvent) => {
     event.stopPropagation();
-    dispatch(fetchDeleteTask(_id));
+    dispatch(fetchDeleteTask(id));
   };
 
   return (
     <>
       <Draggable
-        key={_id}
-        draggableId={_id}
+        key={id}
+        draggableId={id}
         index={position}
         isDragDisabled={searchedTaskValue !== ""}
       >
@@ -121,7 +121,7 @@ const ColumnTaskCard = ({
                 {taskAssigns.length ? (
                   <>
                     {[...taskAssigns].slice(0, 2).map((member, index) => (
-                      <div className="w-6 h-6 text-xs" key={member._id}>
+                      <div className="w-6 h-6 text-xs" key={member.id}>
                         <div
                           className={`${colors[index]} w-full h-full rounded-full flex items-center justify-center pt-1 text-white border dark:border-[#0F111A]`}
                         >

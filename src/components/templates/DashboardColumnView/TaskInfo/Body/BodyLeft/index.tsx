@@ -16,7 +16,7 @@ type TaskInfoBodyLeftType = {
 };
 
 const TaskInfoBodyLeft = ({ comments, taskId }: TaskInfoBodyLeftType) => {
-  const loggedInUser = JSON.parse(localStorage.getItem("user") as string)._id;
+  const loggedInUser = JSON.parse(localStorage.getItem("user") as string).id;
   const [editingCommentId, setEditingCommentId] = useState("");
   const [deletingCommentId, setDeletingCommentId] = useState("");
   const [previousComment, setPreviousComment] = useState("");
@@ -179,7 +179,7 @@ const TaskInfoBodyLeft = ({ comments, taskId }: TaskInfoBodyLeftType) => {
         <ul className=" flex flex-col gap-2 ">
           {comments.length ? (
             comments.map((comment) => (
-              <li key={comment._id} className="chat chat-start">
+              <li key={comment.id} className="chat chat-start">
                 <div className="chat-image avatar">
                   <div className="w-10 rounded-full ">
                     <span className="bg-red-300 dark:bg-[#0f111a] dark:text-[#f7f7f9] w-full h-full flex items-center justify-center">
@@ -199,27 +199,27 @@ const TaskInfoBodyLeft = ({ comments, taskId }: TaskInfoBodyLeftType) => {
                   className={`group chat-bubble ${
                     !editingCommentId && "hover:pb-6"
                   } ${
-                    editingCommentId === comment._id &&
+                    editingCommentId === comment.id &&
                     "pb-8 hover:pb-8 min-w-full"
                   } relative min-w-[100px] transition-all delay-200 ${
-                    comment._id === editingCommentId
+                    comment.id === editingCommentId
                       ? "  rounded-md  before:border-b-0 before:border-C1C1C1"
                       : ""
                   }`}
                 >
                   <div
                     ref={
-                      comment._id === editingCommentId ? commentRef : undefined
+                      comment.id === editingCommentId ? commentRef : undefined
                     }
                     className="focus:outline-none"
-                    contentEditable={comment._id === editingCommentId}
+                    contentEditable={comment.id === editingCommentId}
                     suppressContentEditableWarning={true}
                   >
                     {comment.text}
                   </div>
-                  {loggedInUser === comment.user._id && (
+                  {loggedInUser === comment.user.id && (
                     <div className="absolute flex bottom-1 left-1">
-                      {comment._id !== editingCommentId ? (
+                      {comment.id !== editingCommentId ? (
                         <div
                           className={`opacity-0 flex gap-1 group-hover:opacity-100 transition-all ${
                             editingCommentId && "hidden"
@@ -229,14 +229,14 @@ const TaskInfoBodyLeft = ({ comments, taskId }: TaskInfoBodyLeftType) => {
                             iconName="Remove"
                             onClick={() => {
                               setConfirmationModaIsOpen(true);
-                              setDeletingCommentId(comment._id);
+                              setDeletingCommentId(comment.id);
                             }}
                             className="cursor-pointer text-white hover:text-red-500 mr-2 text-base"
                           />
                           {/* <LuEdit
                             className="cursor-pointer text-white hover:text-red-500"
                             onClick={() =>
-                              handleEditClick(comment._id, comment.text)
+                              handleEditClick(comment.id, comment.text)
                             }
                             size="15"
                           /> */}

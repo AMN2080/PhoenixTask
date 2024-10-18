@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../../services/app/hook";
 import { toggleMediumModal } from "../../../services/app/store";
 
 type dataList = {
-  _id: string;
+  id: string;
   name: string;
 };
 type SelectBoardProps = {
@@ -66,7 +66,7 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
                 {data &&
                   data.map((item) => {
                     return (
-                      <option key={item._id} value={item._id}>
+                      <option key={item.id} value={item.id}>
                         {item.name}
                       </option>
                     );

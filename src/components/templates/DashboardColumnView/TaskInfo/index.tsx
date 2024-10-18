@@ -16,7 +16,7 @@ const TaskInfo = ({ handleCloseTaskInfo, taskInfo }: TaskInfoProps) => {
   const {
     comments,
     board,
-    _id,
+    id,
     description,
     name,
     deadline,
@@ -27,8 +27,8 @@ const TaskInfo = ({ handleCloseTaskInfo, taskInfo }: TaskInfoProps) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setSelectedBoardId(board));
-    dispatch(setSelectedTaskId(_id));
-  }, [dispatch, board, _id]);
+    dispatch(setSelectedTaskId(id));
+  }, [dispatch, board, id]);
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-30 z-40 ">
@@ -60,7 +60,7 @@ const TaskInfo = ({ handleCloseTaskInfo, taskInfo }: TaskInfoProps) => {
                 name={name}
                 deadline={deadline}
               />
-              <BodyLeft comments={comments} taskId={_id} />
+              <BodyLeft comments={comments} taskId={id} />
             </section>
           </div>
         </div>

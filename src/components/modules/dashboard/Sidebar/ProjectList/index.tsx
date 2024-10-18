@@ -21,7 +21,7 @@ import { Button } from "@/components/UI";
 import Icon from "@/components/Icon";
 
 export type Projects = {
-  projects: { _id: string; name: string; boards: [] }[];
+  projects: { id: string; name: string; boards: [] }[];
 };
 
 export type MorePosition = {
@@ -106,9 +106,9 @@ function ProjectList({ projects }: Projects) {
   };
   return (
     <>
-      {projects.map(({ _id, name }) => (
-        <div key={_id}>
-          {editMood === _id ? (
+      {projects.map(({ id, name }) => (
+        <div key={id}>
+          {editMood === id ? (
             <div className="flex px-1 py-3 w-full">
               <input
                 type="text"
@@ -126,7 +126,7 @@ function ProjectList({ projects }: Projects) {
               </Button>
               <Button
                 asChild
-                onClick={() => handleEdit(_id)}
+                onClick={() => handleEdit(id)}
                 className="!w-1/4 text-xs rounded-tr-none rounded-br-none focus:!ring-0"
               >
                 ویرایش
@@ -139,14 +139,14 @@ function ProjectList({ projects }: Projects) {
                   ? "text-[#118c80] transition-all dark:text-[#F1B127]"
                   : ""
               }`}
-              key={_id}
+              key={id}
               onClick={() => {
                 const projectIndex = projectState.findIndex((project) => {
-                  return project.projectId === _id;
+                  return project.projectId === id;
                 });
-                if (projectIndex < 0) dispatch(fetchBoards(_id));
+                if (projectIndex < 0) dispatch(fetchBoards(id));
                 dispatch(setSelectedProjectSidebar(name));
-                dispatch(setSelectedProjectId(_id));
+                dispatch(setSelectedProjectId(id));
                 dispatch(setSelectedProject(name));
               }}
             >
@@ -154,8 +154,8 @@ function ProjectList({ projects }: Projects) {
               <span
                 className=" left-2 cursor-pointer hidden group-hover/content:block z-10"
                 onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-                  setProjectId(_id);
-                  dispatch(toggleSmallModal(_id));
+                  setProjectId(id);
+                  dispatch(toggleSmallModal(id));
                   handleItemClick(e);
                 }}
               >

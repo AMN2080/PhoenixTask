@@ -7,7 +7,7 @@ const API_URL = "/api/users/";
 
 // updateUserById
 const updateUserById = async (userData: personalInfoType) => {
-  const id = JSON.parse(localStorage.getItem("user") as string)?._id;
+  const id = JSON.parse(localStorage.getItem("user") as string)?.id;
   const response = await AXIOS.put(API_URL + id, userData);
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));

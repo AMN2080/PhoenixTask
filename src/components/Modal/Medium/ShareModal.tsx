@@ -17,7 +17,7 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 type Members = {
   user: {
-    _id: string;
+    id: string;
     email: string;
     username: string;
   };
@@ -58,7 +58,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
   const checkHasMember = (memberName: string) => {
     if (ModalTitle === "محیط کاری") {
       const workspaceIndex = workMembers.findIndex(
-        (workspace) => workspace._id === id,
+        (workspace) => workspace.id === id,
       );
       const hasMember = workMembers[workspaceIndex].members.some(
         (member) => member.user.username === memberName,
@@ -67,7 +67,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
     }
     if (ModalTitle === "پروژه") {
       const project = workSpaces.map((workSpace) =>
-        workSpace.projects.find((project) => project._id === id),
+        workSpace.projects.find((project) => project.id === id),
       );
       project.some((project) => project?.members);
       const hasMember = project[0]?.members.some(
@@ -80,7 +80,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
   // handle and setMembers for map
   const handleMembers = () => {
     if (ModalTitle === "محیط کاری") {
-      const filter = workMembers.filter((item) => item._id === id);
+      const filter = workMembers.filter((item) => item.id === id);
       if (filter.length > 0) {
         const membersArray: Members[] = (filter[0] as any).members;
         setMembers(membersArray);
@@ -92,13 +92,13 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
       const selectedProject: any = [];
       projects.forEach((project) => {
         project.forEach(
-          (item) => item._id === id && selectedProject.push(project),
+          (item) => item.id === id && selectedProject.push(project),
         );
       });
 
       if (selectedProject.length > 0) {
         const projectMembers = selectedProject[0].find(
-          (project: { _id: string | undefined }) => project._id === id,
+          (project: { id: string | undefined }) => project.id === id,
         );
 
         setMembers(projectMembers.members);
@@ -213,10 +213,10 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                   {members &&
                     members.map((item) => (
                       <li
-                        key={item.user._id}
+                        key={item.user.id}
                         className="w-full mt-5 dark:text-[#F7F9F9]"
                       >
-                        {confirm === item.user._id ? (
+                        {confirm === item.user.id ? (
                           <div className="flex items-center justify-between  border p-2 rounded-md text-base">
                             <p className=" text-black dark:text-[#F7F9F9] ">
                               از حذف کاربر مطمئن هستید؟
@@ -233,9 +233,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                               </button>
                               <button
                                 className="text-208D8E mr-2 focus:outline-none  dark:text-[#F1B127]"
-                                onClick={() =>
-                                  handleRemoveMember(item.user._id)
-                                }
+                                onClick={() => handleRemoveMember(item.user.id)}
                               >
                                 بله
                               </button>
@@ -255,7 +253,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                             <div
                               className="relative w-26 rounded-md py-1 px-2 text-sm flex items-center justify-center font-normal border border-[#E9EBF0] cursor-pointer hover:text-red-500 hover:border-red-500 transition-all"
                               onClick={() => {
-                                setConfirm(item.user._id);
+                                setConfirm(item.user.id);
                               }}
                             >
                               <span className="ml-4 ">حذف ممبر</span>

@@ -5,7 +5,7 @@ import { personalInfoType } from "@/logic/schemas/personalInfo";
 import { logOut } from "./authSlice";
 
 type User = {
-  _id: string;
+  id: string;
   username: string;
   email: string;
   workspaces: [];

@@ -57,7 +57,7 @@ const ColumnViewBoard = ({
                     {
                       name,
                       description,
-                      _id,
+                      id,
                       comments,
                       label,
                       taskAssigns,
@@ -70,10 +70,10 @@ const ColumnViewBoard = ({
                       borderColor={borderColor}
                       title={title}
                       position={index}
-                      key={_id}
+                      key={id}
                       name={name}
                       description={description}
-                      _id={_id}
+                      id={id}
                       label={label}
                       board={board}
                       taskAssigns={taskAssigns}

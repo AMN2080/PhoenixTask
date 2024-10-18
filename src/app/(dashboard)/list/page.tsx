@@ -66,19 +66,19 @@ function ListViewPage() {
   };
   return (
     <div className="pb-8 w-full">
-      {workspaceProjects[0]?.projects.map(({ name, _id }) => (
-        <div key={_id} onClick={() => handleClick(_id)}>
+      {workspaceProjects[0]?.projects.map(({ name, id }) => (
+        <div key={id} onClick={() => handleClick(id)}>
           <Collapsible
             title={name}
             titleClass="font-bold"
             chevronClass="text-xl mr-1"
-            id={_id}
+            id={id}
           >
             {projects
-              .find((project) => project.projectId === _id)
-              ?.projectBoards.map(({ name, tasks, _id }, index) => (
+              .find((project) => project.projectId === id)
+              ?.projectBoards.map(({ name, tasks, id }, index) => (
                 <Collapsible
-                  key={_id}
+                  key={id}
                   title={name}
                   numberTask={tasks.length}
                   titleClass={`${colors[index]} ${titleClass}`}

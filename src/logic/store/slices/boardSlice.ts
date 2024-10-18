@@ -16,12 +16,12 @@ type PositionProps = {
   index: number;
 };
 type taskAssignsType = {
-  _id: string;
+  id: string;
   username: string;
   email: string;
 };
 export type Task = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   label: [];
@@ -32,7 +32,7 @@ export type Task = {
   deadline: string;
 };
 type BoardType = {
-  _id: "";
+  id: "";
   name: "";
   position: number;
   project: "";
@@ -435,8 +435,8 @@ const boardsSlice = createSlice({
 
           state.projects
             .find((project) => project.projectId === state.selectedProjectId)
-            ?.projectBoards.find((board) => board._id === state.selectedBoardId)
-            ?.tasks.find((task) => task._id === state.selectedTaskId)
+            ?.projectBoards.find((board) => board.id === state.selectedBoardId)
+            ?.tasks.find((task) => task.id === state.selectedTaskId)
             ?.comments.push(action.payload);
         },
       )
@@ -455,11 +455,11 @@ const boardsSlice = createSlice({
 
         const curCommentArr = state.projects
           .find((project) => project.projectId === state.selectedProjectId)
-          ?.projectBoards.find((board) => board._id === state.selectedBoardId)
-          ?.tasks.find((task) => task._id === state.selectedTaskId)?.comments;
+          ?.projectBoards.find((board) => board.id === state.selectedBoardId)
+          ?.tasks.find((task) => task.id === state.selectedTaskId)?.comments;
 
         const commentIndex = curCommentArr?.findIndex(
-          (comment) => comment._id === action.payload,
+          (comment) => comment.id === action.payload,
         );
 
         if (commentIndex || commentIndex === 0)
@@ -482,10 +482,10 @@ const boardsSlice = createSlice({
 
           state.projects
             .find((project) => project.projectId === state.selectedProjectId)
-            ?.projectBoards.find((board) => board._id === state.selectedBoardId)
-            ?.tasks.find((task) => task._id === state.selectedTaskId)
+            ?.projectBoards.find((board) => board.id === state.selectedBoardId)
+            ?.tasks.find((task) => task.id === state.selectedTaskId)
             ?.comments.map((comment) => {
-              if (comment._id === action.payload._id)
+              if (comment.id === action.payload.id)
                 comment.text = action.payload.text;
             });
         },
@@ -498,9 +498,9 @@ const boardsSlice = createSlice({
       .addCase(fetchUpdateTask.fulfilled, (state, action) => {
         state.projects
           .find((project) => project.projectId === state.selectedProjectId)
-          ?.projectBoards.find((board) => board._id === state.selectedBoardId)
+          ?.projectBoards.find((board) => board.id === state.selectedBoardId)
           ?.tasks.map((task) => {
-            if (task._id === state.selectedTaskId) {
+            if (task.id === state.selectedTaskId) {
               task.name = action.payload.name;
               task.deadline = action.payload.deadline;
               task.description = action.payload.description;
@@ -510,9 +510,9 @@ const boardsSlice = createSlice({
       .addCase(fetchAssignTask.fulfilled, (state, action) => {
         state.projects
           .find((project) => project.projectId === state.selectedProjectId)
-          ?.projectBoards.find((board) => board._id === state.selectedBoardId)
+          ?.projectBoards.find((board) => board.id === state.selectedBoardId)
           ?.tasks.map((task) => {
-            if (task._id === state.selectedTaskId) {
+            if (task.id === state.selectedTaskId) {
               task.taskAssigns.push(action.payload.user);
             }
           });
@@ -520,11 +520,11 @@ const boardsSlice = createSlice({
       .addCase(fetchUnAssignTask.fulfilled, (state, action) => {
         state.projects
           .find((project) => project.projectId === state.selectedProjectId)
-          ?.projectBoards.find((board) => board._id === state.selectedBoardId)
+          ?.projectBoards.find((board) => board.id === state.selectedBoardId)
           ?.tasks.map((task) => {
-            if (task._id === state.selectedTaskId) {
+            if (task.id === state.selectedTaskId) {
               task.taskAssigns = task.taskAssigns.filter(
-                (user) => user._id !== action.payload,
+                (user) => user.id !== action.payload,
               );
             }
           });
@@ -567,7 +567,7 @@ const boardsSlice = createSlice({
         });
         state.projects[index].projectBoards = state.projects[
           index
-        ].projectBoards.filter((board) => board._id != action.payload._id);
+        ].projectBoards.filter((board) => board.id != action.payload.id);
         state.isSuccessPost = true;
         state.messagePost = "ستون حذف شد";
       })
@@ -594,7 +594,7 @@ const boardsSlice = createSlice({
         state.projects[index].projectBoards = state.projects[
           index
         ].projectBoards.map((board) => {
-          return board._id === action.payload._id
+          return board.id === action.payload.id
             ? { ...board, name: action.payload.name }
             : board;
         });
@@ -615,7 +615,7 @@ const boardsSlice = createSlice({
         // find project id
         state.projects.forEach((project) => {
           project.projectBoards.forEach((board) => {
-            board._id === boardId ? (selectedProject = project.projectId) : "";
+            board.id === boardId ? (selectedProject = project.projectId) : "";
           });
         });
 
@@ -625,7 +625,7 @@ const boardsSlice = createSlice({
         );
 
         const boardIndx = state.projects[projectIndx].projectBoards.findIndex(
-          (board) => board._id === boardId,
+          (board) => board.id === boardId,
         );
 
         // dispatch task to board
@@ -642,7 +642,7 @@ const boardsSlice = createSlice({
         // find project id
         state.projects.forEach((project) => {
           project.projectBoards.forEach((board) => {
-            board._id === boardId ? (selectedProject = project.projectId) : "";
+            board.id === boardId ? (selectedProject = project.projectId) : "";
           });
         });
 
@@ -651,12 +651,12 @@ const boardsSlice = createSlice({
           (project) => project.projectId === selectedProject,
         );
         const boardIndx = state.projects[projectIndx].projectBoards.findIndex(
-          (board) => board._id === boardId,
+          (board) => board.id === boardId,
         );
 
         state.projects[projectIndx].projectBoards[boardIndx].tasks =
           state.projects[projectIndx].projectBoards[boardIndx].tasks.filter(
-            (task) => task._id != action.payload._id,
+            (task) => task.id != action.payload.id,
           );
       });
   },

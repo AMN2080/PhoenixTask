@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
-import { fetchProjects } from "@/logic/store/store";
 import {
   setSelectedSpace,
   setSelectedWorkSpaceHeader,
   setSelectedWorkSpaceId,
 } from "@/logic/store/slices/workSpacesSlice";
+import { fetchProjects } from "@/logic/store/store";
 import { workSpacesType } from "@/logic/types/workSpaceType";
 
 type SpaceMenuProps = {
   workSpaces: workSpacesType;
 };
 
-const WorkSpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
-  console.log(workSpaces)
+const SpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
   const [selectedValue, setSelectedValue] = useState<string>("");
   const dispatch = useAppDispatch();
   const { workSpaces: projectState } = useAppSelector(
@@ -27,13 +26,13 @@ const WorkSpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
     setSelectedValue(selectedId);
     if (selectedId) {
       dispatch(setSelectedSpace(selectedId));
-      if (selectedName !== "محیط کاری‌ها")
+      if (selectedName !== "ورک اسپیس‌ها")
         dispatch(setSelectedWorkSpaceHeader(selectedName));
 
       const workSpaceIndex = projectState.findIndex((projects) => {
         return projects.workSpaceId === selectedId;
       });
-      if (selectedId != "محیط کاری‌ها") {
+      if (selectedId != "ورک اسپیس‌ها") {
         if (workSpaceIndex < 0) {
           dispatch(fetchProjects(selectedId));
           dispatch(setSelectedWorkSpaceId(selectedId));
@@ -50,12 +49,12 @@ const WorkSpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
       onChange={handleSelectChange}
       className="p-2 bg-white outline-none focus:ring-1 focus:ring-208D8E blur:ring-none rounded-md mt-7 w-full font-semibold"
     >
-      <option className="text-323232 font-semibold">محیط کاری‌ها</option>
-      {workSpaces.map(({ id, name, color }) => (
+      <option className="text-323232 font-semibold">ورک اسپیس‌ها</option>
+      {workSpaces.map(({ id, name }) => (
         <option
           className="font-semibold hover:text-white"
           key={id}
-          value={color} // Use the workspace ID as the value of the option
+          value={id} // Use the workspace ID as the value of the option
         >
           {name}
         </option>
@@ -64,4 +63,4 @@ const WorkSpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
   );
 };
 
-export default WorkSpaceMenu;
+export default SpaceMenu;

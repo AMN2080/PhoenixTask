@@ -1,14 +1,14 @@
 type taskAssignsType = {
-  _id: string;
+  id: string;
   username: string;
   email: string;
 };
 
 type commentType = {
-  _id: string; // comment _id
+  id: string; // comment id
   text: string;
   user: {
-    _id: string; // user _id
+    id: string; // user id
     username: string;
     firstname: string;
     email: string;
@@ -18,7 +18,7 @@ type commentType = {
 };
 
 type taskType = {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   label?: [];

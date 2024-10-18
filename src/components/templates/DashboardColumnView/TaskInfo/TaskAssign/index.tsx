@@ -144,7 +144,7 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
                 <ul className="pl-4">
                   {taskAssigns &&
                     taskAssigns.map((user, index) => (
-                      <li key={user._id} className="w-full mt-5">
+                      <li key={user.id} className="w-full mt-5">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center">
                             <div
@@ -160,7 +160,7 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
                             size={20}
                             className="cursor-pointer hover:scale-125 hover:text-red-400 transition-all"
                             onClick={() => {
-                              setDeletingUserId(user._id);
+                              setDeletingUserId(user.id);
                               setConfirmationModaIsOpen(true);
                             }}
                           /> */}

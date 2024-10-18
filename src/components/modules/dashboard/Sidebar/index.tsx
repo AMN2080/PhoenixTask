@@ -11,8 +11,8 @@ import { workSpacesType } from "@/logic/types/workSpaceType";
 // import ProfileButton from "../../ui/ProfileButton";
 // import SearchInput from "../../ui/SearchInput";
 import NewWorkSpaceButton from "./NewWorkSpaceButton";
-// import WorkSpaceList from "./WorkSpaceList";
-// import SpaceMenu from "./SpaceMenu";
+import WorkSpaceList from "./WorkSpaceList";
+import WorkSpaceMenu from "./WorkSpaceMenu";
 
 export default function DashboardSidebar() {
   const router = useRouter();
@@ -34,7 +34,7 @@ export default function DashboardSidebar() {
   }, [dispatch, selectedSpace, workSpaces.length, isSuccess, workSpaces]);
 
   const getSelectedWorkSpaces = workSpaces.filter((workSpace) => {
-    return workSpace._id === selectedSpace;
+    return workSpace.id === selectedSpace;
   });
 
   const workSpacesToRender = getSelectedWorkSpaces.length
@@ -65,7 +65,7 @@ export default function DashboardSidebar() {
         >
           Phoenix Task Manager
         </Heading>
-        {/* <SpaceMenu workSpaces={workSpaces || []} /> */}
+        <WorkSpaceMenu workSpaces={workSpaces || []} />
         <input
           type="text"
           placeholder="جستجو در میزِکارها"
@@ -74,9 +74,9 @@ export default function DashboardSidebar() {
         <NewWorkSpaceButton />
       </div>
       {/* <SearchInput placeHolder="جستجو کنید" extraClass="my-3" type="sideBar" /> */}
-      {/* {isLoading && <Icon iconName="Loading" />}
+      {isLoading && <Icon iconName="Loading" />}
       {isError && <div className="m-auto text-FB0606">{`${message}`}</div>}
-      {isSuccess && <WorkSpaceList workSpaces={workSpacesToRender} />} */}
+      {isSuccess && <WorkSpaceList workSpaces={workSpacesToRender} />}
       <div>
         <Link
           className="flex items-center gap-2"

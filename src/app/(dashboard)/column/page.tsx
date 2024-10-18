@@ -168,13 +168,13 @@ const ColumnViewPage = () => {
             ) : (
               <>
                 {!searchedTaskValue && newBoard}
-                {projectBoards?.map(({ _id, name, tasks }, index) => (
+                {projectBoards?.map(({ id, name, tasks }, index) => (
                   <Board
-                    key={_id}
+                    key={id}
                     index={index}
                     title={name}
                     number={tasks.length}
-                    id={_id}
+                    id={id}
                     tasks={tasks}
                     borderColor={borderColors[index]}
                   />

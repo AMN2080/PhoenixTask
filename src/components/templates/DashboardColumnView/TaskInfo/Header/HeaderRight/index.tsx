@@ -48,7 +48,7 @@ const TaskInfoHeaderRight = ({
             </li>
             <>
               {[...taskAssigns].slice(0, 3).map((user, index) => (
-                <li key={user._id} className="w-8 h-8 cursor-pointer ">
+                <li key={user.id} className="w-8 h-8 cursor-pointer ">
                   <div
                     className={`${colors[index]} w-full h-full rounded-full flex items-center justify-center pt-1 text-white`}
                   >

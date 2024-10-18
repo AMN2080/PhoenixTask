@@ -8,7 +8,7 @@ import {
 } from "@/logic/types/authType";
 
 type User = {
-  _id: string;
+  id: string;
   username: string;
   email: string;
   settings: [];

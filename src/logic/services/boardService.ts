@@ -3,10 +3,16 @@ import {
   createCommentDataType,
   updateCommentDataType,
 } from "@/logic/store/slices/boardSlice";
+
+// const API_URL = {
+//   comment: "/api/comments/",
+//   board: "/api/board/",
+//   task: "/api/task/",
+// };
 const API_URL = {
-  comment: "/api/comments/",
-  board: "/api/board/",
-  task: "/api/task/",
+  comment: "/comments/",
+  board: "/board/",
+  task: "/task/",
 };
 
 type PositionProps = {
@@ -48,7 +54,7 @@ const fetchChangeTaskBoard = async ({
 const addComment = async (commentData: createCommentDataType) => {
   const response = await AXIOS.post(API_URL.comment, commentData);
   if (response.data) {
-    const commentId = response.data._id;
+    const commentId = response.data.id;
     const getComment = await AXIOS.get(API_URL.comment + commentId);
     return getComment.data;
   }
