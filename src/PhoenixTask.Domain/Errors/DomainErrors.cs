@@ -1,4 +1,5 @@
 ﻿using PhoenixTask.Domain.Abstractions.Primitives;
+using System.Xml.Serialization;
 
 namespace PhoenixTask.Domain.Errors;
 
