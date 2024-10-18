@@ -9,7 +9,7 @@ public sealed class Key : ValueObject
 {
     public static Key Default => new("Default");
     public const int MaxLength = 130;
-    private const string KeyRegexPattern = @"[^a-zA-Z]+";
+    private const string KeyRegexPattern = @"^[A-Za-z]+$";
     private static readonly Lazy<Regex> KeyFormatRegex =
             new(() => new Regex(KeyRegexPattern, RegexOptions.Compiled | RegexOptions.IgnoreCase));
 

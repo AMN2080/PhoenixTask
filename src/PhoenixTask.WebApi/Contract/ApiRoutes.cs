@@ -14,6 +14,9 @@ public static class ApiRoutes
         public const string ForgetPassword = "users/reset-password";
         public const string ResetPassword = "users/reset-password/set-password";
         public const string UpdateUser = "users/{userId:guid}";
+        public const string SetSetting = "users/settings";
+        public const string GetSetting = "users/setting/{key}";
+        public const string GetUserSettings = "users/settings";
     }
     public static class WorkSpace
     {

@@ -2,8 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using PhoenixTask.Application.Authentication.ChangePassword;
 using PhoenixTask.Application.Authentication.ForgetPassword;
+using PhoenixTask.Application.Users.GetSetting;
+using PhoenixTask.Application.Users.GetUserSettings;
+using PhoenixTask.Application.Users.SetSetting;
 using PhoenixTask.Application.Users.UpdateUser;
 using PhoenixTask.Contracts.Users;
+using PhoenixTask.Domain.Abstractions.Maybe;
 using PhoenixTask.Domain.Abstractions.Result;
 using PhoenixTask.Domain.Errors;
 using PhoenixTask.WebApi.Contract;
@@ -47,9 +51,33 @@ public class UserController(IMediator mediator) : ApiController(mediator)
     [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Update([FromRoute] Guid userId, [FromBody] UpdateUserRequest updateUserRequest) =>
      await Result.Create(updateUserRequest, DomainErrors.General.UnProcessableRequest)
-        .Ensure(request => request.UserId == userId,DomainErrors.General.UnProcessableRequest)
-        .Map(request => new UpdateUserCommand(request.UserId, request.FirstName, request.LastName,request.PhoneNumber))
+        .Ensure(request => request.UserId == userId, DomainErrors.General.UnProcessableRequest)
+        .Map(request => new UpdateUserCommand(request.UserId, request.FirstName, request.LastName, request.PhoneNumber))
         .Bind(command => Mediator.Send(command))
         .Match(Ok, BadRequest);
 
+    [HttpPost(ApiRoutes.Users.SetSetting)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> SetSetting([FromBody] SettingModel setSettingRequest) =>
+     await Result.Create(setSettingRequest, DomainErrors.General.UnProcessableRequest)
+        .Map(request => new SetSettingCommand(request.Key, request.Value))
+        .Bind(command => Mediator.Send(command))
+        .Match(Ok, BadRequest);
+
+
+    [HttpGet(ApiRoutes.Users.GetSetting)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetSetting(string key) =>
+    await Maybe<GetSettingQuery>.From(new(key))
+        .Bind(query => Mediator.Send(query))
+        .Match(Ok, BadRequest);
+
+
+    [HttpGet(ApiRoutes.Users.GetUserSettings)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetUserSettings() =>
+        Ok(await Mediator.Send(new GetUserSettingQuery()));
 }

@@ -40,5 +40,5 @@ public class TaskController(IMediator mediator) : ApiController(mediator)
     public async Task<IActionResult> Delete(Guid taskId)
     => await Result.Success(new DeleteTaskCommand(taskId))
         .Bind(command => Mediator.Send(command))
-        .Match(Ok, BadRequest);
+        .Match(Ok, BadRequest); 
 }
