@@ -15,7 +15,8 @@ const fetchWorkSpaceById = async (id: string) => {
 
 const createWorkSpace = async (nameWorkspace: string) => {
   const formData = { name: nameWorkspace };
-  const response = await AXIOS.post(API_URL + "create", formData);
+  // const response = await AXIOS.post(API_URL + "workspaces", formData);
+  const response = await AXIOS.post(API_URL, formData);
   return response.data;
 };
 
