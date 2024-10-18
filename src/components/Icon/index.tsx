@@ -3,6 +3,7 @@ import { SVGProps } from "react";
 
 const iconMap = {
   AccountInfo: dynamic(() => import("./icons/AccountInfo")),
+  Block: dynamic(() => import("./icons/Block")),
   Calendar: dynamic(() => import("./icons/Calendar")),
   CheckBox: dynamic(() => import("./icons/CheckBox")),
   Close: dynamic(() => import("./icons/Close")),

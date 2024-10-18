@@ -1,8 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { Button, Input, Flex, CheckBox } from "@/components/UI";
 // import CheckBoxColor from "../../UI/CheckBoxColor";
-// import { BiBlock } from "react-icons/bi";
-// import { AiOutlineArrowLeft } from "react-icons/ai";
 import Icon from "@/components/Icon";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
@@ -15,9 +13,10 @@ type workspaceProps = {
 
 const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
   const [selectedColor, setSelectedColor] = useState({
-    color: "bg-[#7D828C]",
+    color: "bg-neutral",
     id: 0,
   });
+  
   const [workspaceName, setWorkSpaceName] = useState("");
   const fontList = "text-sm font-semibold text-black";
   const liStyle = "w-full flex justify-between items-center";
@@ -95,9 +94,7 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
                   ? setWorkSpaceStepe("ساختن محیط کاری جدید")
                   : setWorkSpaceStepe("انتخاب رنگ محیط کاری");
               }}
-            >
-              {/* <AiOutlineArrowLeft /> */}
-            </div>
+            ></div>
           ) : (
             <span></span>
           )}
@@ -124,18 +121,18 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
                   {/* list of colors */}
                   <div className="mr-9 flex flex-col">
                     <span className="text-sm text-black">رنگ محیط کاری</span>
-                    <ul className="mt-5  h-10 flex justify-start content-between flex-wrap">
+                    <ul className="mt-5 h-10 flex justify-start content-between flex-wrap">
                       <li
                         className="h-4 w-4 mr-3 rounded-sm hover:cursor-pointer text-black"
                         onClick={() => {
                           setSelectedColor({
                             ...selectedColor,
-                            color: "bg-[#7D828C]",
+                            color: "bg-neutral",
                             id: 0,
                           });
                         }}
                       >
-                        {/* <BiBlock /> */}
+                        <Icon iconName="Block" />
                       </li>
                       {/* {dataColor.map((li) => (
                         <CheckBox />
