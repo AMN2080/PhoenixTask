@@ -113,5 +113,4 @@ const boardService = {
   fetchChangeTaskPosition,
   fetchSelectBoard,
 };
-
 export default boardService;

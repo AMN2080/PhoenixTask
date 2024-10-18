@@ -41,5 +41,4 @@ const ProjectsService = {
   addMemberToProject,
   removeMemberThanProject,
 };
-
 export default ProjectsService;

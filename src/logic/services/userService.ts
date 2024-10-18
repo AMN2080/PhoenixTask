@@ -25,5 +25,4 @@ const authServie = {
   updateUserById,
   fetchAddedMemberWorkspace,
 };
-
 export default authServie;

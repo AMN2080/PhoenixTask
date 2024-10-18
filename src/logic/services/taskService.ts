@@ -48,5 +48,4 @@ const taskService = {
   fetchAssignTask,
   fetchUnAssignTask,
 };
-
 export default taskService;

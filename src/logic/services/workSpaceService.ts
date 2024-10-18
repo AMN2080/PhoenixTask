@@ -59,5 +59,4 @@ const WorkspaceService = {
   addWorkSpaceMember,
   removeWorkSpaceMember,
 };
-
 export default WorkspaceService;
