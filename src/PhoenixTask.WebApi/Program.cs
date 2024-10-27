@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using NLog;
+using NLog.Web;
 using PhoenixTask.Application;
 using PhoenixTask.Infrastructure;
 using PhoenixTask.Infrastructure.Authentication;
@@ -8,6 +10,12 @@ using PhoenixTask.Persistance;
 using PhoenixTask.WebApi.Middleware;
 using System.Reflection;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+builder.Services.AddLogging(config =>
+{
+    config.AddNLog("Nlog.config");
+});
 
 bool runFromContainer = builder.Configuration.GetValue<bool>("RunIncontainer", false);
 if (runFromContainer)
@@ -80,6 +88,7 @@ builder.Services.AddSwaggerGen(swaggerGenOptions =>
 builder.Services.AddAuthorization();
 builder.Services.AddSingleton<IAuthorizationHandler, PermissionAuthorzationHandler>();
 builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
+
 var app = builder.Build();
 
 app.UseSwagger();
