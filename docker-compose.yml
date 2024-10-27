@@ -1,16 +1,25 @@
-version: '3.4'
 services:
     sqlserverdb:
         container_name: sqlservercontainer
         image: mcr.microsoft.com/mssql/server:2022-latest
+        volumes:
+            - C:/tmp/PhoneixTaskDb:/var/opt/mssql/data
         ports:
             - 8002:1433
         environment:
             - ACCEPT_EULA=Y
             - MSSQL_SA_PASSWORD=A123456789a*
+        healthcheck:
+            test:  /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "A123456789a*" -C -Q "SELECT 1" || exit 1
+            interval: 1s
+            timeout: 20s
+            retries: 100
+            start_period: 10s
     webapi:
         container_name: webapicontainer
-        image: $phoenixtaskwebapi
+        image: $phoenixTask
+        volumes:
+            - C:/tmp/PhoneixTaskLogs:/app/logs
         ports:
             - 2023:8080 
             - 44388:44388
@@ -20,4 +29,5 @@ services:
         environment:
             - ASPNETCORE_Kestrel__Certificates__Default__Path:'localhost-dev.pfx'
         depends_on:
-            - sqlserverdb
+            sqlserverdb:
+                condition: service_healthy
