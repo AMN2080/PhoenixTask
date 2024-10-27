@@ -20,6 +20,7 @@ public static class DependencyInjection
             config.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
 
             config.AddOpenBehavior(typeof(ValidationBehaviour<,>));
+            config.AddOpenBehavior(typeof(LoggingBehaviour<,>));
         });
         return services;
     }
