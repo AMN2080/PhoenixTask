@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { useState } from "react";
-import { Button } from "@/components/UI"
+import { Button } from "@/components/UI";
 import Icon from "@/components/Icon";
 import { setTheme } from "@/logic/store/slices/userSlice";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
@@ -22,9 +22,7 @@ const SituationPage = () => {
 
   return (
     <div className="w-80 mr-14">
-      <h3 className="text-1E1E1E text-2xl font-bold mb-9">
-        تنظیمات
-      </h3>
+      <h3 className="text-base-content text-2xl font-bold mb-9">تنظیمات</h3>
       <div className="flex flex-col gap-12">
         {/* themes */}
         <div>
@@ -32,7 +30,7 @@ const SituationPage = () => {
             انتخاب تم
           </span>
           <ul className="flex gap-3 items-center">
-            <li className="rounded-full w-10 h-10 grid place-content-center cursor-pointer bg-[#208D8E]">
+            <li className="rounded-full w-10 h-10 grid place-content-center cursor-pointer bg-primary">
               <Icon iconName="Tick" className="w-4 text-white" />
             </li>
             <li className="rounded-full w-5 h-5 hover:scale-150 transition-all cursor-pointer bg-[#78C6B0]"></li>
@@ -53,9 +51,7 @@ const SituationPage = () => {
             checked={themeStatus}
             className="toggle"
           />
-          <span className="font-normal text-sm">
-            حالت شب
-          </span>
+          <span className="font-normal text-sm">حالت شب</span>
         </div>
 
         {/* Submit Changes Button */}

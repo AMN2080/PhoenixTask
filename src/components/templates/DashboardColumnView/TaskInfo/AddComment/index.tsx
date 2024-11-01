@@ -65,7 +65,7 @@ const AddComment = ({ taskId }: AddCommentProps) => {
 
   return (
     <div
-      className={` w-1/2 absolute border border-b-0 left-[-0.5px] dark:border-[#57585f] bottom-0 h-52 transition-all ${
+      className={` w-1/2 absolute border border-b-0 left-[-0.5px] bottom-0 h-52 transition-all ${
         isCommentOpen
           ? "translate-y-0 shadow-[0px_-4px_12px_0px_#00000040] rounded-tr-md"
           : "translate-y-32"
@@ -82,7 +82,7 @@ const AddComment = ({ taskId }: AddCommentProps) => {
         <textarea
           ref={textAreRef}
           placeholder="کامنت"
-          className=" p-3 pb-12 pl-12 w-full h-full resize-none outline-none scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-white rounded-tr-md dark:bg-[#15202b]"
+          className="p-3 pb-12 pl-12 w-full h-full resize-none outline-none scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-white rounded-tr-md"
         />
 
         {/* <BsChatText className="absolute top-3 left-6 text-AEAEAE" /> */}
@@ -90,7 +90,7 @@ const AddComment = ({ taskId }: AddCommentProps) => {
         {/* Comment Footer */}
         <div
           onMouseDown={formClickHandler}
-          className="absolute bottom-0 w-full justify-between items-center flex bg-white dark:bg-[#15202b]"
+          className="absolute bottom-0 w-full justify-between items-center flex bg-white"
         >
           {/* Actions on the comment field */}
           <div className="flex gap-4 mb-1 mr-6 items-center relative">

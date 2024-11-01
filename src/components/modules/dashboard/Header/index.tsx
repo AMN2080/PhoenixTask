@@ -54,7 +54,7 @@ export default function DashboardHeader({ location }: DashboardHeaderProps) {
           <div className="flex items-center py-4 divide-x-2 relative">
             <div
               ref={marker}
-              className="absolute h-1 w-0 bg-208D8E -bottom-[2px] left-0 duration-500 rounded-lg"
+              className="absolute h-1 w-0 bg-primary -bottom-[2px] left-0 duration-500 rounded-lg"
             ></div>
             <Link to="list" className="border-l-2 px-5 flex items-center gap-1">
               <Icon

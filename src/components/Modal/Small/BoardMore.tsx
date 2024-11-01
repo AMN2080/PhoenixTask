@@ -19,7 +19,7 @@ const BoardMore = ({
   handleEditMood,
 }: BoardMoreProps) => {
   const liStyle =
-    "flex items-center cursor-pointer mt-3 text-sm text-neutral-content font-normal dark:text-[#F7F9F9]";
+    "flex items-center cursor-pointer mt-3 text-sm text-neutral-content font-normal";
   const [confirm, setConfirm] = useState(false);
   const dispatch = useAppDispatch();
 
@@ -27,7 +27,7 @@ const BoardMore = ({
     <>
       <ul
         style={{ top: position.top, left: position.left }}
-        className="absolute top-7  min-w-40 mt-1 left-2 rounded-lg p-3 z-50 bg-white shadow-lg dark:bg-[#15202B]"
+        className="absolute top-7  min-w-40 mt-1 left-2 rounded-lg p-3 z-50 bg-white shadow-lg"
       >
         {confirm ? (
           <li className={`${liStyle} !mt-0 p-2`}>

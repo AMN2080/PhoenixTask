@@ -39,7 +39,7 @@ const CollapseTable = ({ tasks, color }: StatusProjects) => {
                         {[...taskAssigns].slice(0, 3).map((member, index) => (
                           <div className="w-9 h-9 " key={member.id}>
                             <div
-                              className={`${colors[index]} w-full h-full rounded-full flex items-center justify-center pt-1 text-white border-2 dark:border-[#0F111A]`}
+                              className={`${colors[index]} w-full h-full rounded-full flex items-center justify-center pt-1 text-white border-2`}
                             >
                               {member.username.substring(0, 2)}
                             </div>
@@ -48,7 +48,7 @@ const CollapseTable = ({ tasks, color }: StatusProjects) => {
                         {taskAssigns.length > 3 && (
                           <div className="w-9 h-9 ">
                             <div
-                              className={`bg-323232 w-full h-full rounded-full flex items-center justify-center pt-1 text-white border-2 dark:border-[#0F111A]`}
+                              className={`bg-323232 w-full h-full rounded-full flex items-center justify-center pt-1 text-white border-2`}
                             >
                               +{taskAssigns.length - 3}
                             </div>

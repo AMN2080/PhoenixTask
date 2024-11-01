@@ -9,7 +9,8 @@ type workSpacesType = {
   name: string;
   color: string;
   // user: string;
-  // projects: ProjectPropsType;
+  // projects: ProjectProps;
+  // members: MemberProps[];
 }[];
 
 export { type workSpacesType, type ProjectPropsType };

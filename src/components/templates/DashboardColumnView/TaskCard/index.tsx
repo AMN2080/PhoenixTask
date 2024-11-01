@@ -102,13 +102,13 @@ const ColumnTaskCard = ({
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             ref={provided.innerRef}
-            className={`border w-[250px] rounded p-3 cursor-pointer bg-white text-1E1E1E shadow-[0px_6px_8px_rgba(0,0,0,0.14)] mb-3 dark:bg-[#15202B] dark:text-[#F7F9F9] dark:border-[#F1B127] dark:shadow-[0px_5px_7px_rgba(255,255,255,0.15)]`}
+            className={`border w-[250px] rounded p-3 cursor-pointer bg-white text-base-content shadow-[0px_6px_8px_rgba(0,0,0,0.14)] mb-3`}
             onMouseOver={() => handleCardHover(true)}
             onMouseLeave={() => !confirm && handleCardHover(false)}
             onClick={() => setIsOpen(true)}
           >
             <div className="flex justify-between items-baseline mb-4">
-              <div className="h-4 font-medium leading-4 text-right text-534D60 text-xs dark:text-inherit">
+              <div className="h-4 font-medium leading-4 text-right text-534D60 text-xs">
                 {name}
               </div>
               <div
@@ -123,7 +123,7 @@ const ColumnTaskCard = ({
                     {[...taskAssigns].slice(0, 2).map((member, index) => (
                       <div className="w-6 h-6 text-xs" key={member.id}>
                         <div
-                          className={`${colors[index]} w-full h-full rounded-full flex items-center justify-center pt-1 text-white border dark:border-[#0F111A]`}
+                          className={`${colors[index]} w-full h-full rounded-full flex items-center justify-center pt-1 text-white border`}
                         >
                           {member.username.substring(0, 2)}
                         </div>
@@ -132,7 +132,7 @@ const ColumnTaskCard = ({
                     {taskAssigns.length > 2 && (
                       <div className="w-6 h-6 text-xs ">
                         <div
-                          className={`bg-323232 w-full h-full rounded-full flex items-center justify-center pt-1 text-white border-2 dark:border-[#0F111A]`}
+                          className={`bg-323232 w-full h-full rounded-full flex items-center justify-center pt-1 text-white border-2`}
                         >
                           +{taskAssigns.length - 2}
                         </div>
@@ -145,7 +145,7 @@ const ColumnTaskCard = ({
               </div>
             </div>
             <div className="flex items-center justify-start mb-3 gap-1">
-              <div className="text-[11px] text-0E0E0E leading-4 text-right dark:text-inherit truncate">
+              <div className="text-[11px] text-0E0E0E leading-4 text-right">
                 {description}
               </div>
               <div className="text-xs text-BDC0C6 ">
@@ -163,12 +163,12 @@ const ColumnTaskCard = ({
                   : "تعریف نشده"}
               </div>
             </div>
-            <div className="flex justify-between dark:text-[#1E2124]">
+            <div className="flex justify-between">
               <div className="flex items-center gap-3">
-                <span className="bg-BFFDE3 text-[10px] p-1 rounded-l-2xl dark:opacity-60">
+                <span className="bg-BFFDE3 text-[10px] p-1 rounded-l-2xl">
                   درس
                 </span>
-                <span className="bg-EEDFF6 text-[10px] p-1 rounded-l-2xl dark:opacity-60">
+                <span className="bg-EEDFF6 text-[10px] p-1 rounded-l-2xl">
                   پروژه
                 </span>
               </div>
@@ -190,7 +190,7 @@ const ColumnTaskCard = ({
                 />
               ) : (
                 <>
-                  <div className="hover:text-208D8E hover:scale-110 cursor-pointer">
+                  <div className="hover:text-primary hover:scale-110 cursor-pointer">
                     {/* <FiCheckCircle /> */}
                     <Icon iconName="CheckBox" />
                   </div>

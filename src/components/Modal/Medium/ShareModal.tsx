@@ -142,19 +142,19 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
   };
 
   return (
-    <div className="modal-box overflow-visible w-3/4 z-50  min-w-[500px] dark:bg-[#15202B] ">
+    <div className="modal-box overflow-visible w-3/4 z-50 min-w-[500px]">
       <div className="p-5  rounded-lg">
         {/* card header */}
         <div className="w-full flex justify-between items-center">
           <label
             htmlFor="my-modal-3"
-            className="text-323232 cursor-pointer dark:text-[#F7F9F9]"
+            className="text-323232 cursor-pointer"
             onClick={() => dispatch(toggleMediumModal(""))}
           >
             <CloseIcon />
           </label>
 
-          <div className="font-semibold text-2xl text-black dark:text-[#F7F9F9]">
+          <div className="font-semibold text-2xl text-black">
             {`به اشتراک گذاری ${ModalTitle}`}
           </div>
 
@@ -172,7 +172,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                 name="invite"
                 id="invite"
                 ref={inputInvite}
-                className="w-4/5 h-10 p-3 bg-F0F1F3 rounded-tr-lg rounded-br-lg text-sm font-normal focus:outline-none dark:bg-[#1E2124] dark:text-[#F7F9F9] border border-[#F7F9F9] border-l-0 dark:autofill:shadow-[inset_0_0_0px_1000px_#626466]"
+                className="w-4/5 h-10 p-3 bg-F0F1F3 rounded-tr-lg rounded-br-lg text-sm font-normal focus:outline-none border border-[#F7F9F9] border-l-0"
               />
 
               <div className="w-24">
@@ -186,21 +186,21 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
             </div>
 
             <div className="w-full mt-7 flex justify-between items-center ">
-              <div className="flex items-center dark:text-[#F7F9F9]">
+              <div className="flex items-center">
                 <FiLink />
-                <span className="mr-3 text-sm font-normal text-neutral-content dark:text-[#F7F9F9]">
+                <span className="mr-3 text-sm font-normal text-neutral-content">
                   لینک خصوصی
                 </span>
               </div>
 
-              <div className="w-20 h-6 px-3 py-1 text-xs flex items-center justify-center font-normal text-neutral-content rounded-md border border-[#E9EBF0] cursor-pointer dark:text-[#F7F9F9]">
+              <div className="w-20 h-6 px-3 py-1 text-xs flex items-center justify-center font-normal text-neutral-content rounded-md border border-[#E9EBF0] cursor-pointer">
                 کپی لینک
               </div>
             </div>
             {isLoadingPost || isLoadingProject ? (
               <AiOutlineLoading3Quarters
                 size="2.8rem"
-                className="m-auto animate-spin text-208D8E dark:text-[#F1B127]"
+                className="m-auto animate-spin text-primary"
               />
             ) : (
               <div className="mt-7 flex flex-col">
@@ -209,16 +209,16 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                     اشتراک گذاشته شده با
                   </h4>
                 )}
-                <ul className="max-h-40 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-white dark:scrollbar-track-[#15202b] dark:scrollbar-thumb-[#3f4148]">
+                <ul className="max-h-40 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-white">
                   {members &&
                     members.map((item) => (
                       <li
                         key={item.user.id}
-                        className="w-full mt-5 dark:text-[#F7F9F9]"
+                        className="w-full mt-5"
                       >
                         {confirm === item.user.id ? (
                           <div className="flex items-center justify-between  border p-2 rounded-md text-base">
-                            <p className=" text-black dark:text-[#F7F9F9] ">
+                            <p className="text-black">
                               از حذف کاربر مطمئن هستید؟
                             </p>
                             <div>
@@ -232,7 +232,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                                 خیر
                               </button>
                               <button
-                                className="text-208D8E mr-2 focus:outline-none  dark:text-[#F1B127]"
+                                className="text-primary mr-2 focus:outline-none"
                                 onClick={() => handleRemoveMember(item.user.id)}
                               >
                                 بله
@@ -242,7 +242,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                         ) : (
                           <div className="flex items-center justify-between">
                             <div className="flex items-center">
-                              <div className="w-8 h-8 text-sm flex justify-center items-center text-white bg-F27474 rounded-full dark:bg-[#F1B127] dark:text-[#0F111A]">
+                              <div className="w-8 h-8 text-sm flex justify-center items-center text-white bg-F27474 rounded-full">
                                 {item.user.username.substring(0, 2)}
                               </div>
                               <span className="w-fit mr-2 px-2 py-1 rounded-md flex items-center justify-center font-normal truncate">

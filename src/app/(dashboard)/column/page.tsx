@@ -48,14 +48,14 @@ const ColumnViewPage = () => {
     }
   };
   const newBoard = (
-    <div className="sticky  top-0 right-0 flex items-center justify-between min-w-[250px] bg-white h-10 rounded px-3 py-2 mb-5 border border-t-2 border-t-black text-1E1E1E shadow-[0px_2px_8px_rgba(0,0,0,0.18)] dark:bg-[#0c0e15] dark:text-[#F7F9F9] dark:border-[#F1B127] dark:shadow-[0px_3px_10px_rgba(255,255,255,0.15)] ">
+    <div className="sticky  top-0 right-0 flex items-center justify-between min-w-[250px] bg-white h-10 rounded px-3 py-2 mb-5 border border-t-2 border-t-black text-base-content shadow-[0px_2px_8px_rgba(0,0,0,0.18)]">
       {newBoardState === "show" ? (
         <span
           className="flex items-center gap-2  cursor-pointer"
           onClick={() => setNewBoardState("edit")}
         >
           ساختن ستون جدید
-          <span className="text-[#208D8E] dark:text-[#F7F9F9]">
+          <span className="text-primary">
             <Icon iconName="SquarePlus" />
           </span>
         </span>
@@ -63,7 +63,7 @@ const ColumnViewPage = () => {
         <div className="flex items-center justify-around">
           <input
             type="text"
-            className="w-2/3 h-3/4 focus:outline-none text-sm px-1 dark:bg-transparent"
+            className="w-2/3 h-3/4 focus:outline-none text-sm px-1"
             placeholder="نام ستون جدید"
             id="newBoardName"
           />
@@ -74,7 +74,7 @@ const ColumnViewPage = () => {
             لغو
           </button>
           <button
-            className="text-208D8E mr-3 focus:outline-none text-sm dark:text-[#F1B127]"
+            className="text-primary mr-3 focus:outline-none text-sm"
             onClick={handleNewBoard}
           >
             تایید

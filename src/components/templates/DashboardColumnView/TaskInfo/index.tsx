@@ -33,10 +33,10 @@ const TaskInfo = ({ handleCloseTaskInfo, taskInfo }: TaskInfoProps) => {
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-30 z-40 ">
       <div className=" fixed top-0 left-0 flex items-center justify-center z-30 w-full h-full">
-        <div className="w-11/12 h-3/4 bg-white dark:bg-[#15202b] rounded-2xl p-8 relative overflow-hidden">
-          <div className="w-full h-full divide-y divide-F4F4F4 dark:divide-[#57585f] dark:text-[#f7f9f9] ">
+        <div className="w-11/12 h-3/4 bg-white rounded-2xl p-8 relative overflow-hidden">
+          <div className="w-full h-full divide-y divide-F4F4F4">
             {/* TaskInfo Header */}
-            <section className="w-full  h-1/4 flex divide-x divide-F4F4F4 dark:divide-[#57585f] divide-x-reverse ">
+            <section className="w-full  h-1/4 flex divide-x divide-F4F4F4 divide-x-reverse ">
               <HeaderRight
                 borderColor={borderColor}
                 taskAssigns={taskAssigns}
@@ -54,7 +54,7 @@ const TaskInfo = ({ handleCloseTaskInfo, taskInfo }: TaskInfoProps) => {
             {/* ************************************************************ */}
 
             {/* TaskInfo Body */}
-            <section className="w-full h-3/4 flex divide-x divide-F4F4F4 dark:divide-[#57585f] divide-x-reverse">
+            <section className="w-full h-3/4 flex divide-x divide-F4F4F4 divide-x-reverse">
               <BodyRight
                 description={description}
                 name={name}

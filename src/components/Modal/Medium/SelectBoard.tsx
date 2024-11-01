@@ -28,20 +28,20 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
   }, [status]);
 
   return (
-    <div className="modal-box w-[400px] dark:bg-[#15202B]">
+    <div className="modal-box w-[400px]">
       {data.length > 0 ? (
         <div className="p-5  rounded-lg">
           {/* card header */}
           <div className="w-full flex justify-between items-center">
             <label
               htmlFor="my-modal-3"
-              className="text-323232 cursor-pointer dark:text-[#F7F9F9]"
+              className="text-323232 cursor-pointer"
               onClick={() => dispatch(toggleMediumModal(""))}
             >
               <CloseIcon />
             </label>
 
-            <div className="font-semibold text-2xl text-black dark:text-[#F7F9F9]">
+            <div className="font-semibold text-2xl text-black">
               انتخاب {status}
             </div>
 
@@ -55,7 +55,7 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
               <select
                 dir="rtl"
                 onChange={handleSelectValue}
-                className="select select-accent w-full text-center dark:bg-[#1E2124] dark:border-[#F1B127] dark:text-[#F7F9F9] dark:focus:outline-none"
+                className="select select-accent w-full text-center"
                 id="sel"
                 defaultValue={boardId}
                 ref={selectRef}
@@ -89,10 +89,10 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
         </div>
       ) : (
         <>
-          <div className="w-full flex  justify-between items-center dark:bg-[#15202B]">
+          <div className="w-full flex justify-between items-center">
             <label
               htmlFor="my-modal-3"
-              className="text-323232 cursor-pointer dark:text-[#F7F9F9]"
+              className="text-323232 cursor-pointer"
               onClick={() => dispatch(toggleMediumModal(""))}
             >
               <CloseIcon />
@@ -102,7 +102,7 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
 
             <span></span>
           </div>
-          <div className="font-semibold text-xl text-black text-center dark:text-[#F7F9F9]">
+          <div className="font-semibold text-xl text-black text-center">
             {status === "پروژه"
               ? `${status} ای وجود نداره ، یدونه بساز`
               : `${status}ی وجود نداره ، یدونه بساز`}

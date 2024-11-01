@@ -25,19 +25,19 @@ const NewProject = ({ id }: projectProps) => {
   };
 
   return (
-    <div className="modal-box w-3/4 max-w-lgl min-w-[500px] dark:bg-[#15202B]">
+    <div className="modal-box w-3/4 max-w-lgl min-w-[500px]">
       <div className="p-5 rounded-lg">
         {/* card header */}
         <div className="w-full flex justify-between items-center">
           <label
             htmlFor="my-modal-3"
-            className="text-323232 cursor-pointer dark:text-[#F7F9F9]"
+            className="text-323232 cursor-pointer"
             onClick={() => dispatch(toggleMediumModal(""))}
           >
             <CloseIcon />
           </label>
 
-          <div className="font-semibold text-2xl text-black dark:text-[#F7F9F9]">
+          <div className="font-semibold text-2xl text-black">
             ساختن پروژه جدید
           </div>
 
@@ -48,7 +48,7 @@ const NewProject = ({ id }: projectProps) => {
         {isLoadingPost ? (
           <AiOutlineLoading3Quarters
             size="2.8rem"
-            className="m-auto mt-3 animate-spin text-208D8E dark:text-[#F1B127]"
+            className="m-auto mt-3 animate-spin text-primary"
           />
         ) : (
           <div className="mt-11 w-full">

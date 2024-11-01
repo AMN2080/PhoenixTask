@@ -81,9 +81,9 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
 
   return (
     <div className="absolute w-screen h-screen -top-[150px] right-56  z-50  ">
-      <div className="modal-box max-h-[400px] overflow-hidden z-50 absolute dark:bg-[#131d27]  top-28 right-[5%] max-w-[350px] ">
+      <div className="modal-box max-h-[400px] overflow-hidden z-50 absolute top-28 right-[5%] max-w-[350px]">
         {/* modal content */}
-        <div className="p-3 bg-white dark:bg-[#131d27] rounded-lg">
+        <div className="p-3 bg-white rounded-lg">
           {/* card header */}
           <div className="w-full flex justify-between items-center">
             <label
@@ -97,7 +97,7 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
               />
             </label>
 
-            <div className="font-semibold text-2xl text-black  dark:text-inherit">
+            <div className="font-semibold text-2xl text-black">
               اختصاص تسک
             </div>
 
@@ -114,7 +114,7 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
                   type="text"
                   placeholder="دعوت با نام کاربری"
                   name="invite"
-                  className="w-4/5 h-10 p-3 bg-F0F1F3 rounded-tr-lg rounded-br-lg text-sm font-normal focus:outline-none dark:bg-[#1E2124] dark:text-inherit"
+                  className="w-4/5 h-10 p-3 bg-F0F1F3 rounded-tr-lg rounded-br-lg text-sm font-normal focus:outline-none"
                 />
 
                 <div className="w-24 relative">
@@ -135,7 +135,7 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
               <div
                 className={`mt-7 flex flex-col max-h-48 mb-4 ${
                   taskAssigns.length > 0 &&
-                  "overflow-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-white dark:scrollbar-track-[#131d27] dark:scrollbar-thumb-[#3f4148]"
+                  "overflow-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-white"
                 } `}
               >
                 <h4 className="text-sm font-normal text-[#7D828C]">
@@ -169,7 +169,7 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
                     ))}
                 </ul>
                 {confirmationModaIsOpen && (
-                  <div className="alert alert-warning absolute top-[100px] right-[0%]  z-50 w-full h-fit bg-red-300 dark:text-[#f7f7f9] dark:bg-[#1e2124]">
+                  <div className="alert alert-warning absolute top-[100px] right-[0%] z-50 w-full h-fit bg-red-300">
                     <span className="text-xs">
                       آیا از حذف کاربر مطمئن هستید؟
                     </span>

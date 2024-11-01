@@ -43,16 +43,16 @@ const TaskInfoHeaderLeft = ({
   };
 
   return (
-    <div className="w-1/2  h-full relative dark:text-inherit">
+    <div className="w-1/2 h-full relative">
       <div className="w-full h-14 px-4  absolute bottom-6 flex justify-between items-center">
         {/* Task Info Left */}
-        <div className="flex h-full items-center divide-x divide-F4F4F4 dark:divide-[#57585f] divide-x-reverse">
+        <div className="flex h-full items-center divide-x divide-F4F4F4 divide-x-reverse">
           {/* Creation Date */}
           <div className="h-full pl-8 ">
             <span className="text-BBBBBB text-xs font-medium">
               ساخته شده در
             </span>
-            <p className="text-1E1E1E text-base font-medium dark:text-inherit">
+            <p className="text-base-content text-base font-medium">
               1 اردیبهشت 1402
             </p>
           </div>
@@ -65,7 +65,7 @@ const TaskInfoHeaderLeft = ({
               <span className="text-BBBBBB text-xs font-medium">ددلاین</span>
               <Icon iconName="Calendar" />
             </div>
-            <div className="text-1E1E1E text-base font-medium  dark:text-inherit">
+            <div className="text-base-content text-base font-medium">
               {deadline
                 ? getPersianDateWithOutTime(getGregorianDate(deadline))
                 : "تعریف نشده"}

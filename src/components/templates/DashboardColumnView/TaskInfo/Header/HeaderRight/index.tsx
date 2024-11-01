@@ -87,7 +87,7 @@ const TaskInfoHeaderRight = ({
             role="button"
           >
             <Icon iconName="Share" className="text-[#BDBDBD] text-2xl" />
-            <span className="text-base font-dana font-medium text-1E1E1E dark:text-[#F7F9F9]">
+            <span className="text-base font-dana font-medium text-base-content">
               اشتراک گذاری
             </span>
           </div>

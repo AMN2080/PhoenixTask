@@ -11,7 +11,6 @@ import { workSpacesType } from "@/logic/types/workSpaceType";
 // import ProfileButton from "../../ui/ProfileButton";
 // import SearchInput from "../../ui/SearchInput";
 import NewWorkSpaceButton from "./NewWorkSpaceButton";
-import WorkSpaceList from "./WorkSpaceList";
 import WorkSpaceMenu from "./WorkSpaceMenu";
 
 export default function DashboardSidebar() {
@@ -76,7 +75,7 @@ export default function DashboardSidebar() {
       {/* <SearchInput placeHolder="جستجو کنید" extraClass="my-3" type="sideBar" /> */}
       {isLoading && <Icon iconName="Loading" />}
       {isError && <div className="m-auto text-FB0606">{`${message}`}</div>}
-      {isSuccess && <WorkSpaceList workSpaces={workSpacesToRender} />}
+      {/* {isSuccess && "i dont know"} */}
       <div>
         <Link
           className="flex items-center gap-2"

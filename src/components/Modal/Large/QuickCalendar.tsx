@@ -34,8 +34,8 @@ const QuickCalendar = ({
     "جمعه",
   ];
   const HeaderFont =
-    "flex items-center justify-center text-2xl font-medium text-neutral-content dark:text-[#F7F9F9]";
-  const HeaderDate = "text-208D8E mr-3 dark:text-[#F1B127]";
+    "flex items-center justify-center text-2xl font-medium text-neutral-content";
+  const HeaderDate = "text-primary mr-3";
 
   // handle deadLine value and show deadline
   const handleDeadline = (date: any) => {
@@ -61,7 +61,7 @@ const QuickCalendar = ({
         className="modal opacity-100 pointer-events-auto bg-transparent visible"
         id="my-modal-2"
       >
-        <div className="modal-box opacity-100 p-0 max-w-4xl min-w-[896px] h-5/6 min-h-[608px] max-h-[608px] rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.25)] dark:bg-[#15202B]">
+        <div className="modal-box opacity-100 p-0 max-w-4xl min-w-[896px] h-5/6 min-h-[608px] max-h-[608px] rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.25)]">
           {/* calendar Header */}
           <div className="w-full h-32 border-b-2 flex items-center font-medium justify-around">
             <div className={HeaderFont}>
@@ -96,8 +96,8 @@ const QuickCalendar = ({
                 onClick={() => handleCalendar(false, deadline.value)}
                 className={`w-full h-10 p-2.5 text-sm font-bold leading-4 cursor-pointer flex justify-center items-center text-white rounded-md ${
                   submitChangesHandler &&
-                  "bg-[#ff3333] dark:bg-[#ff3333]  dark:text-[#0F111A]"
-                } bg-208D8E dark:bg-[#F1B127] dark:text-[#0F111A]`}
+                  "bg-[#ff3333]"
+                } bg-primary`}
               >
                 بستن
               </label>
@@ -111,7 +111,7 @@ const QuickCalendar = ({
                     if (deadline && deadline.value)
                       submitChangesHandler(deadline.value);
                   }}
-                  className="w-full h-10 p-2.5 text-sm font-bold leading-4 cursor-pointer flex justify-center items-center text-white rounded-md bg-208D8E dark:bg-[#F1B127] dark:text-[#0F111A]"
+                  className="w-full h-10 p-2.5 text-sm font-bold leading-4 cursor-pointer flex justify-center items-center text-white rounded-md bg-primary"
                 >
                   ثبت
                 </label>

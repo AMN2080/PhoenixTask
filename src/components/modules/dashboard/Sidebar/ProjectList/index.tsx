@@ -115,7 +115,7 @@ function ProjectList({ projects }: Projects) {
                 id="edit"
                 placeholder="نام جدید"
                 autoComplete="off"
-                className="w-3/4 font-medium  border border-AAAAAA h-10 rounded-tr-md rounded-br-md px-3 py-2 focus:outline-none placeholder:text-sm dark:bg-[#1E2124] dark:text-[#f7f7f9]"
+                className="w-3/4 font-medium  border border-[#AAAAAA] h-10 rounded-tr-md rounded-br-md px-3 py-2 focus:outline-none placeholder:text-sm"
               />
               <Button
                 asChild
@@ -136,7 +136,7 @@ function ProjectList({ projects }: Projects) {
             <div
               className={`pb-3 font-medium flex justify-between items-center cursor-pointer group/content ${
                 selectedProjectSidebar === name
-                  ? "text-[#118c80] transition-all dark:text-[#F1B127]"
+                  ? "text-[#118c80] transition-all"
                   : ""
               }`}
               key={id}

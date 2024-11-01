@@ -8,11 +8,11 @@ import {
 import { fetchProjects } from "@/logic/store/store";
 import { workSpacesType } from "@/logic/types/workSpaceType";
 
-type SpaceMenuProps = {
+type WorkSpaceMenuProps = {
   workSpaces: workSpacesType;
 };
 
-const SpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
+const WorkSpaceMenu = ({ workSpaces }: WorkSpaceMenuProps) => {
   const [selectedValue, setSelectedValue] = useState<string>("");
   const dispatch = useAppDispatch();
   const { workSpaces: projectState } = useAppSelector(
@@ -26,13 +26,13 @@ const SpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
     setSelectedValue(selectedId);
     if (selectedId) {
       dispatch(setSelectedSpace(selectedId));
-      if (selectedName !== "ورک اسپیس‌ها")
+      if (selectedName !== "محیط کاری‌ها")
         dispatch(setSelectedWorkSpaceHeader(selectedName));
 
       const workSpaceIndex = projectState.findIndex((projects) => {
         return projects.workSpaceId === selectedId;
       });
-      if (selectedId != "ورک اسپیس‌ها") {
+      if (selectedId != "محیط کاری‌ها") {
         if (workSpaceIndex < 0) {
           dispatch(fetchProjects(selectedId));
           dispatch(setSelectedWorkSpaceId(selectedId));
@@ -47,9 +47,9 @@ const SpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
     <select
       value={selectedValue} // Use the selected value state variable
       onChange={handleSelectChange}
-      className="p-2 bg-white outline-none focus:ring-1 focus:ring-208D8E blur:ring-none rounded-md mt-7 w-full font-semibold"
+      className="p-2 bg-white outline-none focus:ring-1 focus:ring-primary blur:ring-none rounded-md mt-7 w-full font-semibold"
     >
-      <option className="text-323232 font-semibold">ورک اسپیس‌ها</option>
+      <option className="text-323232 font-semibold">محیط کاری‌ها</option>
       {workSpaces.map(({ id, name }) => (
         <option
           className="font-semibold hover:text-white"
@@ -63,4 +63,4 @@ const SpaceMenu = ({ workSpaces }: SpaceMenuProps) => {
   );
 };
 
-export default SpaceMenu;
+export default WorkSpaceMenu;

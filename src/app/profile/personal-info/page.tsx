@@ -79,7 +79,7 @@ function PersonalInfoPage() {
             </div>
             <Flex direction="col" justifyContent="center" gap="S">
               <label
-                className="border border-[#208D8E] rounded-lg p-2 cursor-pointer grid place-content-center text-xl text-[#208D8E]"
+                className="border border-primary rounded-lg p-2 cursor-pointer grid place-content-center text-xl text-primary"
                 htmlFor="img"
               >
                 ویرایش تصویر پروفایل

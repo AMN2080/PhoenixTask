@@ -3,10 +3,12 @@ import { registerType, loginType } from "@/logic/types/authType";
 import { forgotPasswordType } from "@/logic/schemas/forgotPasswordSchema";
 
 const API_URL = "http://185.8.174.74:8000/accounts/";
+// const API_URL = "https://localhost:44388/authentication/";
 
 // Regiter user
 const register = async (userData: registerType) => {
   const response = await axios.post(API_URL, userData);
+  // const response = await axios.post(API_URL + "create/", userData);
   return response.data;
 };
 

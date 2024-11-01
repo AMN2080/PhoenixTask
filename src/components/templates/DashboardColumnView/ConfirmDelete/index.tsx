@@ -7,7 +7,7 @@ type ConfirmDeleteProps = {
 const ConfirmDelete = ({ accept, cancel, status }: ConfirmDeleteProps) => {
   return (
     <div className="flex items-center justify-around ">
-      <p className="text-sm px-1 dark:bg-transparent ">
+      <p className="text-sm px-1">
         از حذف {status} مطمئنی ؟
       </p>
       <button
@@ -20,7 +20,7 @@ const ConfirmDelete = ({ accept, cancel, status }: ConfirmDeleteProps) => {
         لغو
       </button>
       <button
-        className="text-208D8E mr-3 focus:outline-none text-sm dark:text-[#F1B127]"
+        className="text-primary mr-3 focus:outline-none text-sm"
         onClick={accept}
       >
         تایید

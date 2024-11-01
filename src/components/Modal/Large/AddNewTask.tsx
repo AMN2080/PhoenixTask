@@ -6,6 +6,7 @@ import QuckCalendar from "./QuickCalendar";
 import { toast } from "react-toastify";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import { toggleMediumModal } from "@/logic/store/store";
+import { Flex } from "@/components/UI";
 
 type addNewTaskProps = {
   handleAddNewTask?: ((data: (string | undefined)[]) => void) | undefined;
@@ -77,14 +78,12 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
     <>
       <div className="modal-box overflow-visible opacity-100 z-30 py-9 px-11 rounded-2xl shadow-xl w-11/12 max-w-5xl min-w-[1000px]">
         <div>
-          <div className="flex flex-col ">
+          <Flex direction="col">
             {/* task header */}
-            <div className="w-full flex justify-between items-center">
-              <div className="flex flex-col items-start ">
-                <div className="flex items-center">
-                  <div
-                    className={`h-4 w-4 mr-3 rounded-sm bg-[#D3D3D3]`}
-                  ></div>
+            <Flex justifyContent="between" alignItems="center">
+              <Flex direction="col">
+                <Flex alignItems="center">
+                  <div className={`h-4 w-4 mr-3 rounded-sm bg-[#D3D3D3]`}></div>
                   <input
                     type="text"
                     id="taskTitle"
@@ -94,8 +93,8 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                     className="mr-3 text-2xl text-black font-medium focus:outline-none"
                     required
                   />
-                </div>
-              </div>
+                </Flex>
+              </Flex>
               <Button
                 onClick={() => dispatch(toggleMediumModal(""))}
                 asChild
@@ -103,10 +102,13 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
               >
                 <Icon iconName="Close" />
               </Button>
-            </div>
+            </Flex>
 
             {/* task subHeader */}
-            <div className="mt-10 flex items-center text-base text-black font-medium">
+            <Flex
+              alignItems="center"
+              className="mt-10 text-base text-black font-medium"
+            >
               در
               <input
                 type="text"
@@ -116,10 +118,10 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                 className="w-40 mx-2 text-base font-normal border px-2 py-1 rounded-md  focus:outline-none"
               />
               برای
-              <span className="w-9 h-9 mr-3 p-1 text-D3D3D3 rounded-full border-2 border-dashed flex justify-center items-center">
+              <span className="w-9 h-9 mr-3 p-1 text-neutral rounded-full border-2 border-dashed flex justify-center items-center">
                 <Icon iconName="UserPlus" />
               </span>
-            </div>
+            </Flex>
 
             {/* task inputs */}
             <div className="w-full h-48 mt-10">
@@ -127,22 +129,18 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                 name="descTask"
                 id="descTask"
                 placeholder="توضیحاتی برای تسک بنویسید"
-                className={`w-full h-full   text-base font-normal border rounded-xl p-5 resize-none focus:outline-none`}
+                className={`w-full h-full text-base font-normal border rounded-xl p-5 resize-none focus:outline-none`}
               ></textarea>
             </div>
 
-            <div className="w-full mt-11 flex items-center">
-              <div className="font-normal text-base">
-                افزودن پیوست
-              </div>
+            <Flex alignItems="center" className="w-full mt-11">
+              <div className="font-normal text-base">افزودن پیوست</div>
               <label
                 htmlFor="addFileTask"
-                className="w-28 border border-[#208D8E] p-1 rounded-md flex justify-center items-center text-base font-normal mr-4 text-[#208D8E]"
+                className="w-28 border border-primary p-1 rounded-md flex justify-center items-center text-base font-normal mr-4 text-primary"
               >
                 <Icon iconName="Link" />
-                <span className="text-black mr-1">
-                  آپلود فایل
-                </span>
+                <span className="text-black mr-1">آپلود فایل</span>
               </label>
 
               <input
@@ -151,14 +149,18 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                 id="addFileTask"
                 className="hidden"
               />
-            </div>
+            </Flex>
 
             {/* task footer */}
-            <div className="w-full mt-11 flex justify-between items-center">
+            <Flex
+              justifyContent="between"
+              alignItems="center"
+              className="w-full mt-11"
+            >
               {/* list of icons */}
               <ul className="w-72 relative flex items-center justify-between">
                 {/* priority */}
-                <li className={`${listOfIcons} `}>
+                <li className={`${listOfIcons}`}>
                   <span>
                     <Icon iconName="Flag" />
                   </span>
@@ -166,8 +168,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                 <li
                   id="calendar"
                   className={`${listOfIcons} ${
-                    showTime != "" &&
-                    "!text-[#208D8E] !border-[#208D8E]"
+                    showTime != "" && "!text-primary !border-primary"
                   }  `}
                   onClick={() => handleCalendar(true)}
                 >
@@ -206,8 +207,8 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                   <Button onClick={handleNewTaskButton}>ساخت تسک</Button>
                 )}
               </div>
-            </div>
-          </div>
+            </Flex>
+          </Flex>
         </div>
         {/* modals on modals */}
         {calendar.modal &&

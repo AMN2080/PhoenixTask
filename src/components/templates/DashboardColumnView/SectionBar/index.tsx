@@ -111,7 +111,7 @@ export default function ColumnSectionBar({
   return (
     <>
       <div
-        className={`flex items-center justify-between w-[250px] bg-white sticky top-0 h-10 rounded px-3 py-2 mb-5 border border-t-2 text-1E1E1E  text-ellipsis whitespace-nowrap overflow-x-hidden overflow-y-hidden scrollbar-none ${borderColor} shadow-[0px_2px_8px_rgba(0,0,0,0.18)] dark:bg-[#111a22] dark:text-[#F7F9F9] dark:border-x-[#F1B127] dark:border-b-[#F1B127] dark:shadow-[0px_3px_10px_rgba(255,255,255,0.15)]`}
+        className={`flex items-center justify-between w-[250px] bg-white sticky top-0 h-10 rounded px-3 py-2 mb-5 border border-t-2 text-base-content  text-ellipsis whitespace-nowrap overflow-x-hidden overflow-y-hidden scrollbar-none ${borderColor} shadow-[0px_2px_8px_rgba(0,0,0,0.18)]`}
         onMouseOver={() => handleCardHover(true)}
         onMouseLeave={() => handleCardHover(false)}
       >
@@ -119,7 +119,7 @@ export default function ColumnSectionBar({
           <div className="flex items-center justify-around ">
             <input
               type="text"
-              className="w-2/3 h-3/4 focus:outline-none text-sm px-1 dark:bg-transparent"
+              className="w-2/3 h-3/4 focus:outline-none text-sm px-1"
               autoComplete="off"
               placeholder="نام ستون جدید"
               id="editBoardName"
@@ -131,7 +131,7 @@ export default function ColumnSectionBar({
               لغو
             </button>
             <button
-              className="text-208D8E mr-3 focus:outline-none text-sm dark:text-[#F1B127]"
+              className="text-primary mr-3 focus:outline-none text-sm"
               onClick={handleNewBoard}
             >
               تایید
@@ -141,12 +141,12 @@ export default function ColumnSectionBar({
           <>
             <div className="flex items-center gap-2">
               <div>{title}</div>
-              <div className="flex justify-center items-center h-4 w-4 rounded-full bg-F4F4F4 text-[10px] pt-1 dark:bg-[#f4f4f5] text-[#15202B]">
+              <div className="flex justify-center items-center h-4 w-4 rounded-full bg-F4F4F4 text-[10px] pt-1 text-[#15202B]">
                 {number}
               </div>
             </div>
             {isHovered && (
-              <div className="flex items-center gap-1 pr-3 absolute dark:bg-[#111a22] px-2 left-0 cursor-pointer ">
+              <div className="flex items-center gap-1 pr-3 absolute px-2 left-0 cursor-pointer">
                 <span
                   className="relative hover:scale-110"
                   onClick={(e) => {
