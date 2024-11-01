@@ -17,11 +17,16 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         string connectionString = configuration.GetConnectionString(ConnectionString.SettingsKey)!;
-
-        services.AddSingleton(new ConnectionString(connectionString));
-
-        // services.AddDbContext<PhoenixDbContext>(options =>options.UseInMemoryDatabase("Test"));
-        services.AddDbContext<PhoenixDbContext>(options => options.UseSqlServer(connectionString));
+        bool.TryParse(configuration.GetSection("UseInMemoryDatabase")?.Value, out bool isInmemorydb);
+        services.AddSingleton(new ConnectionString(connectionString,isInmemorydb));
+        if (isInmemorydb)
+        {
+            services.AddDbContext<PhoenixDbContext>(options => options.UseInMemoryDatabase("Default"));
+        }
+        else
+        {
+            services.AddDbContext<PhoenixDbContext>(options => options.UseSqlServer(connectionString));
+        }
 
         services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<PhoenixDbContext>());
 
@@ -39,9 +44,9 @@ public static class DependencyInjection
 
         services.AddScoped<IProjectMemberRepository, ProjectMemberRepository>();
 
-        services.AddScoped<ITaskRepository , TaskRepository>();
+        services.AddScoped<ITaskRepository, TaskRepository>();
 
-        services.AddScoped<ISettingRepository , SettingRepository>();
+        services.AddScoped<ISettingRepository, SettingRepository>();
 
         return services;
     }
@@ -50,8 +55,12 @@ public static class DependencyInjection
         using IServiceScope serviceScope = app.ApplicationServices.CreateScope();
 
         using PhoenixDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<PhoenixDbContext>();
+        ConnectionString connectionString = serviceScope.ServiceProvider.GetRequiredService<ConnectionString>();
 
-        dbContext.Database.Migrate();
+        if (!connectionString.InMemoryDb)
+        {
+            dbContext.Database.Migrate();
+        }
 
         return app;
     }

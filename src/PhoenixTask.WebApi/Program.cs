@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
-using NLog;
 using NLog.Web;
 using PhoenixTask.Application;
 using PhoenixTask.Infrastructure;
@@ -17,25 +16,16 @@ builder.Services.AddLogging(config =>
     config.AddNLog("Nlog.config");
 });
 
-bool runFromContainer = builder.Configuration.GetValue<bool>("RunIncontainer", false);
-if (runFromContainer)
+
+var httpsPort = builder.Configuration.GetValue("ASPNETCORE_HTTPS_PORT", 44388);
+var certPassword = "1580489e-7a6a-45e3-8b18-1d02c2ee6860";// builder.Configuration.GetValue<string>("CertPassword");
+var certPath = "localhost-dev.pfx";// builder.Configuration.GetValue<string>("CertPath");
+
+builder.WebHost.ConfigureKestrel(options =>
 {
-    #region Docker Config
-    var httpsPort = builder.Configuration.GetValue("ASPNETCORE_HTTPS_PORT", 44388);
-    var certPassword = "1580489e-7a6a-45e3-8b18-1d02c2ee6860";// builder.Configuration.GetValue<string>("CertPassword");
-    var certPath = "localhost-dev.pfx";// builder.Configuration.GetValue<string>("CertPath");
-    Console.WriteLine(certPath);
-    Console.WriteLine(File.Exists(certPath));
-    foreach (var item in Directory.GetFiles(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)))
-    {
-        Console.WriteLine(item);
-    }
-    builder.WebHost.ConfigureKestrel(options =>
-    {
-        options.Listen(System.Net.IPAddress.Any, httpsPort, listenoption => listenoption.UseHttps(certPath, certPassword));
-    });
-    #endregion
-}
+    options.Listen(System.Net.IPAddress.Any, httpsPort, listenoption => listenoption.UseHttps(certPath, certPassword));
+});
+
 builder.Configuration.AddUserSecrets(Assembly.GetExecutingAssembly());
 // Add services to the container.
 builder.Services
