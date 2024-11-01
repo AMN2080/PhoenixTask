@@ -1,5 +1,6 @@
 import { useAppDispatch } from "@/logic/store/hook";
 import { closeAllModals } from "@/logic/store/store";
+import { Flex } from "@/components/UI"
 
 type modalProps = {
   children: React.ReactNode;
@@ -13,12 +14,14 @@ const Modal = ({ children, className }: modalProps) => {
   };
 
   return (
-    <div
+    <Flex
       onClick={handleOnModals}
-      className={`modal opacity-100 visible z-50 pointer-events-auto flex justify-center items-center select-none  ${className} `}
+      justifyContent="center"
+      alignItems="center"
+      className={`modal opacity-100 visible z-50 pointer-events-auto select-none ${className}`}
     >
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
-    </div>
+    </Flex>
   );
 };
 

@@ -83,7 +83,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
             <Flex justifyContent="between" alignItems="center">
               <Flex direction="col">
                 <Flex alignItems="center">
-                  <div className={`h-4 w-4 mr-3 rounded-sm bg-[#D3D3D3]`}></div>
+                  <div className={`h-4 w-4 mr-3 rounded-sm bg-neutral`}></div>
                   <input
                     type="text"
                     id="taskTitle"
@@ -98,7 +98,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
               <Button
                 onClick={() => dispatch(toggleMediumModal(""))}
                 asChild
-                className="text-2xl hover:text-red-600 hover:rotate-90 transition-all flex-none"
+                className="text-2xl hover:text-error hover:rotate-90 transition-all flex-none"
               >
                 <Icon iconName="Close" />
               </Button>
@@ -115,7 +115,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
                 name="forMember"
                 id="forMember"
                 placeholder="پروژه اول"
-                className="w-40 mx-2 text-base font-normal border px-2 py-1 rounded-md  focus:outline-none"
+                className="w-40 mx-2 text-base font-normal border px-2 py-1 rounded-md focus:outline-none"
               />
               برای
               <span className="w-9 h-9 mr-3 p-1 text-neutral rounded-full border-2 border-dashed flex justify-center items-center">

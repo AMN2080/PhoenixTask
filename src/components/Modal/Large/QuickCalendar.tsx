@@ -7,6 +7,7 @@ import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
 import "./customCalendar.css";
 import { useAppSelector } from "@/logic/store/hook";
 import Icon from "@/components/Icon";
+import { Flex } from "@/components/UI";
 
 type QuickCalendarProps = {
   handleCalendar: (modalState: boolean, value?: any) => void;
@@ -33,9 +34,6 @@ const QuickCalendar = ({
     "پنجشنبه",
     "جمعه",
   ];
-  const HeaderFont =
-    "flex items-center justify-center text-2xl font-medium text-neutral-content";
-  const HeaderDate = "text-primary mr-3";
 
   // handle deadLine value and show deadline
   const handleDeadline = (date: any) => {
@@ -63,15 +61,15 @@ const QuickCalendar = ({
       >
         <div className="modal-box opacity-100 p-0 max-w-4xl min-w-[896px] h-5/6 min-h-[608px] max-h-[608px] rounded-3xl shadow-[0_12px_32px_rgba(0,0,0,0.25)]">
           {/* calendar Header */}
-          <div className="w-full h-32 border-b-2 flex items-center font-medium justify-around">
-            <div className={HeaderFont}>
+          <Flex alignItems="center" justifyContent="around" className="w-full h-32 border-b-2 font-medium">
+            <Flex alignItems="center" justifyContent="center" className="text-2xl font-medium text-neutral-content">
               <span className="ml-3">
                 <Icon iconName="Calendar" />
               </span>
               ددلاین
-              <span className={HeaderDate}>{deadline.showDeadline}</span>
-            </div>
-          </div>
+              <span className="text-primary mr-3">{deadline.showDeadline}</span>
+            </Flex>
+          </Flex>
 
           {/* calendar Content */}
           <div className="w-full h-4/6">
@@ -89,14 +87,14 @@ const QuickCalendar = ({
           </div>
 
           {/* calendar Footer */}
-          <div className="w-full flex justify-end pl-8 gap-3 mt-2">
+          <Flex justifyContent="end" gap="S" className="w-full pl-8 mt-2">
             <div className="w-32 h-8">
               <label
                 htmlFor="my-modal"
                 onClick={() => handleCalendar(false, deadline.value)}
                 className={`w-full h-10 p-2.5 text-sm font-bold leading-4 cursor-pointer flex justify-center items-center text-white rounded-md ${
                   submitChangesHandler &&
-                  "bg-[#ff3333]"
+                  "bg-error"
                 } bg-primary`}
               >
                 بستن
@@ -117,7 +115,7 @@ const QuickCalendar = ({
                 </label>
               </div>
             )}
-          </div>
+          </Flex>
         </div>
       </div>
     </>
