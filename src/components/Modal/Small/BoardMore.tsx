@@ -27,7 +27,7 @@ const BoardMore = ({
     <>
       <ul
         style={{ top: position.top, left: position.left }}
-        className="absolute top-7  min-w-40 mt-1 left-2 rounded-lg p-3 z-50 bg-white shadow-lg"
+        className="absolute top-7 min-w-40 mt-1 left-2 rounded-lg p-3 z-50 bg-white shadow-lg"
       >
         {confirm ? (
           <li className={`${liStyle} !mt-0 p-2`}>

@@ -1,22 +1,19 @@
-import { AiOutlinePlus, AiOutlineLink } from "react-icons/ai";
-import { BsTrash } from "react-icons/bs";
-import { SlNote } from "react-icons/sl";
-import Button from "../../UI/Button";
-import { BiShareAlt } from "react-icons/bi";
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import Modal from "../../../layout/Modal";
-import NewProject from "../Medium/NewProject";
-import ShareModal from "../Medium/ShareModal";
-import AddNewTask from "../Large/AddNewTask";
-import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
-import SelectBoard from "../Medium/SelectBoard";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
 import {
   fetchCreateTask,
   toggleMediumModal,
   toggleSmallModal,
-} from "../../../services/app/store";
-import { MorePosition } from "../../dashboard/dashboardSidebar/ProjectList";
+} from "@/logic/store/store";
+import NewProject from "../Medium/NewProject";
+import ShareModal from "../Medium/ShareModal";
+import AddNewTask from "../Large/AddNewTask";
+import SelectBoard from "../Medium/SelectBoard";
+import { Flex, Button } from "@/components/UI";
+import Icon from "@/components/Icon";
+import Modal from "../";
+import { MorePosition } from "@/components/modules/dashboard/Sidebar/ProjectList";
 
 type SideMoreProps = {
   sideMoreState: string;
@@ -72,12 +69,12 @@ const SideMore = ({
     <>
       <ul
         style={{ top: morePosition.top, left: morePosition.left }}
-        className={`absolute mt-3 z-50 w-52 min-w-max bg-white shadow-lg p-3 rounded-lg`}
+        className="absolute mt-3 z-50 w-52 min-w-max bg-white shadow-lg p-3 rounded-lg"
       >
         {/* add task or project */}
-        <li className="w-full flex items-center text-323232 text-sm font-normal mt-3 cursor-pointer">
+        <li className="w-full flex items-center text-neutral-content text-sm font-normal mt-3 cursor-pointer">
           <span className="ml-4 text-xl">
-            <AiOutlinePlus />
+            <Icon iconName="SquarePlus" />
           </span>
           <span
             onClick={() => {
@@ -120,7 +117,7 @@ const SideMore = ({
           }}
         >
           <span className="ml-4 text-xl">
-            <SlNote />
+            <Icon iconName="Edit" />
           </span>
           <span>
             ویرایش نام {sideMoreState === "تسک" ? "پروژه" : "محیط کاری"}
@@ -129,19 +126,19 @@ const SideMore = ({
         {/* copy Link */}
         <li className={liStyle}>
           <span className="ml-4 text-xl">
-            <AiOutlineLink />
+            <Icon iconName="Link" />
           </span>
           <span>کپی لینک</span>
         </li>
         {/* delete */}
 
         <li
-          className={`${liStyle} text-dange`}
+          className={`${liStyle} text-error`}
           onClick={() => setConfirm(true)}
         >
           {confirm ? (
-            <div className="flex items-center justify-around border p-2 rounded-md">
-              <p className="text-xs text-black">
+            <Flex justifyContent="around" alignItems="center" className="border p-2 rounded-md">
+              <p className="text-xs text-neutral-content">
                 از حذف {sideMoreState === "تسک" ? "پروژه" : "محیط کاری"}{" "}
                 مطمئنید؟
               </p>
@@ -160,11 +157,11 @@ const SideMore = ({
               >
                 بله
               </button>
-            </div>
+            </Flex>
           ) : (
             <>
               <span className="ml-4 text-xl">
-                <BsTrash />
+                <Icon iconName="Remove" />
               </span>
               <span>حذف</span>
             </>
@@ -173,11 +170,11 @@ const SideMore = ({
 
         {/* share workspace or project */}
         <li
-          className="w-full relative flex  items-center mt-4"
+          className="w-full relative flex items-center mt-4"
           onClick={() => dispatch(toggleMediumModal(`اشتراک ${sideMoreState}`))}
         >
           <span className="absolute right-5 text-2xl text-white">
-            <BiShareAlt />
+            <Icon iconName="Share" />
           </span>
           <Button>اشتراک گذاری</Button>
         </li>
