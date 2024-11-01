@@ -1,9 +1,5 @@
-import Button from "../../UI/Button";
-import { FiLink } from "react-icons/fi";
 import { useEffect, useRef, useState } from "react";
-import CloseIcon from "../../UI/Close";
 import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
 import {
   addMemberToProject,
   addWorkSpaceMember,
@@ -11,9 +7,10 @@ import {
   removeMemberThanProject,
   removeWorkSpaceMember,
   toggleMediumModal,
-} from "../../../services/app/store";
-import { BsTrash } from "react-icons/bs";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+} from "@/logic/store/store";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { Button } from "@/components/UI";
+import Icon from "@/components/Icon";
 
 type Members = {
   user: {
@@ -151,7 +148,10 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
             className="text-323232 cursor-pointer"
             onClick={() => dispatch(toggleMediumModal(""))}
           >
-            <CloseIcon />
+            <Icon
+              iconName="Close"
+              className="text-3xl hover:rotate-90 cursor-pointer"
+            />
           </label>
 
           <div className="font-semibold text-2xl text-black">
@@ -187,7 +187,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
 
             <div className="w-full mt-7 flex justify-between items-center ">
               <div className="flex items-center">
-                <FiLink />
+                <Icon iconName="Link" />
                 <span className="mr-3 text-sm font-normal text-neutral-content">
                   لینک خصوصی
                 </span>
@@ -198,10 +198,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
               </div>
             </div>
             {isLoadingPost || isLoadingProject ? (
-              <AiOutlineLoading3Quarters
-                size="2.8rem"
-                className="m-auto animate-spin text-primary"
-              />
+              <Icon iconName="Loading" />
             ) : (
               <div className="mt-7 flex flex-col">
                 {members.length > 0 && (
@@ -212,10 +209,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                 <ul className="max-h-40 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 scrollbar-thumb-rounded-full scrollbar-track-white">
                   {members &&
                     members.map((item) => (
-                      <li
-                        key={item.user.id}
-                        className="w-full mt-5"
-                      >
+                      <li key={item.user.id} className="w-full mt-5">
                         {confirm === item.user.id ? (
                           <div className="flex items-center justify-between  border p-2 rounded-md text-base">
                             <p className="text-black">
@@ -257,7 +251,7 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                               }}
                             >
                               <span className="ml-4 ">حذف ممبر</span>
-                              <BsTrash />
+                              <Icon iconName="Remove" />
                             </div>
                           </div>
                         )}

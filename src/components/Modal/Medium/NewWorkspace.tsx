@@ -16,10 +16,9 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
     color: "bg-neutral",
     id: 0,
   });
-  
+
   const [workspaceName, setWorkSpaceName] = useState("");
   const fontList = "text-sm font-semibold text-black";
-  const liStyle = "w-full flex justify-between items-center";
   const dataColor = [
     { id: 1, color: "bg-[#84C6A1]" },
     { id: 2, color: "bg-[#78C6B0]" },
@@ -78,10 +77,13 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
             className="text-neutral-content cursor-pointer"
             onClick={() => dispatch(toggleMediumModal(""))}
           >
-            <Icon iconName="Close" />
+            <Icon
+              iconName="Close"
+              className="text-3xl hover:rotate-90 cursor-pointer"
+            />
           </label>
 
-          <div className="font-semibold text-2xl text-black">
+          <div className="font-semibold text-2xl text-neutral-content">
             {workSpaceStep}
           </div>
           {/* back page */}
@@ -110,16 +112,18 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
             ) : workSpaceStep === "انتخاب رنگ محیط کاری" ? (
               <>
                 {/* select color */}
-                <div className="w-full flex">
+                <Flex>
                   {/* avatar */}
-                  <div
-                    className={`w-24 h-16 rounded-lg text-2xl font-semibold text-white flex justify-center items-center ${selectedColor.color}`}
+                  <Flex
+                    justifyContent="center"
+                    alignItems="center"
+                    className={`w-24 h-16 rounded-lg text-2xl font-semibold text-white ${selectedColor.color}`}
                   >
                     {username}
-                  </div>
+                  </Flex>
 
                   {/* list of colors */}
-                  <div className="mr-9 flex flex-col">
+                  <Flex direction="col" className="mr-9">
                     <span className="text-sm text-black">رنگ محیط کاری</span>
                     <ul className="mt-5 h-10 flex justify-start content-between flex-wrap">
                       <li
@@ -144,22 +148,22 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
                         />
                       ))} */}
                     </ul>
-                  </div>
-                </div>
+                  </Flex>
+                </Flex>
               </>
             ) : (
               <>
                 {/* Browsing info */}
                 <ul className="w-full px-3 py-6 flex flex-col border rounded-lg">
                   {/* workspace name */}
-                  <li className={liStyle}>
+                  <li className="w-full flex justify-between items-center">
                     <span className={fontList}>نام محیط کاری</span>
                     <span className={fontList}>{workspaceName}</span>
                   </li>
 
                   {/* workspace color*/}
 
-                  <li className={`mt-6 ${liStyle}`}>
+                  <li className="mt-6 w-full flex justify-between items-center">
                     <span className={fontList}>رنگ محیط کاری</span>
                     <span className={fontList}>
                       <div
@@ -169,12 +173,12 @@ const NewWorkspace = ({ workSpaceStep, setWorkSpaceStepe }: workspaceProps) => {
                   </li>
                   {/* workspace members */}
 
-                  <li className={`mt-6 ${liStyle}`}>
+                  <li className="mt-6 w-full flex justify-between items-center">
                     <span className={fontList}>اعضا</span>
                     <span className="w-9 h-9 rounded-full">
-                      <div className="w-9 h-9 flex justify-center items-center bg-F27474 text-white rounded-full">
+                      <Flex justifyContent="center" alignItems="center" className="w-9 h-9 bg-error-content text-white rounded-full">
                         {username}
-                      </div>
+                      </Flex>
                     </span>
                   </li>
                 </ul>

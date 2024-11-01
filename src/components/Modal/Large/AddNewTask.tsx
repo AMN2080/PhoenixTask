@@ -98,7 +98,7 @@ const AddNewTask = ({ handleAddNewTask }: addNewTaskProps) => {
               <Button
                 onClick={() => dispatch(toggleMediumModal(""))}
                 asChild
-                className="text-2xl hover:text-error hover:rotate-90 transition-all flex-none"
+                className="text-2xl hover:rotate-90 flex-none cursor-pointer"
               >
                 <Icon iconName="Close" />
               </Button>

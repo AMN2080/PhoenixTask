@@ -78,7 +78,7 @@ const TaskInfoHeaderLeft = ({
       <span onClick={handleCloseTaskInfo}>
         <Icon
           iconName="Close"
-          className="hover:rotate-90 hover:text-error transition-all cursor-pointer absolute left-3 top-2 text-neutral"
+          className="hover:rotate-90 cursor-pointer absolute left-3 top-2"
         />
       </span>
       {calendar.modal &&

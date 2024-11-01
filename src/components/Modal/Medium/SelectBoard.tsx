@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import Button from "../../UI/Button";
-import CloseIcon from "../../UI/Close";
-import { useAppDispatch } from "../../../services/app/hook";
-import { toggleMediumModal } from "../../../services/app/store";
+import { useAppDispatch } from "@/logic/store/hook";
+import { toggleMediumModal } from "@/logic/store/store";
+import { Flex, Button } from "@/components/UI";
+import Icon from "@/components/Icon";
 
 type dataList = {
   id: string;
@@ -30,28 +30,31 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
   return (
     <div className="modal-box w-[400px]">
       {data.length > 0 ? (
-        <div className="p-5  rounded-lg">
+        <div className="p-5 rounded-lg">
           {/* card header */}
-          <div className="w-full flex justify-between items-center">
+          <Flex justifyContent="between" alignItems="center">
             <label
               htmlFor="my-modal-3"
-              className="text-323232 cursor-pointer"
+              className="text-neutral-content cursor-pointer"
               onClick={() => dispatch(toggleMediumModal(""))}
             >
-              <CloseIcon />
+              <Icon
+                iconName="Close"
+                className="text-3xl hover:rotate-90 cursor-pointer"
+              />
             </label>
 
-            <div className="font-semibold text-2xl text-black">
+            <div className="font-semibold text-2xl text-neutral-content">
               انتخاب {status}
             </div>
 
             <span></span>
-          </div>
+          </Flex>
           {/* card content */}
 
-          <div className="mt-11 w-full ">
+          <div className="mt-11 w-full">
             {/* selectedList */}
-            <div className="flex items-center justify-center">
+            <Flex justifyContent="center" alignItems="center">
               <select
                 dir="rtl"
                 onChange={handleSelectValue}
@@ -72,7 +75,7 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
                     );
                   })}
               </select>
-            </div>
+            </Flex>
 
             {/* button */}
             <div className="mt-16">
@@ -89,20 +92,23 @@ const SelectBoard = ({ data, selectedHandle, status }: SelectBoardProps) => {
         </div>
       ) : (
         <>
-          <div className="w-full flex justify-between items-center">
+          <Flex justifyContent="between" alignItems="center">
             <label
               htmlFor="my-modal-3"
-              className="text-323232 cursor-pointer"
+              className="text-neutral-content cursor-pointer"
               onClick={() => dispatch(toggleMediumModal(""))}
             >
-              <CloseIcon />
+              <Icon
+                iconName="Close"
+                className="text-3xl hover:rotate-90 cursor-pointer"
+              />
             </label>
 
-            <div className="font-semibold text-2xl text-black"></div>
+            <div className="font-semibold text-2xl text-neutral-content"></div>
 
             <span></span>
-          </div>
-          <div className="font-semibold text-xl text-black text-center">
+          </Flex>
+          <div className="font-semibold text-xl text-neutral-content text-center">
             {status === "پروژه"
               ? `${status} ای وجود نداره ، یدونه بساز`
               : `${status}ی وجود نداره ، یدونه بساز`}

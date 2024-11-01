@@ -93,7 +93,7 @@ const TaskAssign = ({ setTaskAssignModal, taskAssigns }: TaskAssignType) => {
             >
               <Icon
                 iconName="Close"
-                className="hover:rotate-90 hover:text-error transition-all cursor-pointer"
+                className="hover:rotate-90 cursor-pointer"
               />
             </label>
 

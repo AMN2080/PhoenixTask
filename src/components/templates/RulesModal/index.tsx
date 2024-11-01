@@ -17,7 +17,7 @@ export default function RulesModal({ visible, onClose }: RulesModalProps) {
         <Button
           onClick={onClose}
           asChild
-          className="text-2xl hover:text-red-600 hover:rotate-90 transition-all flex-none"
+          className="text-2xl hover:rotate-90 flex-none cursor-pointer"
         >
           <Icon iconName="Close" />
         </Button>

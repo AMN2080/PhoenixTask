@@ -1,8 +1,7 @@
 import { useAppDispatch } from "@/logic/store/hook";
 import { toggleMediumModal } from "@/logic/store/store";
 import Icon from "@/components/Icon";
-import { Flex, Button } from "@/components/UI"
-// import CloseIcon from "../../UI/Close";
+import { Flex, Button } from "@/components/UI";
 
 type AddTaskOnCalendar = {
   clickDate: string;
@@ -18,7 +17,10 @@ const AddTaskOnCalendar = ({ clickDate }: AddTaskOnCalendar) => {
           className="cursor-pointer text-black"
           onClick={() => dispatch(toggleMediumModal(""))}
         >
-          {/* <CloseIcon /> */}
+          <Icon
+            iconName="Close"
+            className="text-3xl hover:rotate-90 cursor-pointer"
+          />
         </label>
         <input
           type="text"
@@ -31,7 +33,11 @@ const AddTaskOnCalendar = ({ clickDate }: AddTaskOnCalendar) => {
       </Flex>
 
       {/* content */}
-      <Flex alignItems="center" justifyContent="between" className="relativen w-full mt-10">
+      <Flex
+        alignItems="center"
+        justifyContent="between"
+        className="relativen w-full mt-10"
+      >
         <Flex className="text-neutral text-2xl">
           <span className="cursor-pointer border-none">
             <Icon iconName="Flag" />

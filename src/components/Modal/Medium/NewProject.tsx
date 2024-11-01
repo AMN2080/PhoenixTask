@@ -1,10 +1,8 @@
-import Input from "../../UI/Input";
-import Button from "../../UI/Button";
-import CloseIcon from "../../UI/Close";
 import { toast } from "react-toastify";
-import { useAppDispatch, useAppSelector } from "../../../services/app/hook";
-import { createProject, toggleMediumModal } from "../../../services/app/store";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
+import { createProject, toggleMediumModal } from "@/logic/store/store";
+import Icon from "@/components/Icon";
+import { Flex, Button, Input } from "@/components/UI";
 
 type projectProps = {
   id?: string;
@@ -28,28 +26,28 @@ const NewProject = ({ id }: projectProps) => {
     <div className="modal-box w-3/4 max-w-lgl min-w-[500px]">
       <div className="p-5 rounded-lg">
         {/* card header */}
-        <div className="w-full flex justify-between items-center">
+        <Flex justifyContent="between" alignItems="center">
           <label
             htmlFor="my-modal-3"
-            className="text-323232 cursor-pointer"
+            className="text-neutral-content cursor-pointer"
             onClick={() => dispatch(toggleMediumModal(""))}
           >
-            <CloseIcon />
+            <Icon
+              iconName="Close"
+              className="text-3xl hover:rotate-90 cursor-pointer"
+            />
           </label>
 
-          <div className="font-semibold text-2xl text-black">
+          <div className="font-semibold text-2xl text-neutral-content">
             ساختن پروژه جدید
           </div>
 
           <span></span>
-        </div>
+        </Flex>
 
         {/* card content */}
         {isLoadingPost ? (
-          <AiOutlineLoading3Quarters
-            size="2.8rem"
-            className="m-auto mt-3 animate-spin text-primary"
-          />
+          <Icon iconName="Loading" />
         ) : (
           <div className="mt-11 w-full">
             <Input connectorId="newProject" label="نام پروژه" />
