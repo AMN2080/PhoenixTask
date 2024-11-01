@@ -1,25 +1,24 @@
-import { FiFlag } from "react-icons/fi";
-import Button from "../../UI/Button";
-import CloseIcon from "../../UI/Close";
-import { useAppDispatch } from "../../../services/app/hook";
-import { toggleMediumModal } from "../../../services/app/store";
+import { useAppDispatch } from "@/logic/store/hook";
+import { toggleMediumModal } from "@/logic/store/store";
+import Icon from "@/components/Icon";
+import { Flex, Button } from "@/components/UI"
+// import CloseIcon from "../../UI/Close";
 
 type AddTaskOnCalendar = {
   clickDate: string;
 };
 const AddTaskOnCalendar = ({ clickDate }: AddTaskOnCalendar) => {
-  const centering = "w-full flex items-center";
   const dispatch = useAppDispatch();
   return (
     <div className="modal-box w-2/3 max-w-1xl min-w-[550px] py-5 px-12 overflow-visible">
       {/* header */}
-      <div className={centering}>
+      <Flex alignItems="center">
         <label
           htmlFor="my-modal-3"
           className="cursor-pointer text-black"
           onClick={() => dispatch(toggleMediumModal(""))}
         >
-          <CloseIcon />
+          {/* <CloseIcon /> */}
         </label>
         <input
           type="text"
@@ -29,23 +28,23 @@ const AddTaskOnCalendar = ({ clickDate }: AddTaskOnCalendar) => {
           placeholder="نام تسک را وارد کنید"
           className="mr-3 text-2xl text-black font-medium focus:outline-none"
         />
-      </div>
+      </Flex>
 
       {/* content */}
-      <div className={`${centering} relative justify-between mt-10`}>
-        <div className="flex text-neutral text-2xl">
-          <span className={`cursor-pointer border-none`}>
-            <FiFlag />
+      <Flex alignItems="center" justifyContent="between" className="relativen w-full mt-10">
+        <Flex className="text-neutral text-2xl">
+          <span className="cursor-pointer border-none">
+            <Icon iconName="Flag" />
           </span>
           <span className="mr-5 text-primary text-xl font-medium">
             {clickDate}
           </span>
-        </div>
+        </Flex>
 
         <div className="w-32">
           <Button>ساختن تسک</Button>
         </div>
-      </div>
+      </Flex>
     </div>
   );
 };
