@@ -9,7 +9,7 @@ import {
   toggleMediumModal,
 } from "@/logic/store/store";
 import { useAppDispatch, useAppSelector } from "@/logic/store/hook";
-import { Button } from "@/components/UI";
+import { Flex, Button } from "@/components/UI";
 import Icon from "@/components/Icon";
 
 type Members = {
@@ -140,12 +140,12 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
 
   return (
     <div className="modal-box overflow-visible w-3/4 z-50 min-w-[500px]">
-      <div className="p-5  rounded-lg">
+      <div className="p-5 rounded-lg">
         {/* card header */}
-        <div className="w-full flex justify-between items-center">
+        <Flex justifyContent="between" alignItems="center">
           <label
             htmlFor="my-modal-3"
-            className="text-323232 cursor-pointer"
+            className="text-neutral-content cursor-pointer"
             onClick={() => dispatch(toggleMediumModal(""))}
           >
             <Icon
@@ -154,25 +154,25 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
             />
           </label>
 
-          <div className="font-semibold text-2xl text-black">
+          <div className="font-semibold text-2xl text-neutral-content">
             {`به اشتراک گذاری ${ModalTitle}`}
           </div>
 
           <span></span>
-        </div>
+        </Flex>
 
         {/* card content */}
         <div className="mt-11 w-full">
-          <div className="w-full flex flex-col relative">
+          <Flex direction="col" className="w-full relative">
             {/* Send invite Link  */}
-            <div className="flex">
+            <Flex>
               <input
                 type="text"
                 placeholder="دعوت با نام کاربری"
                 name="invite"
                 id="invite"
                 ref={inputInvite}
-                className="w-4/5 h-10 p-3 bg-F0F1F3 rounded-tr-lg rounded-br-lg text-sm font-normal focus:outline-none border border-[#F7F9F9] border-l-0"
+                className="w-4/5 h-10 p-3 bg-[#F0F1F3] rounded-tr-lg rounded-br-lg text-sm font-normal focus:outline-none border border-[#F7F9F9] border-l-0"
               />
 
               <div className="w-24">
@@ -183,24 +183,32 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                   ارسال
                 </Button>
               </div>
-            </div>
+            </Flex>
 
-            <div className="w-full mt-7 flex justify-between items-center ">
-              <div className="flex items-center">
+            <Flex
+              justifyContent="between"
+              alignItems="center"
+              className="w-full mt-7"
+            >
+              <Flex alignItems="center">
                 <Icon iconName="Link" />
                 <span className="mr-3 text-sm font-normal text-neutral-content">
                   لینک خصوصی
                 </span>
-              </div>
+              </Flex>
 
-              <div className="w-20 h-6 px-3 py-1 text-xs flex items-center justify-center font-normal text-neutral-content rounded-md border border-[#E9EBF0] cursor-pointer">
+              <Flex
+                justifyContent="center"
+                alignItems="center"
+                className="w-20 h-6 px-3 py-1 text-xs font-normal text-neutral-content rounded-md border border-[#E9EBF0] cursor-pointer"
+              >
                 کپی لینک
-              </div>
-            </div>
+              </Flex>
+            </Flex>
             {isLoadingPost || isLoadingProject ? (
               <Icon iconName="Loading" />
             ) : (
-              <div className="mt-7 flex flex-col">
+              <Flex direction="col" className="mt-7">
                 {members.length > 0 && (
                   <h4 className="text-sm font-normal text-[#7D828C]">
                     اشتراک گذاشته شده با
@@ -211,13 +219,17 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                     members.map((item) => (
                       <li key={item.user.id} className="w-full mt-5">
                         {confirm === item.user.id ? (
-                          <div className="flex items-center justify-between  border p-2 rounded-md text-base">
-                            <p className="text-black">
+                          <Flex
+                            alignItems="center"
+                            justifyContent="between"
+                            className="border p-2 rounded-md text-base"
+                          >
+                            <p className="text-neutral-content">
                               از حذف کاربر مطمئن هستید؟
                             </p>
                             <div>
                               <button
-                                className="focus:outline-none ml-6 "
+                                className="focus:outline-none ml-6"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setConfirm("");
@@ -232,35 +244,41 @@ const ShareModal = ({ ModalTitle, id }: ShareModalProps) => {
                                 بله
                               </button>
                             </div>
-                          </div>
+                          </Flex>
                         ) : (
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                              <div className="w-8 h-8 text-sm flex justify-center items-center text-white bg-F27474 rounded-full">
+                          <Flex justifyContent="between" alignItems="center">
+                            <Flex alignItems="center">
+                              <Flex
+                                justifyContent="center"
+                                alignItems="center"
+                                className="w-8 h-8 text-sm text-white bg-error-content rounded-full"
+                              >
                                 {item.user.username.substring(0, 2)}
-                              </div>
+                              </Flex>
                               <span className="w-fit mr-2 px-2 py-1 rounded-md flex items-center justify-center font-normal truncate">
                                 {item.user.email}
                               </span>
-                            </div>
+                            </Flex>
 
-                            <div
-                              className="relative w-26 rounded-md py-1 px-2 text-sm flex items-center justify-center font-normal border border-[#E9EBF0] cursor-pointer hover:text-red-500 hover:border-red-500 transition-all"
+                            <Flex
+                              justifyContent="center"
+                              alignItems="center"
+                              className="relative w-26 rounded-md py-1 px-2 text-sm font-normal border border-[#E9EBF0] cursor-pointer hover:text-error hover:border-error transition-all"
                               onClick={() => {
                                 setConfirm(item.user.id);
                               }}
                             >
-                              <span className="ml-4 ">حذف ممبر</span>
+                              <span className="ml-4">حذف ممبر</span>
                               <Icon iconName="Remove" />
-                            </div>
-                          </div>
+                            </Flex>
+                          </Flex>
                         )}
                       </li>
                     ))}
                 </ul>
-              </div>
+              </Flex>
             )}
-          </div>
+          </Flex>
         </div>
       </div>
     </div>
